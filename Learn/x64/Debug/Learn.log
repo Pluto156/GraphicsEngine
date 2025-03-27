@@ -1,0 +1,51 @@
+﻿  stdafx.cpp
+  Transform.cpp
+  Stage.cpp
+  PointCollision.cpp
+  OBB.cpp
+  Camera.cpp
+e:\计算机图形学\作业1\作业一\learn\camera.cpp(84): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+e:\计算机图形学\作业1\作业一\learn\camera.cpp(85): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+e:\计算机图形学\作业1\作业一\learn\camera.cpp(118): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+e:\计算机图形学\作业1\作业一\learn\camera.cpp(119): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+  CVector.cpp
+e:\计算机图形学\作业1\作业一\learn\cvector.cpp(105): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+e:\计算机图形学\作业1\作业一\learn\cvector.cpp(106): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+e:\计算机图形学\作业1\作业一\learn\cvector.cpp(107): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+  CQuaternion.cpp
+  CMatrix.cpp
+e:\计算机图形学\作业1\作业一\learn\cmatrix.cpp(168): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+e:\计算机图形学\作业1\作业一\learn\cmatrix.cpp(169): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+e:\计算机图形学\作业1\作业一\learn\cmatrix.cpp(179): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+e:\计算机图形学\作业1\作业一\learn\cmatrix.cpp(181): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+e:\计算机图形学\作业1\作业一\learn\cmatrix.cpp(191): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+e:\计算机图形学\作业1\作业一\learn\cmatrix.cpp(192): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+e:\计算机图形学\作业1\作业一\learn\cmatrix.cpp(232): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+e:\计算机图形学\作业1\作业一\learn\cmatrix.cpp(233): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+e:\计算机图形学\作业1\作业一\learn\cmatrix.cpp(234): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+  CEuler.cpp
+e:\计算机图形学\作业1\作业一\learn\ceuler.cpp(34): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+e:\计算机图形学\作业1\作业一\learn\ceuler.cpp(35): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+e:\计算机图形学\作业1\作业一\learn\ceuler.cpp(36): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+  Box.cpp
+  Assignment_1.cpp
+e:\计算机图形学\作业1\作业一\learn\assignment_1.cpp(4): warning C4305: “参数”: 从“double”到“float”截断
+e:\计算机图形学\作业1\作业一\learn\assignment_1.cpp(6): warning C4305: “参数”: 从“double”到“float”截断
+e:\计算机图形学\作业1\作业一\learn\assignment_1.cpp(7): warning C4305: “参数”: 从“double”到“float”截断
+e:\计算机图形学\作业1\作业一\learn\assignment_1.cpp(9): warning C4305: “参数”: 从“double”到“float”截断
+e:\计算机图形学\作业1\作业一\learn\assignment_1.cpp(10): warning C4305: “参数”: 从“double”到“float”截断
+e:\计算机图形学\作业1\作业一\learn\assignment_1.cpp(143): warning C4305: “参数”: 从“double”到“float”截断
+e:\计算机图形学\作业1\作业一\learn\assignment_1.cpp(161): warning C4305: “初始化”: 从“double”到“float”截断
+e:\计算机图形学\作业1\作业一\learn\assignment_1.cpp(169): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+e:\计算机图形学\作业1\作业一\learn\assignment_1.cpp(170): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+e:\计算机图形学\作业1\作业一\learn\assignment_1.cpp(183): warning C4305: “参数”: 从“double”到“float”截断
+e:\计算机图形学\作业1\作业一\learn\assignment_1.cpp(195): warning C4305: “参数”: 从“double”到“float”截断
+e:\计算机图形学\作业1\作业一\learn\assignment_1.cpp(206): warning C4305: “参数”: 从“double”到“float”截断
+e:\计算机图形学\作业1\作业一\learn\assignment_1.cpp(216): warning C4305: “参数”: 从“double”到“float”截断
+e:\计算机图形学\作业1\作业一\learn\assignment_1.cpp(223): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+e:\计算机图形学\作业1\作业一\learn\assignment_1.cpp(298): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+e:\计算机图形学\作业1\作业一\learn\assignment_1.cpp(287): warning C4101: “modelview”: 未引用的局部变量
+  Area.cpp
+  正在生成代码...
+  Learn.vcxproj -> E:\计算机图形学\作业1\作业一\run\Learn.exe
+  Learn.vcxproj -> E:\计算机图形学\作业1\作业一\run\Learn.pdb (Full PDB)
