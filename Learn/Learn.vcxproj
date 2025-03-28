@@ -153,6 +153,8 @@
     <ClInclude Include="CMatrix.h" />
     <ClInclude Include="CQuaternion.h" />
     <ClInclude Include="CVector.h" />
+    <ClInclude Include="IManager.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="OBB.h" />
     <ClInclude Include="PointCollision.h" />
     <ClInclude Include="Stage.h" />
@@ -169,6 +171,9 @@
     <ClCompile Include="CQuaternion.cpp" />
     <ClCompile Include="CVector.cpp" />
     <ClCompile Include="Assignment_1.cpp" />
+    <ClCompile Include="IInputControl.cpp" />
+    <ClCompile Include="IManager.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="OBB.cpp" />
     <ClCompile Include="PointCollision.cpp" />
     <ClCompile Include="Stage.cpp" />

@@ -2,23 +2,23 @@
 class CEuler
 {
 public:
-    float h, p, b; // Å·À­½Ç£º¸©Ñö¡¢Æ«º½¡¢¹ö×ª
+    float h, p, b; // æ¬§æ‹‰è§’ï¼šä¿¯ä»°ã€åèˆªã€æ»šè½¬
 
-    // ÉèÖÃÅ·À­½Ç
+    // è®¾ç½®æ¬§æ‹‰è§’
     void Set(float fh, float fp, float fb);
 
-    // ×ª»»Îª CVector ÏòÁ¿
+    // è½¬æ¢ä¸º CVector å‘é‡
     CVector ToCVector();
 
-    // ×ª»»Îª CMatrix ¾ØÕó
+    // è½¬æ¢ä¸º CMatrix çŸ©é˜µ
     CMatrix ToCMatrix()const;
 
     operator float* () { return &h; }
-    // ÖØÔØ¼Ó·¨ÔËËã·û
+    // é‡è½½åŠ æ³•è¿ç®—ç¬¦
     CEuler operator+(const CEuler& other) const {
         return CEuler(h + other.h, p + other.p, b + other.b);
     }
-    // ÖØÔØ¼õ·¨ÔËËã·û
+    // é‡è½½å‡æ³•è¿ç®—ç¬¦
     CEuler operator-(const CEuler& other) const {
         return CEuler(h - other.h, p - other.p, b - other.b);
     }

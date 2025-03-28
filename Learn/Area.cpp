@@ -1,24 +1,24 @@
 #include "stdafx.h"
 #include "Area.h"
 
-// Area ¹¹Ôìº¯Êý£¬³õÊ¼»¯ÇøÓòµÄÖÐÐÄÎ»ÖÃ
+// Area æž„é€ å‡½æ•°ï¼Œåˆå§‹åŒ–åŒºåŸŸçš„ä¸­å¿ƒä½ç½®
 Area::Area(std::string name,float x, float y, float z)
     : Transform(name,CVector(x,y,z)) {
 }
 
-// »ñÈ¡ÇøÓòÄÚ Box µÄÊýÁ¿
+// èŽ·å–åŒºåŸŸå†… Box çš„æ•°é‡
 size_t Area::GetBoxCount() const {
     return boxes.size();
 }
 
-// ÏòÇøÓòÌí¼ÓÒ»¸ö Box
+// å‘åŒºåŸŸæ·»åŠ ä¸€ä¸ª Box
 void Area::AddBox(Box* box) {
     boxes.push_back(box);
     
-    AddChild(box);  // Ìí¼Ó Box µ½×Ó Transform ÁÐ±í
+    AddChild(box);  // æ·»åŠ  Box åˆ°å­ Transform åˆ—è¡¨
 }
 
-// »æÖÆ¸ÃÇøÓòÄÚµÄËùÓÐ Box
+// ç»˜åˆ¶è¯¥åŒºåŸŸå†…çš„æ‰€æœ‰ Box
 void Area::Draw() const {
     for (const auto box : boxes) {
         box->Draw();

@@ -9,18 +9,18 @@
 class Transform {
 public:
     std::string name;
-    CVector position;   // ÊÀ½ç×ø±ê
-    CMatrix rotation;   // ÊÀ½çĞı×ª¾ØÕó
-    CEuler eulerAngles; // ÊÀ½çÅ·À­½Ç£¨ÈÆ X¡¢Y¡¢Z ÖáµÄĞı×ª½Ç¶È£©
+    CVector position;   // ä¸–ç•Œåæ ‡
+    CMatrix rotation;   // ä¸–ç•Œæ—‹è½¬çŸ©é˜µ
+    CEuler eulerAngles; // ä¸–ç•Œæ¬§æ‹‰è§’ï¼ˆç»• Xã€Yã€Z è½´çš„æ—‹è½¬è§’åº¦ï¼‰
     bool isShowLocalAxis;
-    OBB obb;            // °ó¶¨µÄÓĞÏò°üÎ§ºĞ
+    OBB obb;            // ç»‘å®šçš„æœ‰å‘åŒ…å›´ç›’
 
-    CVector localPosition;    // Ïà¶ÔÓÚ¸¸ Transform µÄÎ»ÖÃ
-    CMatrix localRotation;    // Ïà¶ÔÓÚ¸¸ Transform µÄĞı×ª¾ØÕó
-    CEuler localEulerAngles;  // Ïà¶ÔÓÚ¸¸ Transform µÄÅ·À­½Ç
+    CVector localPosition;    // ç›¸å¯¹äºçˆ¶ Transform çš„ä½ç½®
+    CMatrix localRotation;    // ç›¸å¯¹äºçˆ¶ Transform çš„æ—‹è½¬çŸ©é˜µ
+    CEuler localEulerAngles;  // ç›¸å¯¹äºçˆ¶ Transform çš„æ¬§æ‹‰è§’
 
-    Transform* parent = nullptr;     // ¸¸¶ÔÏó
-    std::vector<Transform*> children; // ×Ó¶ÔÏóÁĞ±í
+    Transform* parent = nullptr;     // çˆ¶å¯¹è±¡
+    std::vector<Transform*> children; // å­å¯¹è±¡åˆ—è¡¨
 
     Transform(std::string name, const CVector& position = CVector(),
         const CMatrix& rotation = CMatrix(),
@@ -31,12 +31,12 @@ public:
         isShowLocalAxis(isShowLocalAxis), localPosition(position),
         localRotation(rotation), localEulerAngles(eulerAngles)
     {
-        UpdateTransformFromLocal(); // ³õÊ¼»¯Ê±È·±£Êı¾İÍ¬²½
+        UpdateTransformFromLocal(); // åˆå§‹åŒ–æ—¶ç¡®ä¿æ•°æ®åŒæ­¥
     }
 
     virtual void SetPosition(const CVector& newPos) {
         if (parent) {
-            // ½«ÊÀ½ç×ø±ê×ª»»Îª¸¸¿Õ¼äµÄ±¾µØ×ø±ê
+            // å°†ä¸–ç•Œåæ ‡è½¬æ¢ä¸ºçˆ¶ç©ºé—´çš„æœ¬åœ°åæ ‡
             CVector parentSpacePos = newPos - parent->position;
             localPosition = parent->rotation.GetInverse().vecMul(parentSpacePos);
         }
@@ -46,9 +46,15 @@ public:
         UpdateTransformFromLocal();
     }
 
-    virtual void SetRotation(const CMatrix& newRotation) {
+    virtual void SetPositionDelta(const CVector& newPosDelta) {
+        SetPosition(position + newPosDelta);
+    }
+    virtual void SetPositionDelta(float x,float y,float z) {
+        SetPosition(position + CVector(x,y,z));
+    }
+    virtual void SetRotationDelta(const CMatrix& newRotation) {
         if (parent) {
-            // ¼ÆËãÏà¶ÔÓÚ¸¸ÎïÌåµÄ±¾µØĞı×ª
+            // è®¡ç®—ç›¸å¯¹äºçˆ¶ç‰©ä½“çš„æœ¬åœ°æ—‹è½¬
             localRotation = parent->rotation.GetInverse() * newRotation;
         }
         else {
@@ -56,10 +62,18 @@ public:
         }
         UpdateTransformFromLocal();
     }
+    virtual void SetRotationDelta(CEuler rotationDelta)
+    {
+        SetRotationDelta(rotationDelta.ToCMatrix());
+    }
+    virtual void SetRotationDelta(float h, float p, float b)
+    {
+        SetRotationDelta(CEuler(h, p, b));
+    }
 
     virtual void SetEulerAngles(const CEuler& newAngles) {
         if (parent) {
-            // ¼ÆËãÏà¶ÔÓÚ¸¸ÎïÌåµÄ±¾µØÅ·À­½Ç
+            // è®¡ç®—ç›¸å¯¹äºçˆ¶ç‰©ä½“çš„æœ¬åœ°æ¬§æ‹‰è§’
             CMatrix worldRot = newAngles.ToCMatrix();
             localRotation = parent->rotation.GetInverse() * worldRot;
             localEulerAngles = localRotation.ToEuler();
@@ -71,10 +85,10 @@ public:
         UpdateTransformFromLocal();
     }
 
-    // ´Ó±¾µØ×ø±êÏµ¸üĞÂÊÀ½ç×ø±êÏµ
+    // ä»æœ¬åœ°åæ ‡ç³»æ›´æ–°ä¸–ç•Œåæ ‡ç³»
     void UpdateTransformFromLocal() {
         if (parent) {
-            // ¼ÆËãÊÀ½ç×ø±êÏµ±ä»»
+            // è®¡ç®—ä¸–ç•Œåæ ‡ç³»å˜æ¢
             rotation = parent->rotation * localRotation;
             position = parent->position + parent->rotation.vecMul(localPosition);
         }
@@ -88,19 +102,19 @@ public:
         UpdateChildrenTransform();
     }
 
-    // ¸üĞÂ×ÓÎïÌå±ä»»
+    // æ›´æ–°å­ç‰©ä½“å˜æ¢
     void UpdateChildrenTransform() {
         for (auto& child : children) {
             if (!child) continue;
 
-            // ×ÓÎïÌåµÄÊÀ½çĞı×ª = ¸¸Ğı×ª * ×Ó±¾µØĞı×ª
+            // å­ç‰©ä½“çš„ä¸–ç•Œæ—‹è½¬ = çˆ¶æ—‹è½¬ * å­æœ¬åœ°æ—‹è½¬
             child->rotation = rotation * child->localRotation;
-            // ×ÓÎïÌåµÄÊÀ½çÎ»ÖÃ = ¸¸Î»ÖÃ + ¸¸Ğı×ªºóµÄ±¾µØÎ»ÖÃ
+            // å­ç‰©ä½“çš„ä¸–ç•Œä½ç½® = çˆ¶ä½ç½® + çˆ¶æ—‹è½¬åçš„æœ¬åœ°ä½ç½®
             child->position = position + rotation.vecMul(child->localPosition);
             child->eulerAngles = child->rotation.ToEuler();
             child->obb.Update(child->position, child->rotation);
 
-            // µİ¹é¸üĞÂ×ÓÎïÌå
+            // é€’å½’æ›´æ–°å­ç‰©ä½“
             child->UpdateChildrenTransform();
         }
     }
@@ -111,69 +125,74 @@ public:
         children.push_back(child);
         child->parent = this;
 
-        // ³õÊ¼»¯×ÓÎïÌåµÄ±¾µØ×ø±ê
+        // åˆå§‹åŒ–å­ç‰©ä½“çš„æœ¬åœ°åæ ‡
         child->localPosition = rotation.GetInverse().vecMul(child->position - position);
         child->localRotation = rotation.GetInverse() * child->rotation;
         child->localEulerAngles = child->localRotation.ToEuler();
 
-        // ¸üĞÂ×ÓÎïÌåµÄÊÀ½ç×ø±ê
+        // æ›´æ–°å­ç‰©ä½“çš„ä¸–ç•Œåæ ‡
         child->UpdateTransformFromLocal();
     }
 
-    // »ñÈ¡Î»ÖÃ
+    // è·å–ä½ç½®
     virtual CVector GetPosition() const {
         return position;
     }
 
-    // »ñÈ¡Ğı×ª¾ØÕó
+    // è·å–æ—‹è½¬çŸ©é˜µ
     virtual CMatrix GetRotation() const {
         return rotation;
     }
 
-    // »ñÈ¡Å·À­½Ç
+    // è·å–æ¬§æ‹‰è§’
     virtual CEuler GetEulerAngles() const {
         return eulerAngles;
     }
 
-    // Ó¦ÓÃ±ä»»£¨°üÀ¨Æ½ÒÆºÍĞı×ª£©
+    virtual void Update()
+    {
+        
+    }
+
+    // åº”ç”¨å˜æ¢ï¼ˆåŒ…æ‹¬å¹³ç§»å’Œæ—‹è½¬ï¼‰
     virtual void Draw() const {
         glTranslatef(position.x, position.y, position.z);
-        glRotatef(eulerAngles.h, 0, 1, 0); // ÈÆ Y ÖáĞı×ª
-        glRotatef(eulerAngles.p, 1, 0, 0); // ÈÆ X ÖáĞı×ª
-        glRotatef(eulerAngles.b, 0, 0, 1); // ÈÆ Z ÖáĞı×ª
+        glRotatef(eulerAngles.h, 0, 1, 0); // ç»• Y è½´æ—‹è½¬
+        glRotatef(eulerAngles.p, 1, 0, 0); // ç»• X è½´æ—‹è½¬
+        glRotatef(eulerAngles.b, 0, 0, 1); // ç»• Z è½´æ—‹è½¬
 
         if (isShowLocalAxis) {
-            // »æÖÆ±¾µØ×ø±êÏµ
+            // ç»˜åˆ¶æœ¬åœ°åæ ‡ç³»
             glBegin(GL_LINES);
-            glColor3f(1.0f, 0.0f, 0.0f); // ºìÉ«£¨X Öá£©
+            glColor3f(1.0f, 0.0f, 0.0f); // çº¢è‰²ï¼ˆX è½´ï¼‰
             glVertex3f(0.0f, 0.0f, 0.0f);
             glVertex3f(10.0f, 0.0f, 0.0f);
             glEnd();
 
             glBegin(GL_LINES);
-            glColor3f(0.0f, 1.0f, 0.0f); // ÂÌÉ«£¨Y Öá£©
+            glColor3f(0.0f, 1.0f, 0.0f); // ç»¿è‰²ï¼ˆY è½´ï¼‰
             glVertex3f(0.0f, 0.0f, 0.0f);
             glVertex3f(0.0f, 10.0f, 0.0f);
             glEnd();
 
             glBegin(GL_LINES);
-            glColor3f(0.0f, 0.0f, 1.0f); // À¶É«£¨Z Öá£©
+            glColor3f(0.0f, 0.0f, 1.0f); // è“è‰²ï¼ˆZ è½´ï¼‰
             glVertex3f(0.0f, 0.0f, 0.0f);
             glVertex3f(0.0f, 0.0f, 10.0f);
             glEnd();
         }
     }
-    // »ñÈ¡±¾µØÎ»ÖÃ
+    // è·å–æœ¬åœ°ä½ç½®
     CVector GetLocalPosition() const {
         return localPosition;
     }
 
-    // »ñÈ¡±¾µØĞı×ª¾ØÕó
+    // è·å–æœ¬åœ°æ—‹è½¬çŸ©é˜µ
     CMatrix GetLocalRotation() const {
         return localRotation;
     }
 
-    // »ñÈ¡±¾µØÅ·À­½Ç
+    // è·å–æœ¬åœ°æ¬§æ‹‰è§’
     CEuler GetLocalEulerAngles() const {
         return localEulerAngles;
     }

@@ -4,9 +4,9 @@
 #include "PointCollision.h"
 class OBB {
 public:
-    CVector center;      // ºĞ×ÓÖĞĞÄ
-    CVector halfSizes;   // °ë³ß´ç
-    CMatrix rotation;    // Ğı×ª¾ØÕó
+    CVector center;      // ç›’å­ä¸­å¿ƒ
+    CVector halfSizes;   // åŠå°ºå¯¸
+    CMatrix rotation;    // æ—‹è½¬çŸ©é˜µ
 
     OBB(const CVector& center = CVector(), const CVector& halfSizes = CVector(1, 1, 1), const CMatrix& rotation = CMatrix())
         : center(center), halfSizes(halfSizes), rotation(rotation) {

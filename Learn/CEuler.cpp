@@ -22,13 +22,13 @@ CEuler::CEuler(float fh, float fp, float fb)
     this->b = fb;
 }
 
-// ½«Å·À­½Ç×ª»»Îª CVector ÏòÁ¿
+// å°†æ¬§æ‹‰è§’è½¬æ¢ä¸º CVector å‘é‡
 CVector CEuler::ToCVector()
 {
-    return CVector(h, p, b);  // ½«Å·À­½ÇÖ±½Ó×ª»»ÎªÏòÁ¿
+    return CVector(h, p, b);  // å°†æ¬§æ‹‰è§’ç›´æ¥è½¬æ¢ä¸ºå‘é‡
 }
 
-// ½«Å·À­½Ç×ª»»Îª CMatrix ¾ØÕó
+// å°†æ¬§æ‹‰è§’è½¬æ¢ä¸º CMatrix çŸ©é˜µ
 CMatrix CEuler::ToCMatrix()const
 {
     float rad_h = h * (M_PI / 180.0f);  // Yaw

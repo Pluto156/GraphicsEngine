@@ -16,7 +16,7 @@ Camera::Camera()
     //y
     camUp = camRight.crossMul(camForward);
     camUp.Normalize();
-    // ´´½¨Ðý×ª¾ØÕó
+    // åˆ›å»ºæ—‹è½¬çŸ©é˜µ
     float m[16] = {
         camRight.x, camRight.y, camRight.z, 0,
         camUp.x, camUp.y, camUp.z, 0,
@@ -24,7 +24,7 @@ Camera::Camera()
         0,          0,          0,          1
     };
 
-    // ³õÊ¼»¯Ðý×ª¾ØÕó
+    // åˆå§‹åŒ–æ—‹è½¬çŸ©é˜µ
     rotation.Set(m);
     eulerAngles = (camForward*(-1)).ToEuler();
 }
@@ -34,13 +34,13 @@ Camera::~Camera()
 {
 }
 CVector Camera::GetCamForward(){
-    // ¼ÆËã²¢¸üÐÂÇ°ÏòÏòÁ¿
+    // è®¡ç®—å¹¶æ›´æ–°å‰å‘å‘é‡
     camForward = rotation.GetForward()*(-1);
     return camForward;  
 }
 
 CVector Camera::GetCamRight() {
-    // ¼ÆËã²¢¸üÐÂÇ°ÏòÏòÁ¿
+    // è®¡ç®—å¹¶æ›´æ–°å‰å‘å‘é‡
     camRight = rotation.GetRight();
     return camRight;
 }
@@ -57,19 +57,19 @@ void Camera::MoveCamera(CVector dir)
 
 void Camera::processKeyboard(unsigned char key, int x, int y)
 {
-    if (key == 'w')  // ÏòÇ°
+    if (key == 'w')  // å‘å‰
     {
         position = position + camForward*camMoveSpeed;
     }
-    if (key == 's')  // Ïòºó
+    if (key == 's')  // å‘åŽ
     {
         position = position - camForward * camMoveSpeed;
     }
-    if (key == 'a')  // Ïò×ó
+    if (key == 'a')  // å‘å·¦
     {
         position = position - camRight * camMoveSpeed;
     }
-    if (key == 'd')  // ÏòÓÒ
+    if (key == 'd')  // å‘å³
     {
         position = position + camRight * camMoveSpeed;
     }
@@ -77,7 +77,7 @@ void Camera::processKeyboard(unsigned char key, int x, int y)
 
 void Camera::processMouse(int button, int state, int x, int y)
 {
-    if (button == GLUT_RIGHT_BUTTON)
+    if (button == GLUT_MIDDLE_BUTTON)
     {
         if (state == GLUT_DOWN)
         {
@@ -100,19 +100,19 @@ void Camera::processMouseMotion(int x, int y)
 {
     if (!isControlView)return;
 
-    // ¸ù¾ÝÊó±êÒÆ¶¯µ÷ÕûÊÓ½Ç
-    camAngleY = (x - prevMouseX) * camRotateSpeed;  // Ë®Æ½·½ÏòÐý×ª
-    camAngleX = (y - prevMouseY) * camRotateSpeed;  // ´¹Ö±·½ÏòÐý×ª
+    // æ ¹æ®é¼ æ ‡ç§»åŠ¨è°ƒæ•´è§†è§’
+    camAngleY = (x - prevMouseX) * camRotateSpeed;  // æ°´å¹³æ–¹å‘æ—‹è½¬
+    camAngleX = (y - prevMouseY) * camRotateSpeed;  // åž‚ç›´æ–¹å‘æ—‹è½¬
 
     eulerAngles.h -= camAngleY;
     eulerAngles.p -= camAngleX ;
 
 
-    // ÏÞÖÆ´¹Ö±ÊÓ½ÇµÄ·¶Î§£¬±ÜÃâÉãÏñ»úÍêÈ«·­×ª
+    // é™åˆ¶åž‚ç›´è§†è§’çš„èŒƒå›´ï¼Œé¿å…æ‘„åƒæœºå®Œå…¨ç¿»è½¬
     if (eulerAngles.p > 89.0f) eulerAngles.p = 89.0f;
     if (eulerAngles.p < -89.0f) eulerAngles.p = -89.0f;
 
-    // ¸üÐÂÉãÏñ»úÄ¿±ê
+    // æ›´æ–°æ‘„åƒæœºç›®æ ‡
     updateCameraView();
 
     prevMouseX = x;

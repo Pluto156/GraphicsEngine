@@ -2,15 +2,15 @@
 #include "Transform.h"
 class Box :public Transform {
 public:
-    // 构造函数，初始化盒子的长宽高和中心坐标
+    // 鏋勯�犲嚱鏁帮紝鍒濆鍖栫洅瀛愮殑闀垮楂樺拰涓績鍧愭爣
     Box(std::string name,float width, float height, float depth, CVector Position,float r=1,float g = 1,float b =1, bool isShowLocalAxis = false);
     Box(std::string name,float width, float height, float depth, CVector Position,CMatrix Rotation,CEuler EulerAngles ,float r = 1, float g = 1, float b = 1, bool isShowLocalAxis = false);
 
-    // 设置盒子的位置和尺寸
+    // 璁剧疆鐩掑瓙鐨勪綅缃拰灏哄
     static Box* CreateBox(std::string name,float width, float height, float depth, CVector Position, float r = 1, float g = 1, float b = 1, bool isShowLocalAxis = false);
     static Box* CreateBox(std::string name, float width, float height, float depth, CVector Position, CMatrix Rotation,CEuler EulerAngles,float r = 1, float g = 1, float b = 1, bool isShowLocalAxis = false);
 
-    // 绘制盒子
+    // 缁樺埗鐩掑瓙
     void Draw() const override;
 
     float GetWidth();

@@ -3,16 +3,16 @@
 
 class PointCollision {
 public:
-    bool hit;               // 是否发生碰撞
-    float t;                // 相交点的参数
-    CVector closestPoint;   // 最近的交点
-    CVector normal;         // 法线
+    bool hit;               // 鏄惁鍙戠敓纰版挒
+    float t;                // 鐩镐氦鐐圭殑鍙傛暟
+    CVector closestPoint;   // 鏈�杩戠殑浜ょ偣
+    CVector normal;         // 娉曠嚎
 
     PointCollision()
         : hit(false), t(-1.0f), closestPoint(CVector()), normal(CVector()) {
     }
 
-    // 重置碰撞信息
+    // 閲嶇疆纰版挒淇℃伅
     void Reset() {
         hit = false;
         t = -1.0f;

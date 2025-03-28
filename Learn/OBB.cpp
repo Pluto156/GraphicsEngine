@@ -10,7 +10,7 @@ float OBB::IntersectWithRayAndOBB(
     float length,
     PointCollision& intersection) const
 {
-    // ¼ÆËãÉäÏßÓë OBB µÄ½»µã
+    // è®¡ç®—å°„çº¿ä¸Ž OBB çš„äº¤ç‚¹
     float t = IntersectWithRayAndOBB(origin, direct, center, halfSizes, rotation, intersection);
     if (intersection.hit && intersection.t <= length) {
         return t;
@@ -28,63 +28,63 @@ float OBB::IntersectWithRayAndOBB(
 {
     intersection.Reset();
 
-    // ÌáÈ¡Ðý×ª¾ØÕóµÄÖá
+    // æå–æ—‹è½¬çŸ©é˜µçš„è½´
     CVector axisX(orientation.m00, orientation.m01, orientation.m02);
     CVector axisY(orientation.m10, orientation.m11, orientation.m12);
     CVector axisZ(orientation.m20, orientation.m21, orientation.m22);
 
-    // ¼ÆËã´ÓÉäÏßÆðµãµ½°üÎ§ºÐÖÐÐÄµÄÏòÁ¿
+    // è®¡ç®—ä»Žå°„çº¿èµ·ç‚¹åˆ°åŒ…å›´ç›’ä¸­å¿ƒçš„å‘é‡
     CVector p = position - origin;
 
-    // ¼ÆËãÉäÏßÔÚ OBB ÖáÉÏµÄÍ¶Ó°
+    // è®¡ç®—å°„çº¿åœ¨ OBB è½´ä¸Šçš„æŠ•å½±
     CVector f(
         axisX.dotMul(direct),
         axisY.dotMul(direct),
         axisZ.dotMul(direct)
     );
 
-    // ¼ÆËãÉäÏßÆðµãµ½°üÎ§ºÐÖÐÐÄµÄ¾àÀëÔÚ OBB ÖáÉÏµÄÍ¶Ó°
+    // è®¡ç®—å°„çº¿èµ·ç‚¹åˆ°åŒ…å›´ç›’ä¸­å¿ƒçš„è·ç¦»åœ¨ OBB è½´ä¸Šçš„æŠ•å½±
     CVector e(
         axisX.dotMul(p),
         axisY.dotMul(p),
         axisZ.dotMul(p)
     );
 
-    // ´æ´¢ t ÖµµÄÊý×é£¬±íÊ¾¸÷¸öÖáµÄ½»µã
+    // å­˜å‚¨ t å€¼çš„æ•°ç»„ï¼Œè¡¨ç¤ºå„ä¸ªè½´çš„äº¤ç‚¹
     float t[6] = { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
     CVector normals[6] = { axisX, axisX * -1, axisY, axisY * -1, axisZ, axisZ * -1 };
 
-    // ¼ì²é X ÖáÉÏµÄ½»µã
+    // æ£€æŸ¥ X è½´ä¸Šçš„äº¤ç‚¹
     if (f.x == 0) {
         if (-e.x - halfSize.x > 0 || -e.x + halfSize.x < 0) {
             return -1.0f;
         }
-        f.x = 0.00001f; // ·ÀÖ¹³ýÒÔÁã
+        f.x = 0.00001f; // é˜²æ­¢é™¤ä»¥é›¶
     }
     t[0] = (e.x + halfSize.x) / f.x;
     t[1] = (e.x - halfSize.x) / f.x;
 
-    // ¼ì²é Y ÖáÉÏµÄ½»µã
+    // æ£€æŸ¥ Y è½´ä¸Šçš„äº¤ç‚¹
     if (f.y == 0) {
         if (-e.y - halfSize.y > 0 || -e.y + halfSize.y < 0) {
             return -1.0f;
         }
-        f.y = 0.00001f; // ·ÀÖ¹³ýÒÔÁã
+        f.y = 0.00001f; // é˜²æ­¢é™¤ä»¥é›¶
     }
     t[2] = (e.y + halfSize.y) / f.y;
     t[3] = (e.y - halfSize.y) / f.y;
 
-    // ¼ì²é Z ÖáÉÏµÄ½»µã
+    // æ£€æŸ¥ Z è½´ä¸Šçš„äº¤ç‚¹
     if (f.z == 0) {
         if (-e.z - halfSize.z > 0 || -e.z + halfSize.z < 0) {
             return -1.0f;
         }
-        f.z = 0.00001f; // ·ÀÖ¹³ýÒÔÁã
+        f.z = 0.00001f; // é˜²æ­¢é™¤ä»¥é›¶
     }
     t[4] = (e.z + halfSize.z) / f.z;
     t[5] = (e.z - halfSize.z) / f.z;
 
-    // ¼ÆËã½»µãµÄ×îÐ¡ºÍ×î´ó t Öµ
+    // è®¡ç®—äº¤ç‚¹çš„æœ€å°å’Œæœ€å¤§ t å€¼
     float tmin = std::max(std::max(std::min(t[0], t[1]), std::min(t[2], t[3])), std::min(t[4], t[5]));
     float tmax = std::min(std::min(std::max(t[0], t[1]), std::max(t[2], t[3])), std::max(t[4], t[5]));
 

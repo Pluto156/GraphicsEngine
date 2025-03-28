@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "CQuaternion.h"
 
-// ÉèÖÃËÄÔªÊıµÄÖµ
+// è®¾ç½®å››å…ƒæ•°çš„å€¼
 void CQuaternion::Set(float fw, float fx, float fy, float fz)
 {
     w = fw;
@@ -10,7 +10,7 @@ void CQuaternion::Set(float fw, float fx, float fy, float fz)
     z = fz;
 }
 
-// ÉèÖÃËÄÔªÊıÎªĞı×ª½Ç¶ÈºÍĞı×ªÖá
+// è®¾ç½®å››å…ƒæ•°ä¸ºæ—‹è½¬è§’åº¦å’Œæ—‹è½¬è½´
 void CQuaternion::SetAngle(float angle, CVector axis)
 {
     float halfAngle = angle * 0.5f;
@@ -22,7 +22,7 @@ void CQuaternion::SetAngle(float angle, CVector axis)
     z = axis.z * sinHalfAngle;
 }
 
-// ¸³Öµ²Ù×÷·ûÖØÔØ
+// èµ‹å€¼æ“ä½œç¬¦é‡è½½
 CQuaternion& CQuaternion::operator=(const CQuaternion& p)
 {
     if (this != &p)
@@ -35,7 +35,7 @@ CQuaternion& CQuaternion::operator=(const CQuaternion& p)
     return *this;
 }
 
-// ËÄÔªÊı¼Ó·¨
+// å››å…ƒæ•°åŠ æ³•
 CQuaternion CQuaternion::operator+(const CQuaternion& p)
 {
     CQuaternion result;
@@ -46,7 +46,7 @@ CQuaternion CQuaternion::operator+(const CQuaternion& p)
     return result;
 }
 
-// ËÄÔªÊı¼õ·¨²Ù×÷·ûÖØÔØ
+// å››å…ƒæ•°å‡æ³•æ“ä½œç¬¦é‡è½½
 CQuaternion CQuaternion::operator-(const CQuaternion& p) const
 {
     CQuaternion result;
@@ -58,7 +58,7 @@ CQuaternion CQuaternion::operator-(const CQuaternion& p) const
 }
 
 
-// ËÄÔªÊıÓë±êÁ¿³Ë·¨
+// å››å…ƒæ•°ä¸æ ‡é‡ä¹˜æ³•
 CQuaternion CQuaternion::operator*(float data)
 {
     CQuaternion result;
@@ -69,7 +69,7 @@ CQuaternion CQuaternion::operator*(float data)
     return result;
 }
 
-// ËÄÔªÊı³Ë·¨
+// å››å…ƒæ•°ä¹˜æ³•
 CQuaternion CQuaternion::operator*(const CQuaternion& p)
 {
     CQuaternion result;
@@ -80,19 +80,19 @@ CQuaternion CQuaternion::operator*(const CQuaternion& p)
     return result;
 }
 
-// ËÄÔªÊıµã³Ë
+// å››å…ƒæ•°ç‚¹ä¹˜
 float CQuaternion::dotMul(const CQuaternion& p)
 {
     return w * p.w + x * p.x + y * p.y + z * p.z;
 }
 
-// ¼ÆËãËÄÔªÊıÄ£
+// è®¡ç®—å››å…ƒæ•°æ¨¡
 float CQuaternion::len()
 {
     return sqrt(w * w + x * x + y * y + z * z);
 }
 
-// ±ê×¼»¯ËÄÔªÊı
+// æ ‡å‡†åŒ–å››å…ƒæ•°
 BOOL CQuaternion::Normalize()
 {
     float length = len();
@@ -109,7 +109,7 @@ BOOL CQuaternion::Normalize()
     return TRUE;
 }
 
-// ¼ÆËãËÄÔªÊıµÄÄæ£¨¸Ä±äµ±Ç°ËÄÔªÊı£©
+// è®¡ç®—å››å…ƒæ•°çš„é€†ï¼ˆæ”¹å˜å½“å‰å››å…ƒæ•°ï¼‰
 CQuaternion& CQuaternion::Inverse()
 {
     float lengthSquared = w * w + x * x + y * y + z * z;
@@ -124,7 +124,7 @@ CQuaternion& CQuaternion::Inverse()
     return *this;
 }
 
-// »ñÈ¡ËÄÔªÊıµÄÄæ£¨²»¸Ä±äµ±Ç°ËÄÔªÊı£©
+// è·å–å››å…ƒæ•°çš„é€†ï¼ˆä¸æ”¹å˜å½“å‰å››å…ƒæ•°ï¼‰
 CQuaternion CQuaternion::GetInverse() const
 {
     CQuaternion result = *this;
@@ -132,14 +132,14 @@ CQuaternion CQuaternion::GetInverse() const
     return result;
 }
 
-// ÇóËÄÔªÊıµÄ²î£ºa - b
+// æ±‚å››å…ƒæ•°çš„å·®ï¼ša - b
 CQuaternion CQuaternion::Div(const CQuaternion& b)
 {
     CQuaternion bInverse = b.GetInverse();
     return *this * bInverse;
 }
 
-// »ñÈ¡Ğı×ª½Ç¶ÈºÍĞı×ªÖá
+// è·å–æ—‹è½¬è§’åº¦å’Œæ—‹è½¬è½´
 void CQuaternion::GetAngle(float& angle, CVector& axis)
 {
     angle = 2.0f * acos(w);
@@ -156,10 +156,10 @@ void CQuaternion::GetAngle(float& angle, CVector& axis)
     }
 }
 
-// ËÄÔªÊıµÄSlerp²åÖµ
+// å››å…ƒæ•°çš„Slerpæ’å€¼
 CQuaternion CQuaternion::Slerp(const CQuaternion& Vend, float t)
 {
-    // ¼ÆËãËÄÔªÊıÖ®¼äµÄ¼Ğ½Ç
+    // è®¡ç®—å››å…ƒæ•°ä¹‹é—´çš„å¤¹è§’
     float dot = dotMul(Vend);
     const float THRESHOLD = 0.9995f;
 
@@ -181,7 +181,7 @@ CQuaternion CQuaternion::Slerp(const CQuaternion& Vend, float t)
     return result;
 }
 
-// ËÄÔªÊı²åÖµ£¬Éú³Én¸öÊı¾İ
+// å››å…ƒæ•°æ’å€¼ï¼Œç”Ÿæˆnä¸ªæ•°æ®
 void CQuaternion::Slerp(const CQuaternion& Vend, int n, float* t, CQuaternion* Result)
 {
     for (int i = 0; i < n; ++i)

@@ -57,6 +57,12 @@
     <ClInclude Include="PointCollision.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="IManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -96,6 +102,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="PointCollision.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="IInputControl.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="IManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

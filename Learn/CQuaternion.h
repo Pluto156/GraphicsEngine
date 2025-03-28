@@ -5,59 +5,59 @@ class CQuaternion
 public:
     float w, x, y, z;
 
-    // ¹¹Ôìº¯Êı£¬³õÊ¼»¯ËÄÔªÊı
+    // æ„é€ å‡½æ•°ï¼Œåˆå§‹åŒ–å››å…ƒæ•°
     CQuaternion() : w(1), x(0), y(0), z(0) {}
 
-    // ÉèÖÃËÄÔªÊıµÄÖµ
+    // è®¾ç½®å››å…ƒæ•°çš„å€¼
     void Set(float fw, float fx, float fy, float fz);
 
-    // ËÄÔªÊı×ª»¯Îª float Êı×é£¬Ö§³ÖÊ¹ÓÃËÄÔªÊıÊı¾İ
+    // å››å…ƒæ•°è½¬åŒ–ä¸º float æ•°ç»„ï¼Œæ”¯æŒä½¿ç”¨å››å…ƒæ•°æ•°æ®
     operator float* () { return &w; }
 
-    // ÉèÖÃËÄÔªÊıÖµÎªĞı×ª½Ç¶ÈºÍĞı×ªÖá
+    // è®¾ç½®å››å…ƒæ•°å€¼ä¸ºæ—‹è½¬è§’åº¦å’Œæ—‹è½¬è½´
     void SetAngle(float angle, CVector axis);
 
-    // ¸³Öµ²Ù×÷·ûÖØÔØ
+    // èµ‹å€¼æ“ä½œç¬¦é‡è½½
     CQuaternion& operator=(const CQuaternion& p);
 
-    // ¼Ó·¨²Ù×÷·ûÖØÔØ
+    // åŠ æ³•æ“ä½œç¬¦é‡è½½
     CQuaternion operator+(const CQuaternion& p);
 
-    // ËÄÔªÊı¼õ·¨²Ù×÷·ûÖØÔØ
+    // å››å…ƒæ•°å‡æ³•æ“ä½œç¬¦é‡è½½
     CQuaternion operator-(const CQuaternion& p) const;
 
 
-    // ÊıÁ¿³Ë²Ù×÷·ûÖØÔØ
+    // æ•°é‡ä¹˜æ“ä½œç¬¦é‡è½½
     CQuaternion operator*(float data);
 
-    // ËÄÔªÊı³Ë·¨²Ù×÷·ûÖØÔØ
+    // å››å…ƒæ•°ä¹˜æ³•æ“ä½œç¬¦é‡è½½
     CQuaternion operator*(const CQuaternion& p);
 
-    // µã³Ë²Ù×÷
+    // ç‚¹ä¹˜æ“ä½œ
     float dotMul(const CQuaternion& p);
 
-    // ÇóÄ£
+    // æ±‚æ¨¡
     float len();
 
-    // Çó±ê×¼»¯
+    // æ±‚æ ‡å‡†åŒ–
     BOOL Normalize();
 
-    // ÇóÄæËÄÔªÊı£¬»á¸Ä±äµ±Ç°ËÄÔªÊı
+    // æ±‚é€†å››å…ƒæ•°ï¼Œä¼šæ”¹å˜å½“å‰å››å…ƒæ•°
     CQuaternion& Inverse();
 
-    // »ñÈ¡ÄæËÄÔªÊı£¬²»¸Ä±äµ±Ç°ËÄÔªÊı
+    // è·å–é€†å››å…ƒæ•°ï¼Œä¸æ”¹å˜å½“å‰å››å…ƒæ•°
     CQuaternion GetInverse() const;
 
-    // Çó²î£ºµ±Ç°Îªa£¬Çóc=a-b
+    // æ±‚å·®ï¼šå½“å‰ä¸ºaï¼Œæ±‚c=a-b
     CQuaternion Div(const CQuaternion& b);
 
-    // »ñÈ¡Ğı×ª½Ç¶ÈºÍĞı×ªÖá
+    // è·å–æ—‹è½¬è§’åº¦å’Œæ—‹è½¬è½´
     void GetAngle(float& angle, CVector& axis);
 
-    // ËÄÔªÊıµÄSlerp²åÖµ
+    // å››å…ƒæ•°çš„Slerpæ’å€¼
     CQuaternion Slerp(const CQuaternion& Vend, float t);
 
-    // ËÄÔªÊı²åÖµ£¬Éú³Én¸öÊı¾İ
+    // å››å…ƒæ•°æ’å€¼ï¼Œç”Ÿæˆnä¸ªæ•°æ®
     void Slerp(const CQuaternion& Vend, int n, float* t, CQuaternion* Result);
 };
 

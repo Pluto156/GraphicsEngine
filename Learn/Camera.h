@@ -1,14 +1,15 @@
 #pragma once
 #include "CVector.h"
+#include "InputManager.h"
 #include "glut.h"
 #include "math.h"
 #include "corecrt_math_defines.h"
 #include <iostream>
 
-class Camera:public Transform
+class Camera:public Transform,public InputManager::IInputControl
 {
 public:
-    // ÉãÏñ»úÎ»ÖÃ¡¢Ä¿±êºÍÉÏÏòÁ¿
+    // æ‘„åƒæœºä½ç½®ã€ç›®æ ‡å’Œä¸Šå‘é‡
     CVector camTarget;
     CVector camUp;
     CVector camForward;
@@ -17,17 +18,17 @@ public:
     float prevMouseX;
     float prevMouseY;
 
-    // ÉãÏñ»úĞı×ªµÄ½Ç¶È
+    // æ‘„åƒæœºæ—‹è½¬çš„è§’åº¦
     float camAngleX;
     float camAngleY;
 
-    // ÉãÏñ»úµÄÔË¶¯ËÙ¶ÈºÍĞı×ªËÙ¶È
+    // æ‘„åƒæœºçš„è¿åŠ¨é€Ÿåº¦å’Œæ—‹è½¬é€Ÿåº¦
     float camMoveSpeed;
     float camRotateSpeed;
 
     bool isControlView;
 
-    // ¹¹Ôìº¯Êı£¬³õÊ¼»¯ÉãÏñ»ú²ÎÊı
+    // æ„é€ å‡½æ•°ï¼Œåˆå§‹åŒ–æ‘„åƒæœºå‚æ•°
     Camera();
     ~Camera();
 
@@ -38,14 +39,11 @@ public:
 
     void MoveCamera(CVector dir);
 
-    // ÉãÏñ»ú¼üÅÌ¿ØÖÆ
-    void processKeyboard(unsigned char key, int x, int y);
+    void processKeyboard(unsigned char key, int x, int y)override;
+    void processMouse(int button, int state, int x, int y)override;
+    void processMouseMotion(int x, int y)override;
 
-    // ÉãÏñ»úÊó±ê¿ØÖÆ
-    void processMouse(int button, int state, int x, int y);
-    void processMouseMotion(int x, int y);
-
-    // ¸üĞÂÉãÏñ»úÊÓ½Ç
+    // æ›´æ–°æ‘„åƒæœºè§†è§’
     void updateCameraView();
 
     void CameraDebug();

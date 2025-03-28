@@ -2,114 +2,68 @@
 Camera camera;
 Stage stage("stage",0,0,0);
 Area Floor("Floor",0, -1 - 0.05, 0);
-Area A("A", 0, 0, 0);
+Area A("A", 0, 6, 0);
 Area B1("B1", -(9 + 8 * 0.05) / 2 + 0.5, 0, 0);
 Area B2("B2", -(15 + 14 * 0.05) / 2 + 0.5, 1, -4 - 4 * 0.05);
-Area C("C", 0, 2.5 + 5.5, 0);
+Area C("C", 0, 2.5 + 5.5, 5);
 Area E29("E29", -(29 + 28 * 0.05) / 2 + 0.5, 20, 0);
 Area E25("E25", -(25 + 24 * 0.05) / 2 + 0.5, 20, 0);
-bool isRotate = false;
-float angle = 0;
+
 bool isInitStage = false;
-double modelViewMatrix[16];
 
-
-CVector origin;
-CVector direct;
 void myDisplay(void);
 void myTimerFunc(int val);
 void SetRC();
 void myReshape(int w, int h);
-void processKeyboard(unsigned char key, int x, int y);  // ´¦Àí¼üÅÌÊäÈë
-void processMouse(int button, int state, int x, int y); // ´¦ÀíÊó±êÊäÈë
+void processKeyboard(unsigned char key, int x, int y);  // å¤„ç†é”®ç›˜è¾“å…¥
+void processMouse(int button, int state, int x, int y); // å¤„ç†é¼ æ ‡è¾“å…¥
 void processMouseMotion(int x, int y);
 
-// ´òÓ¡ 4x4 ¾ØÕó
-void printMatrix(const GLfloat* matrix, const char* name) {
-    std::cout << name << " Matrix:" << std::endl;
-    for (int i = 0; i < 4; i++) {
-        for (int j = 0; j < 4; j++) {
-            std::cout << matrix[j * 4 + i] << "\t";  // OpenGL ÒÔÁĞÓÅÏÈ´æ´¢¾ØÕó
-        }
-        std::cout << std::endl;
-    }
-    std::cout << std::endl;
-}// ´¦ÀíÊó±êÒÆ¶¯
-void display() {
-
-    static GLfloat lastModelViewMatrix[16] = { 0 };  // ´æ´¢ÉÏ´ÎµÄ¾ØÕó£¬³õÊ¼Îª 0
-
-    // »ñÈ¡µ±Ç° Ä£ĞÍÊÓÍ¼¾ØÕó
-    GLfloat modelViewMatrix[16];
-    glGetFloatv(GL_MODELVIEW_MATRIX, modelViewMatrix);
-
-    // ½öµ±¾ØÕó·¢Éú±ä»¯Ê±²Å´òÓ¡
-    if (memcmp(lastModelViewMatrix, modelViewMatrix, sizeof(modelViewMatrix)) != 0) {
-        printMatrix(modelViewMatrix, "ModelView");
-        memcpy(lastModelViewMatrix, modelViewMatrix, sizeof(modelViewMatrix));  // ¸üĞÂ»º´æ
-    }
-
-    //// »ñÈ¡²¢´òÓ¡ Í¶Ó°¾ØÕó
-    //GLfloat projectionMatrix[16];
-    //glGetFloatv(GL_PROJECTION_MATRIX, projectionMatrix);
-    //printMatrix(projectionMatrix, "Projection");
-
-    //// »ñÈ¡²¢´òÓ¡ ÎÆÀí¾ØÕó
-    //GLfloat textureMatrix[16];
-    //glGetFloatv(GL_TEXTURE_MATRIX, textureMatrix);
-    //printMatrix(textureMatrix, "Texture");
-
-    //// »ñÈ¡²¢´òÓ¡ ÊÓ¿Ú£¨Viewport£©
-    //GLint viewport[4];
-    //glGetIntegerv(GL_VIEWPORT, viewport);
-    //std::cout << "Viewport: x=" << viewport[0] << ", y=" << viewport[1]
-    //    << ", width=" << viewport[2] << ", height=" << viewport[3] << std::endl;
-
-}
-// ¶¨Ê±Æ÷»Øµ÷º¯Êı
+// å®šæ—¶å™¨å›è°ƒå‡½æ•°
 void myTimerFunc(int val)
 {
+    InputManager::instance().Update();
     myDisplay();
     glutTimerFunc(1, myTimerFunc, 0);
 }
 
-// ÉèÖÃäÖÈ¾»·¾³
+// è®¾ç½®æ¸²æŸ“ç¯å¢ƒ
 void SetRC()
 {
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-    glEnable(GL_DEPTH_TEST);  // ÆôÓÃÉî¶È²âÊÔ£¬È·±£ÎïÌå°´ÕıÈ·µÄË³ĞòäÖÈ¾
+    glEnable(GL_DEPTH_TEST);  // å¯ç”¨æ·±åº¦æµ‹è¯•ï¼Œç¡®ä¿ç‰©ä½“æŒ‰æ­£ç¡®çš„é¡ºåºæ¸²æŸ“
 }
 
-// »æÖÆÊÀ½ç×ø±êÏµ×ø±êÖá£¨XYZ£©
+// ç»˜åˆ¶ä¸–ç•Œåæ ‡ç³»åæ ‡è½´ï¼ˆXYZï¼‰
 void drawCoordinateAxes()
 {
-    // XÖá£¨ºìÉ«£©
+    // Xè½´ï¼ˆçº¢è‰²ï¼‰
     glBegin(GL_LINES);
-    glColor3f(1.0f, 0.0f, 0.0f);  // ºìÉ«
+    glColor3f(1.0f, 0.0f, 0.0f);  // çº¢è‰²
     glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(50.0f, 0.0f, 0.0f);  // XÖáÕı·½Ïò
+    glVertex3f(50.0f, 0.0f, 0.0f);  // Xè½´æ­£æ–¹å‘
     glEnd();
 
-    // YÖá£¨ÂÌÉ«£©
+    // Yè½´ï¼ˆç»¿è‰²ï¼‰
     glBegin(GL_LINES);
-    glColor3f(0.0f, 1.0f, 0.0f);  // ÂÌÉ«
+    glColor3f(0.0f, 1.0f, 0.0f);  // ç»¿è‰²
     glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, 50.0f, 0.0f);  // YÖáÕı·½Ïò
+    glVertex3f(0.0f, 50.0f, 0.0f);  // Yè½´æ­£æ–¹å‘
     glEnd();
 
-    // ZÖá£¨À¶É«£©
+    // Zè½´ï¼ˆè“è‰²ï¼‰
     glBegin(GL_LINES);
-    glColor3f(0.0f, 0.0f, 1.0f);  // À¶É«
+    glColor3f(0.0f, 0.0f, 1.0f);  // è“è‰²
     glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, 0.0f, 50.0f);  // ZÖáÕı·½Ïò
+    glVertex3f(0.0f, 0.0f, 50.0f);  // Zè½´æ­£æ–¹å‘
     glEnd();
 
 
     //glBegin(GL_LINES);
-    //glColor3f(0.0f, 0.0f, 1.0f);  // À¶É«
+    //glColor3f(0.0f, 0.0f, 1.0f);  // è“è‰²
     //glVertex3f(origin.x, origin.y, origin.z);
     //CVector end = origin +   direct* 100;
-    //glVertex3f(end.x, end.y, end.z);  // ZÖáÕı·½Ïò
+    //glVertex3f(end.x, end.y, end.z);  // Zè½´æ­£æ–¹å‘
     //glEnd();
 }
 
@@ -129,6 +83,7 @@ void drawStage()
 {
     if (!isInitStage)
     {
+        stage.camera = &camera;
         stage.isShowLocalAxis = true;
         //stage.AddArea(&Floor);
         stage.AddArea(&A);
@@ -138,123 +93,107 @@ void drawStage()
         stage.AddArea(&E29);
         stage.AddArea(&E25);
         stage.position=CVector(0, 0, 0);
-        // µØ°åÇø
+        // åœ°æ¿åŒº
         CVector AreaPos = Floor.position;
         Floor.AddBox(Box::CreateBox("floor",100, 0.1, 100, AreaPos, 0.5f, 0.5f, 0.5f));
 
 
         AreaPos = B1.position;
-        // B1Çø£º10ÅÅ9ÁĞ1x5x1µÄÎèÌ¨¿é£¬¼ä¾à0.05
-        float b1Spacing = 0.05f; // ·½¿é¼ä¸ô
+        // B1åŒºï¼š10æ’9åˆ—1x5x1çš„èˆå°å—ï¼Œé—´è·0.05
+        float b1Spacing = 0.05f; // æ–¹å—é—´éš”
         for (int i = 0; i < 10; ++i) {
             for (int j = 0; j < 9; ++j) {
-                float xPos = AreaPos.x + j * (1 + b1Spacing); // ¼ÆËãxÎ»ÖÃ
+                float xPos = AreaPos.x + j * (1 + b1Spacing); // è®¡ç®—xä½ç½®
                 float yPos = AreaPos.y;
-                float zPos = AreaPos.z + i * (1 + b1Spacing); // ¼ÆËãzÎ»ÖÃ
+                float zPos = AreaPos.z + i * (1 + b1Spacing); // è®¡ç®—zä½ç½®
                 B1.AddBox(Box::CreateBox("B1_"+ std::to_string((i+1))+'_' + std::to_string((j + 1)), 1, 5, 1, CVector(xPos, yPos, zPos), 0.117f, 0.506f, 0.69f));
             }
         }
 
-        // aÇø£º22¸ö1x12x1µÄ·½¿é£¬»¡ĞÎÅÅÁĞ£¬¼ÆËãÃ¿¸öboxµÄÎ»ÖÃ
-        float radius = 10.0f; // ¼ÙÉè»¡ĞÎµÄ°ë¾¶
-        A.position = CVector(0, 6, radius-10);
-        float anglestep = 0.15; // ½«22¸ö¿éÆ½¾ù·Ö²¼ÔÚ»¡ĞÎÉÏ
+        // aåŒºï¼š22ä¸ª1x12x1çš„æ–¹å—ï¼Œå¼§å½¢æ’åˆ—ï¼Œè®¡ç®—æ¯ä¸ªboxçš„ä½ç½®
+        float radius = 10.0f; // å‡è®¾å¼§å½¢çš„åŠå¾„
+        A.position.z= radius-10;
+        float anglestep = 0.15; // å°†22ä¸ªå—å¹³å‡åˆ†å¸ƒåœ¨å¼§å½¢ä¸Š
         AreaPos = A.position;
 
         for (int i = 0; i < 11; ++i) {
-            float angle = i * anglestep;  // Ã¿¸ö·½¿éµÄ½Ç¶È
-            float xPos = AreaPos.x - radius * sin(angle);  // ¼ÆËãxÎ»ÖÃ
-            float yPos = AreaPos.y;  // yÎ»ÖÃ±£³Ö²»±ä
-            float zPos = AreaPos.z - radius * cos(angle);  // ¼ÆËãzÎ»ÖÃ
-            A.AddBox(Box::CreateBox("A_" + std::to_string(i+1),1, 12, 1, CVector(xPos, yPos, zPos),CMatrix::CreateRotationMatrixY(angle),CEuler(angle*180/M_PI,0,0), 0.117f, 0.506f, 0.69f,true));
-            A.AddBox(Box::CreateBox("A_" + std::to_string(2*(i+i)),1, 12, 1, CVector(-xPos, yPos, zPos), CMatrix::CreateRotationMatrixY(-angle), CEuler(-angle * 180 / M_PI, 0, 0), 0.117f, 0.506f, 0.69f, true));
+            float angle = i * anglestep;  // æ¯ä¸ªæ–¹å—çš„è§’åº¦
+            float xPos = AreaPos.x - radius * sin(angle);  // è®¡ç®—xä½ç½®
+            float yPos = AreaPos.y;  // yä½ç½®ä¿æŒä¸å˜
+            float zPos = AreaPos.z - radius * cos(angle);  // è®¡ç®—zä½ç½®
+            A.AddBox(Box::CreateBox("A_" + std::to_string(i+1),1, 12, 1, CVector(xPos, yPos, zPos),CMatrix::CreateRotationMatrixY(angle),CEuler(angle*180/M_PI,0,0), 0.117f, 0.506f, 0.69f));
+            A.AddBox(Box::CreateBox("A_" + std::to_string(2*(i+i)),1, 12, 1, CVector(-xPos, yPos, zPos), CMatrix::CreateRotationMatrixY(-angle), CEuler(-angle * 180 / M_PI, 0, 0), 0.117f, 0.506f, 0.69f));
             
         }
 
 
-        // b2Çø£º4ÅÅ15ÁĞ1x3x1µÄÎèÌ¨¿é£¬¼ä¾à0.05
+        // b2åŒºï¼š4æ’15åˆ—1x3x1çš„èˆå°å—ï¼Œé—´è·0.05
         AreaPos = B2.position;
-        float b2spacing = 0.05f; // ·½¿é¼ä¸ô
+        float b2spacing = 0.05f; // æ–¹å—é—´éš”
         for (int i = 0; i < 4; ++i) {
             for (int j = 0; j < 15; ++j) {
-                float xPos = AreaPos.x + j * (1 + b2spacing); // ¼ÆËãxÎ»ÖÃ
+                float xPos = AreaPos.x + j * (1 + b2spacing); // è®¡ç®—xä½ç½®
                 float yPos = AreaPos.y;
-                float zPos = AreaPos.z + i * (1 + b2spacing); // ¼ÆËãzÎ»ÖÃ
+                float zPos = AreaPos.z + i * (1 + b2spacing); // è®¡ç®—zä½ç½®
                 B2.AddBox(Box::CreateBox("B2_" + std::to_string((i + 1)) + '_' + std::to_string((j + 1)), 1, 3, 1, CVector(xPos, yPos, zPos), 0.08, 0.3, 0.6));
             }
         }
 
-        // cÇø£º4¿é3x11x0.5µÄÎèÌ¨¿é£¬×óÓÒ¸÷2¿é£¬¼ä¾à0.05
+        // cåŒºï¼š8å—3x11x0.5çš„èˆå°å—ï¼Œå·¦å³å„4å—ï¼Œé—´è·0.05
         AreaPos = C.position;
         float cspacing = 0.05f;
         for (int i = 0; i < 2; ++i) {
-            for (int j = 0; j < 2; ++j) {
-                float xPos = AreaPos.x + (i * 2 - 1) * (10 + cspacing); // ¼ÆËãxÎ»ÖÃ
+            for (int j = 0; j < 4; ++j) {
+                float xPos = AreaPos.x + (i * 2 - 1) * (10 + cspacing); // è®¡ç®—xä½ç½®
                 float yPos = AreaPos.y;
-                float zPos = AreaPos.z + j * (2 + cspacing); // ¼ÆËãzÎ»ÖÃ
+                float zPos = AreaPos.z + j * (2 + cspacing); // è®¡ç®—zä½ç½®
                 C.AddBox(Box::CreateBox("C_" + std::to_string((i + 1)) + '_' + std::to_string((j + 1)), 3, 11, 0.5f, CVector(xPos, yPos, zPos), 1, 0.89, 0));
             }
         }
 
-        // e29Çø£º2ÅÅ£¬Ç°ÅÅ29¸ö£¬ºóÅÅ25¸ö£¬´óĞ¡1x12x0.1£¬¼ä¾à0.05
+        // e29åŒºï¼š2æ’ï¼Œå‰æ’29ä¸ªï¼Œåæ’25ä¸ªï¼Œå¤§å°1x12x0.1ï¼Œé—´è·0.05
         AreaPos = E29.position;
         float e29spacing = 0.05f;
         for (int j = 0; j < 29; ++j) {
-            float xPos = AreaPos.x + j * (1 + e29spacing); // ¼ÆËãxÎ»ÖÃ
+            float xPos = AreaPos.x + j * (1 + e29spacing); // è®¡ç®—xä½ç½®
             float yPos = AreaPos.y;
-            float zPos = AreaPos.z; // ¼ÆËãzÎ»ÖÃ
+            float zPos = AreaPos.z; // è®¡ç®—zä½ç½®
             E29.AddBox(Box::CreateBox("E29_" + std::to_string((j + 1)),1, 12, 0.1f, CVector(xPos, yPos, zPos), 0.9, 0.57, 0.12));
         }
 
-        // e25Çø£º2ÅÅ£¬Ç°ÅÅ29¸ö£¬ºóÅÅ25¸ö£¬´óĞ¡1x12x0.1£¬¼ä¾à0.05
+        // e25åŒºï¼š2æ’ï¼Œå‰æ’29ä¸ªï¼Œåæ’25ä¸ªï¼Œå¤§å°1x12x0.1ï¼Œé—´è·0.05
         AreaPos = E25.position;
         float e25spacing = 0.05f;
         for (int j = 0; j < 25; ++j) {
-            float xPos = AreaPos.x + j * (1 + e25spacing); // ¼ÆËãxÎ»ÖÃ
+            float xPos = AreaPos.x + j * (1 + e25spacing); // è®¡ç®—xä½ç½®
             float yPos = AreaPos.y;
-            float zPos = AreaPos.z + 1 * (2 + e25spacing); // ¼ÆËãzÎ»ÖÃ
+            float zPos = AreaPos.z + 1 * (2 + e25spacing); // è®¡ç®—zä½ç½®
             E25.AddBox(Box::CreateBox("E25_" + std::to_string((j + 1)),1, 12, 0.1f, CVector(xPos, yPos, zPos), 0.9, 0.57, 0.12));
         }
         isInitStage = true;
     }
 
-    if (isRotate)
-    {
-        angle = (angle + 0.1) / 1;
-        angle = angle >= 360 ? angle - 360 : angle;
-        stage.SetRotation(CMatrix::CreateRotationMatrixY((angle)*M_PI / 180));
-    }
+    
     Floor.Draw();
-    stage.Draw();
+    stage.Update();
 
 }
 
-// äÖÈ¾³¡¾°
+// æ¸²æŸ“åœºæ™¯
 void myDisplay(void) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glPushMatrix();
 
     camera.LookAt();
-    glGetDoublev(GL_MODELVIEW_MATRIX, modelViewMatrix);
-    //display();
-    //camera.CameraDebug();
-    // »æÖÆÊÀ½ç×ø±êÏµ
-    //drawCoordinateAxes();
-    //if (isRotate)
-    //{
-    //    glRotatef(angle++ / 100, 0, 1, 0);
-    //}
-    //else
-    //{
-    //    glRotatef(angle / 100, 0, 1, 0);
-    //}
+    glGetDoublev(GL_MODELVIEW_MATRIX,stage.modelViewMatrix);
+    drawCoordinateAxes();
     drawStage();
     glPopMatrix();
     glutSwapBuffers();
 }
 
 
-// ´¦Àí´°¿Ú´óĞ¡±ä»¯
+// å¤„ç†çª—å£å¤§å°å˜åŒ–
 void myReshape(int w, int h)
 {
     glViewport(0, 0, w, h);
@@ -265,75 +204,48 @@ void myReshape(int w, int h)
     glLoadIdentity();
 }
 
-// ´¦Àí¼üÅÌÊäÈë
+// å¤„ç†é”®ç›˜è¾“å…¥
 void processKeyboard(unsigned char key, int x, int y)
 {
-    if (key == '2')
-    {
-        isRotate = !isRotate;
-    }
-    camera.processKeyboard(key, x, y);  // Ê¹ÓÃ Camera ¶ÔÏóÀ´´¦Àí¼üÅÌÊäÈë
+    InputManager::instance().enqueueKeyboardEvent(key, x, y);
     glutPostRedisplay();
 }
 
-// ´¦ÀíÊó±ê°´¼üÊäÈë
+// å¤„ç†é¼ æ ‡æŒ‰é”®è¾“å…¥
 void processMouse(int button, int state, int x, int y)
 {
-    if (button == GLUT_LEFT_BUTTON)
-    {
-        if (state == GLUT_DOWN)
-        {
-            float val;
-            double modelview[16], project[16], pos[3];
-            int viewport[4];
-            //glGetDoublev(GL_MODELVIEW_MATRIX, modelview);
-            glGetDoublev(GL_PROJECTION_MATRIX, project);
-            glGetIntegerv(GL_VIEWPORT, viewport);
-            y = viewport[3] - y;
-            glReadPixels(x, y, 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &val);
-            gluUnProject(x, y, val, modelViewMatrix, project, viewport, &pos[0], &pos[1], &pos[2]);
-
-            //printf("%d:%d\t(%d:%d)\t%f\t(%.2f,%.2f,%.2f)\n", button, state, x, y, val, pos[0], pos[1], pos[2]);
-            origin= camera.position;
-            direct = CVector(pos[0], pos[1], pos[2])- camera.position;
-            direct.Normalize();
-            PointCollision PointCollision;
-            stage.IntersectWithRay(origin, direct,100);
-        }
-    }
-    camera.processMouse(button, state, x, y);  // Ê¹ÓÃ Camera ¶ÔÏóÀ´´¦ÀíÊó±êÊäÈë
+    InputManager::instance().enqueueMouseEvent(button, state, x, y);
 }
 
-// ´¦ÀíÊó±êÒÆ¶¯
+// å¤„ç†é¼ æ ‡ç§»åŠ¨
 void processMouseMotion(int x, int y)
 {
-    camera.processMouseMotion(x, y);  // Ê¹ÓÃ Camera ¶ÔÏóÀ´´¦ÀíÊó±êÒÆ¶¯
-    //camera.CameraDebug();
+    InputManager::instance().enqueueMouseMotionEvent(x, y);
 }
 
-// Ö÷³ÌĞò
+// ä¸»ç¨‹åº
 int main(int argc, char* argv[])
 {
     Calculate();
-    // ³õÊ¼»¯ GLUT
+    // åˆå§‹åŒ– GLUT
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
     glutInitWindowPosition(100, 100);
     glutInitWindowSize(1024, 768);
-    glutCreateWindow("×÷ÒµÒ»");
+    glutCreateWindow("ä½œä¸šä¸€");
 
-    // ÉèÖÃ GLUT »Øµ÷º¯Êı
+    // è®¾ç½® GLUT å›è°ƒå‡½æ•°
     glutDisplayFunc(&myDisplay);
     glutTimerFunc(1, myTimerFunc, 0);
     glutReshapeFunc(&myReshape);
-    glutKeyboardFunc(&processKeyboard);   // ×¢²á¼üÅÌÊäÈë
-    glutMouseFunc(&processMouse);         // ×¢²áÊó±ê°´¼üÊäÈë
-    glutMotionFunc(&processMouseMotion);  // ×¢²áÊó±êÍÏ¶¯
+    glutKeyboardFunc(&processKeyboard);   // æ³¨å†Œé”®ç›˜è¾“å…¥
+    glutMouseFunc(&processMouse);         // æ³¨å†Œé¼ æ ‡æŒ‰é”®è¾“å…¥
+    glutMotionFunc(&processMouseMotion);  // æ³¨å†Œé¼ æ ‡æ‹–åŠ¨
 
-    // ÉèÖÃäÖÈ¾»·¾³
+    // è®¾ç½®æ¸²æŸ“ç¯å¢ƒ
     SetRC();
 
-    // ½øÈë GLUT Ö÷Ñ­»·
+    // è¿›å…¥ GLUT ä¸»å¾ªç¯
     glutMainLoop();
     return 0;
 }

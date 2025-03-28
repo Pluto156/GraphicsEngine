@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "Stage.h"
-Stage::Stage(std::string name) :Transform(name,CVector()) {}
-// Stage ¹¹Ôìº¯Êı£¬³õÊ¼»¯¸÷ÇøÓò
-Stage::Stage(std::string name,float posx, float posy, float posz) :Transform(name,CVector(posx,posy,posz)) {
+Stage::Stage(std::string name) :Transform(name,CVector()),curSelectBox(nullptr) {}
+// Stage æ„é€ å‡½æ•°ï¼Œåˆå§‹åŒ–å„åŒºåŸŸ
+Stage::Stage(std::string name,float posx, float posy, float posz) :Transform(name,CVector(posx,posy,posz)), curSelectBox(nullptr) {
 }
 
 void Stage::AddArea(Area* area)
@@ -11,51 +11,114 @@ void Stage::AddArea(Area* area)
     AddChild(area);  
 }
 
-// »æÖÆÎèÌ¨ÖĞµÄËùÓĞÇøÓò
+// ç»˜åˆ¶èˆå°ä¸­çš„æ‰€æœ‰åŒºåŸŸ
 void Stage::Draw() const {
     for (const auto area : Areas) {
         area->Draw();
     }
 }
+void Stage::Update()
+{
+    if (isRotate)
+    {
+        angle = (angle + 0.1) / 1;
+        angle = angle >= 360 ? angle - 360 : angle;
+        SetRotationDelta(CMatrix::CreateRotationMatrixY((angle)*M_PI / 180));
+    }
+
+
+    if (isBAnimation)
+    {
+        Area* B1 = Areas[1];
+        Area* B2 = Areas[2];
+        for (int i = 0; i < 14; ++i) {
+            if (i < 4)
+            {
+                for (int j = 0; j < 15; ++j) {
+                    // è®¡ç®—æ¯ä¸€æ’ç›’å­åœ¨ y æ–¹å‘ä¸Šçš„æ³¢æµªä½ç§»
+                    // sin(BAnimationAngle) æ§åˆ¶æ³¢æµªçš„é«˜åº¦ï¼Œæ¯ä¸€æ’çš„æ³¢æµªåŒæ­¥
+                    float waveHeight = sin((BAnimationAngle + i * 30.0f) * M_PI / 180) / 100.0f; // æ¯æ’ä¸åŒç›¸ä½
+
+                    // è®¾ç½®æ‰€æœ‰ç›’å­åœ¨ y æ–¹å‘ä¸Šçš„å‡é™
+                    B2->boxes[i * 15 + j]->SetPositionDelta(0, waveHeight, 0);
+                }
+            }
+            else
+            {
+                for (int j = 0; j < 9; ++j) {
+                    // è®¡ç®—æ¯ä¸€æ’ç›’å­åœ¨ y æ–¹å‘ä¸Šçš„æ³¢æµªä½ç§»
+                    // sin(BAnimationAngle) æ§åˆ¶æ³¢æµªçš„é«˜åº¦ï¼Œæ¯ä¸€æ’çš„æ³¢æµªåŒæ­¥
+                    float waveHeight = sin((BAnimationAngle + i * 30.0f) * M_PI / 180) / 100.0f; // æ¯æ’ä¸åŒç›¸ä½
+
+                    // è®¾ç½®æ‰€æœ‰ç›’å­åœ¨ y æ–¹å‘ä¸Šçš„å‡é™
+                    B1->boxes[(i-4) * 9 + j]->SetPositionDelta(0, waveHeight, 0);
+                }
+            }
+            
+        }
+
+        // å¢åŠ åŠ¨ç”»è§’åº¦ï¼Œæ¨¡æ‹Ÿæ³¢æµªçš„ä¼ æ’­
+        BAnimationAngle += 1;
+        BAnimationAngle = BAnimationAngle > 360 ? BAnimationAngle - 360 : BAnimationAngle;
+    }
+
+    if (isCAnimation)
+    {
+        Area* C = Areas[3];
+
+        for (int i = 0; i < 2; ++i) {
+            for (int j = 0; j < 4; ++j) {
+                C->boxes[i * 4 + j]->SetRotationDelta(CAnimationAngle, 0, 0);
+                C->boxes[i * 4 + j]->SetPositionDelta(sin((CAnimationAngle+90) * M_PI / 180)/100, 0, 0);
+            }
+        }
+        CAnimationAngle += 0.3;
+        CAnimationAngle = CAnimationAngle > 360 ? CAnimationAngle - 360 : CAnimationAngle;
+    }
+
+    Draw();
+}
+
 
 void Stage::IntersectWithRay(
     const CVector& origin,
     const CVector& direct,
     float length) const
 {
-    float minDistance = FLT_MAX; // ³õÊ¼ÖµÉèÖÃÎª×î´ó¸¡¶¯Öµ
-    Box* closestBox = nullptr; // ÓÃÓÚ´æ´¢×î½üµÄ Box
+    float minDistance = FLT_MAX; // åˆå§‹å€¼è®¾ç½®ä¸ºæœ€å¤§æµ®åŠ¨å€¼
+    Box* closestBox = nullptr; // ç”¨äºå­˜å‚¨æœ€è¿‘çš„ Box
 
     for (const auto area : Areas) {
         for (auto box : area->GetBoxes()) {
             PointCollision intersection;
 
-            // ¼ì²âÓëÉäÏßµÄÅö×²
+            // æ£€æµ‹ä¸å°„çº¿çš„ç¢°æ’
             if (box->obb.IntersectWithRayAndOBB(origin, direct, length, intersection) > 0) {
-                // ¼ÆËãÉäÏßÓë½»µãµÄ¾àÀë
+                // è®¡ç®—å°„çº¿ä¸äº¤ç‚¹çš„è·ç¦»
                 float distance = (intersection.closestPoint - origin).len();
 
-                // Èç¹ûµ±Ç°Åö×²µÄ¾àÀë±È×îĞ¡¾àÀë¸üĞ¡£¬¸üĞÂ×î½üµÄ Box
+                // å¦‚æœå½“å‰ç¢°æ’çš„è·ç¦»æ¯”æœ€å°è·ç¦»æ›´å°ï¼Œæ›´æ–°æœ€è¿‘çš„ Box
                 if (distance < minDistance) {
                     minDistance = distance;
-                    closestBox = box; // ¸üĞÂ×î½üµÄ Box
+                    closestBox = box; // æ›´æ–°æœ€è¿‘çš„ Box
                 }
             }
         }
     }
 
-    // Èç¹ûÕÒµ½×î½üµÄ box£¬Ôò½«ÆäÉèÖÃÎªÑ¡ÖĞ×´Ì¬
+    // å¦‚æœæ‰¾åˆ°æœ€è¿‘çš„ boxï¼Œåˆ™å°†å…¶è®¾ç½®ä¸ºé€‰ä¸­çŠ¶æ€
     if (closestBox != nullptr) {
         closestBox->isSelect = !closestBox->isSelect;
 
         if (closestBox->isSelect)
         {
-            std::cout << closestBox->ToString();
+            curSelectBox = closestBox;
+            //std::cout << curSelectBox->ToString();
         }
     }
 
-    // ¿ÉÒÔ¿¼ÂÇÊÇ·ñĞèÒªÖØÖÃÆäËû box µÄ isSelect Îª false
-    // Èç¹ûÊÇÃ¿´Î¶¼ÒªÖØĞÂ¼ÆËãÑ¡ÔñµÄ box£¬ÄÇÃ´¿ÉÒÔ±éÀú²¢½«ÆäËû box µÄ isSelect ÉèÖÃÎª false
+    // å¯ä»¥è€ƒè™‘æ˜¯å¦éœ€è¦é‡ç½®å…¶ä»– box çš„ isSelect ä¸º false
+    // å¦‚æœæ˜¯æ¯æ¬¡éƒ½è¦é‡æ–°è®¡ç®—é€‰æ‹©çš„ boxï¼Œé‚£ä¹ˆå¯ä»¥éå†å¹¶å°†å…¶ä»– box çš„ isSelect è®¾ç½®ä¸º false
     for (const auto area : Areas) {
         for (auto box : area->GetBoxes()) {
             if (box != closestBox) {
@@ -64,4 +127,85 @@ void Stage::IntersectWithRay(
         }
     }
 }
+
+void Stage::processMouse(int button, int state, int x, int y)
+{
+    if (button == GLUT_LEFT_BUTTON)
+    {
+        isLeft = state == GLUT_DOWN;
+        if (state == GLUT_DOWN)
+        {
+            prevMouseX = x;
+            prevMouseY = y;
+            
+            float val;
+            double modelview[16], project[16], pos[3];
+            int viewport[4];
+            //glGetDoublev(GL_MODELVIEW_MATRIX, modelview);
+            glGetDoublev(GL_PROJECTION_MATRIX, project);
+            glGetIntegerv(GL_VIEWPORT, viewport);
+            y = viewport[3] - y;
+            glReadPixels(x, y, 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &val);
+            gluUnProject(x, y, val, modelViewMatrix, project, viewport, &pos[0], &pos[1], &pos[2]);
+
+            //printf("%d:%d\t(%d:%d)\t%f\t(%.2f,%.2f,%.2f)\n", button, state, x, y, val, pos[0], pos[1], pos[2]);
+            origin = camera->position;
+            direct = CVector(pos[0], pos[1], pos[2]) - camera->position;
+            direct.Normalize();
+            PointCollision PointCollision;
+            IntersectWithRay(origin, direct, 100);
+        }
+    }
+    else if (button == GLUT_RIGHT_BUTTON)
+    {
+        isRight = state == GLUT_DOWN;
+    }
+}
+
+void Stage::processKeyboard(unsigned char key, int x, int y)
+{
+    if (key == '2')
+    {
+        isRotate = !isRotate;
+    }
+    else if (key == '3')
+    {
+        isBAnimation = !isBAnimation;
+    }
+    else if (key == '4')
+    {
+        isCAnimation = !isCAnimation;
+    }
+}
+void Stage::processMouseMotion(int x, int y)
+{
+    if (curSelectBox != nullptr)
+    {
+        if (curSelectBox->name[0] == 'B')
+        {
+            if (isLeft)
+            {
+                curSelectBox->SetPositionDelta(0, (prevMouseY - y) > 0 ? 0.1 : -0.1, 0);
+                prevMouseX = x;
+                prevMouseY = y;
+            }
+        }
+        else if (curSelectBox->name[0] == 'C')
+        {
+            if (isRight)
+            {
+                curSelectBox->SetRotationDelta((prevMouseX - x), 0, 0);
+            }
+            else if (isLeft)
+            {
+                curSelectBox->SetPositionDelta((prevMouseX - x) < 0 ? 0.1 : -0.1, 0, 0);
+                prevMouseX = x;
+                prevMouseY = y;
+            }
+        }
+
+    }
+
+}
+
 

@@ -3,7 +3,7 @@ class CEuler;
 class CMatrix
 {
 public:
-    // ¾ØÕóÔªËØ°´ÁĞÓÅÏÈÅÅÁĞ
+    // çŸ©é˜µå…ƒç´ æŒ‰åˆ—ä¼˜å…ˆæ’åˆ—
     float m00, m01, m02, m03;
     float m10, m11, m12, m13;
     float m20, m21, m22, m23;
@@ -22,10 +22,10 @@ public:
     //void SetRotate(float angle, const CVector& axis);
     //void SetTrans(const CVector& trans);
     //void SetScale(const CVector& scale);
-    //float Inverse();  // Çó¾ØÕóµÄÄæ£¬³É¹¦·µ»ØĞĞÁĞÊ½µÄÖµ£¬·ñÔò·µ»Ø0
-    CMatrix GetInverse();  // ·µ»ØÄæ¾ØÕó
+    //float Inverse();  // æ±‚çŸ©é˜µçš„é€†ï¼ŒæˆåŠŸè¿”å›è¡Œåˆ—å¼çš„å€¼ï¼Œå¦åˆ™è¿”å›0
+    CMatrix GetInverse();  // è¿”å›é€†çŸ©é˜µ
 
-    // Ìí¼Óµ¥Î»¾ØÕóºÍÁã¾ØÕó
+    // æ·»åŠ å•ä½çŸ©é˜µå’Œé›¶çŸ©é˜µ
     static CMatrix Identity();
     static CMatrix Zero();
     static CMatrix CreateRotationMatrixX(double angleInRadians);
@@ -40,6 +40,6 @@ public:
     std::string ToString();
 
 private:
-    float Determinant();  // ¼ÆËã¾ØÕóĞĞÁĞÊ½
-    CMatrix Adjoint();  // ¼ÆËã°éËæ¾ØÕó
+    float Determinant();  // è®¡ç®—çŸ©é˜µè¡Œåˆ—å¼
+    CMatrix Adjoint();  // è®¡ç®—ä¼´éšçŸ©é˜µ
 };

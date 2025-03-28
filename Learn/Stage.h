@@ -1,24 +1,48 @@
 #pragma once
-#include "Area.h"  // ÒıÈë Area ÀàÍ·ÎÄ¼ş
+#include "Area.h"  // å¼•å…¥ Area ç±»å¤´æ–‡ä»¶
 #include "CVector.h"
-class Stage : public Transform{
+class Stage : public Transform,public InputManager::IInputControl {
 public:
-    // ¹¹Ôìº¯Êı£¬³õÊ¼»¯ÎèÌ¨²¢ÉèÖÃÃ¿¸öÇøÓòµÄÖĞĞÄÎ»ÖÃ
+    // æ„é€ å‡½æ•°ï¼Œåˆå§‹åŒ–èˆå°å¹¶è®¾ç½®æ¯ä¸ªåŒºåŸŸçš„ä¸­å¿ƒä½ç½®
     Stage(std::string name);
     Stage(std::string name,float posx, float posy, float posz);
 
-    // Ôö¼ÓÇøÓò
+    // å¢åŠ åŒºåŸŸ
     void AddArea(Area* area);
 
-    // »æÖÆËùÓĞÇøÓò
+    // ç»˜åˆ¶æ‰€æœ‰åŒºåŸŸ
     void Draw() const;
+    void Update() override;
 
     void IntersectWithRay(
         const CVector& origin,
         const CVector& direct,
         float length) const;
+    mutable Box* curSelectBox;
+
+    void processKeyboard(unsigned char key, int x, int y)override;
+    void processMouse(int button, int state, int x, int y)override;
+    void processMouseMotion(int x, int y)override;
+
+    double modelViewMatrix[16];
+    CVector origin,direct;
+    bool isRotate;
+    float angle = 0;
+    Camera* camera;
+
+    float prevMouseX;
+    float prevMouseY;
+    bool isLeft, isRight;
+
+    bool isBAnimation;
+    float BAnimationAngle;
+    float maxHeight;  // æœ€å¤§é«˜åº¦ 
+    float waveSpeed;  // å‡é™é€Ÿåº¦
+    bool isCAnimation;
+    float CAnimationAngle;
+
 
 private:
-    // ÎèÌ¨µÄAreaÁĞ±í
+    // èˆå°çš„Areaåˆ—è¡¨
     std::vector<Area*> Areas;
 };

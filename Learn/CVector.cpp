@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "CVector.h"
 
-// Ä¬ÈÏ¹¹Ôìº¯Êı£¬³õÊ¼»¯ÏòÁ¿Îª(0, 0, 0)
+// é»˜è®¤æ„é€ å‡½æ•°ï¼Œåˆå§‹åŒ–å‘é‡ä¸º(0, 0, 0)
 CVector::CVector() : x(0), y(0), z(0) {}
 
 CVector::CVector(float x, float y, float z)
@@ -11,20 +11,20 @@ CVector::CVector(float x, float y, float z)
     this->z = z;
 }
 
-// Îö¹¹º¯Êı
+// ææ„å‡½æ•°
 CVector::~CVector() {}
 
-// ÏòÁ¿¼õ·¨
+// å‘é‡å‡æ³•
 CVector CVector::operator-(const CVector& v) const {
     return CVector(x - v.x, y - v.y, z - v.z);
 }
 
-// ÏòÁ¿¼Ó·¨
+// å‘é‡åŠ æ³•
 CVector CVector::operator+(const CVector& v) const {
     return CVector(x + v.x, y + v.y, z + v.z);
 }
 
-// ¸³Öµ²Ù×÷·ûÖØÔØ
+// èµ‹å€¼æ“ä½œç¬¦é‡è½½
 CVector& CVector::operator=(const CVector& v) {
     if (this != &v) {
         x = v.x;
@@ -34,22 +34,22 @@ CVector& CVector::operator=(const CVector& v) {
     return *this;
 }
 
-// ÏòÁ¿Êı³Ë²Ù×÷
+// å‘é‡æ•°ä¹˜æ“ä½œ
 CVector CVector::operator*(float scalar) const {
     return CVector(x * scalar, y * scalar, z * scalar);
 }
 
-// ÓÑÔªº¯Êı£ºÖ§³Ö 100 * CVector µÄĞÎÊ½
+// å‹å…ƒå‡½æ•°ï¼šæ”¯æŒ 100 * CVector çš„å½¢å¼
 CVector operator*(float scalar, const CVector& v) {
     return CVector(v.x * scalar, v.y * scalar, v.z * scalar);
 }
 
-// ÏòÁ¿µã»ı
+// å‘é‡ç‚¹ç§¯
 float CVector::dotMul(const CVector& v) const {
     return x * v.x + y * v.y + z * v.z;
 }
 
-// ÏòÁ¿²æ»ı
+// å‘é‡å‰ç§¯
 CVector CVector::crossMul(const CVector& v) const {
     return CVector(
         y * v.z - z * v.y,
@@ -58,7 +58,7 @@ CVector CVector::crossMul(const CVector& v) const {
     );
 }
 
-// ÏòÁ¿µ¥Î»»¯
+// å‘é‡å•ä½åŒ–
 void CVector::Normalize() {
     float length = len();
     if (length > 0) {
@@ -68,19 +68,19 @@ void CVector::Normalize() {
     }
 }
 
-// ÏòÁ¿ÇóÄ£
+// å‘é‡æ±‚æ¨¡
 float CVector::len() const {
     return sqrt(x * x + y * y + z * z);
 }
 
-// ÏòÁ¿Í¶Ó°
+// å‘é‡æŠ•å½±
 CVector CVector::project(const CVector& v) const {
     float dotProduct = dotMul(v);
     float lengthSquared = v.len() * v.len();
     return v * (dotProduct / lengthSquared);
 }
 
-// ÏòÁ¿¾àÀë
+// å‘é‡è·ç¦»
 float CVector::distanceTo(const CVector& v) const {
     return sqrt((x - v.x) * (x - v.x) + (y - v.y) * (y - v.y) + (z - v.z) * (z - v.z));
 }
@@ -94,13 +94,13 @@ CEuler CVector::ToEuler()
 {
     CEuler euler;
 
-    // ¼ÆËã pitch
+    // è®¡ç®— pitch
     euler.h = atan2(x, z);
 
-    // ¼ÆËã roll (ÈÆ X ÖáµÄĞı×ª½Ç)
+    // è®¡ç®— roll (ç»• X è½´çš„æ—‹è½¬è§’)
     euler.p = -atan2(y, sqrt(x * x + z * z));
 
-    // ¼ÙÉè yaw (ÈÆ Z ÖáµÄĞı×ª½Ç) Îª 0
+    // å‡è®¾ yaw (ç»• Z è½´çš„æ—‹è½¬è§’) ä¸º 0
     euler.b = 0;
     euler.h = euler.h * 180 / M_PI;
     euler.p = euler.p * 180 / M_PI;
@@ -108,7 +108,7 @@ CEuler CVector::ToEuler()
     return euler;
 }
 
-// Calculate º¯ÊıÊµÏÖ
+// Calculate å‡½æ•°å®ç°
 bool Calculate() {
     FILE* fp, * fpOut;
     char str[1024];
@@ -118,40 +118,40 @@ bool Calculate() {
     while (!feof(fp)) {
         fscanf_s(fp, "%s\n", str, 1024);
 
-        if (strcmp(str, "ÏòÁ¿Ïà¼Ó") == 0) {
+        if (strcmp(str, "å‘é‡ç›¸åŠ ") == 0) {
             CVector v1, v2, vout;
             fscanf_s(fp, "%f,%f,%f %f,%f,%f", &v1.x, &v1.y, &v1.z, &v2.x, &v2.y, &v2.z);
-            // ¼ÆËãÏòÁ¿Ïà¼Ó
+            // è®¡ç®—å‘é‡ç›¸åŠ 
             vout = v1 + v2;
             fprintf(fpOut, "%s\n%g,%g,%g \t%g,%g,%g \t%g,%g,%g\n", str, v1.x, v1.y, v1.z, v2.x, v2.y, v2.z, vout.x, vout.y, vout.z);
         }
-        else if (strcmp(str, "ÏòÁ¿µã³Ë") == 0)
+        else if (strcmp(str, "å‘é‡ç‚¹ä¹˜") == 0)
         {
             CVector v1, v2;
             float vout;
             fscanf_s(fp, "%f,%f,%f %f,%f,%f", &v1.x, &v1.y, &v1.z, &v2.x, &v2.y, &v2.z);
-            // ¼ÆËãÏòÁ¿µã»ı
+            // è®¡ç®—å‘é‡ç‚¹ç§¯
             vout = v1.dotMul(v2);
             fprintf(fpOut, "%s\n%g,%g,%g \t%g,%g,%g \t%g\n", str, v1.x, v1.y, v1.z, v2.x, v2.y, v2.z, vout);
         }
-        else if (strcmp(str, "ÏòÁ¿²æ³Ë") == 0)
+        else if (strcmp(str, "å‘é‡å‰ä¹˜") == 0)
         {
             CVector v1, v2, vout;
             fscanf_s(fp, "%f,%f,%f %f,%f,%f", &v1.x, &v1.y, &v1.z, &v2.x, &v2.y, &v2.z);
-            // ¼ÆËãÏòÁ¿²æ»ı
+            // è®¡ç®—å‘é‡å‰ç§¯
             vout = v1.crossMul(v2);
             fprintf(fpOut, "%s\n%g,%g,%g \t%g,%g,%g \t%g,%g,%g\n", str, v1.x, v1.y, v1.z, v2.x, v2.y, v2.z, vout.x, vout.y, vout.z);
         }
-        else if (strcmp(str, "ÏòÁ¿±ê×¼»¯") == 0)
+        else if (strcmp(str, "å‘é‡æ ‡å‡†åŒ–") == 0)
         {
             CVector v1, v2;
             fscanf_s(fp, "%f,%f,%f", &v1.x, &v1.y, &v1.z);
             v2 = v1;
-            // ¼ÆËãÏòÁ¿±ê×¼»¯
+            // è®¡ç®—å‘é‡æ ‡å‡†åŒ–
             v2.Normalize();
             fprintf(fpOut, "%s\n%g,%g,%g \t%g,%g,%g \n", str, v1.x, v1.y, v1.z, v2.x, v2.y, v2.z);
         }
-        else if (strcmp(str, "ÏòÁ¿ÇóÄ£") == 0)
+        else if (strcmp(str, "å‘é‡æ±‚æ¨¡") == 0)
         {
             CVector v1;
             float vout;
@@ -159,11 +159,11 @@ bool Calculate() {
             vout = v1.len();
             fprintf(fpOut, "%s\n%g,%g,%g %g\n", str, v1.x, v1.y, v1.z, vout);
         }
-        else if (strcmp(str, "ÏòÁ¿Í¶Ó°") == 0)
+        else if (strcmp(str, "å‘é‡æŠ•å½±") == 0)
         {
             CVector v1, v2, vout;
             fscanf_s(fp, "%f,%f,%f %f,%f,%f", &v1.x, &v1.y, &v1.z, &v2.x, &v2.y, &v2.z);
-            // ¼ÆËãÏòÁ¿Í¶Ó°
+            // è®¡ç®—å‘é‡æŠ•å½±
             vout = v1.project(v2);
             fprintf(fpOut, "%s\n%g,%g,%g \t%g,%g,%g \t%g,%g,%g\n", str, v1.x, v1.y, v1.z, v2.x, v2.y, v2.z, vout.x, vout.y, vout.z);
         }

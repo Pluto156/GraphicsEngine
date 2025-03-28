@@ -1,26 +1,26 @@
 #include "stdafx.h"
 #include "Box.h"
 
-// ¹¹Ôìº¯Êı£¬³õÊ¼»¯ºĞ×ÓµÄ³¤¿í¸ßºÍÖĞĞÄ×ø±ê
+// æ„é€ å‡½æ•°ï¼Œåˆå§‹åŒ–ç›’å­çš„é•¿å®½é«˜å’Œä¸­å¿ƒåæ ‡
 Box::Box(std::string name,float width, float height, float depth, CVector Position, float r, float g, float b, bool isShowLocalAxis)
     : m_width(width), m_height(height), m_depth(depth), Transform(name,Position,CMatrix(),CEuler(), isShowLocalAxis), r(r), g(g), b(b),isSelect(false) {
     obb.halfSizes = CVector(width / 2, height / 2, depth / 2);
     //Draw();
 }
 
-// ¹¹Ôìº¯Êı£¬³õÊ¼»¯ºĞ×ÓµÄ³¤¿í¸ßºÍÖĞĞÄ×ø±ê
+// æ„é€ å‡½æ•°ï¼Œåˆå§‹åŒ–ç›’å­çš„é•¿å®½é«˜å’Œä¸­å¿ƒåæ ‡
 Box::Box(std::string name,float width, float height, float depth, CVector Position, CMatrix Rotation, CEuler EulerAngles, float r, float g, float b, bool isShowLocalAxis)
     : m_width(width), m_height(height), m_depth(depth), Transform(name,Position, Rotation, EulerAngles, isShowLocalAxis), r(r), g(g), b(b), isSelect(false) {
     obb.halfSizes = CVector(width / 2, height / 2, depth / 2);
     //Draw();
 }
 
-// ¾²Ì¬¹¤³§·½·¨£¬ÓÃÓÚ´´½¨²¢·µ»ØÒ»¸ö Box ¶ÔÏó
+// é™æ€å·¥å‚æ–¹æ³•ï¼Œç”¨äºåˆ›å»ºå¹¶è¿”å›ä¸€ä¸ª Box å¯¹è±¡
 Box* Box::CreateBox(std::string name,float width, float height, float depth, CVector Position, CMatrix Rotation, CEuler EulerAngles,float r, float g, float b, bool isShowLocalAxis) {
-    return new Box(name,width, height, depth, Position,Rotation, EulerAngles,r,g,b, isShowLocalAxis);  // ´´½¨²¢·µ»ØÒ»¸ö Box ¶ÔÏó
+    return new Box(name,width, height, depth, Position,Rotation, EulerAngles,r,g,b, isShowLocalAxis);  // åˆ›å»ºå¹¶è¿”å›ä¸€ä¸ª Box å¯¹è±¡
 }
 Box* Box::CreateBox(std::string name,float width, float height, float depth, CVector Position, float r, float g, float b, bool isShowLocalAxis) {
-    return new Box(name,width, height, depth, Position, r, g, b,isShowLocalAxis);  // ´´½¨²¢·µ»ØÒ»¸ö Box ¶ÔÏó
+    return new Box(name,width, height, depth, Position, r, g, b,isShowLocalAxis);  // åˆ›å»ºå¹¶è¿”å›ä¸€ä¸ª Box å¯¹è±¡
 }
 float Box::GetWidth()
 {
@@ -39,67 +39,67 @@ float Box::GetDepth()
 
 
 void Box::Draw() const {
-    glPushMatrix();  // ±£´æµ±Ç°¾ØÕó×´Ì¬
+    glPushMatrix();  // ä¿å­˜å½“å‰çŸ©é˜µçŠ¶æ€
     Transform::Draw();
 
 
 
-    // »æÖÆÌî³äµÄÃæ
+    // ç»˜åˆ¶å¡«å……çš„é¢
     glBegin(GL_QUADS);
     glColor3f(r, g, b);
 
-    // Ç°Ãæ
+    // å‰é¢
     glVertex3f(-m_width / 2, -m_height / 2, m_depth / 2);
     glVertex3f(m_width / 2, -m_height / 2, m_depth / 2);
     glVertex3f(m_width / 2, m_height / 2, m_depth / 2);
     glVertex3f(-m_width / 2, m_height / 2, m_depth / 2);
 
-    // ºóÃæ
+    // åé¢
     glVertex3f(-m_width / 2, -m_height / 2, -m_depth / 2);
     glVertex3f(-m_width / 2, m_height / 2, -m_depth / 2);
     glVertex3f(m_width / 2, m_height / 2, -m_depth / 2);
     glVertex3f(m_width / 2, -m_height / 2, -m_depth / 2);
 
-    // ÉÏÃæ
+    // ä¸Šé¢
     glVertex3f(-m_width / 2, m_height / 2, m_depth / 2);
     glVertex3f(m_width / 2, m_height / 2, m_depth / 2);
     glVertex3f(m_width / 2, m_height / 2, -m_depth / 2);
     glVertex3f(-m_width / 2, m_height / 2, -m_depth / 2);
 
-    // ÏÂÃæ
+    // ä¸‹é¢
     glVertex3f(-m_width / 2, -m_height / 2, m_depth / 2);
     glVertex3f(-m_width / 2, -m_height / 2, -m_depth / 2);
     glVertex3f(m_width / 2, -m_height / 2, -m_depth / 2);
     glVertex3f(m_width / 2, -m_height / 2, m_depth / 2);
 
-    // ×óÃæ
+    // å·¦é¢
     glVertex3f(-m_width / 2, -m_height / 2, -m_depth / 2);
     glVertex3f(-m_width / 2, -m_height / 2, m_depth / 2);
     glVertex3f(-m_width / 2, m_height / 2, m_depth / 2);
     glVertex3f(-m_width / 2, m_height / 2, -m_depth / 2);
 
-    // ÓÒÃæ
+    // å³é¢
     glVertex3f(m_width / 2, -m_height / 2, -m_depth / 2);
     glVertex3f(m_width / 2, m_height / 2, -m_depth / 2);
     glVertex3f(m_width / 2, m_height / 2, m_depth / 2);
     glVertex3f(m_width / 2, -m_height / 2, m_depth / 2);
 
-    glEnd();  // ½áÊø»æÖÆÌî³äÃæ
+    glEnd();  // ç»“æŸç»˜åˆ¶å¡«å……é¢
 
-    // »æÖÆ±ß½ç
+    // ç»˜åˆ¶è¾¹ç•Œ
     if (isSelect)
     {
-        glColor3f(1.0f, 1.0f, 1.0f);  // ÉèÖÃ±ß½çÎª°×É«
+        glColor3f(1.0f, 1.0f, 1.0f);  // è®¾ç½®è¾¹ç•Œä¸ºç™½è‰²
     }
     else
     {
-        glColor3f(0.0f, 0.0f, 0.0f);  // ÉèÖÃ±ß½çÎªºÚÉ«
+        glColor3f(0.0f, 0.0f, 0.0f);  // è®¾ç½®è¾¹ç•Œä¸ºé»‘è‰²
     }
-    glLineWidth(2);  // ÉèÖÃÏßÌõ¿í¶ÈÎª2
+    glLineWidth(2);  // è®¾ç½®çº¿æ¡å®½åº¦ä¸º2
 
     glBegin(GL_LINES);
 
-    // Ç°Ãæ
+    // å‰é¢
     glVertex3f(-m_width / 2, -m_height / 2, m_depth / 2);
     glVertex3f(m_width / 2, -m_height / 2, m_depth / 2);
 
@@ -112,7 +112,7 @@ void Box::Draw() const {
     glVertex3f(-m_width / 2, m_height / 2, m_depth / 2);
     glVertex3f(-m_width / 2, -m_height / 2, m_depth / 2);
 
-    // ºóÃæ
+    // åé¢
     glVertex3f(-m_width / 2, -m_height / 2, -m_depth / 2);
     glVertex3f(m_width / 2, -m_height / 2, -m_depth / 2);
 
@@ -125,7 +125,7 @@ void Box::Draw() const {
     glVertex3f(-m_width / 2, m_height / 2, -m_depth / 2);
     glVertex3f(-m_width / 2, -m_height / 2, -m_depth / 2);
 
-    // ÉÏÃæ
+    // ä¸Šé¢
     glVertex3f(-m_width / 2, m_height / 2, m_depth / 2);
     glVertex3f(m_width / 2, m_height / 2, m_depth / 2);
 
@@ -138,7 +138,7 @@ void Box::Draw() const {
     glVertex3f(-m_width / 2, m_height / 2, -m_depth / 2);
     glVertex3f(-m_width / 2, m_height / 2, m_depth / 2);
 
-    // ÏÂÃæ
+    // ä¸‹é¢
     glVertex3f(-m_width / 2, -m_height / 2, m_depth / 2);
     glVertex3f(m_width / 2, -m_height / 2, m_depth / 2);
 
@@ -151,7 +151,7 @@ void Box::Draw() const {
     glVertex3f(-m_width / 2, -m_height / 2, -m_depth / 2);
     glVertex3f(-m_width / 2, -m_height / 2, m_depth / 2);
 
-    // ×óÃæ
+    // å·¦é¢
     glVertex3f(-m_width / 2, -m_height / 2, -m_depth / 2);
     glVertex3f(-m_width / 2, -m_height / 2, m_depth / 2);
 
@@ -164,7 +164,7 @@ void Box::Draw() const {
     glVertex3f(-m_width / 2, m_height / 2, -m_depth / 2);
     glVertex3f(-m_width / 2, -m_height / 2, -m_depth / 2);
 
-    // ÓÒÃæ
+    // å³é¢
     glVertex3f(m_width / 2, -m_height / 2, -m_depth / 2);
     glVertex3f(m_width / 2, -m_height / 2, m_depth / 2);
 
@@ -177,9 +177,9 @@ void Box::Draw() const {
     glVertex3f(m_width / 2, m_height / 2, -m_depth / 2);
     glVertex3f(m_width / 2, -m_height / 2, -m_depth / 2);
 
-    glEnd();  // ½áÊø»æÖÆ±ß½ç
+    glEnd();  // ç»“æŸç»˜åˆ¶è¾¹ç•Œ
 
-    glPopMatrix();  // »Ö¸´¾ØÕó×´Ì¬
+    glPopMatrix();  // æ¢å¤çŸ©é˜µçŠ¶æ€
 }
 
 std::string Box::ToString()

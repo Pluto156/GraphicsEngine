@@ -1,23 +1,23 @@
 #pragma once
 #include <vector>
-#include "Box.h"  // ÒıÈë Box ÀàÍ·ÎÄ¼ş
+#include "Box.h"  // å¼•å…¥ Box ç±»å¤´æ–‡ä»¶
 #include "CVector.h"
 class Area:public Transform {
 public:
-    // ¹¹Ôìº¯Êı£¬³õÊ¼»¯ÇøÓò²¢ÉèÖÃÇøÓòµÄÖĞĞÄ×ø±ê
+    // æ„é€ å‡½æ•°ï¼Œåˆå§‹åŒ–åŒºåŸŸå¹¶è®¾ç½®åŒºåŸŸçš„ä¸­å¿ƒåæ ‡
     Area(std::string name,float x, float y, float z);
 
-    // »ñÈ¡ÇøÓòÄÚ Box µÄÊıÁ¿
+    // è·å–åŒºåŸŸå†… Box çš„æ•°é‡
     size_t GetBoxCount() const;
 
-    // ÏòÇøÓòÌí¼ÓÒ»¸ö Box
+    // å‘åŒºåŸŸæ·»åŠ ä¸€ä¸ª Box
     void AddBox(Box* box);
 
-    // »æÖÆ¸ÃÇøÓòÄÚµÄËùÓĞ Box
+    // ç»˜åˆ¶è¯¥åŒºåŸŸå†…çš„æ‰€æœ‰ Box
     void Draw() const;
 
     std::vector<Box*> GetBoxes();
-    // ÇøÓòµÄ Box ÁĞ±í
+    // åŒºåŸŸçš„ Box åˆ—è¡¨
     std::vector<Box*> boxes;
 private:
     

@@ -2,7 +2,7 @@
 #include "CMatrix.h"
 
 
-// Ä¬ÈÏ¹¹Ôìº¯Êı£¬³õÊ¼»¯Îªµ¥Î»¾ØÕó
+// é»˜è®¤æ„é€ å‡½æ•°ï¼Œåˆå§‹åŒ–ä¸ºå•ä½çŸ©é˜µ
 CMatrix::CMatrix()
 {
     m00 = 1.0f; m10 = 0.0f; m20 = 0.0f; m30 = 0.0f;
@@ -16,7 +16,7 @@ CMatrix::CMatrix(float* val)
     CMatrix::Set(val);
 }
 
-// ÉèÖÃ¾ØÕóµÄ16¸öÔªËØ
+// è®¾ç½®çŸ©é˜µçš„16ä¸ªå…ƒç´ 
 void CMatrix::Set(float* p)
 {
     m00 = p[0]; m10 = p[1]; m20 = p[2]; m30 = p[3];
@@ -25,7 +25,7 @@ void CMatrix::Set(float* p)
     m03 = p[12]; m13 = p[13]; m23 = p[14]; m33 = p[15];
 }
 
-// ¾ØÕó¸³Öµ
+// çŸ©é˜µèµ‹å€¼
 CMatrix& CMatrix::operator=(const CMatrix& p)
 {
     if (this != &p)
@@ -38,7 +38,7 @@ CMatrix& CMatrix::operator=(const CMatrix& p)
     return *this;
 }
 
-// ¾ØÕóÓë±êÁ¿Ïà³Ë
+// çŸ©é˜µä¸æ ‡é‡ç›¸ä¹˜
 CMatrix CMatrix::operator*(float d)
 {
     CMatrix result;
@@ -49,7 +49,7 @@ CMatrix CMatrix::operator*(float d)
     return result;
 }
 
-// ¾ØÕóÏà³Ë£¨ÁĞÓÅÏÈ£©
+// çŸ©é˜µç›¸ä¹˜ï¼ˆåˆ—ä¼˜å…ˆï¼‰
 CMatrix CMatrix::operator*(const CMatrix& p)
 {
     CMatrix result;
@@ -76,7 +76,7 @@ CMatrix CMatrix::operator*(const CMatrix& p)
     return result;
 }
 
-// ¾ØÕóÓëÏòÁ¿Ïà³Ë£¨Ö»¿¼ÂÇĞı×ª²¿·Ö£©
+// çŸ©é˜µä¸å‘é‡ç›¸ä¹˜ï¼ˆåªè€ƒè™‘æ—‹è½¬éƒ¨åˆ†ï¼‰
 CVector CMatrix::vecMul(const CVector& p)
 {
     CVector result;
@@ -86,7 +86,7 @@ CVector CMatrix::vecMul(const CVector& p)
     return result;
 }
 
-// ¾ØÕóÓëÎ»ÖÃÏòÁ¿Ïà³Ë£¨¿¼ÂÇÆ½ÒÆ£©
+// çŸ©é˜µä¸ä½ç½®å‘é‡ç›¸ä¹˜ï¼ˆè€ƒè™‘å¹³ç§»ï¼‰
 CVector CMatrix::posMul(const CVector& p)
 {
     CVector result;
@@ -96,7 +96,7 @@ CVector CMatrix::posMul(const CVector& p)
     return result;
 }
 
-// ¼ÆËã¾ØÕóĞĞÁĞÊ½£¨ÁĞÓÅÏÈ´æ´¢£©
+// è®¡ç®—çŸ©é˜µè¡Œåˆ—å¼ï¼ˆåˆ—ä¼˜å…ˆå­˜å‚¨ï¼‰
 float CMatrix::Determinant()
 {
     return m00 * (m11 * (m22 * m33 - m23 * m32) - m12 * (m21 * m33 - m23 * m31) + m13 * (m21 * m32 - m22 * m31)) -
@@ -105,7 +105,7 @@ float CMatrix::Determinant()
         m03 * (m10 * (m21 * m32 - m22 * m31) - m11 * (m20 * m32 - m22 * m30) + m12 * (m20 * m31 - m21 * m30));
 }
 
-// ¼ÆËã°éËæ¾ØÕó£¨ÁĞÓÅÏÈ£©
+// è®¡ç®—ä¼´éšçŸ©é˜µï¼ˆåˆ—ä¼˜å…ˆï¼‰
 CMatrix CMatrix::Adjoint()
 {
     CMatrix adj;
@@ -133,7 +133,7 @@ CMatrix CMatrix::Adjoint()
     return adj;
 }
 
-// ÇóÄæ¾ØÕó
+// æ±‚é€†çŸ©é˜µ
 CMatrix CMatrix::GetInverse()
 {
     float det = Determinant();
@@ -154,7 +154,7 @@ CMatrix CMatrix::Identity() {
     return identity;
 }
 
-// Áã¾ØÕó
+// é›¶çŸ©é˜µ
 CMatrix CMatrix::Zero() {
     CMatrix zero;
     return zero;
@@ -163,7 +163,7 @@ CMatrix CMatrix::Zero() {
 CMatrix CMatrix::CreateRotationMatrixX(double angleInRadians) {
     CMatrix mat;
 
-    // Ìî³äÈÆXÖáµÄĞı×ª¾ØÕó£¨ÁĞÓÅÏÈ£©
+    // å¡«å……ç»•Xè½´çš„æ—‹è½¬çŸ©é˜µï¼ˆåˆ—ä¼˜å…ˆï¼‰
     mat.m00 = 1; mat.m10 = 0;                      mat.m20 = 0;                     mat.m30 = 0;
     mat.m01 = 0; mat.m11 = cos(angleInRadians);   mat.m21 = sin(angleInRadians);  mat.m31 = 0;
     mat.m02 = 0; mat.m12 = -sin(angleInRadians);  mat.m22 = cos(angleInRadians);  mat.m32 = 0;
@@ -175,7 +175,7 @@ CMatrix CMatrix::CreateRotationMatrixX(double angleInRadians) {
 CMatrix CMatrix::CreateRotationMatrixY(double angleInRadians) {
     CMatrix mat;
 
-    // Ìî³äÈÆYÖáµÄĞı×ª¾ØÕó£¨ÁĞÓÅÏÈ£©
+    // å¡«å……ç»•Yè½´çš„æ—‹è½¬çŸ©é˜µï¼ˆåˆ—ä¼˜å…ˆï¼‰
     mat.m00 = cos(angleInRadians);  mat.m10 = 0; mat.m20 = -sin(angleInRadians); mat.m30 = 0;
     mat.m01 = 0;                    mat.m11 = 1; mat.m21 = 0;                      mat.m31 = 0;
     mat.m02 = sin(angleInRadians);  mat.m12 = 0; mat.m22 = cos(angleInRadians);  mat.m32 = 0;
@@ -187,7 +187,7 @@ CMatrix CMatrix::CreateRotationMatrixY(double angleInRadians) {
 CMatrix CMatrix::CreateRotationMatrixZ(double angleInRadians) {
     CMatrix mat;
 
-    // Ìî³äÈÆZÖáµÄĞı×ª¾ØÕó£¨ÁĞÓÅÏÈ£©
+    // å¡«å……ç»•Zè½´çš„æ—‹è½¬çŸ©é˜µï¼ˆåˆ—ä¼˜å…ˆï¼‰
     mat.m00 = cos(angleInRadians);  mat.m10 = sin(angleInRadians); mat.m20 = 0; mat.m30 = 0;
     mat.m01 = -sin(angleInRadians); mat.m11 = cos(angleInRadians); mat.m21 = 0; mat.m31 = 0;
     mat.m02 = 0;                    mat.m12 = 0;                    mat.m22 = 1; mat.m32 = 0;
@@ -211,21 +211,21 @@ CVector CMatrix::GetRight()
 CEuler CMatrix::ToEuler()
 {
     CEuler euler;
-    // ¼ÆËã pitch (¸©Ñö½Ç)
+    // è®¡ç®— pitch (ä¿¯ä»°è§’)
     euler.p = asin(-m12);  // atan2 returns the angle in radians
 
-    // ¼ÆËã yaw (Æ«º½½Ç)
+    // è®¡ç®— yaw (åèˆªè§’)
     //float sin_pitch = -m20;
-    //if (sin_pitch < -1.0f) sin_pitch = -1.0f;  // ·ÀÖ¹³ö½ç
+    //if (sin_pitch < -1.0f) sin_pitch = -1.0f;  // é˜²æ­¢å‡ºç•Œ
     //if (sin_pitch > 1.0f) sin_pitch = 1.0f;
     //euler.h = asin(sin_pitch);  // asin returns the angle in radians
     euler.h = atan2(m02,m22);
-    //// ¼ÆËã roll (¹ö×ª½Ç)
+    //// è®¡ç®— roll (æ»šè½¬è§’)
     //float cos_pitch = cos(euler.p);
-    //if (cos_pitch > 1e-6) {  // ·ÀÖ¹³ıÒÔ 0
+    //if (cos_pitch > 1e-6) {  // é˜²æ­¢é™¤ä»¥ 0
     //    euler.b = atan2(m21, m22);  // atan2 returns the angle in radians
     //}
-    //else {  // Èç¹û cos_pitch ½Ó½ü 0£¬Ê¹ÓÃ¸üÎÈ¶¨µÄ¼ÆËã·½Ê½
+    //else {  // å¦‚æœ cos_pitch æ¥è¿‘ 0ï¼Œä½¿ç”¨æ›´ç¨³å®šçš„è®¡ç®—æ–¹å¼
     //    euler.b = atan2(-m12, m11);
     //}
     euler.b = atan2(m10, m11);

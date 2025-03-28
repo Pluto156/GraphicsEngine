@@ -8,44 +8,44 @@ class CVector
 public:
     float x, y, z;
 
-    // Ä¬ÈÏ¹¹Ôìº¯Êı£¬³õÊ¼»¯ÏòÁ¿Îª(0, 0, 0)
+    // é»˜è®¤æ„é€ å‡½æ•°ï¼Œåˆå§‹åŒ–å‘é‡ä¸º(0, 0, 0)
     CVector();
     CVector(float x, float y, float z);
-    // Îö¹¹º¯Êı
+    // ææ„å‡½æ•°
     ~CVector();
 
-    // ÏòÁ¿¼õ·¨
+    // å‘é‡å‡æ³•
     CVector operator-(const CVector& v) const;
 
-    // ÏòÁ¿¼Ó·¨
+    // å‘é‡åŠ æ³•
     CVector operator+(const CVector& v) const;
 
-    // ¸³Öµ²Ù×÷·ûÖØÔØ
+    // èµ‹å€¼æ“ä½œç¬¦é‡è½½
     CVector& operator=(const CVector& v);
 
-    // ÏòÁ¿Êı³Ë²Ù×÷
+    // å‘é‡æ•°ä¹˜æ“ä½œ
     CVector operator*(float scalar) const;
-    friend CVector operator*(float scalar, const CVector& v); // Ö§³Ö100 * CVector
+    friend CVector operator*(float scalar, const CVector& v); // æ”¯æŒ100 * CVector
 
-    // ÏòÁ¿µã»ı
+    // å‘é‡ç‚¹ç§¯
     float dotMul(const CVector& v) const;
 
-    // ÏòÁ¿²æ»ı
+    // å‘é‡å‰ç§¯
     CVector crossMul(const CVector& v) const;
 
-    // ÏòÁ¿µ¥Î»»¯
+    // å‘é‡å•ä½åŒ–
     void Normalize();
 
-    // ÏòÁ¿ÇóÄ£
+    // å‘é‡æ±‚æ¨¡
     float len() const;
 
-    // ÏòÁ¿Í¶Ó°
+    // å‘é‡æŠ•å½±
     CVector project(const CVector& v) const;
 
-    // ÏòÁ¿¾àÀë
-    float distanceTo(const CVector& v) const;  // ĞÂÔöµÄ¾àÀëº¯Êı
+    // å‘é‡è·ç¦»
+    float distanceTo(const CVector& v) const;  // æ–°å¢çš„è·ç¦»å‡½æ•°
 
-    // ×ª»»Îªfloat*ÀàĞÍ£¬ÓÃÓÚGL´«µİÊı¾İ
+    // è½¬æ¢ä¸ºfloat*ç±»å‹ï¼Œç”¨äºGLä¼ é€’æ•°æ®
     operator float* () { return &x; }
 
     std::string ToString();
@@ -53,5 +53,5 @@ public:
     CEuler ToEuler();
 };
 
-// ¼ÆËãÁ½ÏòÁ¿¼äµÄ¾àÀë
+// è®¡ç®—ä¸¤å‘é‡é—´çš„è·ç¦»
 bool Calculate();
