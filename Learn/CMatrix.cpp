@@ -96,6 +96,42 @@ CVector CMatrix::posMul(const CVector& p)
     return result;
 }
 
+void CMatrix::SetRotate(float angle, const CVector& axis)
+{
+    angle = (angle)*M_PI / 180;
+    float costheta = cos(angle);
+    float sintheta = sin(angle);
+
+    m00 = axis.x* axis.x*(1-costheta)+ costheta; m10 = axis.x * axis.y * (1 - costheta) + axis.z*sintheta; m20 = axis.x * axis.z * (1 - costheta) - axis.y * sintheta; m30 = 0;
+    m01 = axis.x * axis.y * (1 - costheta) - axis.z * sintheta; m11 = axis.y * axis.y * (1 - costheta) + costheta; m21 = axis.y * axis.z * (1 - costheta) + axis.x * sintheta; m31 = 0;
+    m02 = axis.x * axis.z * (1 - costheta) + axis.y * sintheta; m12 = axis.y * axis.z * (1 - costheta) - axis.x * sintheta; m22 = axis.z * axis.z * (1 - costheta) + costheta; m32 = 0;
+    m03 = 0; m13 =0; m23 = 0; m33 = 1;
+}
+
+void CMatrix::SetTrans(const CVector& trans) {
+    m00 = 1.0f; m01 = 0.0f; m02 = 0.0f; m03 = trans.x;
+    m10 = 0.0f; m11 = 1.0f; m12 = 0.0f; m13 = trans.y;
+    m20 = 0.0f; m21 = 0.0f; m22 = 1.0f; m23 = trans.z;
+    m30 = 0.0f; m31 = 0.0f; m32 = 0.0f; m33 = 1.0f;
+}
+
+void CMatrix::SetScale(const CVector& scale) {
+    m00 = scale.x; m01 = 0.0f; m02 = 0.0f; m03 = 0.0f;
+    m10 = 0.0f; m11 = scale.y; m12 = 0.0f; m13 = 0.0f;
+    m20 = 0.0f; m21 = 0.0f; m22 = scale.z; m23 = 0.0f;
+    m30 = 0.0f; m31 = 0.0f; m32 = 0.0f; m33 = 1.0f;
+}
+
+float CMatrix::Inverse()
+{
+    float det = Determinant();
+    if (det == 0) {
+        return 0;
+    }
+    this->operator=(Adjoint() * (1.0f / det));
+    return det;
+}
+
 // 计算矩阵行列式（列优先存储）
 float CMatrix::Determinant()
 {
@@ -143,55 +179,17 @@ CMatrix CMatrix::GetInverse()
     return Adjoint() * (1.0f / det);
 }
 
-CMatrix CMatrix::Identity() {
-    float m[16] = {
-            1,       0,        0,      0,
-            0,       1,        0,      0,
-            0,       0,        1,      0,
-            0,       0,        0,      1
-        };
-    CMatrix identity(m);
-    return identity;
-}
 
-// 零矩阵
-CMatrix CMatrix::Zero() {
-    CMatrix zero;
-    return zero;
-}
-
-CMatrix CMatrix::CreateRotationMatrixX(double angleInRadians) {
+CMatrix CMatrix::CreateRotationMatrix(float angle, const CVector& axis) {
     CMatrix mat;
+    angle = (angle)*M_PI / 180;
+    float costheta = cos(angle);
+    float sintheta = sin(angle);
 
-    // 填充绕X轴的旋转矩阵（列优先）
-    mat.m00 = 1; mat.m10 = 0;                      mat.m20 = 0;                     mat.m30 = 0;
-    mat.m01 = 0; mat.m11 = cos(angleInRadians);   mat.m21 = sin(angleInRadians);  mat.m31 = 0;
-    mat.m02 = 0; mat.m12 = -sin(angleInRadians);  mat.m22 = cos(angleInRadians);  mat.m32 = 0;
-    mat.m03 = 0; mat.m13 = 0;                      mat.m23 = 0;                     mat.m33 = 1;
-
-    return mat;
-}
-
-CMatrix CMatrix::CreateRotationMatrixY(double angleInRadians) {
-    CMatrix mat;
-
-    // 填充绕Y轴的旋转矩阵（列优先）
-    mat.m00 = cos(angleInRadians);  mat.m10 = 0; mat.m20 = -sin(angleInRadians); mat.m30 = 0;
-    mat.m01 = 0;                    mat.m11 = 1; mat.m21 = 0;                      mat.m31 = 0;
-    mat.m02 = sin(angleInRadians);  mat.m12 = 0; mat.m22 = cos(angleInRadians);  mat.m32 = 0;
-    mat.m03 = 0;                    mat.m13 = 0; mat.m23 = 0;                      mat.m33 = 1;
-
-    return mat;
-}
-
-CMatrix CMatrix::CreateRotationMatrixZ(double angleInRadians) {
-    CMatrix mat;
-
-    // 填充绕Z轴的旋转矩阵（列优先）
-    mat.m00 = cos(angleInRadians);  mat.m10 = sin(angleInRadians); mat.m20 = 0; mat.m30 = 0;
-    mat.m01 = -sin(angleInRadians); mat.m11 = cos(angleInRadians); mat.m21 = 0; mat.m31 = 0;
-    mat.m02 = 0;                    mat.m12 = 0;                    mat.m22 = 1; mat.m32 = 0;
-    mat.m03 = 0;                    mat.m13 = 0;                    mat.m23 = 0; mat.m33 = 1;
+    mat.m00 = axis.x * axis.x * (1 - costheta) + costheta; mat.m10 = axis.x * axis.y * (1 - costheta) + axis.z * sintheta; mat.m20 = axis.x * axis.z * (1 - costheta) - axis.y * sintheta; mat.m30 = 0;
+    mat.m01 = axis.x * axis.y * (1 - costheta) - axis.z * sintheta; mat.m11 = axis.y * axis.y * (1 - costheta) + costheta; mat.m21 = axis.y * axis.z * (1 - costheta) + axis.x * sintheta; mat.m31 = 0;
+    mat.m02 = axis.x * axis.z * (1 - costheta) + axis.y * sintheta; mat.m12 = axis.y * axis.z * (1 - costheta) - axis.x * sintheta; mat.m22 = axis.z * axis.z * (1 - costheta) + costheta; mat.m32 = 0;
+    mat.m03 = 0; mat.m13 = 0; mat.m23 = 0; mat.m33 = 1;
 
     return mat;
 }
@@ -211,28 +209,12 @@ CVector CMatrix::GetRight()
 CEuler CMatrix::ToEuler()
 {
     CEuler euler;
-    // 计算 pitch (俯仰角)
-    euler.p = asin(-m12);  // atan2 returns the angle in radians
-
-    // 计算 yaw (偏航角)
-    //float sin_pitch = -m20;
-    //if (sin_pitch < -1.0f) sin_pitch = -1.0f;  // 防止出界
-    //if (sin_pitch > 1.0f) sin_pitch = 1.0f;
-    //euler.h = asin(sin_pitch);  // asin returns the angle in radians
+    euler.p = asin(-m12);  
     euler.h = atan2(m02,m22);
-    //// 计算 roll (滚转角)
-    //float cos_pitch = cos(euler.p);
-    //if (cos_pitch > 1e-6) {  // 防止除以 0
-    //    euler.b = atan2(m21, m22);  // atan2 returns the angle in radians
-    //}
-    //else {  // 如果 cos_pitch 接近 0，使用更稳定的计算方式
-    //    euler.b = atan2(-m12, m11);
-    //}
     euler.b = atan2(m10, m11);
     euler.h = euler.h * 180 / M_PI;
     euler.p = euler.p * 180 / M_PI;
     euler.b = euler.b * 180 / M_PI;
-
     return euler;
 }
 

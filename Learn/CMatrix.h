@@ -19,18 +19,26 @@ public:
     CMatrix operator*(const CMatrix& p);
     CVector vecMul(const CVector& p);
     CVector posMul(const CVector& p);
-    //void SetRotate(float angle, const CVector& axis);
-    //void SetTrans(const CVector& trans);
-    //void SetScale(const CVector& scale);
-    //float Inverse();  // 求矩阵的逆，成功返回行列式的值，否则返回0
+    void SetRotate(float angle, const CVector& axis);
+    void SetTrans(const CVector& trans);
+    void SetScale(const CVector& scale);
+    float Inverse();  // 求矩阵的逆，成功返回行列式的值，否则返回0
     CMatrix GetInverse();  // 返回逆矩阵
 
     // 添加单位矩阵和零矩阵
-    static CMatrix Identity();
-    static CMatrix Zero();
-    static CMatrix CreateRotationMatrixX(double angleInRadians);
-    static CMatrix CreateRotationMatrixY(double angleInRadians);
-    static CMatrix CreateRotationMatrixZ(double angleInRadians);
+    static const CMatrix& Identity()
+    {
+        static CMatrix Identity;
+        return Identity;
+    }
+    static const CMatrix& Zero()
+    {
+        static CMatrix Zero;
+        Zero.m00 = 0;Zero.m11 = 0;Zero.m22 = 0;Zero.m33 = 0;
+        return Zero;
+    }
+    static CMatrix CreateRotationMatrix(float angle, const CVector& axis);
+
 
     CVector GetForward();
     CVector GetUp();

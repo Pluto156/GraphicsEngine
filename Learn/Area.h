@@ -11,14 +11,15 @@ public:
     size_t GetBoxCount() const;
 
     // 向区域添加一个 Box
-    void AddBox(Box* box);
+    void AddBox(std::shared_ptr<Box> box);
 
     // 绘制该区域内的所有 Box
     void Draw() const;
 
-    std::vector<Box*> GetBoxes();
+    std::vector<std::shared_ptr<Box>> GetBoxes();
     // 区域的 Box 列表
-    std::vector<Box*> boxes;
+    std::vector<std::shared_ptr<Box>> boxes;
+
 private:
     
 

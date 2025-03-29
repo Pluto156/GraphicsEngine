@@ -23,7 +23,7 @@ void Stage::Update()
     {
         angle = (angle + 0.1) / 1;
         angle = angle >= 360 ? angle - 360 : angle;
-        SetRotationDelta(CMatrix::CreateRotationMatrixY((angle)*M_PI / 180));
+        SetRotationDelta(CMatrix::CreateRotationMatrix(angle, CVector::Up()));
     }
 
 
@@ -100,7 +100,7 @@ void Stage::IntersectWithRay(
                 // 如果当前碰撞的距离比最小距离更小，更新最近的 Box
                 if (distance < minDistance) {
                     minDistance = distance;
-                    closestBox = box; // 更新最近的 Box
+                    closestBox = box.get(); // 更新最近的 Box
                 }
             }
         }
@@ -121,7 +121,7 @@ void Stage::IntersectWithRay(
     // 如果是每次都要重新计算选择的 box，那么可以遍历并将其他 box 的 isSelect 设置为 false
     for (const auto area : Areas) {
         for (auto box : area->GetBoxes()) {
-            if (box != closestBox) {
+            if (box.get() != closestBox) {
                 box->isSelect = false;
             }
         }

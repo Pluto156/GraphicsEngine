@@ -16,12 +16,14 @@ Box::Box(std::string name,float width, float height, float depth, CVector Positi
 }
 
 // 静态工厂方法，用于创建并返回一个 Box 对象
-Box* Box::CreateBox(std::string name,float width, float height, float depth, CVector Position, CMatrix Rotation, CEuler EulerAngles,float r, float g, float b, bool isShowLocalAxis) {
-    return new Box(name,width, height, depth, Position,Rotation, EulerAngles,r,g,b, isShowLocalAxis);  // 创建并返回一个 Box 对象
+std::shared_ptr<Box> Box::CreateBox(std::string name, float width, float height, float depth, CVector Position, CMatrix Rotation, CEuler EulerAngles, float r, float g, float b, bool isShowLocalAxis) {
+    return std::make_shared<Box>(name, width, height, depth, Position, Rotation, EulerAngles, r, g, b, isShowLocalAxis);  // 使用 std::make_shared 创建并返回一个 Box 对象
 }
-Box* Box::CreateBox(std::string name,float width, float height, float depth, CVector Position, float r, float g, float b, bool isShowLocalAxis) {
-    return new Box(name,width, height, depth, Position, r, g, b,isShowLocalAxis);  // 创建并返回一个 Box 对象
+
+std::shared_ptr<Box> Box::CreateBox(std::string name, float width, float height, float depth, CVector Position, float r, float g, float b, bool isShowLocalAxis) {
+    return std::make_shared<Box>(name, width, height, depth, Position, r, g, b, isShowLocalAxis);  // 使用 std::make_shared 创建并返回一个 Box 对象
 }
+
 float Box::GetWidth()
 {
     return this->m_width;
@@ -41,9 +43,6 @@ float Box::GetDepth()
 void Box::Draw() const {
     glPushMatrix();  // 保存当前矩阵状态
     Transform::Draw();
-
-
-
     // 绘制填充的面
     glBegin(GL_QUADS);
     glColor3f(r, g, b);

@@ -31,13 +31,10 @@ CVector CEuler::ToCVector()
 // 将欧拉角转换为 CMatrix 矩阵
 CMatrix CEuler::ToCMatrix()const
 {
-    float rad_h = h * (M_PI / 180.0f);  // Yaw
-    float rad_p = p * (M_PI / 180.0f);  // Pitch
-    float rad_b = b * (M_PI / 180.0f);  // Roll
     CMatrix mat = CMatrix::Identity();
-    CMatrix rotationY = CMatrix::CreateRotationMatrixY(rad_h);
-    CMatrix rotationX = CMatrix::CreateRotationMatrixX(rad_p);
-    CMatrix rotationZ = CMatrix::CreateRotationMatrixZ(rad_b);
+    CMatrix rotationY = CMatrix::CreateRotationMatrix(h,CVector::Up());
+    CMatrix rotationX = CMatrix::CreateRotationMatrix(p, CVector::Right());
+    CMatrix rotationZ = CMatrix::CreateRotationMatrix(b, CVector::Forward());
     mat = rotationY*rotationX*rotationZ;
     return mat;
 }

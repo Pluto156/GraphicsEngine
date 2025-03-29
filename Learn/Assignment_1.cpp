@@ -121,8 +121,8 @@ void drawStage()
             float xPos = AreaPos.x - radius * sin(angle);  // 计算x位置
             float yPos = AreaPos.y;  // y位置保持不变
             float zPos = AreaPos.z - radius * cos(angle);  // 计算z位置
-            A.AddBox(Box::CreateBox("A_" + std::to_string(i+1),1, 12, 1, CVector(xPos, yPos, zPos),CMatrix::CreateRotationMatrixY(angle),CEuler(angle*180/M_PI,0,0), 0.117f, 0.506f, 0.69f));
-            A.AddBox(Box::CreateBox("A_" + std::to_string(2*(i+i)),1, 12, 1, CVector(-xPos, yPos, zPos), CMatrix::CreateRotationMatrixY(-angle), CEuler(-angle * 180 / M_PI, 0, 0), 0.117f, 0.506f, 0.69f));
+            A.AddBox(Box::CreateBox("A_" + std::to_string(i+1),1, 12, 1, CVector(xPos, yPos, zPos),CMatrix::CreateRotationMatrix(angle * 180 / M_PI,CVector::Up()),CEuler(angle*180/M_PI,0,0), 0.117f, 0.506f, 0.69f));
+            A.AddBox(Box::CreateBox("A_" + std::to_string(2*(i+i)),1, 12, 1, CVector(-xPos, yPos, zPos), CMatrix::CreateRotationMatrix(-angle * 180 / M_PI, CVector::Up()), CEuler(-angle * 180 / M_PI, 0, 0), 0.117f, 0.506f, 0.69f));
             
         }
 

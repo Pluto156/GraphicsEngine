@@ -3,71 +3,72 @@
   "WorkspaceRootPath": "E:\\sourcecode\\GraphicsEngine\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Stage.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Stage.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Stage.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Stage.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Assignment_1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Assignment_1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\CMatrix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\CMatrix.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\include\\vector||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Transform.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Transform.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\CMatrix.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\CMatrix.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Transform.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Transform.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\OBB.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\OBB.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\CVector.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\CVector.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\InputManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\InputManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Assignment_1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Assignment_1.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Area.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Area.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\CEuler.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\CEuler.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Stage.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Stage.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Box.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Box.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\IManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\IManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Box.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Box.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\CVector.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\CVector.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Area.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Area.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\stdafx.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\stdafx.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Area.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Area.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\CVector.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\CVector.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Transform.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Transform.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\stdafx.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\stdafx.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\PointCollision.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\PointCollision.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\OBB.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\OBB.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\InputManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -86,51 +87,50 @@
       "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\CQuaternion.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\targetver.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\targetver.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Area.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Area.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\stdafx.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\stdafx.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\stdafx.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\stdafx.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\CEuler.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\CEuler.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\CVector.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\CVector.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\OBB.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\OBB.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Stage.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Stage.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\PointCollision.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\PointCollision.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\CMatrix.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\CMatrix.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\OBB.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\OBB.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\CEuler.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\CEuler.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\InputManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\InputManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\IManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\IManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\CQuaternion.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\CQuaternion.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|c:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\include\\xutility||{3B902123-F8A7-4915-9F01-361F908088D0}|"
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\CEuler.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\CEuler.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\PointCollision.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\PointCollision.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\include\\vector||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|c:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\include\\xutility||{3B902123-F8A7-4915-9F01-361F908088D0}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\ucrt\\corecrt_math.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
@@ -149,11 +149,139 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Box.cpp",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Box.cpp",
+              "RelativeDocumentMoniker": "Learn\\Box.cpp",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Box.cpp",
+              "RelativeToolTip": "Learn\\Box.cpp",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAcwBIAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-12T07:57:06.971Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Area.h",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Area.h",
+              "RelativeDocumentMoniker": "Learn\\Area.h",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Area.h",
+              "RelativeToolTip": "Learn\\Area.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-12T08:36:40.298Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Area.cpp",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Area.cpp",
+              "RelativeDocumentMoniker": "Learn\\Area.cpp",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Area.cpp",
+              "RelativeToolTip": "Learn\\Area.cpp",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABwAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-12T07:56:56.023Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Stage.cpp",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Stage.cpp",
+              "RelativeDocumentMoniker": "Learn\\Stage.cpp",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Stage.cpp",
+              "RelativeToolTip": "Learn\\Stage.cpp",
+              "ViewState": "AgIAABAAAAAAAAAAAAAewB0AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-12T07:57:16.318Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CMatrix.h",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CMatrix.h",
+              "RelativeDocumentMoniker": "Learn\\CMatrix.h",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\CMatrix.h",
+              "RelativeToolTip": "Learn\\CMatrix.h",
+              "ViewState": "AgIAAAkAAAAAAAAAAAASwBcAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-13T05:25:03.359Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CMatrix.cpp",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CMatrix.cpp",
+              "RelativeDocumentMoniker": "Learn\\CMatrix.cpp",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\CMatrix.cpp",
+              "RelativeToolTip": "Learn\\CMatrix.cpp",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-13T05:25:51.144Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Assignment_1.cpp",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Assignment_1.cpp",
+              "RelativeDocumentMoniker": "Learn\\Assignment_1.cpp",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Assignment_1.cpp",
+              "RelativeToolTip": "Learn\\Assignment_1.cpp",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAewHsAAACfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-12T07:56:57.763Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CVector.h",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector.h",
+              "RelativeDocumentMoniker": "Learn\\CVector.h",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector.h",
+              "RelativeToolTip": "Learn\\CVector.h",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAvwDsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-13T05:25:23.372Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Transform.h",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Transform.h",
+              "RelativeDocumentMoniker": "Learn\\Transform.h",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Transform.h",
+              "RelativeToolTip": "Learn\\Transform.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-17T07:12:01.81Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Box.h",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Box.h",
+              "RelativeDocumentMoniker": "Learn\\Box.h",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Box.h",
+              "RelativeToolTip": "Learn\\Box.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-12T08:15:51.629Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -161,58 +289,80 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Stage.cpp",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Stage.cpp",
-              "RelativeDocumentMoniker": "Learn\\Stage.cpp",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Stage.cpp",
-              "RelativeToolTip": "Learn\\Stage.cpp",
-              "ViewState": "AgIAADoAAAAAAAAAAAAAAEgAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-12T07:57:16.318Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Camera.cpp",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Camera.cpp",
-              "RelativeDocumentMoniker": "Learn\\Camera.cpp",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Camera.cpp",
-              "RelativeToolTip": "Learn\\Camera.cpp",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAgwFAAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-12T07:57:10.349Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "CEuler.cpp",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CEuler.cpp",
+              "RelativeDocumentMoniker": "Learn\\CEuler.cpp",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\CEuler.cpp",
+              "RelativeToolTip": "Learn\\CEuler.cpp",
+              "ViewState": "AgIAABwAAAAAAAAAAAAewCYAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-19T05:09:21.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Camera.h",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Camera.h",
+              "RelativeDocumentMoniker": "Learn\\Camera.h",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Camera.h",
+              "RelativeToolTip": "Learn\\Camera.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-12T08:45:24.089Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CVector.cpp",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector.cpp",
+              "RelativeDocumentMoniker": "Learn\\CVector.cpp",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector.cpp",
+              "RelativeToolTip": "Learn\\CVector.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-12T07:57:13.616Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "Transform.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Transform.cpp",
               "RelativeDocumentMoniker": "Learn\\Transform.cpp",
               "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Transform.cpp",
               "RelativeToolTip": "Learn\\Transform.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-19T07:12:37.494Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "stdafx.cpp",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\stdafx.cpp",
+              "RelativeDocumentMoniker": "Learn\\stdafx.cpp",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\stdafx.cpp",
+              "RelativeToolTip": "Learn\\stdafx.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-12T07:57:19.15Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PointCollision.cpp",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\PointCollision.cpp",
+              "RelativeDocumentMoniker": "Learn\\PointCollision.cpp",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\PointCollision.cpp",
+              "RelativeToolTip": "Learn\\PointCollision.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-19T07:12:37.494Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-26T05:39:19.512Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "targetver.h",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\targetver.h",
-              "RelativeDocumentMoniker": "Learn\\targetver.h",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\targetver.h",
-              "RelativeToolTip": "Learn\\targetver.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-19T07:42:04.388Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 16,
               "Title": "OBB.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\OBB.cpp",
               "RelativeDocumentMoniker": "Learn\\OBB.cpp",
@@ -220,172 +370,7 @@
               "RelativeToolTip": "Learn\\OBB.cpp",
               "ViewState": "AgIAAHUAAAAAAAAAAAAAAAYAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-26T05:20:06.607Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "vector",
-              "DocumentMoniker": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\include\\vector",
-              "ToolTip": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\include\\vector",
-              "ViewState": "AgIAANAEAAAAAAAAAADgv9kEAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-03-12T08:37:54.562Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Assignment_1.cpp",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Assignment_1.cpp",
-              "RelativeDocumentMoniker": "Learn\\Assignment_1.cpp",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Assignment_1.cpp",
-              "RelativeToolTip": "Learn\\Assignment_1.cpp",
-              "ViewState": "AgIAAIoAAAAAAAAAAAAgwJcAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-12T07:56:57.763Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Stage.h",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Stage.h",
-              "RelativeDocumentMoniker": "Learn\\Stage.h",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Stage.h",
-              "RelativeToolTip": "Learn\\Stage.h",
-              "ViewState": "AgIAABsAAAAAAAAAAAAgwCkAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-12T08:36:47.109Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CMatrix.cpp",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CMatrix.cpp",
-              "RelativeDocumentMoniker": "Learn\\CMatrix.cpp",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\CMatrix.cpp",
-              "RelativeToolTip": "Learn\\CMatrix.cpp",
-              "ViewState": "AgIAAKcAAAAAAAAAAAAgwK4AAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-13T05:25:51.144Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Area.cpp",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Area.cpp",
-              "RelativeDocumentMoniker": "Learn\\Area.cpp",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Area.cpp",
-              "RelativeToolTip": "Learn\\Area.cpp",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAawBcAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-12T07:56:56.023Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Transform.h",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Transform.h",
-              "RelativeDocumentMoniker": "Learn\\Transform.h",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Transform.h",
-              "RelativeToolTip": "Learn\\Transform.h",
-              "ViewState": "AgIAADYAAAAAAAAAAAAawEYAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-17T07:12:01.81Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Camera.h",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Camera.h",
-              "RelativeDocumentMoniker": "Learn\\Camera.h",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Camera.h",
-              "RelativeToolTip": "Learn\\Camera.h",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAgwBEAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-12T08:45:24.089Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "CVector.h",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector.h",
-              "RelativeDocumentMoniker": "Learn\\CVector.h",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector.h",
-              "RelativeToolTip": "Learn\\CVector.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-13T05:25:23.372Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "InputManager.h",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\InputManager.h",
-              "RelativeDocumentMoniker": "Learn\\InputManager.h",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\InputManager.h",
-              "RelativeToolTip": "Learn\\InputManager.h",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAgAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-28T06:46:23.914Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Box.cpp",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Box.cpp",
-              "RelativeDocumentMoniker": "Learn\\Box.cpp",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Box.cpp",
-              "RelativeToolTip": "Learn\\Box.cpp",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAawCgAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-12T07:57:06.971Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "IManager.h",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\IManager.h",
-              "RelativeDocumentMoniker": "Learn\\IManager.h",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\IManager.h",
-              "RelativeToolTip": "Learn\\IManager.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-28T07:02:24.732Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Box.h",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Box.h",
-              "RelativeDocumentMoniker": "Learn\\Box.h",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Box.h",
-              "RelativeToolTip": "Learn\\Box.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-12T08:15:51.629Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "stdafx.h",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\stdafx.h",
-              "RelativeDocumentMoniker": "Learn\\stdafx.h",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\stdafx.h",
-              "RelativeToolTip": "Learn\\stdafx.h",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-13T06:35:32.603Z"
+              "WhenOpened": "2025-03-26T05:20:06.607Z"
             },
             {
               "$type": "Document",
@@ -413,18 +398,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "CQuaternion.cpp",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CQuaternion.cpp",
-              "RelativeDocumentMoniker": "Learn\\CQuaternion.cpp",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\CQuaternion.cpp",
-              "RelativeToolTip": "Learn\\CQuaternion.cpp",
-              "ViewState": "AgIAAJAAAAAAAAAAAAAAAA0AAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-13T06:50:10.141Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 19,
               "Title": "IInputControl.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\IInputControl.cpp",
@@ -437,39 +410,75 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "stdafx.cpp",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\stdafx.cpp",
-              "RelativeDocumentMoniker": "Learn\\stdafx.cpp",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\stdafx.cpp",
-              "RelativeToolTip": "Learn\\stdafx.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAAA==",
+              "DocumentIndex": 20,
+              "Title": "CQuaternion.cpp",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CQuaternion.cpp",
+              "RelativeDocumentMoniker": "Learn\\CQuaternion.cpp",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\CQuaternion.cpp",
+              "RelativeToolTip": "Learn\\CQuaternion.cpp",
+              "ViewState": "AgIAAJAAAAAAAAAAAAAAAA0AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-12T07:57:19.15Z"
+              "WhenOpened": "2025-03-13T06:50:10.141Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "CEuler.h",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CEuler.h",
-              "RelativeDocumentMoniker": "Learn\\CEuler.h",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\CEuler.h",
-              "RelativeToolTip": "Learn\\CEuler.h",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABsAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-19T05:09:04.658Z"
+              "DocumentIndex": 21,
+              "Title": "Camera.cpp",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Camera.cpp",
+              "RelativeDocumentMoniker": "Learn\\Camera.cpp",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Camera.cpp",
+              "RelativeToolTip": "Learn\\Camera.cpp",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAgwFAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-12T07:57:10.349Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 22,
-              "Title": "Area.h",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Area.h",
-              "RelativeDocumentMoniker": "Learn\\Area.h",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Area.h",
-              "RelativeToolTip": "Learn\\Area.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAANAAAAAAAAAA==",
+              "Title": "targetver.h",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\targetver.h",
+              "RelativeDocumentMoniker": "Learn\\targetver.h",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\targetver.h",
+              "RelativeToolTip": "Learn\\targetver.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-12T08:36:40.298Z"
+              "WhenOpened": "2025-03-19T07:42:04.388Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "stdafx.h",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\stdafx.h",
+              "RelativeDocumentMoniker": "Learn\\stdafx.h",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\stdafx.h",
+              "RelativeToolTip": "Learn\\stdafx.h",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-13T06:35:32.603Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Stage.h",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Stage.h",
+              "RelativeDocumentMoniker": "Learn\\Stage.h",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Stage.h",
+              "RelativeToolTip": "Learn\\Stage.h",
+              "ViewState": "AgIAABsAAAAAAAAAAAAgwCkAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-12T08:36:47.109Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "PointCollision.h",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\PointCollision.h",
+              "RelativeDocumentMoniker": "Learn\\PointCollision.h",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\PointCollision.h",
+              "RelativeToolTip": "Learn\\PointCollision.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-26T05:38:53.441Z"
             },
             {
               "$type": "Document",
@@ -485,55 +494,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "CVector.cpp",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector.cpp",
-              "RelativeDocumentMoniker": "Learn\\CVector.cpp",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector.cpp",
-              "RelativeToolTip": "Learn\\CVector.cpp",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAcwFcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-12T07:57:13.616Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 27,
-              "Title": "PointCollision.h",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\PointCollision.h",
-              "RelativeDocumentMoniker": "Learn\\PointCollision.h",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\PointCollision.h",
-              "RelativeToolTip": "Learn\\PointCollision.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAYAAAAAAAAAA==",
+              "Title": "InputManager.h",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\InputManager.h",
+              "RelativeDocumentMoniker": "Learn\\InputManager.h",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\InputManager.h",
+              "RelativeToolTip": "Learn\\InputManager.h",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAgAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-26T05:38:53.441Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "CEuler.cpp",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CEuler.cpp",
-              "RelativeDocumentMoniker": "Learn\\CEuler.cpp",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\CEuler.cpp",
-              "RelativeToolTip": "Learn\\CEuler.cpp",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAADAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-19T05:09:21.079Z"
+              "WhenOpened": "2025-03-28T06:46:23.914Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 28,
-              "Title": "CMatrix.h",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CMatrix.h",
-              "RelativeDocumentMoniker": "Learn\\CMatrix.h",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\CMatrix.h",
-              "RelativeToolTip": "Learn\\CMatrix.h",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAACcAAAAYAAAAAAAAAA==",
+              "Title": "IManager.h",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\IManager.h",
+              "RelativeDocumentMoniker": "Learn\\IManager.h",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\IManager.h",
+              "RelativeToolTip": "Learn\\IManager.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-03-13T05:25:03.359Z"
+              "WhenOpened": "2025-03-28T07:02:24.732Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 29,
               "Title": "CQuaternion.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CQuaternion.h",
               "RelativeDocumentMoniker": "Learn\\CQuaternion.h",
@@ -545,25 +530,35 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "CEuler.h",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CEuler.h",
+              "RelativeDocumentMoniker": "Learn\\CEuler.h",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\CEuler.h",
+              "RelativeToolTip": "Learn\\CEuler.h",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABsAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-19T05:09:04.658Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 31,
+              "Title": "vector",
+              "DocumentMoniker": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\include\\vector",
+              "ToolTip": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\include\\vector",
+              "ViewState": "AgIAANAEAAAAAAAAAADgv9kEAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-03-12T08:37:54.562Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
               "Title": "xutility",
               "DocumentMoniker": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\include\\xutility",
               "ToolTip": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\include\\xutility",
               "ViewState": "AgIAABsBAAAAAAAAAAAswCcBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-03-26T09:53:25.365Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "PointCollision.cpp",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\PointCollision.cpp",
-              "RelativeDocumentMoniker": "Learn\\PointCollision.cpp",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\PointCollision.cpp",
-              "RelativeToolTip": "Learn\\PointCollision.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-03-26T05:39:19.512Z"
             },
             {
               "$type": "Document",

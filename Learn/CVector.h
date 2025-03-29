@@ -51,6 +51,24 @@ public:
     std::string ToString();
 
     CEuler ToEuler();
+
+    const static CVector& Up()
+    {
+        const static CVector Up(0,1,0);
+        return Up;
+    }
+
+    const static CVector& Right()
+    {
+        const static CVector Right(1, 0, 0);
+        return Right;
+    }
+
+    const static CVector& Forward()
+    {
+        const static CVector Forward(0, 0, 1);
+        return Forward;
+    }
 };
 
 // 计算两向量间的距离

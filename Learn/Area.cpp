@@ -12,21 +12,19 @@ size_t Area::GetBoxCount() const {
 }
 
 // 向区域添加一个 Box
-void Area::AddBox(Box* box) {
+void Area::AddBox(std::shared_ptr<Box> box) {
     boxes.push_back(box);
-    
-    AddChild(box);  // 添加 Box 到子 Transform 列表
+    AddChild(box.get());  // 添加 Box 到子 Transform 列表
 }
 
 // 绘制该区域内的所有 Box
 void Area::Draw() const {
     for (const auto box : boxes) {
         box->Draw();
-
     }
 }
 
-std::vector<Box*> Area::GetBoxes()
+std::vector<std::shared_ptr<Box>> Area::GetBoxes()
 {
     return boxes;
 }
