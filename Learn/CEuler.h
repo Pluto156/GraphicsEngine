@@ -22,7 +22,10 @@ public:
     CEuler operator-(const CEuler& other) const {
         return CEuler(h - other.h, p - other.p, b - other.b);
     }
-
+    CEuler operator-() const
+    {
+        return CEuler(-h, -p, -b);
+    }
     CEuler();
     CEuler(float fh, float fp, float fb);
     std::string ToString();

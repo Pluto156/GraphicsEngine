@@ -11,16 +11,16 @@ public:
     void AddArea(Area* area);
 
     // 绘制所有区域
-    void Draw() const;
-    void Update() override;
+    void Draw() override;
 
     void IntersectWithRay(
         const CVector& origin,
         const CVector& direct,
         float length) const;
-    mutable Box* curSelectBox;
+    mutable std::shared_ptr<Shape> curSelectShape;
 
     void processKeyboard(unsigned char key, int x, int y)override;
+    void processSpecialKeys(int key, int x, int y) override;
     void processMouse(int button, int state, int x, int y)override;
     void processMouseMotion(int x, int y)override;
 

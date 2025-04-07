@@ -9,6 +9,7 @@
 
 #include <stdio.h>
 #include <algorithm>  
+#include <memory>  
 #include <tchar.h>
 #include "glut.h"
 #include "math.h"
@@ -19,6 +20,8 @@
 #include "CEuler.h"
 #include "Box.h"
 #include "Camera.h"
+#include "CglFont.h"
+#include "ShapeFactory.h"
 #include "Stage.h"
 #include <iostream>
 #include <queue>

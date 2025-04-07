@@ -14,6 +14,7 @@ public:
         }
 
         virtual void processKeyboard(unsigned char key, int x, int y) = 0;
+        virtual void processSpecialKeys(int key, int x, int y) = 0;
         virtual void processMouse(int button, int state, int x, int y) = 0;
         virtual void processMouseMotion(int x, int y) = 0;
     };
@@ -38,6 +39,10 @@ public:
         keyboard_events_.push({ key, x, y });
     }
 
+    void enqueueSpecialKeyEvent(int key, int x, int y) {
+        specialkey_events_.push({ key, x, y });
+    }
+
     void enqueueMouseEvent(int button, int state, int x, int y) {
         mouse_events_.push({ button, state, x, y });
     }
@@ -54,6 +59,14 @@ public:
                 control->processKeyboard(event.key, event.x, event.y);
             }
             keyboard_events_.pop();
+        }
+
+        while (!specialkey_events_.empty()) {
+            auto& event = specialkey_events_.front();
+            for (auto* control : controls_) {
+                control->processSpecialKeys(event.key, event.x, event.y);
+            }
+            specialkey_events_.pop();
         }
 
         // 处理鼠标事件
@@ -82,6 +95,12 @@ private:
         int y;
     };
 
+    struct SpecialKeyEvent {
+        int key;
+        int x;
+        int y;
+    };
+
     struct MouseEvent {
         int button;
         int state;
@@ -96,6 +115,7 @@ private:
 
     std::vector<IInputControl*> controls_;
     std::queue<KeyboardEvent> keyboard_events_;
+    std::queue<SpecialKeyEvent> specialkey_events_;
     std::queue<MouseEvent> mouse_events_;
     std::queue<MouseMotionEvent> mouse_motion_events_;
 

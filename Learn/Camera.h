@@ -9,11 +9,8 @@
 class Camera:public Transform,public InputManager::IInputControl
 {
 public:
-    // 摄像机位置、目标和上向量
+    // 摄像机目标
     CVector camTarget;
-    CVector camUp;
-    CVector camForward;
-    CVector camRight;
 
     float prevMouseX;
     float prevMouseY;
@@ -27,26 +24,20 @@ public:
     float camRotateSpeed;
 
     bool isControlView;
+    int ControlViewMode;//0为欧拉角 1为子坐标
 
     // 构造函数，初始化摄像机参数
     Camera();
     ~Camera();
 
-    CVector GetCamForward();
-    CVector GetCamRight();
-    CVector GetCamUp();
-
-
-    void MoveCamera(CVector dir);
+    void UpdateFRU() override;
+    void Update() override;
 
     void processKeyboard(unsigned char key, int x, int y)override;
+    void processSpecialKeys(int key, int x, int y) override;
     void processMouse(int button, int state, int x, int y)override;
     void processMouseMotion(int x, int y)override;
 
-    // 更新摄像机视角
-    void updateCameraView();
-
     void CameraDebug();
-
     void LookAt();
 };

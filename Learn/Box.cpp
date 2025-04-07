@@ -3,25 +3,16 @@
 
 // 构造函数，初始化盒子的长宽高和中心坐标
 Box::Box(std::string name,float width, float height, float depth, CVector Position, float r, float g, float b, bool isShowLocalAxis)
-    : m_width(width), m_height(height), m_depth(depth), Transform(name,Position,CMatrix(),CEuler(), isShowLocalAxis), r(r), g(g), b(b),isSelect(false) {
+    : m_width(width), m_height(height), m_depth(depth), Shape(name,Position,CMatrix(),CEuler(), isShowLocalAxis), r(r), g(g), b(b){
     obb.halfSizes = CVector(width / 2, height / 2, depth / 2);
     //Draw();
 }
 
 // 构造函数，初始化盒子的长宽高和中心坐标
 Box::Box(std::string name,float width, float height, float depth, CVector Position, CMatrix Rotation, CEuler EulerAngles, float r, float g, float b, bool isShowLocalAxis)
-    : m_width(width), m_height(height), m_depth(depth), Transform(name,Position, Rotation, EulerAngles, isShowLocalAxis), r(r), g(g), b(b), isSelect(false) {
+    : m_width(width), m_height(height), m_depth(depth), Shape(name,Position, Rotation, EulerAngles, isShowLocalAxis), r(r), g(g), b(b) {
     obb.halfSizes = CVector(width / 2, height / 2, depth / 2);
     //Draw();
-}
-
-// 静态工厂方法，用于创建并返回一个 Box 对象
-std::shared_ptr<Box> Box::CreateBox(std::string name, float width, float height, float depth, CVector Position, CMatrix Rotation, CEuler EulerAngles, float r, float g, float b, bool isShowLocalAxis) {
-    return std::make_shared<Box>(name, width, height, depth, Position, Rotation, EulerAngles, r, g, b, isShowLocalAxis);  // 使用 std::make_shared 创建并返回一个 Box 对象
-}
-
-std::shared_ptr<Box> Box::CreateBox(std::string name, float width, float height, float depth, CVector Position, float r, float g, float b, bool isShowLocalAxis) {
-    return std::make_shared<Box>(name, width, height, depth, Position, r, g, b, isShowLocalAxis);  // 使用 std::make_shared 创建并返回一个 Box 对象
 }
 
 float Box::GetWidth()
@@ -40,9 +31,8 @@ float Box::GetDepth()
 }
 
 
-void Box::Draw() const {
-    glPushMatrix();  // 保存当前矩阵状态
-    Transform::Draw();
+void Box::Draw() {
+    Shape::Draw();
     // 绘制填充的面
     glBegin(GL_QUADS);
     glColor3f(r, g, b);
@@ -178,7 +168,6 @@ void Box::Draw() const {
 
     glEnd();  // 结束绘制边界
 
-    glPopMatrix();  // 恢复矩阵状态
 }
 
 std::string Box::ToString()

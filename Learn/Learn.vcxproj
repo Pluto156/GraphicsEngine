@@ -150,6 +150,7 @@
     <ClInclude Include="Box.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CEuler.h" />
+    <ClInclude Include="CglFont.h" />
     <ClInclude Include="CMatrix.h" />
     <ClInclude Include="CQuaternion.h" />
     <ClInclude Include="CVector.h" />
@@ -157,6 +158,8 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="OBB.h" />
     <ClInclude Include="PointCollision.h" />
+    <ClInclude Include="Shape.h" />
+    <ClInclude Include="ShapeFactory.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -167,15 +170,18 @@
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CEuler.cpp" />
+    <ClCompile Include="CglFont.cpp" />
     <ClCompile Include="CMatrix.cpp" />
     <ClCompile Include="CQuaternion.cpp" />
     <ClCompile Include="CVector.cpp" />
-    <ClCompile Include="Assignment_1.cpp" />
+    <ClCompile Include="Assignment_2.cpp" />
     <ClCompile Include="IInputControl.cpp" />
     <ClCompile Include="IManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="OBB.cpp" />
     <ClCompile Include="PointCollision.cpp" />
+    <ClCompile Include="Shape.cpp" />
+    <ClCompile Include="ShapeFactory.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

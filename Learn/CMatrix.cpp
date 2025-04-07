@@ -98,13 +98,15 @@ CVector CMatrix::posMul(const CVector& p)
 
 void CMatrix::SetRotate(float angle, const CVector& axis)
 {
+    CVector t = axis;
+    t.Normalize();
     angle = (angle)*M_PI / 180;
     float costheta = cos(angle);
     float sintheta = sin(angle);
 
-    m00 = axis.x* axis.x*(1-costheta)+ costheta; m10 = axis.x * axis.y * (1 - costheta) + axis.z*sintheta; m20 = axis.x * axis.z * (1 - costheta) - axis.y * sintheta; m30 = 0;
-    m01 = axis.x * axis.y * (1 - costheta) - axis.z * sintheta; m11 = axis.y * axis.y * (1 - costheta) + costheta; m21 = axis.y * axis.z * (1 - costheta) + axis.x * sintheta; m31 = 0;
-    m02 = axis.x * axis.z * (1 - costheta) + axis.y * sintheta; m12 = axis.y * axis.z * (1 - costheta) - axis.x * sintheta; m22 = axis.z * axis.z * (1 - costheta) + costheta; m32 = 0;
+    m00 = t.x* t.x*(1-costheta)+ costheta; m10 = t.x * t.y * (1 - costheta) + t.z*sintheta; m20 = t.x * t.z * (1 - costheta) - t.y * sintheta; m30 = 0;
+    m01 = t.x * t.y * (1 - costheta) - t.z * sintheta; m11 = t.y * t.y * (1 - costheta) + costheta; m21 = t.y * t.z * (1 - costheta) + t.x * sintheta; m31 = 0;
+    m02 = t.x * t.z * (1 - costheta) + t.y * sintheta; m12 = t.y * t.z * (1 - costheta) - t.x * sintheta; m22 = t.z * t.z * (1 - costheta) + costheta; m32 = 0;
     m03 = 0; m13 =0; m23 = 0; m33 = 1;
 }
 
@@ -181,18 +183,26 @@ CMatrix CMatrix::GetInverse()
 
 
 CMatrix CMatrix::CreateRotationMatrix(float angle, const CVector& axis) {
+    CVector t = axis;
+    t.Normalize();
     CMatrix mat;
     angle = (angle)*M_PI / 180;
     float costheta = cos(angle);
     float sintheta = sin(angle);
 
-    mat.m00 = axis.x * axis.x * (1 - costheta) + costheta; mat.m10 = axis.x * axis.y * (1 - costheta) + axis.z * sintheta; mat.m20 = axis.x * axis.z * (1 - costheta) - axis.y * sintheta; mat.m30 = 0;
-    mat.m01 = axis.x * axis.y * (1 - costheta) - axis.z * sintheta; mat.m11 = axis.y * axis.y * (1 - costheta) + costheta; mat.m21 = axis.y * axis.z * (1 - costheta) + axis.x * sintheta; mat.m31 = 0;
-    mat.m02 = axis.x * axis.z * (1 - costheta) + axis.y * sintheta; mat.m12 = axis.y * axis.z * (1 - costheta) - axis.x * sintheta; mat.m22 = axis.z * axis.z * (1 - costheta) + costheta; mat.m32 = 0;
+    mat.m00 = t.x * t.x * (1 - costheta) + costheta; mat.m10 = t.x * t.y * (1 - costheta) + t.z * sintheta; mat.m20 = t.x * t.z * (1 - costheta) - t.y * sintheta; mat.m30 = 0;
+    mat.m01 = t.x * t.y * (1 - costheta) - t.z * sintheta; mat.m11 = t.y * t.y * (1 - costheta) + costheta; mat.m21 = t.y * t.z * (1 - costheta) + t.x * sintheta; mat.m31 = 0;
+    mat.m02 = t.x * t.z * (1 - costheta) + t.y * sintheta; mat.m12 = t.y * t.z * (1 - costheta) - t.x * sintheta; mat.m22 = t.z * t.z * (1 - costheta) + costheta; mat.m32 = 0;
     mat.m03 = 0; mat.m13 = 0; mat.m23 = 0; mat.m33 = 1;
 
     return mat;
 }
+
+CMatrix CMatrix::CreateRotationMatrix(const CVector& lookDir)
+{
+    return lookDir.ToCMatrix();
+}
+
 
 CVector CMatrix::GetForward()
 {

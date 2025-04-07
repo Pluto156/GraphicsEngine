@@ -3,6 +3,8 @@
 #include <string>
 
 class CEuler;
+class CMatrix;
+
 class CVector
 {
 public:
@@ -45,16 +47,21 @@ public:
     // 向量距离
     float distanceTo(const CVector& v) const;  // 新增的距离函数
 
+    // 向量取反（通过重载 - 运算符）
+    CVector operator-() const;
+
     // 转换为float*类型，用于GL传递数据
     operator float* () { return &x; }
 
     std::string ToString();
 
-    CEuler ToEuler();
+    CEuler ToEuler() const;
+    CMatrix ToCMatrix() const;
+
 
     const static CVector& Up()
     {
-        const static CVector Up(0,1,0);
+        const static CVector Up(0, 1, 0);
         return Up;
     }
 

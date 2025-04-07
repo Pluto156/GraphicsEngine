@@ -1,78 +1,76 @@
 #include "stdafx.h"
 #include "Camera.h"
 
-
 Camera::Camera()
-    : Transform("Camera",CVector(0, 30, 30)), camTarget(0, 0, 0), camUp(0, 1, 0),
+    : Transform("Camera",CVector(0, 30, 30)), camTarget(0, 0, 0),
     camAngleX(0.0f), camAngleY(0.0f),
-    camMoveSpeed(0.1f), camRotateSpeed(0.5f),isControlView(false)
+    camMoveSpeed(0.1f), camRotateSpeed(0.5f),isControlView(false),ControlViewMode(0)
 {
     //z
-    camForward = camTarget - position;
-    camForward.Normalize();
+    Forward = camTarget - position;
+    Forward.Normalize();
     //x
-    camRight = camForward.crossMul(CVector(0, 1, 0));
-    camRight.Normalize();
+    Right = Forward.crossMul(CVector(0, 1, 0));
+    Right.Normalize();
     //y
-    camUp = camRight.crossMul(camForward);
-    camUp.Normalize();
+    Up = Right.crossMul(Forward);
+    Up.Normalize();
     // 创建旋转矩阵
     float m[16] = {
-        camRight.x, camRight.y, camRight.z, 0,
-        camUp.x, camUp.y, camUp.z, 0,
-        -camForward.x, -camForward.y, -camForward.z, 0,
+        Right.x, Right.y, Right.z, 0,
+        Up.x, Up.y, Up.z, 0,
+        -Forward.x, -Forward.y, -Forward.z, 0,
         0,          0,          0,          1
     };
 
-    // 初始化旋转矩阵
-    rotation.Set(m);
-    eulerAngles = (camForward*(-1)).ToEuler();
+    SetRotation(m);
+    SetEulerAngles((-Forward).ToEuler());
 }
 
 
 Camera::~Camera()
 {
 }
-CVector Camera::GetCamForward(){
-    // 计算并更新前向向量
-    camForward = rotation.GetForward()*(-1);
-    return camForward;  
+void Camera::UpdateFRU(){
+    Forward = rotation.GetForward()*(-1);
+    Right = rotation.GetRight();
+    Up = rotation.GetUp();
 }
-
-CVector Camera::GetCamRight() {
-    // 计算并更新前向向量
-    camRight = rotation.GetRight();
-    return camRight;
-}
-
-CVector Camera::GetCamUp()
-{
-    camUp = rotation.GetUp();
-    return camUp;
-}
-void Camera::MoveCamera(CVector dir)
-{
-    CVector camforward = GetCamForward();
+void Camera::Update() {
+    CameraDebug();
 }
 
 void Camera::processKeyboard(unsigned char key, int x, int y)
 {
     if (key == 'w')  // 向前
     {
-        position = position + camForward*camMoveSpeed;
+        SetPositionDelta(Forward * camMoveSpeed);
     }
     if (key == 's')  // 向后
     {
-        position = position - camForward * camMoveSpeed;
+        SetPositionDelta(-Forward * camMoveSpeed);
     }
     if (key == 'a')  // 向左
     {
-        position = position - camRight * camMoveSpeed;
+        SetPositionDelta(-Right * camMoveSpeed);
     }
     if (key == 'd')  // 向右
     {
-        position = position + camRight * camMoveSpeed;
+        SetPositionDelta(Right * camMoveSpeed);
     }
+    if (key == '1')
+    {
+        /*if (ControlViewMode == 1)
+        {
+            SetEulerAngles(eulerAngles.h,eulerAngles.p,0);
+        }
+        ControlViewMode = ControlViewMode == 0 ? 1 : 0;*/
+    }
+}
+
+void Camera::processSpecialKeys(int key, int x, int y)
+{
+    
 }
 
 void Camera::processMouse(int button, int state, int x, int y)
@@ -103,39 +101,45 @@ void Camera::processMouseMotion(int x, int y)
     // 根据鼠标移动调整视角
     camAngleY = (x - prevMouseX) * camRotateSpeed;  // 水平方向旋转
     camAngleX = (y - prevMouseY) * camRotateSpeed;  // 垂直方向旋转
-
-    eulerAngles.h -= camAngleY;
-    eulerAngles.p -= camAngleX ;
-
-
-    // 限制垂直视角的范围，避免摄像机完全翻转
-    if (eulerAngles.p > 89.0f) eulerAngles.p = 89.0f;
-    if (eulerAngles.p < -89.0f) eulerAngles.p = -89.0f;
-
-    // 更新摄像机目标
-    updateCameraView();
+    
+    if (ControlViewMode == 0)
+    {
+        SetEulerAnglesDelta(-camAngleY, -camAngleX, 0);
+    }
+    else if (ControlViewMode == 1)
+    {
+        SetRotationDelta(CMatrix::CreateRotationMatrix(camAngleY, CVector::Up()));
+        SetRotationDelta(CMatrix::CreateRotationMatrix(camAngleX, CVector::Right()));
+    }
 
     prevMouseX = x;
     prevMouseY = y;
 }
 
-void Camera::updateCameraView()
-{
-    rotation = eulerAngles.ToCMatrix();
-    GetCamForward();
-    GetCamRight();
-    GetCamUp();
-}
-
 void Camera::CameraDebug()
 {
-    std::cout << "CamPos: " << position.ToString() << " CamTarget: " << camTarget.ToString() << " CamForward: " << GetCamForward().ToString() << " CamUp: " << camUp.ToString() << std::endl;
+    // 绘制文本
+    infoFont.DrawString(cameraInfo);
+    // 构建显示信息
+    sprintf_s(cameraInfo, "Camera Position: (%.1f, %.1f, %.1f) Camera ControlViewMode:(%d)",
+        position.x, position.y, position.z, ControlViewMode);
+    //std::cout << "CamPos: " << position.ToString() << " CamTarget: " << camTarget.ToString() << " CamForward: " << Forward.ToString() << " CamUp: " << Up.ToString() << std::endl;
 }
 
 void Camera::LookAt()
 {
-    glRotatef(-eulerAngles.b, 0, 0, 1);
-    glRotatef(-eulerAngles.p, 1, 0, 0);
-    glRotatef(-eulerAngles.h, 0, 1, 0);
+    if (ControlViewMode == 0)
+    {
+        glRotatef(-eulerAngles.b, 0, 0, 1);
+        glRotatef(-eulerAngles.p, 1, 0, 0);
+        glRotatef(-eulerAngles.h, 0, 1, 0);
+    }
+    else if (ControlViewMode == 1)
+    {
+        //glMultMatrixf(rotation);
+        glRotatef(-eulerAngles.b, 0, 0, 1);
+        glRotatef(-eulerAngles.p, 1, 0, 0);
+        glRotatef(-eulerAngles.h, 0, 1, 0);
+    }
     glTranslatef(-position.x, -position.y, -position.z);
 }
