@@ -2,7 +2,7 @@
 #include "CVector.h"
 #include "CMatrix.h"
 #include "PointCollision.h"
-class OBB {
+class OBB :public Component{
 public:
     CVector center;      // 盒子中心
     CVector halfSizes;   // 半尺寸
@@ -12,9 +12,9 @@ public:
         : center(center), halfSizes(halfSizes), rotation(rotation) {
     }
 
-    void Update(const CVector& newCenter, const CMatrix& newRotation) {
-        center = newCenter;
-        rotation = newRotation;
+    void Update() override{
+        center = gameObject->transform->position;
+        rotation = gameObject->transform->rotation;
     }
 
     float IntersectWithRayAndOBB(

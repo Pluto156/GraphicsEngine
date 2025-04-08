@@ -146,14 +146,16 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Area.h" />
     <ClInclude Include="Box.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CEuler.h" />
     <ClInclude Include="CglFont.h" />
     <ClInclude Include="CMatrix.h" />
+    <ClInclude Include="Component.h" />
     <ClInclude Include="CQuaternion.h" />
     <ClInclude Include="CVector.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="IManager.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="OBB.h" />
@@ -166,16 +168,17 @@
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Area.cpp" />
     <ClCompile Include="Box.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CEuler.cpp" />
     <ClCompile Include="CglFont.cpp" />
     <ClCompile Include="CMatrix.cpp" />
+    <ClCompile Include="Component.cpp" />
     <ClCompile Include="CQuaternion.cpp" />
     <ClCompile Include="CVector.cpp" />
     <ClCompile Include="Assignment_2.cpp" />
-    <ClCompile Include="IInputControl.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="IManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="OBB.cpp" />

@@ -13,6 +13,24 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="头文件\Math">
+      <UniqueIdentifier>{df1fe875-4ae1-42a0-b57d-ff957f3982d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Math">
+      <UniqueIdentifier>{a110f11d-da86-4031-9292-68d48debd92c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Engine">
+      <UniqueIdentifier>{e9424430-a966-4dd8-a43f-788c9d765d9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Engine">
+      <UniqueIdentifier>{39be25ec-dd4c-466f-9740-57a7b8d232b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Physics">
+      <UniqueIdentifier>{5e044029-704e-4d7d-9133-2816da7f4002}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Physics">
+      <UniqueIdentifier>{ac20a182-35e5-4767-9129-4069ce5a68d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -24,9 +42,6 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="CVector.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Box.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -36,41 +51,50 @@
     <ClInclude Include="Stage.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Area.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="CMatrix.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="CQuaternion.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="CEuler.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="OBB.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="PointCollision.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="InputManager.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="IManager.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="CglFont.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="ShapeFactory.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Shape.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CEuler.h">
+      <Filter>头文件\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="CMatrix.h">
+      <Filter>头文件\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="CQuaternion.h">
+      <Filter>头文件\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="CVector.h">
+      <Filter>头文件\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="CglFont.h">
+      <Filter>头文件\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="IManager.h">
+      <Filter>头文件\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>头文件\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="OBB.h">
+      <Filter>头文件\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="PointCollision.h">
+      <Filter>头文件\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>头文件\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>头文件\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectManager.h">
+      <Filter>头文件\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>头文件\Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -78,9 +102,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Assignment_2.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="CVector.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Box.cpp">
@@ -92,37 +113,10 @@
     <ClCompile Include="Stage.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Area.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="CMatrix.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="CQuaternion.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Transform.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="CEuler.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="OBB.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="PointCollision.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="IInputControl.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="InputManager.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="IManager.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="CglFont.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ShapeFactory.cpp">
@@ -130,6 +124,39 @@
     </ClCompile>
     <ClCompile Include="Shape.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CEuler.cpp">
+      <Filter>源文件\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="CMatrix.cpp">
+      <Filter>源文件\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="CQuaternion.cpp">
+      <Filter>源文件\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="CVector.cpp">
+      <Filter>源文件\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="CglFont.cpp">
+      <Filter>源文件\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="IManager.cpp">
+      <Filter>源文件\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>源文件\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>源文件\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>源文件\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectManager.cpp">
+      <Filter>源文件\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>源文件\Engine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

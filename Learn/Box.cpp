@@ -4,15 +4,13 @@
 // 构造函数，初始化盒子的长宽高和中心坐标
 Box::Box(std::string name,float width, float height, float depth, CVector Position, float r, float g, float b, bool isShowLocalAxis)
     : m_width(width), m_height(height), m_depth(depth), Shape(name,Position,CMatrix(),CEuler(), isShowLocalAxis), r(r), g(g), b(b){
-    obb.halfSizes = CVector(width / 2, height / 2, depth / 2);
-    //Draw();
+    obb = AddComponent<OBB>(Position, CVector(width / 2, height / 2, depth / 2));
 }
 
 // 构造函数，初始化盒子的长宽高和中心坐标
 Box::Box(std::string name,float width, float height, float depth, CVector Position, CMatrix Rotation, CEuler EulerAngles, float r, float g, float b, bool isShowLocalAxis)
     : m_width(width), m_height(height), m_depth(depth), Shape(name,Position, Rotation, EulerAngles, isShowLocalAxis), r(r), g(g), b(b) {
-    obb.halfSizes = CVector(width / 2, height / 2, depth / 2);
-    //Draw();
+    obb = AddComponent<OBB>(Position, CVector(width / 2, height / 2, depth / 2));
 }
 
 float Box::GetWidth()
@@ -32,7 +30,6 @@ float Box::GetDepth()
 
 
 void Box::Draw() {
-    Shape::Draw();
     // 绘制填充的面
     glBegin(GL_QUADS);
     glColor3f(r, g, b);
@@ -170,9 +167,5 @@ void Box::Draw() {
 
 }
 
-std::string Box::ToString()
-{
-    return "name: " + name + "\n position: " + position.ToString() + "\n eulerAngles: " + eulerAngles.ToString() + "\n rotation: " + rotation.ToString()
-        + "\n localposition: " + localPosition.ToString() + "\n localEulerAngles: " + localEulerAngles.ToString() + "\n localRotation: " + localRotation.ToString()+"\n";
-}
+
 

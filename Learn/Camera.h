@@ -6,7 +6,7 @@
 #include "corecrt_math_defines.h"
 #include <iostream>
 
-class Camera:public Transform,public InputManager::IInputControl
+class Camera:public GameObject,public InputManager::IInputControl
 {
 public:
     // 摄像机目标
@@ -30,14 +30,11 @@ public:
     Camera();
     ~Camera();
 
-    void UpdateFRU() override;
-    void Update() override;
-
     void processKeyboard(unsigned char key, int x, int y)override;
     void processSpecialKeys(int key, int x, int y) override;
     void processMouse(int button, int state, int x, int y)override;
     void processMouseMotion(int x, int y)override;
 
-    void CameraDebug();
     void LookAt();
+
 };

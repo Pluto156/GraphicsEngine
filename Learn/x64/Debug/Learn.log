@@ -12,25 +12,25 @@ e:\sourcecode\graphicsengine\learn\stage.h : warning C4819: 该文件包含不�
   Transform.cpp
   Stage.cpp
 e:\sourcecode\graphicsengine\learn\stage.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-e:\sourcecode\graphicsengine\learn\stage.cpp(19): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\stage.cpp(34): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\stage.cpp(45): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\stage.cpp(66): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\stage.cpp(69): warning C4305: “+=”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\stage.cpp(138): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\stage.cpp(139): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\stage.cpp(153): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\stage.cpp(142): warning C4101: “modelview”: 未引用的局部变量
-e:\sourcecode\graphicsengine\learn\stage.cpp(186): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\stage.cpp(192): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\stage.cpp(198): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\stage.cpp(204): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\stage.cpp(217): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\stage.cpp(218): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\stage.cpp(219): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\stage.cpp(230): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\stage.cpp(231): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\stage.cpp(232): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\stage.cpp(14): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\stage.cpp(29): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\stage.cpp(40): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\stage.cpp(61): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\stage.cpp(64): warning C4305: “+=”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\stage.cpp(136): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\stage.cpp(137): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\stage.cpp(151): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\stage.cpp(140): warning C4101: “modelview”: 未引用的局部变量
+e:\sourcecode\graphicsengine\learn\stage.cpp(184): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\stage.cpp(190): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\stage.cpp(196): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\stage.cpp(202): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\stage.cpp(214): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\stage.cpp(215): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\stage.cpp(216): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\stage.cpp(227): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\stage.cpp(228): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\stage.cpp(229): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
   ShapeFactory.cpp
   Shape.cpp
   PointCollision.cpp
@@ -38,13 +38,18 @@ e:\sourcecode\graphicsengine\learn\stage.cpp(232): warning C4244: “=”: 从�
 e:\sourcecode\graphicsengine\learn\obb.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
   InputManager.cpp
   IManager.cpp
-  IInputControl.cpp
+  GameObjectManager.cpp
+  GameObject.cpp
+  Component.cpp
   CglFont.cpp
+e:\sourcecode\graphicsengine\learn\cglfont.cpp(46): warning C4244: “初始化”: 从“const int”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\cglfont.cpp(47): warning C4244: “初始化”: 从“const int”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\cglfont.cpp(53): warning C4244: “=”: 从“const int”转换到“float”，可能丢失数据
   Camera.cpp
-e:\sourcecode\graphicsengine\learn\camera.cpp(82): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\camera.cpp(83): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\camera.cpp(115): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\camera.cpp(116): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\camera.cpp(74): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\camera.cpp(75): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\camera.cpp(107): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\camera.cpp(108): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
   CVector.cpp
 e:\sourcecode\graphicsengine\learn\cvector.cpp(110): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
 e:\sourcecode\graphicsengine\learn\cvector.cpp(111): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
@@ -150,17 +155,15 @@ e:\sourcecode\graphicsengine\learn\assignment_2.cpp(6): warning C4305: “参数
 e:\sourcecode\graphicsengine\learn\assignment_2.cpp(7): warning C4305: “参数”: 从“double”到“float”截断
 e:\sourcecode\graphicsengine\learn\assignment_2.cpp(9): warning C4305: “参数”: 从“double”到“float”截断
 e:\sourcecode\graphicsengine\learn\assignment_2.cpp(10): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(100): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(118): warning C4305: “初始化”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(99): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(117): warning C4305: “初始化”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(125): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
 e:\sourcecode\graphicsengine\learn\assignment_2.cpp(126): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(127): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(140): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(152): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(163): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(173): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(139): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(151): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(162): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(172): warning C4305: “参数”: 从“double”到“float”截断
 e:\sourcecode\graphicsengine\learn\assignment_2.cpp(175): warning C4305: “参数”: 从“double”到“float”截断
-  Area.cpp
-e:\sourcecode\graphicsengine\learn\area.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
   正在生成代码...
   Learn.vcxproj -> E:\sourcecode\GraphicsEngine\run\Learn.exe
   Learn.vcxproj -> E:\sourcecode\GraphicsEngine\run\Learn.pdb (Full PDB)

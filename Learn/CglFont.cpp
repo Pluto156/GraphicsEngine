@@ -36,13 +36,28 @@ void CglFont::DrawString(const std::string& text) const {
     glPushMatrix();
     glLoadIdentity();
 
-    // 设置颜色和位置
+    // 设置颜色
     glColor3fv(m_color);
-    glRasterPos2i(m_posX, m_posY);
+
+    // 计算行高 (根据字体和需要调整)
+    float lineHeight = 20.0f; // 设置每行之间的高度
 
     // 绘制每个字符
+    float cursorX = m_posX;
+    float cursorY = m_posY;
+
     for (const char c : text) {
-        glutBitmapCharacter(m_font, c);
+        if (c == '\n') {
+            // 遇到换行符，移动到下一行
+            cursorY += lineHeight; // 调整 Y 坐标，表示换行
+            cursorX = m_posX;      // 重置 X 坐标
+        }
+        else {
+            // 设置字符绘制的坐标
+            glRasterPos2f(cursorX, cursorY);
+            glutBitmapCharacter(m_font, c);
+            cursorX += glutBitmapWidth(m_font, c); // 增加 X 坐标，为下一个字符留出空间
+        }
     }
 
     // 恢复矩阵状态

@@ -6,7 +6,6 @@
 #pragma once
 
 #include "targetver.h"
-
 #include <stdio.h>
 #include <algorithm>  
 #include <memory>  
@@ -23,6 +22,8 @@
 #include "CglFont.h"
 #include "ShapeFactory.h"
 #include "Stage.h"
+#include "GameObject.h"
 #include <iostream>
+#include <sstream>
 #include <queue>
 // TODO:  在此处引用程序需要的其他头文件

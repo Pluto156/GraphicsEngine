@@ -2,61 +2,53 @@
 #include "Camera.h"
 
 Camera::Camera()
-    : Transform("Camera",CVector(0, 30, 30)), camTarget(0, 0, 0),
+    : GameObject("Camera",CVector(0, 30, 30)), camTarget(0, 0, 0),
     camAngleX(0.0f), camAngleY(0.0f),
     camMoveSpeed(0.1f), camRotateSpeed(0.5f),isControlView(false),ControlViewMode(0)
 {
     //z
-    Forward = camTarget - position;
-    Forward.Normalize();
+    transform->Forward = camTarget - transform->position;
+    transform->Forward.Normalize();
     //x
-    Right = Forward.crossMul(CVector(0, 1, 0));
-    Right.Normalize();
+    transform->Right = transform->Forward.crossMul(CVector(0, 1, 0));
+    transform->Right.Normalize();
     //y
-    Up = Right.crossMul(Forward);
-    Up.Normalize();
+    transform->Up = transform->Right.crossMul(transform->Forward);
+    transform->Up.Normalize();
     // 创建旋转矩阵
     float m[16] = {
-        Right.x, Right.y, Right.z, 0,
-        Up.x, Up.y, Up.z, 0,
-        -Forward.x, -Forward.y, -Forward.z, 0,
+        transform->Right.x, transform->Right.y, transform->Right.z, 0,
+        transform->Up.x, transform->Up.y, transform->Up.z, 0,
+        -transform->Forward.x, -transform->Forward.y, -transform->Forward.z, 0,
         0,          0,          0,          1
     };
 
-    SetRotation(m);
-    SetEulerAngles((-Forward).ToEuler());
+    transform->SetRotation(m);
+    transform->SetEulerAngles((transform->Forward).ToEuler());
 }
 
 
 Camera::~Camera()
 {
 }
-void Camera::UpdateFRU(){
-    Forward = rotation.GetForward()*(-1);
-    Right = rotation.GetRight();
-    Up = rotation.GetUp();
-}
-void Camera::Update() {
-    CameraDebug();
-}
 
 void Camera::processKeyboard(unsigned char key, int x, int y)
 {
     if (key == 'w')  // 向前
     {
-        SetPositionDelta(Forward * camMoveSpeed);
+        transform->SetPositionDelta(-transform->Forward * camMoveSpeed);
     }
     if (key == 's')  // 向后
     {
-        SetPositionDelta(-Forward * camMoveSpeed);
+        transform->SetPositionDelta(transform->Forward * camMoveSpeed);
     }
     if (key == 'a')  // 向左
     {
-        SetPositionDelta(-Right * camMoveSpeed);
+        transform->SetPositionDelta(-transform->Right * camMoveSpeed);
     }
     if (key == 'd')  // 向右
     {
-        SetPositionDelta(Right * camMoveSpeed);
+        transform->SetPositionDelta(transform->Right * camMoveSpeed);
     }
     if (key == '1')
     {
@@ -104,42 +96,32 @@ void Camera::processMouseMotion(int x, int y)
     
     if (ControlViewMode == 0)
     {
-        SetEulerAnglesDelta(-camAngleY, -camAngleX, 0);
+        transform->SetEulerAnglesDelta(-camAngleY, -camAngleX, 0);
     }
     else if (ControlViewMode == 1)
     {
-        SetRotationDelta(CMatrix::CreateRotationMatrix(camAngleY, CVector::Up()));
-        SetRotationDelta(CMatrix::CreateRotationMatrix(camAngleX, CVector::Right()));
+        transform->SetRotationDelta(CMatrix::CreateRotationMatrix(camAngleY, CVector::Up()));
+        transform->SetRotationDelta(CMatrix::CreateRotationMatrix(camAngleX, CVector::Right()));
     }
 
     prevMouseX = x;
     prevMouseY = y;
 }
 
-void Camera::CameraDebug()
-{
-    // 绘制文本
-    infoFont.DrawString(cameraInfo);
-    // 构建显示信息
-    sprintf_s(cameraInfo, "Camera Position: (%.1f, %.1f, %.1f) Camera ControlViewMode:(%d)",
-        position.x, position.y, position.z, ControlViewMode);
-    //std::cout << "CamPos: " << position.ToString() << " CamTarget: " << camTarget.ToString() << " CamForward: " << Forward.ToString() << " CamUp: " << Up.ToString() << std::endl;
-}
-
 void Camera::LookAt()
 {
     if (ControlViewMode == 0)
     {
-        glRotatef(-eulerAngles.b, 0, 0, 1);
-        glRotatef(-eulerAngles.p, 1, 0, 0);
-        glRotatef(-eulerAngles.h, 0, 1, 0);
+        glRotatef(-transform->eulerAngles.b, 0, 0, 1);
+        glRotatef(-transform->eulerAngles.p, 1, 0, 0);
+        glRotatef(-transform->eulerAngles.h, 0, 1, 0);
     }
     else if (ControlViewMode == 1)
     {
         //glMultMatrixf(rotation);
-        glRotatef(-eulerAngles.b, 0, 0, 1);
-        glRotatef(-eulerAngles.p, 1, 0, 0);
-        glRotatef(-eulerAngles.h, 0, 1, 0);
+        glRotatef(-transform->eulerAngles.b, 0, 0, 1);
+        glRotatef(-transform->eulerAngles.p, 1, 0, 0);
+        glRotatef(-transform->eulerAngles.h, 0, 1, 0);
     }
-    glTranslatef(-position.x, -position.y, -position.z);
+    glTranslatef(-transform->position.x, -transform->position.y, -transform->position.z);
 }
