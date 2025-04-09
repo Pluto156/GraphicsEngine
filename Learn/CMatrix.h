@@ -1,5 +1,6 @@
 #pragma once
 class CEuler;
+class CQuaternion;
 class CMatrix
 {
 public:
@@ -34,6 +35,10 @@ public:
     float Inverse();  // 求矩阵的逆，成功返回行列式的值，否则返回0
     CMatrix GetInverse();  // 返回逆矩阵
 
+    void Transpose();
+    CMatrix GetTranspose();  // 返回转置矩阵
+
+
     // 添加单位矩阵和零矩阵
     static const CMatrix& Identity()
     {
@@ -53,6 +58,7 @@ public:
     CVector GetUp();
     CVector GetRight();
     CEuler ToEuler();
+    CQuaternion ToQuaternion();
     std::string ToString();
 
 private:

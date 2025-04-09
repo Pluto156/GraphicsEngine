@@ -7,6 +7,7 @@ public:
 
     // 构造函数，初始化四元数
     CQuaternion() : w(1), x(0), y(0), z(0) {}
+    CQuaternion(float fw, float fx, float fy, float fz) : w(fw), x(fx), y(fy), z(fz) {}
 
     // 设置四元数的值
     void Set(float fw, float fx, float fy, float fz);
@@ -21,17 +22,24 @@ public:
     CQuaternion& operator=(const CQuaternion& p);
 
     // 加法操作符重载
-    CQuaternion operator+(const CQuaternion& p);
+    CQuaternion operator+(const CQuaternion& p)const;
+    CQuaternion operator+=(const CQuaternion& p);
+
+
 
     // 四元数减法操作符重载
     CQuaternion operator-(const CQuaternion& p) const;
+    CQuaternion operator-=(const CQuaternion& p);
 
+    void AddScaledVector(const CVector& vector, float scale);
 
     // 数量乘操作符重载
     CQuaternion operator*(float data);
 
     // 四元数乘法操作符重载
     CQuaternion operator*(const CQuaternion& p);
+    CQuaternion operator*=(const CQuaternion& p);
+
 
     // 点乘操作
     float dotMul(const CQuaternion& p);
@@ -59,5 +67,7 @@ public:
 
     // 四元数插值，生成n个数据
     void Slerp(const CQuaternion& Vend, int n, float* t, CQuaternion* Result);
+
+    CMatrix CQuaternion::ToMatrix();
 };
 

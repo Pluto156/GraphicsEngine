@@ -6,6 +6,7 @@ e:\sourcecode\graphicsengine\learn\cvector.h : warning C4819: 该文件包含不
 e:\sourcecode\graphicsengine\learn\cmatrix.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 e:\sourcecode\graphicsengine\learn\ceuler.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 e:\sourcecode\graphicsengine\learn\transform.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\sourcecode\graphicsengine\learn\cquaternion.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 e:\sourcecode\graphicsengine\learn\obb.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 e:\sourcecode\graphicsengine\learn\camera.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 e:\sourcecode\graphicsengine\learn\stage.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
@@ -33,6 +34,7 @@ e:\sourcecode\graphicsengine\learn\stage.cpp(228): warning C4244: “=”: 从�
 e:\sourcecode\graphicsengine\learn\stage.cpp(229): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
   ShapeFactory.cpp
   Shape.cpp
+  Rigidbody.cpp
   PointCollision.cpp
   OBB.cpp
 e:\sourcecode\graphicsengine\learn\obb.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
@@ -40,114 +42,6 @@ e:\sourcecode\graphicsengine\learn\obb.cpp : warning C4819: 该文件包含不�
   IManager.cpp
   GameObjectManager.cpp
   GameObject.cpp
-  Component.cpp
-  CglFont.cpp
-e:\sourcecode\graphicsengine\learn\cglfont.cpp(46): warning C4244: “初始化”: 从“const int”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\cglfont.cpp(47): warning C4244: “初始化”: 从“const int”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\cglfont.cpp(53): warning C4244: “=”: 从“const int”转换到“float”，可能丢失数据
-  Camera.cpp
-e:\sourcecode\graphicsengine\learn\camera.cpp(74): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\camera.cpp(75): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\camera.cpp(107): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\camera.cpp(108): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
-  CVector.cpp
-e:\sourcecode\graphicsengine\learn\cvector.cpp(110): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\cvector.cpp(111): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\cvector.cpp(112): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\cvector.cpp(175): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 1 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(175): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 2 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(175): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 3 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(175): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 4 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(175): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 5 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(175): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 6 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(175): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 7 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(175): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 8 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(175): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 9 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(175): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 10 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(175): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 11 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(175): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 12 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(175): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 13 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(175): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 14 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(175): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 15 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(175): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 16 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(178): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 1 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(178): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 2 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(178): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 3 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(178): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 4 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(178): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 5 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(178): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 6 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(178): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 7 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(178): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 8 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(178): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 9 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(178): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 10 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(178): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 11 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(178): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 12 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(178): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 13 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(178): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 14 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(178): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 15 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(178): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 16 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(192): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 1 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(192): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 2 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(192): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 3 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(192): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 4 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(192): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 5 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(192): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 6 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(192): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 7 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(192): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 8 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(192): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 9 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(192): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 10 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(192): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 11 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(192): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 12 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(192): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 13 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(192): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 14 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(192): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 15 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(192): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 16 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(205): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 1 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(205): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 2 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(205): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 3 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(205): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 4 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(205): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 5 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(205): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 6 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(205): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 7 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(205): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 8 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(205): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 9 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(205): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 10 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(205): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 11 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(205): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 12 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(205): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 13 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(205): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 14 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(205): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 15 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(205): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 16 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(244): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 1 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(244): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 2 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(244): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 3 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(244): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 4 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(244): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 5 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(244): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 6 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(244): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 7 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(244): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 8 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(244): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 9 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(244): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 10 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(244): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 11 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(244): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 12 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(244): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 13 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(244): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 14 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(244): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 15 拥有了类型“const float *”
-e:\sourcecode\graphicsengine\learn\cvector.cpp(244): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 16 拥有了类型“const float *”
-  CQuaternion.cpp
-e:\sourcecode\graphicsengine\learn\cquaternion.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-e:\sourcecode\graphicsengine\learn\cquaternion.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  CMatrix.cpp
-e:\sourcecode\graphicsengine\learn\cmatrix.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-e:\sourcecode\graphicsengine\learn\cmatrix.cpp(103): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\cmatrix.cpp(189): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\cmatrix.cpp(225): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\cmatrix.cpp(226): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\cmatrix.cpp(227): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-  CEuler.cpp
-e:\sourcecode\graphicsengine\learn\ceuler.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-  Box.cpp
-e:\sourcecode\graphicsengine\learn\box.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
   Assignment_2.cpp
 e:\sourcecode\graphicsengine\learn\assignment_2.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 e:\sourcecode\graphicsengine\learn\assignment_2.cpp(4): warning C4305: “参数”: 从“double”到“float”截断
@@ -164,6 +58,113 @@ e:\sourcecode\graphicsengine\learn\assignment_2.cpp(151): warning C4305: “参�
 e:\sourcecode\graphicsengine\learn\assignment_2.cpp(162): warning C4305: “参数”: 从“double”到“float”截断
 e:\sourcecode\graphicsengine\learn\assignment_2.cpp(172): warning C4305: “参数”: 从“double”到“float”截断
 e:\sourcecode\graphicsengine\learn\assignment_2.cpp(175): warning C4305: “参数”: 从“double”到“float”截断
+  CVector.cpp
+e:\sourcecode\graphicsengine\learn\cvector.cpp(134): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\cvector.cpp(135): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\cvector.cpp(136): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\cvector.cpp(199): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 1 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(199): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 2 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(199): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 3 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(199): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 4 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(199): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 5 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(199): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 6 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(199): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 7 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(199): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 8 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(199): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 9 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(199): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 10 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(199): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 11 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(199): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 12 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(199): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 13 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(199): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 14 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(199): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 15 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(199): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 16 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(202): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 1 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(202): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 2 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(202): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 3 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(202): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 4 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(202): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 5 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(202): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 6 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(202): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 7 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(202): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 8 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(202): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 9 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(202): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 10 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(202): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 11 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(202): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 12 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(202): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 13 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(202): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 14 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(202): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 15 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(202): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 16 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(216): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 1 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(216): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 2 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(216): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 3 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(216): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 4 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(216): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 5 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(216): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 6 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(216): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 7 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(216): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 8 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(216): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 9 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(216): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 10 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(216): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 11 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(216): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 12 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(216): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 13 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(216): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 14 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(216): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 15 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(216): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 16 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(229): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 1 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(229): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 2 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(229): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 3 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(229): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 4 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(229): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 5 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(229): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 6 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(229): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 7 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(229): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 8 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(229): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 9 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(229): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 10 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(229): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 11 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(229): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 12 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(229): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 13 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(229): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 14 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(229): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 15 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(229): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 16 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(268): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 1 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(268): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 2 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(268): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 3 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(268): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 4 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(268): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 5 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(268): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 6 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(268): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 7 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(268): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 8 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(268): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 9 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(268): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 10 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(268): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 11 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(268): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 12 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(268): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 13 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(268): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 14 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(268): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 15 拥有了类型“const float *”
+e:\sourcecode\graphicsengine\learn\cvector.cpp(268): warning C4477: “fscanf_s”: 格式字符串“%f”需要类型“float *”的参数，但可变参数 16 拥有了类型“const float *”
+  CQuaternion.cpp
+e:\sourcecode\graphicsengine\learn\cquaternion.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  Component.cpp
+  CMatrix.cpp
+e:\sourcecode\graphicsengine\learn\cmatrix.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\sourcecode\graphicsengine\learn\cmatrix.cpp(103): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\cmatrix.cpp(212): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\cmatrix.cpp(248): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\cmatrix.cpp(249): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\cmatrix.cpp(250): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+  CglFont.cpp
+e:\sourcecode\graphicsengine\learn\cglfont.cpp(46): warning C4244: “初始化”: 从“const int”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\cglfont.cpp(47): warning C4244: “初始化”: 从“const int”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\cglfont.cpp(53): warning C4244: “=”: 从“const int”转换到“float”，可能丢失数据
+  CEuler.cpp
+e:\sourcecode\graphicsengine\learn\ceuler.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  Camera.cpp
+e:\sourcecode\graphicsengine\learn\camera.cpp(74): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\camera.cpp(75): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\camera.cpp(107): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\camera.cpp(108): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+  Box.cpp
+e:\sourcecode\graphicsengine\learn\box.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
   正在生成代码...
   Learn.vcxproj -> E:\sourcecode\GraphicsEngine\run\Learn.exe
   Learn.vcxproj -> E:\sourcecode\GraphicsEngine\run\Learn.pdb (Full PDB)

@@ -96,6 +96,9 @@
     <ClInclude Include="Transform.h">
       <Filter>头文件\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="Rigidbody.h">
+      <Filter>头文件\Physics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -111,12 +114,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Stage.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="OBB.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="PointCollision.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ShapeFactory.cpp">
@@ -157,6 +154,15 @@
     </ClCompile>
     <ClCompile Include="Transform.cpp">
       <Filter>源文件\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="OBB.cpp">
+      <Filter>源文件\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="PointCollision.cpp">
+      <Filter>源文件\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Rigidbody.cpp">
+      <Filter>源文件\Physics</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

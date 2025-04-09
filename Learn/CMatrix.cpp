@@ -181,6 +181,29 @@ CMatrix CMatrix::GetInverse()
     return Adjoint() * (1.0f / det);
 }
 
+void CMatrix::Transpose()
+{
+    std::swap(m10, m01);
+    std::swap(m20, m02);
+    std::swap(m30, m03);
+    std::swap(m21, m12);
+    std::swap(m31, m13);
+    std::swap(m32, m23);
+
+
+}
+CMatrix CMatrix::GetTranspose()
+{
+    CMatrix t = *this;
+    std::swap(t.m10, t.m01);
+    std::swap(t.m20, t.m02);
+    std::swap(t.m30, t.m03);
+    std::swap(t.m21, t.m12);
+    std::swap(t.m31, t.m13);
+    std::swap(t.m32, t.m23);
+    return t;
+}
+
 
 CMatrix CMatrix::CreateRotationMatrix(float angle, const CVector& axis) {
     CVector t = axis;
@@ -227,6 +250,21 @@ CEuler CMatrix::ToEuler()
     euler.b = euler.b * 180 / M_PI;
     return euler;
 }
+CQuaternion CMatrix::ToQuaternion()
+{
+    CQuaternion quaternion;
+    float w, x, y, z;
+    w = sqrtf(m00 + m11 + m22+1) /2;
+    x = (m21 - m12) / 4 * w;
+    y = (m02 - m20) / 4 * w;
+    z = (m10 - m01) / 4 * w;
+    quaternion.w = w;
+    quaternion.x = x;
+    quaternion.y = y;
+    quaternion.z = z;
+    return quaternion;
+}
+
 
 std::string CMatrix::ToString()
 {

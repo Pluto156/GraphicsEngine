@@ -2,6 +2,7 @@
 #include "CVector.h"
 #include "CMatrix.h"
 #include "CEuler.h"
+#include "CQuaternion.h"
 #include "Component.h"
 
 #include <vector>
@@ -11,6 +12,7 @@ public:
     CVector position;   // 世界坐标
     CMatrix rotation;   // 世界旋转矩阵
     CEuler eulerAngles; // 世界欧拉角（绕 X、Y、Z 轴的旋转角度）
+    CQuaternion quaternion;
 
     CVector localPosition;    // 相对于父 Transform 的位置
     CMatrix localRotation;    // 相对于父 Transform 的旋转矩阵
@@ -33,7 +35,7 @@ public:
         const CMatrix& rotation = CMatrix(),
         const CEuler& eulerAngles = CEuler(), bool isShowLocalAxis = false)
         :position(position), rotation(rotation),
-        eulerAngles(eulerAngles),localPosition(position),
+        eulerAngles(eulerAngles), quaternion(CQuaternion()), localPosition(position),
         localRotation(rotation), localEulerAngles(eulerAngles),isShowLocalAxis(isShowLocalAxis)
     {
         UpdateTransformFromLocal(); // 初始化时确保数据同步
@@ -57,13 +59,17 @@ public:
     /// </summary>
     /// <param name="lookDir"></param>
     virtual void LookAt(const CVector& lookDir);
-
     virtual void SetRotationDelta(const CMatrix& newRotation);
     virtual void SetRotationDelta(CEuler rotationDelta);
     virtual void SetRotationDelta(float h, float p, float b);
+
+    virtual void SetQuaternion(CQuaternion quaternion);
+    virtual void SetQuaternionDelta(CQuaternion quaternionDelta);
+    virtual void SetQuaternionDelta(float w,float x,float y,float z);
+
+
     virtual void SetEulerAngles(float h, float p, float b);
     virtual void SetEulerAngles(const CEuler& newAngles);
-
     virtual void SetEulerAnglesDelta(CEuler eulerAnglesDelta);
     virtual void SetEulerAnglesDelta(float h, float p, float b);
 
@@ -92,9 +98,6 @@ public:
 
     void ApplyTransform();
 
-
-
-
     // 获取本地位置
     CVector GetLocalPosition() const {
         return localPosition;
@@ -116,10 +119,16 @@ public:
         Right = rotation.GetRight();
         Up = rotation.GetUp();
     }
+    CMatrix GetWorldTransformMatrix();
 
     virtual ~Transform() {
         for (auto& child : children) {
             if (child) delete child;
         }
     }
+
+
+
+private:
+    CMatrix worldTransformMatrix;//世界变换矩阵
 };

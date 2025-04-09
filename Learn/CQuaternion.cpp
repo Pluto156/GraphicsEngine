@@ -36,7 +36,7 @@ CQuaternion& CQuaternion::operator=(const CQuaternion& p)
 }
 
 // 四元数加法
-CQuaternion CQuaternion::operator+(const CQuaternion& p)
+CQuaternion CQuaternion::operator+(const CQuaternion& p)const
 {
     CQuaternion result;
     result.w = w + p.w;
@@ -44,6 +44,15 @@ CQuaternion CQuaternion::operator+(const CQuaternion& p)
     result.y = y + p.y;
     result.z = z + p.z;
     return result;
+}
+
+CQuaternion CQuaternion::operator+=(const CQuaternion& p)
+{
+    w += p.w;
+    x += p.x;
+    y += p.y;
+    z += p.z;
+    return *this;
 }
 
 // 四元数减法操作符重载
@@ -55,6 +64,28 @@ CQuaternion CQuaternion::operator-(const CQuaternion& p) const
     result.y = y - p.y;
     result.z = z - p.z;
     return result;
+}
+
+CQuaternion CQuaternion::operator-=(const CQuaternion& p)
+{
+    w -= p.w;
+    x -= p.x;
+    y -= p.y;
+    z -= p.z;
+    return *this;
+}
+
+void CQuaternion::AddScaledVector(const CVector& vector, float scale)
+{
+    CQuaternion q(0,
+        vector.x * scale,
+        vector.y * scale,
+        vector.z * scale);
+    q *= *this;
+    w += q.w * 0.5f;
+    x += q.x * 0.5f;
+    y += q.y * 0.5f;
+    z += q.z * 0.5f;
 }
 
 
@@ -78,6 +109,15 @@ CQuaternion CQuaternion::operator*(const CQuaternion& p)
     result.y = w * p.y + y * p.w + z * p.x - x * p.z;
     result.z = w * p.z + z * p.w + x * p.y - y * p.x;
     return result;
+}
+
+CQuaternion CQuaternion::operator*=(const CQuaternion& p)
+{
+    w = w * p.w - x * p.x - y * p.y - z * p.z;
+    x = w * p.x + x * p.w + y * p.z - z * p.y;
+    y = w * p.y + y * p.w + z * p.x - x * p.z;
+    z = w * p.z + z * p.w + x * p.y - y * p.x;
+    return *this;
 }
 
 // 四元数点乘
@@ -188,5 +228,22 @@ void CQuaternion::Slerp(const CQuaternion& Vend, int n, float* t, CQuaternion* R
     {
         Result[i] = Slerp(Vend, t[i]);
     }
+}
+
+CMatrix CQuaternion::ToMatrix()
+{
+    CMatrix t;
+    t.m00 = 1 - 2 * y * y - 2 * z * z;
+    t.m01 = 2 * x * y - 2 * w * z;
+    t.m02 = 2 * x * z + 2 * w * y;
+
+    t.m10 = 2 * x * y + 2 * w * z;
+    t.m11 = 1 - 2 * x * x - 2 * z * z;
+    t.m12 = 2 * y * z - 2 * w * x;
+
+    t.m20 = 2 * x * z - 2 * w * y;
+    t.m21 = 2 * y * z + 2 * w * x;
+    t.m22 = 1 - 2 * x * x - 2 * y * y;
+    return t;
 }
 

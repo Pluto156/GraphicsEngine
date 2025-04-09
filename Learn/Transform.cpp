@@ -55,7 +55,7 @@ void Transform::SetPosition(const CVector& newPos) {
     UpdateTransformFromLocal();
 }
 
- void Transform::SetRotationDelta(const CMatrix& newRotation) {
+void Transform::SetRotationDelta(const CMatrix& newRotation) {
     if (parent) {
         // 计算相对于父物体的本地旋转
         localRotation = parent->rotation * newRotation;
@@ -65,14 +65,29 @@ void Transform::SetPosition(const CVector& newPos) {
     }
     UpdateTransformFromLocal();
 }
- void Transform::SetRotationDelta(CEuler rotationDelta)
+void Transform::SetRotationDelta(CEuler rotationDelta)
 {
     SetRotationDelta(rotationDelta.ToCMatrix());
 }
- void Transform::SetRotationDelta(float h, float p, float b)
+
+void Transform::SetRotationDelta(float h, float p, float b)
 {
     SetRotationDelta(CEuler(h, p, b));
 }
+
+void Transform::SetQuaternion(CQuaternion quaternion)
+{
+    SetRotation(quaternion.ToMatrix());
+}
+void Transform::SetQuaternionDelta(CQuaternion quaternionDelta)
+{
+    SetQuaternion(quaternion + quaternionDelta);
+}
+void Transform::SetQuaternionDelta(float w, float x, float y, float z)
+{
+    SetQuaternion(quaternion + CQuaternion(w,x,y,z));
+}
+
 
  void Transform::SetEulerAngles(float h, float p, float b)
 {
@@ -119,6 +134,7 @@ void Transform::UpdateTransformFromLocal() {
         position = localPosition;
     }
     eulerAngles = rotation.ToEuler();
+    quaternion = rotation.ToQuaternion();
     localEulerAngles = localRotation.ToEuler();
     UpdateFRU();
     UpdateChildrenTransform();
@@ -183,4 +199,13 @@ void Transform::ApplyTransform()
         glEnd();
     }
     
+}
+
+CMatrix Transform::GetWorldTransformMatrix()
+{
+    worldTransformMatrix = rotation;
+    worldTransformMatrix.m03 = position.x;
+    worldTransformMatrix.m13 = position.y;
+    worldTransformMatrix.m23 = position.z;
+    return worldTransformMatrix;
 }

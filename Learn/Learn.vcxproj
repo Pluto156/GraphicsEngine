@@ -160,6 +160,7 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="OBB.h" />
     <ClInclude Include="PointCollision.h" />
+    <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="ShapeFactory.h" />
     <ClInclude Include="Stage.h" />
@@ -183,6 +184,7 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="OBB.cpp" />
     <ClCompile Include="PointCollision.cpp" />
+    <ClCompile Include="Rigidbody.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="ShapeFactory.cpp" />
     <ClCompile Include="Stage.cpp" />

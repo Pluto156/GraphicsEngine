@@ -164,7 +164,6 @@ void Box::Draw() {
     glVertex3f(m_width / 2, -m_height / 2, -m_depth / 2);
 
     glEnd();  // 结束绘制边界
-
 }
 
 

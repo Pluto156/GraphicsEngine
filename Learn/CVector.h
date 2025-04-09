@@ -18,15 +18,21 @@ public:
 
     // 向量减法
     CVector operator-(const CVector& v) const;
+    CVector operator-=(const CVector& v) ;
+
 
     // 向量加法
     CVector operator+(const CVector& v) const;
+    CVector operator+=(const CVector& v) ;
+
 
     // 赋值操作符重载
     CVector& operator=(const CVector& v);
 
     // 向量数乘操作
     CVector operator*(float scalar) const;
+    CVector operator*=(float scalar);
+
     friend CVector operator*(float scalar, const CVector& v); // 支持100 * CVector
 
     // 向量点积
@@ -58,7 +64,10 @@ public:
     CEuler ToEuler() const;
     CMatrix ToCMatrix() const;
 
-
+    void Clear()
+    {
+        x = y = z = 0;
+    }
     const static CVector& Up()
     {
         const static CVector Up(0, 1, 0);

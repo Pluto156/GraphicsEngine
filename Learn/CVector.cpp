@@ -19,9 +19,25 @@ CVector CVector::operator-(const CVector& v) const {
     return CVector(x - v.x, y - v.y, z - v.z);
 }
 
+CVector CVector::operator-=(const CVector& v)
+{
+    x -= v.x;
+    y -= v.y;
+    z -= v.z;
+    return *this;
+}
+
+
 // 向量加法
 CVector CVector::operator+(const CVector& v) const {
     return CVector(x + v.x, y + v.y, z + v.z);
+}
+
+CVector CVector::operator+=(const CVector& v)  {
+    x += v.x;
+    y += v.y;
+    z += v.z;
+    return *this;
 }
 
 // 赋值操作符重载
@@ -37,6 +53,14 @@ CVector& CVector::operator=(const CVector& v) {
 // 向量数乘操作
 CVector CVector::operator*(float scalar) const {
     return CVector(x * scalar, y * scalar, z * scalar);
+}
+
+CVector CVector::operator*=(float scalar)
+{
+    x *= scalar;
+    y *= scalar;
+    z *= scalar;
+    return *this;
 }
 
 // 友元函数：支持 100 * CVector 的形式
