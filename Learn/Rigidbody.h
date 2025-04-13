@@ -2,7 +2,7 @@
 class RigidBody:public Component
 {
 private:
-    CVector forceAccum;                  // 力累加器，存储当前帧所有作用力的矢量和
+                      // 力累加器，存储当前帧所有作用力的矢量和
     CVector torqueAccum;                 // 扭矩累加器，存储当前帧所有扭矩的矢量和
     float inverseMass;                   // 质量倒数（1/mass），用于优化物理计算，质量无限大时值为
     CMatrix inverseInertiaTensorWorld;   // 世界空间下的逆惯性张量，用于旋转动力学计算
@@ -10,6 +10,7 @@ private:
     CMatrix transformMatrix;
 
 public:
+    CVector forceAccum;
     // 计算派生数据（如更新世界空间惯性张量）
     void CalculateDerivedData();         // 更新惯性张量的世界空间变换
 
@@ -43,5 +44,9 @@ public:
     CVector acceleration;                // 加速度（需手动设置或通过力计算）
     float angularDamping;                // 角速度阻尼系数（0-1），影响旋转衰减
     float linearDamping;                 // 线速度阻尼系数（0-1），影响运动衰减
+
+
+    ~RigidBody();
+
 };
 

@@ -82,3 +82,8 @@ void RigidBody::SetMass(float mass)
 {
 	RigidBody::inverseMass = 1.f / mass;
 }
+
+RigidBody::~RigidBody()
+{
+	PhysicsManager::Instance().Unregister(this->gameObject);
+}

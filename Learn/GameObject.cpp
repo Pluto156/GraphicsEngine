@@ -7,7 +7,6 @@ void GameObject::Update()
     transform->ApplyTransform();
     Draw();
     glPopMatrix();  // »Ö¸´¾ØÕó×´Ì¬
-
     for (auto comp : components) {
         comp->Update();
     }

@@ -99,6 +99,18 @@
     <ClInclude Include="Rigidbody.h">
       <Filter>头文件\Physics</Filter>
     </ClInclude>
+    <ClInclude Include="EngineMainLoop.h">
+      <Filter>头文件\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderManager.h">
+      <Filter>头文件\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsManager.h">
+      <Filter>头文件\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeManager.h">
+      <Filter>头文件\Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -163,6 +175,18 @@
     </ClCompile>
     <ClCompile Include="Rigidbody.cpp">
       <Filter>源文件\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineMainLoop.cpp">
+      <Filter>源文件\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderManager.cpp">
+      <Filter>源文件\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsManager.cpp">
+      <Filter>源文件\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeManager.cpp">
+      <Filter>源文件\Engine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -23,7 +23,10 @@
 #include "ShapeFactory.h"
 #include "Stage.h"
 #include "GameObject.h"
+#include "TimeManager.h"
+#include "PhysicsManager.h"
 #include <iostream>
 #include <sstream>
 #include <queue>
+#include <chrono> 
 // TODO:  在此处引用程序需要的其他头文件
