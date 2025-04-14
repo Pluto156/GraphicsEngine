@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PhysicsManager.h"
+
 namespace PhysicsLit
 {
 	void PhysicsManager::Update() {
@@ -39,6 +40,8 @@ namespace PhysicsLit
 	}
 	void PhysicsManager::UpdatePhysics(const float deltaTime)
 	{
+		if (mBVHRoot == nullptr)
+			return;
 		// 更新刚体的位置和旋转
 		for (auto& rigidbody : rigidbodys)
 		{
@@ -48,7 +51,8 @@ namespace PhysicsLit
 		}
 
 		// 生成潜在碰撞
-
+		uint32_t potentialContactCount = mBVHRoot->GetPotentialContacts(mPotentialContacts, mMaxPotentialContacts);
+		std::cout << potentialContactCount << std::endl;
 		// 从潜在碰撞中检测碰撞
 
 
@@ -59,6 +63,17 @@ namespace PhysicsLit
 	}
 	void PhysicsManager::EndFrame()
 	{
+		if (mBVHRoot == nullptr)
+			return;
 
+		for (auto& iter : rigidbodys)
+		{
+			// 更新BV的位置
+			if (iter->mBVHNode)
+			{
+				iter->mBVHNode->mBoundingVolume.mCenter = iter->gameObject->transform->GetPosition();
+				iter->mBVHNode->UpdateBoundingVolume();
+			}
+		}
 	}
 }

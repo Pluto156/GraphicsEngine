@@ -2,6 +2,7 @@
 namespace PhysicsLit
 {
     class ForceGenerator;
+    class BVHNode;
     class RigidBody :public Component
     {
         private:
@@ -23,6 +24,8 @@ namespace PhysicsLit
             float linearDamping = 1.0f;                 // 线速度阻尼系数（0-1），影响运动衰减
 
         public:
+            // 对应的BVH节点
+            BVHNode* mBVHNode = nullptr;
             // 计算派生数据（如更新世界空间惯性张量）
             void CalculateDerivedData();         // 更新惯性张量的世界空间变换
 

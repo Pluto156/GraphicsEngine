@@ -63,6 +63,18 @@ CVector CVector::operator*=(float scalar)
     return *this;
 }
 
+CVector CVector::operator/(float scalar) const
+{
+    return CVector(x / scalar, y / scalar, z / scalar);
+}
+CVector CVector::operator/=(float scalar)
+{
+    x /= scalar;
+    y /= scalar;
+    z /= scalar;
+    return *this;
+}
+
 // 友元函数：支持 100 * CVector 的形式
 CVector operator*(float scalar, const CVector& v) {
     return CVector(v.x * scalar, v.y * scalar, v.z * scalar);

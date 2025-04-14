@@ -37,6 +37,12 @@
     <Filter Include="源文件\Physics\Force">
       <UniqueIdentifier>{e606147a-668a-4615-ac61-0ad7cc16d1c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Physics\Collision">
+      <UniqueIdentifier>{bfcaf74b-13d4-491f-ba5e-74583e9c46a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Physics\Collision">
+      <UniqueIdentifier>{373a99a9-0706-47ec-9ccc-11120c41b9b8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -123,6 +129,15 @@
     <ClInclude Include="ForceGravity.h">
       <Filter>头文件\Physics\Force</Filter>
     </ClInclude>
+    <ClInclude Include="BoundingSphere.h">
+      <Filter>头文件\Physics\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="BVHNode.h">
+      <Filter>头文件\Physics\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsLitEnumStruct.h">
+      <Filter>头文件\Physics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -205,6 +220,15 @@
     </ClCompile>
     <ClCompile Include="ForceGravity.cpp">
       <Filter>源文件\Physics\Force</Filter>
+    </ClCompile>
+    <ClCompile Include="BoundingSphere.cpp">
+      <Filter>源文件\Physics\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="BVHNode.cpp">
+      <Filter>源文件\Physics\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsLitEnumStruct.cpp">
+      <Filter>源文件\Physics</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

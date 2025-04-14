@@ -149,8 +149,6 @@ void myDisplay(void) {
     InitStage();
     TimeManager::Instance().Update();  
     InputManager::Instance().Update();
-
-
     PhysicsLit::PhysicsManager::Instance().Update();
 }
 

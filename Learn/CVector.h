@@ -32,6 +32,8 @@ public:
     // 向量数乘操作
     CVector operator*(float scalar) const;
     CVector operator*=(float scalar);
+    CVector operator/(float scalar) const;
+    CVector operator/=(float scalar);
 
     friend CVector operator*(float scalar, const CVector& v); // 支持100 * CVector
 

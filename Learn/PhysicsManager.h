@@ -2,7 +2,7 @@
 #include "IManager.h"
 #include "vector"
 #include "RigidBody.h"
-
+#include "BVHNode.h"
 namespace PhysicsLit
 {
     class PhysicsManager :public IManager {
@@ -34,10 +34,24 @@ namespace PhysicsLit
         void operator=(const PhysicsManager&) = delete;
 
     private:
-        PhysicsManager() = default;
-        ~PhysicsManager() = default;
-
+        PhysicsManager()
+        {
+            mPotentialContacts = new PotentialContact[mMaxPotentialContacts];
+        }
+        ~PhysicsManager()
+        {
+            if (mBVHRoot)
+                delete mBVHRoot;
+            delete[] mPotentialContacts;
+        }
+        // 由GameObjectManager负责销毁
         std::vector<RigidBody*> rigidbodys;
+        // Bounding Volume Hierarchy (BVH)树的根节点
+        BVHNode* mBVHRoot = nullptr;
+        // 潜在碰撞数组
+        PotentialContact* mPotentialContacts;
+        // 潜在碰撞数组的长度
+        uint32_t mMaxPotentialContacts = 1000;
         long long mCurPhyFrame = 0;
     };
 }

@@ -147,7 +147,9 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="Box.h" />
+    <ClInclude Include="BVHNode.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CEuler.h" />
     <ClInclude Include="CglFont.h" />
@@ -163,6 +165,7 @@
     <ClInclude Include="IManager.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="OBB.h" />
+    <ClInclude Include="PhysicsLitEnumStruct.h" />
     <ClInclude Include="PhysicsManager.h" />
     <ClInclude Include="PointCollision.h" />
     <ClInclude Include="RenderManager.h" />
@@ -176,7 +179,9 @@
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="Box.cpp" />
+    <ClCompile Include="BVHNode.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CEuler.cpp" />
     <ClCompile Include="CglFont.cpp" />
@@ -193,6 +198,7 @@
     <ClCompile Include="IManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="OBB.cpp" />
+    <ClCompile Include="PhysicsLitEnumStruct.cpp" />
     <ClCompile Include="PhysicsManager.cpp" />
     <ClCompile Include="PointCollision.cpp" />
     <ClCompile Include="RenderManager.cpp" />
