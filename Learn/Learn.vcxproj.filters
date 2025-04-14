@@ -31,6 +31,12 @@
     <Filter Include="源文件\Physics">
       <UniqueIdentifier>{ac20a182-35e5-4767-9129-4069ce5a68d6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Physics\Force">
+      <UniqueIdentifier>{a0d702ce-8a5b-4e25-abcc-12b7ec2487e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Physics\Force">
+      <UniqueIdentifier>{e606147a-668a-4615-ac61-0ad7cc16d1c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -111,6 +117,12 @@
     <ClInclude Include="TimeManager.h">
       <Filter>头文件\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="ForceGenerator.h">
+      <Filter>头文件\Physics\Force</Filter>
+    </ClInclude>
+    <ClInclude Include="ForceGravity.h">
+      <Filter>头文件\Physics\Force</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -187,6 +199,12 @@
     </ClCompile>
     <ClCompile Include="TimeManager.cpp">
       <Filter>源文件\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ForceGenerator.cpp">
+      <Filter>源文件\Physics\Force</Filter>
+    </ClCompile>
+    <ClCompile Include="ForceGravity.cpp">
+      <Filter>源文件\Physics\Force</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

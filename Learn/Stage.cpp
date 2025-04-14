@@ -106,7 +106,7 @@ void Stage::IntersectWithRay(
         {
             curSelectShape = closestShape;
 
-            curSelectShape->rigidBody->AddForce(CVector(0, 1, 0));
+            curSelectShape->rigidBody->AddForce(CVector(0, 100, 0));
             //std::cout << curSelectBox->ToString();
         }
     }

@@ -148,8 +148,10 @@ void InitStage()
 void myDisplay(void) {
     InitStage();
     TimeManager::Instance().Update();  
-    PhysicsManager::Instance().Update();
     InputManager::Instance().Update();
+
+
+    PhysicsLit::PhysicsManager::Instance().Update();
 }
 
 
