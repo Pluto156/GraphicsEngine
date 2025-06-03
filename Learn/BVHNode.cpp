@@ -2,7 +2,7 @@
 #include "BVHNode.h"
 namespace PhysicsLit
 {
-	BVHNode::BVHNode(BVHNode* parent, const BoundingSphere& boundingVolume, RigidBody* rigidBody) :
+	BVHNode::BVHNode(BVHNode* parent, const BoundingSphere& boundingVolume, RigidBodyPrimitive* rigidBody) :
 		mParent(parent),
 		mBoundingVolume(boundingVolume),
 		mRigidBody(rigidBody)
@@ -72,7 +72,7 @@ namespace PhysicsLit
 			mParent->UpdateBoundingVolume(true);
 	}
 
-	void BVHNode::Insert(const BoundingSphere& volume, RigidBody* body)
+	void BVHNode::Insert(const BoundingSphere& volume, RigidBodyPrimitive* body)
 	{
 		// 如果是叶子节点，就升级为父节点
 		if (IsLeaf())

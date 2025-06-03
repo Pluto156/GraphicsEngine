@@ -43,6 +43,12 @@
     <Filter Include="源文件\Physics\Collision">
       <UniqueIdentifier>{373a99a9-0706-47ec-9ccc-11120c41b9b8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Engine\Components">
+      <UniqueIdentifier>{8cc6cc6f-da14-4536-94a0-06733f350863}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Engine\Components">
+      <UniqueIdentifier>{0b38798f-5733-4884-a173-7e6f84233578}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -72,13 +78,13 @@
     <ClInclude Include="CEuler.h">
       <Filter>头文件\Math</Filter>
     </ClInclude>
-    <ClInclude Include="CMatrix.h">
+    <ClInclude Include="CMatrix4.h">
       <Filter>头文件\Math</Filter>
     </ClInclude>
     <ClInclude Include="CQuaternion.h">
       <Filter>头文件\Math</Filter>
     </ClInclude>
-    <ClInclude Include="CVector.h">
+    <ClInclude Include="CVector3.h">
       <Filter>头文件\Math</Filter>
     </ClInclude>
     <ClInclude Include="CglFont.h">
@@ -105,10 +111,7 @@
     <ClInclude Include="GameObjectManager.h">
       <Filter>头文件\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>头文件\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Rigidbody.h">
+    <ClInclude Include="RigidBodyPrimitive.h">
       <Filter>头文件\Physics</Filter>
     </ClInclude>
     <ClInclude Include="EngineMainLoop.h">
@@ -138,6 +141,60 @@
     <ClInclude Include="PhysicsLitEnumStruct.h">
       <Filter>头文件\Physics</Filter>
     </ClInclude>
+    <ClInclude Include="CollisionPrimitive.h">
+      <Filter>头文件\Physics\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Contact.h">
+      <Filter>头文件\Physics\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Math.h">
+      <Filter>头文件\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionData.h">
+      <Filter>头文件\Physics\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionDetector.h">
+      <Filter>头文件\Physics\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="IntersectionDetector.h">
+      <Filter>头文件\Physics\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Ray.h">
+      <Filter>头文件\Physics\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CVector4.h">
+      <Filter>头文件\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>头文件\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidBody.h">
+      <Filter>头文件\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsLit.h">
+      <Filter>头文件\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>头文件\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="BoxCollider.h">
+      <Filter>头文件\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ContactResolver.h">
+      <Filter>头文件\Physics\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaneCollider.h">
+      <Filter>头文件\Engine\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="CMatrix3.h">
+      <Filter>头文件\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="CModel.h">
+      <Filter>头文件\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="CVector2.h">
+      <Filter>头文件\Math</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -164,13 +221,13 @@
     <ClCompile Include="CEuler.cpp">
       <Filter>源文件\Math</Filter>
     </ClCompile>
-    <ClCompile Include="CMatrix.cpp">
+    <ClCompile Include="CMatrix4.cpp">
       <Filter>源文件\Math</Filter>
     </ClCompile>
     <ClCompile Include="CQuaternion.cpp">
       <Filter>源文件\Math</Filter>
     </ClCompile>
-    <ClCompile Include="CVector.cpp">
+    <ClCompile Include="CVector3.cpp">
       <Filter>源文件\Math</Filter>
     </ClCompile>
     <ClCompile Include="CglFont.cpp">
@@ -191,16 +248,13 @@
     <ClCompile Include="GameObjectManager.cpp">
       <Filter>源文件\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Transform.cpp">
-      <Filter>源文件\Engine</Filter>
-    </ClCompile>
     <ClCompile Include="OBB.cpp">
       <Filter>源文件\Physics</Filter>
     </ClCompile>
     <ClCompile Include="PointCollision.cpp">
       <Filter>源文件\Physics</Filter>
     </ClCompile>
-    <ClCompile Include="Rigidbody.cpp">
+    <ClCompile Include="RigidBodyPrimitive.cpp">
       <Filter>源文件\Physics</Filter>
     </ClCompile>
     <ClCompile Include="EngineMainLoop.cpp">
@@ -230,5 +284,62 @@
     <ClCompile Include="PhysicsLitEnumStruct.cpp">
       <Filter>源文件\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="CollisionPrimitive.cpp">
+      <Filter>源文件\Physics\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Contact.cpp">
+      <Filter>源文件\Physics\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Math.cpp">
+      <Filter>源文件\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionData.cpp">
+      <Filter>源文件\Physics\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionDetector.cpp">
+      <Filter>源文件\Physics\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="IntersectionDetector.cpp">
+      <Filter>源文件\Physics\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Ray.cpp">
+      <Filter>源文件\Physics\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="CVector4.cpp">
+      <Filter>源文件\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>源文件\Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidBody.cpp">
+      <Filter>源文件\Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsLit.cpp">
+      <Filter>源文件\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>源文件\Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="BoxCollider.cpp">
+      <Filter>源文件\Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="ContactResolver.cpp">
+      <Filter>源文件\Physics\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaneCollider.cpp">
+      <Filter>源文件\Engine\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="CMatrix3.cpp">
+      <Filter>源文件\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="CModel.cpp">
+      <Filter>源文件\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="CVector2.cpp">
+      <Filter>源文件\Math</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

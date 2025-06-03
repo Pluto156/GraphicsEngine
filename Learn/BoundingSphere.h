@@ -5,9 +5,9 @@ namespace PhysicsLit
 	{
 	public:
 		float mRadius;
-		CVector mCenter;
+		CVector3 mCenter;
 
-		BoundingSphere(const CVector& center, float radius);
+		BoundingSphere(const CVector3& center, float radius);
 		BoundingSphere(const BoundingSphere& bs1, const BoundingSphere& bs2);
 		~BoundingSphere() {};
 

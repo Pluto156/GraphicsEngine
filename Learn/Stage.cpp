@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "Stage.h"
-Stage::Stage(std::string name) :GameObject(name,CVector()), curSelectShape(nullptr) {}
+Stage::Stage(std::string name) :GameObject(name,CVector3()), curSelectShape(nullptr) {}
 // Stage 构造函数，初始化各区域
-Stage::Stage(std::string name,float posx, float posy, float posz) :GameObject(name,CVector(posx,posy,posz)), curSelectShape(nullptr) {
+Stage::Stage(std::string name,float posx, float posy, float posz) :GameObject(name,CVector3(posx,posy,posz)), curSelectShape(nullptr) {
 }
 
 
@@ -13,7 +13,7 @@ void Stage::Draw() {
     {
         angle = (angle + 0.1) / 10;
         angle = angle >= 360 ? angle - 360 : angle;
-        transform->SetRotationDelta(CMatrix::CreateRotationMatrix(angle, CVector::Up()));
+        transform->SetRotationDelta(CMatrix4::CreateRotationMatrix(angle, CVector3::Up()));
     }
 
     if (isBAnimation)
@@ -53,7 +53,7 @@ void Stage::Draw() {
 
     if (isCAnimation)
     {
-        Transform* C = transform->children[3];
+        /*Transform* C = transform->children[3];
 
         for (int i = 0; i < 2; ++i) {
             for (int j = 0; j < 4; ++j) {
@@ -62,6 +62,13 @@ void Stage::Draw() {
             }
         }
         CAnimationAngle += 0.3;
+        CAnimationAngle = CAnimationAngle > 360 ? CAnimationAngle - 360 : CAnimationAngle;*/\
+        Transform* C = transform->children[7];
+        RigidBody *rig = C->gameObject->GetComponent<RigidBody>();
+
+
+        rig->rigidBodyPrimitive->SetRotation(CVector3(sin(Math::Deg2Rad(CAnimationAngle)), 0, cos(Math::Deg2Rad(CAnimationAngle))).ToCMatrix().ToQuaternion());
+        CAnimationAngle += 2;
         CAnimationAngle = CAnimationAngle > 360 ? CAnimationAngle - 360 : CAnimationAngle;
     }
 
@@ -70,23 +77,24 @@ void Stage::Draw() {
 }
 
 void Stage::IntersectWithRay(
-    const CVector& origin,
-    const CVector& direct,
+    const CVector3& origin,
+    const CVector3& direct,
     float length) const
 {
     float minDistance = FLT_MAX; // 初始值设置为最大浮动值
     Shape* closestShape = nullptr; // 用于存储最近的Shape 
+    PhysicsLit::Ray ray(origin,direct);
 
     for (const auto area : transform->children) {
         for (auto shape : area->children) {
-            PointCollision intersection;
+            PhysicsLit::RayHitInfo rayHitInfo;
             Box* boxPtr = dynamic_cast<Box*>(shape->gameObject);
             if (boxPtr)
             {
                 // 检测与射线的碰撞
-                if (boxPtr->obb->IntersectWithRayAndOBB(origin, direct, length, intersection) > 0) {
+                if (boxPtr->boxCollider->IntersectRay(ray, rayHitInfo)) {
                     // 计算射线与交点的距离
-                    float distance = (intersection.closestPoint - origin).len();
+                    float distance = rayHitInfo.distance;
 
                     // 如果当前碰撞的距离比最小距离更小，更新最近的 Box
                     if (distance < minDistance) {
@@ -106,7 +114,7 @@ void Stage::IntersectWithRay(
         {
             curSelectShape = closestShape;
 
-            curSelectShape->rigidBody->AddForce(CVector(0, 100, 0));
+            //curSelectShape->rigidBody->AddForce(CVector3(0, 100, 0));
             //std::cout << curSelectBox->ToString();
         }
     }
@@ -150,9 +158,8 @@ void Stage::processMouse(int button, int state, int x, int y)
 
             //printf("%d:%d\t(%d:%d)\t%f\t(%.2f,%.2f,%.2f)\n", button, state, x, y, val, pos[0], pos[1], pos[2]);
             origin = camera->transform->position;
-            direct = CVector(pos[0], pos[1], pos[2]) - camera->transform->position;
+            direct = CVector3(pos[0], pos[1], pos[2]) - camera->transform->position;
             direct.Normalize();
-            PointCollision PointCollision;
             IntersectWithRay(origin, direct, 100);
         }
     }
@@ -180,29 +187,48 @@ void Stage::processKeyboard(unsigned char key, int x, int y)
 
 void Stage::processSpecialKeys(int key, int x, int y)
 {
+    Transform* trans = transform->children[6];
+    PhysicsLit::RigidBodyPrimitive* rigidBody = trans->gameObject->GetComponent<RigidBody>()->rigidBodyPrimitive;
     //小车控制
     if (key == GLUT_KEY_UP)
     {
-        transform->children[6]->SetLocalPositionDelta(0, 0, -0.1);
-        transform->children[6]->LookAt(-transform->Forward);
+        rigidBody->SetPosition(trans->position+CVector3(0, 0, -0.1));
+        rigidBody->SetRotation(CVector3(0, 0, -1).ToCMatrix().ToQuaternion());
+        //std::cout << "GLUT_KEY_UP" << CVector3(0, 0, -1).ToCMatrix().ToQuaternion().ToCMatrix4().ToEuler().ToString() << std::endl;
+
+
+        //transform->children[6]->SetLocalPositionDelta(0, 0, -0.1);
+        //transform->children[6]->LookAt(-transform->Forward);
 
     }
     if (key == GLUT_KEY_DOWN)
     {
-        transform->children[6]->SetLocalPositionDelta(0, 0, 0.1);
-        transform->children[6]->LookAt(transform->Forward);
+        rigidBody->SetPosition(trans->position + CVector3(0, 0, 0.1));
+        rigidBody->SetRotation(CVector3(0, 0, 1).ToCMatrix().ToQuaternion());
+        //std::cout << "GLUT_KEY_DOWN" << CVector3(0, 0, 1).ToCMatrix().ToQuaternion().ToCMatrix4().ToEuler().ToString() << std::endl;
+
+        //transform->children[6]->SetLocalPositionDelta(0, 0, 0.1);
+        //transform->children[6]->LookAt(transform->Forward);
 
     }
     if (key == GLUT_KEY_LEFT)
     {
-        transform->children[6]->SetLocalPositionDelta(-0.1, 0, 0);
-        transform->children[6]->LookAt(-transform->Right);
+        rigidBody->SetPosition(trans->position + CVector3(-0.1, 0, 0));
+        rigidBody->SetRotation(CVector3(-1, 0, 0).ToCMatrix().ToQuaternion());
+        //std::cout << "GLUT_KEY_LEFT" << CVector3(-1, 0, 0).ToCMatrix().ToQuaternion().ToCMatrix4().ToEuler().ToString() << std::endl;
+
+        //transform->children[6]->SetLocalPositionDelta(-0.1, 0, 0);
+        //transform->children[6]->LookAt(-transform->Right);
 
     }
     if (key == GLUT_KEY_RIGHT)
     {
-        transform->children[6]->SetLocalPositionDelta(0.1, 0, 0);
-        transform->children[6]->LookAt(transform->Right);
+        rigidBody->SetPosition(trans->position + CVector3(0.1, 0, 0));
+        rigidBody->SetRotation(CVector3(1, 0, 0).ToCMatrix().ToQuaternion());
+        //std::cout << "GLUT_KEY_RIGHT" << CVector3(1, 0, 0).ToCMatrix().ToQuaternion().ToCMatrix4().ToEuler().ToString() << std::endl;
+
+        //transform->children[6]->SetLocalPositionDelta(0.1, 0, 0);
+        //transform->children[6]->LookAt(transform->Right);
     }
 }
 void Stage::processMouseMotion(int x, int y)
@@ -263,6 +289,21 @@ void Stage::StageDebug()
             << curSelectShape->transform->localEulerAngles.ToString() << ")\n"
             << "parent name: ("
             << (curSelectShape->transform->parent ? curSelectShape->transform->parent->gameObject->name : "null") << ")\n";
+    
+        if (curSelectShape->transform->parent!=nullptr&& curSelectShape->transform->parent->gameObject-> GetComponent<RigidBody>() != nullptr)
+        {
+            auto rigidbody = curSelectShape->transform->parent->gameObject->GetComponent<RigidBody>()->rigidBodyPrimitive;
+            oss << "Velocity: ("
+                << rigidbody->GetVelocity().ToString() << ")\n"
+                << "AngularVelocity: ("
+                << rigidbody->GetAngularVelocity().ToString() << ")\n"
+                << "rigidbody Position: ("
+                << rigidbody->GetPosition().ToString() << ")\n"
+                << "rigidbody Rotation: ("
+                << rigidbody->GetRotation().ToCMatrix4().ToEuler().ToString() << ")\n";
+        }
+    
+    
     }
 
     // 绘制文本

@@ -2,7 +2,7 @@
 #include "BoundingSphere.h"
 namespace PhysicsLit
 {
-    BoundingSphere::BoundingSphere(const CVector& center, float radius) :
+    BoundingSphere::BoundingSphere(const CVector3& center, float radius) :
         mCenter(center),
         mRadius(radius)
     {
@@ -10,7 +10,7 @@ namespace PhysicsLit
 
     BoundingSphere::BoundingSphere(const BoundingSphere& bs1, const BoundingSphere& bs2)
     {
-        CVector centreOffset = bs2.mCenter - bs1.mCenter;
+        CVector3 centreOffset = bs2.mCenter - bs1.mCenter;
         float distance = centreOffset.len();
         float radiusDiff = bs2.mRadius - bs1.mRadius;
 

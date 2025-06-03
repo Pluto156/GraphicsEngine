@@ -11,7 +11,7 @@ void CQuaternion::Set(float fw, float fx, float fy, float fz)
 }
 
 // 设置四元数为旋转角度和旋转轴
-void CQuaternion::SetAngle(float angle, CVector axis)
+void CQuaternion::SetAngle(float angle, CVector3 axis)
 {
     float halfAngle = angle * 0.5f;
     float sinHalfAngle = sin(halfAngle);
@@ -75,7 +75,7 @@ CQuaternion CQuaternion::operator-=(const CQuaternion& p)
     return *this;
 }
 
-void CQuaternion::AddScaledVector(const CVector& vector, float scale)
+void CQuaternion::AddScaledVector(const CVector3& vector, float scale)
 {
     CQuaternion q(0,
         vector.x * scale,
@@ -180,7 +180,7 @@ CQuaternion CQuaternion::Div(const CQuaternion& b)
 }
 
 // 获取旋转角度和旋转轴
-void CQuaternion::GetAngle(float& angle, CVector& axis)
+void CQuaternion::GetAngle(float& angle, CVector3& axis)
 {
     angle = 2.0f * acos(w);
     float s = sqrt(1.0f - w * w);
@@ -195,6 +195,19 @@ void CQuaternion::GetAngle(float& angle, CVector& axis)
         axis.z = z / s;
     }
 }
+
+void CQuaternion::Rotate(const CVector3& axis, float angle)
+{
+    if (axis.x <= 0.01 && axis.y <= 0.01 && axis.z <= 0.01)return;
+    float halfAngle = angle * 0.5f;
+    float s = sin(halfAngle);
+
+    w = cos(halfAngle);
+    x = axis.x * s;
+    y = axis.y * s;
+    z = axis.z * s;
+}
+
 
 // 四元数的Slerp插值
 CQuaternion CQuaternion::Slerp(const CQuaternion& Vend, float t)
@@ -230,9 +243,9 @@ void CQuaternion::Slerp(const CQuaternion& Vend, int n, float* t, CQuaternion* R
     }
 }
 
-CMatrix CQuaternion::ToMatrix()
+CMatrix4 CQuaternion::ToCMatrix4()
 {
-    CMatrix t;
+    CMatrix4 t;
     t.m00 = 1 - 2 * y * y - 2 * z * z;
     t.m01 = 2 * x * y - 2 * w * z;
     t.m02 = 2 * x * z + 2 * w * y;

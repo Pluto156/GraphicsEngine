@@ -2,7 +2,7 @@
 #include "Camera.h"
 
 Camera::Camera()
-    : GameObject("Camera",CVector(0, 30, 30)), camTarget(0, 0, 0),
+    : GameObject("Camera",CVector3(0, 3, 20)), camTarget(0, 0, 0),
     camAngleX(0.0f), camAngleY(0.0f),
     camMoveSpeed(0.1f), camRotateSpeed(0.5f),isControlView(false),ControlViewMode(0)
 {
@@ -10,10 +10,10 @@ Camera::Camera()
     transform->Forward = camTarget - transform->position;
     transform->Forward.Normalize();
     //x
-    transform->Right = transform->Forward.crossMul(CVector(0, 1, 0));
+    transform->Right = Math::Cross(transform->Forward,CVector3(0, 1, 0));
     transform->Right.Normalize();
     //y
-    transform->Up = transform->Right.crossMul(transform->Forward);
+    transform->Up = Math::Cross(transform->Right,transform->Forward);
     transform->Up.Normalize();
     // 创建旋转矩阵
     float m[16] = {
@@ -100,8 +100,8 @@ void Camera::processMouseMotion(int x, int y)
     }
     else if (ControlViewMode == 1)
     {
-        transform->SetRotationDelta(CMatrix::CreateRotationMatrix(camAngleY, CVector::Up()));
-        transform->SetRotationDelta(CMatrix::CreateRotationMatrix(camAngleX, CVector::Right()));
+        transform->SetRotationDelta(CMatrix4::CreateRotationMatrix(camAngleY, CVector3::Up()));
+        transform->SetRotationDelta(CMatrix4::CreateRotationMatrix(camAngleX, CVector3::Right()));
     }
 
     prevMouseX = x;

@@ -24,10 +24,10 @@ namespace PhysicsLit
 		Multiply,
 	};
 
-	class RigidBody;
+	class RigidBodyPrimitive;
 	struct PotentialContact
 	{
-		RigidBody* mRigidBodies[2];
+		RigidBodyPrimitive* mRigidBodies[2];
 	};
 
 	struct RayHitInfo

@@ -2,12 +2,12 @@
 #include "ForceGravity.h"
 namespace PhysicsLit
 {
-	ForceGravity::ForceGravity(const CVector& gravity) : mGravity(gravity)
+	ForceGravity::ForceGravity(const CVector3& gravity) : mGravity(gravity)
 	{
 		mType = ForceGeneratorType::Gravity;
 	}
 
-	void ForceGravity::UpdateForce(RigidBody* rigidBody, float duration)
+	void ForceGravity::UpdateForce(RigidBodyPrimitive* rigidBody, float duration)
 	{
 		// 如果质量无限大表示不受力
 		if (rigidBody->IsInfiniteMass())

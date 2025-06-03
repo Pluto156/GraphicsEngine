@@ -4,7 +4,7 @@
 
 namespace PhysicsLit
 {
-	class RigidBody;
+	class RigidBodyPrimitive;
 	// Bounding Volume Hierarchy Node
 	class BVHNode
 	{
@@ -14,12 +14,12 @@ namespace PhysicsLit
 		// 子节点
 		BVHNode* mChildren[2];
 		// 该节点下的刚体(通常叶子节点才有)
-		RigidBody* mRigidBody;
+		RigidBodyPrimitive* mRigidBody;
 		// 包含该节点和所有子节点下的对象的BoundingVolume
 		BoundingSphere mBoundingVolume;
 
 		// parent为空表示是根节点
-		BVHNode(BVHNode* parent, const BoundingSphere& boundingVolume, RigidBody* rigidBody);
+		BVHNode(BVHNode* parent, const BoundingSphere& boundingVolume, RigidBodyPrimitive* rigidBody);
 		// 析构函数会递归删除所有子节点
 		~BVHNode();
 
@@ -29,7 +29,7 @@ namespace PhysicsLit
 		void UpdateBoundingVolume(bool recurse = true);
 		// 在当前节点下插入一个刚体，如果当前节点是叶子节点会升级为父节点然后把原当前刚体和新刚体变成2个子节点
 		// 如果当前节点不是叶子节点，就会向下查找叶子节点然后插入
-		void Insert(const BoundingSphere& volume, RigidBody* body);
+		void Insert(const BoundingSphere& volume, RigidBodyPrimitive* body);
 		// 检测当前节点的BV所包围的所有刚体之间的潜在碰撞，写入一个PotentialContact数组中
 		// 第一个参数是PotentialContact数组地址，第二个参数是PotentialContact数组长度
 		// 返回值是实际写入的PotentialContact数量，也就是碰撞数量(不会超过limit)

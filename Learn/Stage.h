@@ -1,5 +1,5 @@
 #pragma once
-#include "CVector.h"
+#include "CVector3.h"
 #include "GameObject.h"
 class Stage : public GameObject,public InputManager::IInputControl {
 public:
@@ -8,8 +8,8 @@ public:
     Stage(std::string name,float posx, float posy, float posz);
     void Draw()override;
     void IntersectWithRay(
-        const CVector& origin,
-        const CVector& direct,
+        const CVector3& origin,
+        const CVector3& direct,
         float length) const;
     mutable Shape* curSelectShape;
 
@@ -22,7 +22,7 @@ public:
 
 
     double modelViewMatrix[16];
-    CVector origin,direct;
+    CVector3 origin,direct;
     bool isRotate;
     float angle = 0;
     Camera* camera;

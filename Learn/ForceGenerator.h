@@ -9,7 +9,7 @@ namespace PhysicsLit
 		Spring,
 	};
 
-	class RigidBody;
+	class RigidBodyPrimitive;
 	class ForceGenerator
 	{
 	public:
@@ -17,7 +17,7 @@ namespace PhysicsLit
 
 		virtual ~ForceGenerator() = default;
 
-		virtual void UpdateForce(RigidBody* rigidBody, float duration) = 0;
+		virtual void UpdateForce(RigidBodyPrimitive* rigidBody, float duration) = 0;
 	};
 
 }

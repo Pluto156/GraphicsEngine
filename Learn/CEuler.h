@@ -8,10 +8,10 @@ public:
     void Set(float fh, float fp, float fb);
 
     // 转换为 CVector 向量
-    CVector ToCVector();
+    CVector3 ToCVector();
 
     // 转换为 CMatrix 矩阵
-    CMatrix ToCMatrix()const;
+    CMatrix4 ToCMatrix()const;
 
     operator float* () { return &h; }
     // 重载加法运算符

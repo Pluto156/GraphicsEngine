@@ -1,5 +1,5 @@
 #pragma once
-#include "CVector.h"
+#include "CVector3.h"
 class CQuaternion
 {
 public:
@@ -16,7 +16,7 @@ public:
     operator float* () { return &w; }
 
     // 设置四元数值为旋转角度和旋转轴
-    void SetAngle(float angle, CVector axis);
+    void SetAngle(float angle, CVector3 axis);
 
     // 赋值操作符重载
     CQuaternion& operator=(const CQuaternion& p);
@@ -24,14 +24,10 @@ public:
     // 加法操作符重载
     CQuaternion operator+(const CQuaternion& p)const;
     CQuaternion operator+=(const CQuaternion& p);
-
-
-
-    // 四元数减法操作符重载
     CQuaternion operator-(const CQuaternion& p) const;
     CQuaternion operator-=(const CQuaternion& p);
 
-    void AddScaledVector(const CVector& vector, float scale);
+    void AddScaledVector(const CVector3& vector, float scale);
 
     // 数量乘操作符重载
     CQuaternion operator*(float data);
@@ -60,7 +56,14 @@ public:
     CQuaternion Div(const CQuaternion& b);
 
     // 获取旋转角度和旋转轴
-    void GetAngle(float& angle, CVector& axis);
+    void GetAngle(float& angle, CVector3& axis);
+
+    /// <summary>
+/// 绕axis轴旋转angle度
+/// </summary>
+/// <param name="axis">旋转轴(必须是单位向量)</param>
+/// <param name="angle">旋转角度(弧度制)</param>
+    void Rotate(const CVector3& axis, float angle);
 
     // 四元数的Slerp插值
     CQuaternion Slerp(const CQuaternion& Vend, float t);
@@ -68,6 +71,6 @@ public:
     // 四元数插值，生成n个数据
     void Slerp(const CQuaternion& Vend, int n, float* t, CQuaternion* Result);
 
-    CMatrix CQuaternion::ToMatrix();
+    CMatrix4 CQuaternion::ToCMatrix4();
 };
 

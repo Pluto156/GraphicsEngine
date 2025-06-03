@@ -1,5 +1,5 @@
 #pragma once
-#include "CVector.h"
+#include "CVector3.h"
 #include "InputManager.h"
 #include "glut.h"
 #include "math.h"
@@ -10,7 +10,7 @@ class Camera:public GameObject,public InputManager::IInputControl
 {
 public:
     // 摄像机目标
-    CVector camTarget;
+    CVector3 camTarget;
 
     float prevMouseX;
     float prevMouseY;

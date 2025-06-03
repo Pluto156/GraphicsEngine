@@ -1,12 +1,18 @@
 #include "stdafx.h"
 #include "OBB.h"
-#include "CVector.h"
-#include "CMatrix.h"
+#include "CVector3.h"
+#include "CMatrix4.h"
 #include "PointCollision.h"
+#include "GameObject.h"
+
+void OBB::Update() {
+    center = gameObject->transform->position;
+    rotation = gameObject->transform->rotation;
+}
 
 float OBB::IntersectWithRayAndOBB(
-    const CVector& origin,
-    const CVector& direct,
+    const CVector3& origin,
+    const CVector3& direct,
     float length,
     PointCollision& intersection) const
 {
@@ -19,40 +25,40 @@ float OBB::IntersectWithRayAndOBB(
 }
 
 float OBB::IntersectWithRayAndOBB(
-    const CVector& origin,
-    const CVector& direct,
-    const CVector& position,
-    const CVector& halfSize,
-    const CMatrix& orientation,
+    const CVector3& origin,
+    const CVector3& direct,
+    const CVector3& position,
+    const CVector3& halfSize,
+    const CMatrix4& orientation,
     PointCollision& intersection) const
 {
     intersection.Reset();
 
     // 提取旋转矩阵的轴
-    CVector axisX(orientation.m00, orientation.m01, orientation.m02);
-    CVector axisY(orientation.m10, orientation.m11, orientation.m12);
-    CVector axisZ(orientation.m20, orientation.m21, orientation.m22);
+    CVector3 axisX(orientation.m00, orientation.m01, orientation.m02);
+    CVector3 axisY(orientation.m10, orientation.m11, orientation.m12);
+    CVector3 axisZ(orientation.m20, orientation.m21, orientation.m22);
 
     // 计算从射线起点到包围盒中心的向量
-    CVector p = position - origin;
+    CVector3 p = position - origin;
 
     // 计算射线在 OBB 轴上的投影
-    CVector f(
-        axisX.dotMul(direct),
-        axisY.dotMul(direct),
-        axisZ.dotMul(direct)
+    CVector3 f(
+        Math::Dot(axisX,direct),
+        Math::Dot(axisY,direct),
+        Math::Dot(axisZ,direct)
     );
 
     // 计算射线起点到包围盒中心的距离在 OBB 轴上的投影
-    CVector e(
-        axisX.dotMul(p),
-        axisY.dotMul(p),
-        axisZ.dotMul(p)
+    CVector3 e(
+        Math::Dot(axisX, p),
+        Math::Dot(axisY, p),
+        Math::Dot(axisZ, p)
     );
 
     // 存储 t 值的数组，表示各个轴的交点
     float t[6] = { 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f };
-    CVector normals[6] = { axisX, axisX * -1, axisY, axisY * -1, axisZ, axisZ * -1 };
+    CVector3 normals[6] = { axisX, axisX * -1, axisY, axisY * -1, axisZ, axisZ * -1 };
 
     // 检查 X 轴上的交点
     if (f.x == 0) {

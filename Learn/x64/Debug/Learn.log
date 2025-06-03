@@ -1,3 +1,7 @@
-﻿  PhysicsManager.cpp
+﻿  GameObject.cpp
+soil.lib(SOIL.obj) : warning LNK4099: 未找到 PDB“SOIL.pdb”(使用“soil.lib(SOIL.obj)”或在“E:\sourcecode\GraphicsEngine\run\SOIL.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+soil.lib(stb_image_aug.obj) : warning LNK4099: 未找到 PDB“SOIL.pdb”(使用“soil.lib(stb_image_aug.obj)”或在“E:\sourcecode\GraphicsEngine\run\SOIL.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+soil.lib(image_helper.obj) : warning LNK4099: 未找到 PDB“SOIL.pdb”(使用“soil.lib(image_helper.obj)”或在“E:\sourcecode\GraphicsEngine\run\SOIL.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+soil.lib(image_DXT.obj) : warning LNK4099: 未找到 PDB“SOIL.pdb”(使用“soil.lib(image_DXT.obj)”或在“E:\sourcecode\GraphicsEngine\run\SOIL.pdb”中寻找)；正在链接对象，如同没有调试信息一样
   Learn.vcxproj -> E:\sourcecode\GraphicsEngine\run\Learn.exe
   Learn.vcxproj -> E:\sourcecode\GraphicsEngine\run\Learn.pdb (Full PDB)

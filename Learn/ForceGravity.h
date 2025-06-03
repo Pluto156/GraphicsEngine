@@ -5,12 +5,12 @@ namespace PhysicsLit
 	class ForceGravity : public ForceGenerator
 	{
 	public:
-		ForceGravity(const CVector& gravity);
+		ForceGravity(const CVector3& gravity);
 
-		virtual void UpdateForce(RigidBody* rigidBody, float duration);
+		virtual void UpdateForce(RigidBodyPrimitive* rigidBody, float duration);
 
 	private:
-		CVector mGravity;
+		CVector3 mGravity;
 	};
 }
 

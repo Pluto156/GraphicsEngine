@@ -7,16 +7,14 @@ class Shape : public GameObject
 {
 public:
     bool isSelect;
-    PhysicsLit::RigidBody* rigidBody;
+    RigidBody* rigidBody;
 
-    Shape(std::string name, const CVector& position = CVector(),
-        const CMatrix& rotation = CMatrix(),
+    Shape(std::string name, const CVector3& position = CVector3(),
+        const CMatrix4& rotation = CMatrix4(),
         const CEuler& eulerAngles = CEuler(),
         bool isShowLocalAxis = false) :GameObject(name, position, rotation, eulerAngles, isShowLocalAxis)
     {
-        rigidBody = PhysicsLit::PhysicsManager::Instance().Register(this);
-        rigidBody->AddForceGenerator(new PhysicsLit::ForceGravity(CVector(0.0f, -9.8f, 0.0f)));
-        rigidBody->SetVelocity(CVector(0, 20, 0));
+        
 
     }
 

@@ -2,15 +2,23 @@
 #include "Box.h"
 
 // 构造函数，初始化盒子的长宽高和中心坐标
-Box::Box(std::string name,float width, float height, float depth, CVector Position, float r, float g, float b, bool isShowLocalAxis)
-    : m_width(width), m_height(height), m_depth(depth), Shape(name,Position,CMatrix(),CEuler(), isShowLocalAxis), r(r), g(g), b(b){
-    obb = AddComponent<OBB>(Position, CVector(width / 2, height / 2, depth / 2));
+Box::Box(std::string name,float width, float height, float depth, CVector3 Position, float r, float g, float b, bool isShowLocalAxis)
+    : m_width(width), m_height(height), m_depth(depth), Shape(name,Position,CMatrix4(),CEuler(), isShowLocalAxis), r(r), g(g), b(b){
+    boxCollider = AddComponent<BoxCollider>(CVector3(width / 2, height / 2, depth / 2));
+    //rigidBody = PhysicsLit::PhysicsManager::Instance().AddGameObject(this);
+    /*rigidBody->rigidBodyPrimitive-> AddForceGenerator(new PhysicsLit::ForceGravity(CVector3(0.0f, -9.8f, 0.0f)));
+    rigidBody->SetVelocity(CVector3(0, 20, 0));*/
+
 }
 
 // 构造函数，初始化盒子的长宽高和中心坐标
-Box::Box(std::string name,float width, float height, float depth, CVector Position, CMatrix Rotation, CEuler EulerAngles, float r, float g, float b, bool isShowLocalAxis)
+Box::Box(std::string name,float width, float height, float depth, CVector3 Position, CMatrix4 Rotation, CEuler EulerAngles, float r, float g, float b, bool isShowLocalAxis)
     : m_width(width), m_height(height), m_depth(depth), Shape(name,Position, Rotation, EulerAngles, isShowLocalAxis), r(r), g(g), b(b) {
-    obb = AddComponent<OBB>(Position, CVector(width / 2, height / 2, depth / 2));
+    boxCollider = AddComponent<BoxCollider>(CVector3(width / 2, height / 2, depth / 2));
+    //rigidBody = PhysicsLit::PhysicsManager::Instance().AddGameObject(this);
+    //rigidBody->rigidBodyPrimitive-> AddForceGenerator(new PhysicsLit::ForceGravity(CVector3(0.0f, -9.8f, 0.0f)));
+    //rigidBody->SetVelocity(CVector3(0, 20, 0));
+
 }
 
 float Box::GetWidth()
@@ -30,6 +38,8 @@ float Box::GetDepth()
 
 
 void Box::Draw() {
+
+    GameObject::Draw();
     // 绘制填充的面
     glBegin(GL_QUADS);
     glColor3f(r, g, b);
@@ -162,6 +172,9 @@ void Box::Draw() {
 
     glVertex3f(m_width / 2, m_height / 2, -m_depth / 2);
     glVertex3f(m_width / 2, -m_height / 2, -m_depth / 2);
+
+
+    
 
     glEnd();  // 结束绘制边界
 }
