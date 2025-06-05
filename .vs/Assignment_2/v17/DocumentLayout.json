@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "E:\\sourcecode\\GraphicsEngine\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\CVector3.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\CVector3.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\PhysicsManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\PhysicsManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\CModel.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\CModel.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -29,10 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\CVector4.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\CVector4.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\CVector3.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\CVector3.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\CVector2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -73,10 +77,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\RenderManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\RenderManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\PhysicsManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\PhysicsManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\InputManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -419,7 +419,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -427,33 +427,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CVector4.cpp",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector4.cpp",
-              "RelativeDocumentMoniker": "Learn\\CVector4.cpp",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector4.cpp",
-              "RelativeToolTip": "Learn\\CVector4.cpp",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAAAkAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-16T05:14:08.969Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Math.cpp",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Math.cpp",
-              "RelativeDocumentMoniker": "Learn\\Math.cpp",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Math.cpp",
-              "RelativeToolTip": "Learn\\Math.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-15T13:26:58.055Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "CharacterController.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CharacterController.cpp",
               "RelativeDocumentMoniker": "Learn\\CharacterController.cpp",
@@ -461,12 +435,11 @@
               "RelativeToolTip": "Learn\\CharacterController.cpp",
               "ViewState": "AgIAACQAAAAAAAAAAAAAADcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-06-05T02:50:16.376Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-05T02:50:16.376Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Stage.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Stage.cpp",
               "RelativeDocumentMoniker": "Learn\\Stage.cpp",
@@ -474,12 +447,11 @@
               "RelativeToolTip": "Learn\\Stage.cpp",
               "ViewState": "AgIAAK4AAAAAAAAAAAAAAL0AAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-07T05:46:53.579Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T05:46:53.579Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Assignment_2.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Assignment_2.cpp",
               "RelativeDocumentMoniker": "Learn\\Assignment_2.cpp",
@@ -487,12 +459,11 @@
               "RelativeToolTip": "Learn\\Assignment_2.cpp",
               "ViewState": "AgIAABsAAAAAAAAAAAAiwDEAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-06T14:16:05.565Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T14:16:05.565Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "stdafx.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\stdafx.cpp",
               "RelativeDocumentMoniker": "Learn\\stdafx.cpp",
@@ -500,38 +471,74 @@
               "RelativeToolTip": "Learn\\stdafx.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-13T08:09:40.784Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-13T08:09:40.784Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "CModel.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CModel.cpp",
               "RelativeDocumentMoniker": "Learn\\CModel.cpp",
               "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\CModel.cpp",
               "RelativeToolTip": "Learn\\CModel.cpp",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAkwEkAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAkwE8AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-03T10:42:50.362Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "CVector3.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector3.cpp",
               "RelativeDocumentMoniker": "Learn\\CVector3.cpp",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector3.cpp",
-              "RelativeToolTip": "Learn\\CVector3.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAASAAAAAAAAAA==",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector3.cpp*",
+              "RelativeToolTip": "Learn\\CVector3.cpp*",
+              "ViewState": "AgIAAOsAAAAAAAAAAAAewAUBAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-04-07T06:33:27.414Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PhysicsManager.cpp",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\PhysicsManager.cpp",
+              "RelativeDocumentMoniker": "Learn\\PhysicsManager.cpp",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\PhysicsManager.cpp",
+              "RelativeToolTip": "Learn\\PhysicsManager.cpp",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAewFQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-13T05:20:56.938Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Math.cpp",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Math.cpp",
+              "RelativeDocumentMoniker": "Learn\\Math.cpp",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Math.cpp",
+              "RelativeToolTip": "Learn\\Math.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-15T13:26:58.055Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 8,
+              "Title": "CVector4.cpp",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector4.cpp",
+              "RelativeDocumentMoniker": "Learn\\CVector4.cpp",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector4.cpp",
+              "RelativeToolTip": "Learn\\CVector4.cpp",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAAkAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-16T05:14:08.969Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "CVector2.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector2.cpp",
               "RelativeDocumentMoniker": "Learn\\CVector2.cpp",
@@ -539,12 +546,11 @@
               "RelativeToolTip": "Learn\\CVector2.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-06-03T10:52:55.883Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T10:52:55.883Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "CQuaternion.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CQuaternion.cpp",
               "RelativeDocumentMoniker": "Learn\\CQuaternion.cpp",
@@ -552,12 +558,11 @@
               "RelativeToolTip": "Learn\\CQuaternion.cpp",
               "ViewState": "AgIAAOkAAAAAAAAAAAAMwPUAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-09T06:51:42.765Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T06:51:42.765Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "CMatrix4.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CMatrix4.cpp",
               "RelativeDocumentMoniker": "Learn\\CMatrix4.cpp",
@@ -565,12 +570,11 @@
               "RelativeToolTip": "Learn\\CMatrix4.cpp",
               "ViewState": "AgIAANUBAAAAAAAAAAAMwOEBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-07T06:30:29.06Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T06:30:29.06Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "CMatrix3.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CMatrix3.cpp",
               "RelativeDocumentMoniker": "Learn\\CMatrix3.cpp",
@@ -578,12 +582,11 @@
               "RelativeToolTip": "Learn\\CMatrix3.cpp",
               "ViewState": "AgIAAHkAAAAAAAAAAAAYwIcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-25T13:07:23.17Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-25T13:07:23.17Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "CEuler.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CEuler.cpp",
               "RelativeDocumentMoniker": "Learn\\CEuler.cpp",
@@ -591,12 +594,11 @@
               "RelativeToolTip": "Learn\\CEuler.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-07T10:27:44.904Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T10:27:44.904Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "TimeManager.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\TimeManager.cpp",
               "RelativeDocumentMoniker": "Learn\\TimeManager.cpp",
@@ -604,12 +606,11 @@
               "RelativeToolTip": "Learn\\TimeManager.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-13T08:14:17.38Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-13T08:14:17.38Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Sphere.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Sphere.cpp",
               "RelativeDocumentMoniker": "Learn\\Sphere.cpp",
@@ -617,12 +618,11 @@
               "RelativeToolTip": "Learn\\Sphere.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-06-05T03:08:46.061Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-05T03:08:46.061Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "ShapeFactory.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\ShapeFactory.cpp",
               "RelativeDocumentMoniker": "Learn\\ShapeFactory.cpp",
@@ -630,12 +630,11 @@
               "RelativeToolTip": "Learn\\ShapeFactory.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-07T05:38:25.598Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T05:38:25.598Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "Shape.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Shape.cpp",
               "RelativeDocumentMoniker": "Learn\\Shape.cpp",
@@ -643,12 +642,11 @@
               "RelativeToolTip": "Learn\\Shape.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-07T05:31:18.36Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T05:31:18.36Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "RenderManager.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\RenderManager.cpp",
               "RelativeDocumentMoniker": "Learn\\RenderManager.cpp",
@@ -656,21 +654,7 @@
               "RelativeToolTip": "Learn\\RenderManager.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-09T13:51:50.287Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "PhysicsManager.cpp",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\PhysicsManager.cpp",
-              "RelativeDocumentMoniker": "Learn\\PhysicsManager.cpp",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\PhysicsManager.cpp",
-              "RelativeToolTip": "Learn\\PhysicsManager.cpp",
-              "ViewState": "AgIAADsAAAAAAAAAAAAkwE0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-13T05:20:56.938Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T13:51:50.287Z"
             },
             {
               "$type": "Document",
@@ -682,8 +666,7 @@
               "RelativeToolTip": "Learn\\InputManager.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-08T09:12:04.71Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T09:12:04.71Z"
             },
             {
               "$type": "Document",
@@ -695,8 +678,7 @@
               "RelativeToolTip": "Learn\\IManager.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-07T13:16:34.967Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T13:16:34.967Z"
             },
             {
               "$type": "Document",
@@ -708,8 +690,7 @@
               "RelativeToolTip": "Learn\\GameObjectManager.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-08T12:07:22.438Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T12:07:22.438Z"
             },
             {
               "$type": "Document",
@@ -721,8 +702,7 @@
               "RelativeToolTip": "Learn\\GameObject.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-08T11:55:47.548Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T11:55:47.548Z"
             },
             {
               "$type": "Document",
@@ -734,8 +714,7 @@
               "RelativeToolTip": "Learn\\EngineMainLoop.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-09T13:49:06.488Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T13:49:06.488Z"
             },
             {
               "$type": "Document",
@@ -747,8 +726,7 @@
               "RelativeToolTip": "Learn\\Component.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-08T12:28:04.868Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T12:28:04.868Z"
             },
             {
               "$type": "Document",
@@ -760,8 +738,7 @@
               "RelativeToolTip": "Learn\\CglFont.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-07T09:11:59.229Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T09:11:59.229Z"
             },
             {
               "$type": "Document",
@@ -773,8 +750,7 @@
               "RelativeToolTip": "Learn\\Camera.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-06T14:19:15.49Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-06T14:19:15.49Z"
             },
             {
               "$type": "Document",
@@ -786,8 +762,7 @@
               "RelativeToolTip": "Learn\\Box.cpp",
               "ViewState": "AgIAAJcAAAAAAAAAAAAQwKYAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-07T05:13:52.842Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T05:13:52.842Z"
             },
             {
               "$type": "Document",
@@ -799,8 +774,7 @@
               "RelativeToolTip": "Learn\\Transform.cpp",
               "ViewState": "AgIAAAwAAAAAAAAAAAAvwCMAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-07T08:45:28.069Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T08:45:28.069Z"
             },
             {
               "$type": "Document",
@@ -812,8 +786,7 @@
               "RelativeToolTip": "Learn\\SphereCollider.cpp",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAAcAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-06-05T03:14:42.526Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-05T03:14:42.526Z"
             },
             {
               "$type": "Document",
@@ -825,8 +798,7 @@
               "RelativeToolTip": "Learn\\RigidBody.cpp",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-16T09:44:49.777Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T09:44:49.777Z"
             },
             {
               "$type": "Document",
@@ -838,8 +810,7 @@
               "RelativeToolTip": "Learn\\PlaneCollider.cpp",
               "ViewState": "AgIAABIAAAAAAAAAAAAMwCEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-21T12:35:18.019Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T12:35:18.019Z"
             },
             {
               "$type": "Document",
@@ -851,8 +822,7 @@
               "RelativeToolTip": "Learn\\Collider.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-16T10:57:53.409Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T10:57:53.409Z"
             },
             {
               "$type": "Document",
@@ -864,8 +834,7 @@
               "RelativeToolTip": "Learn\\BoxCollider.cpp",
               "ViewState": "AgIAACEAAAAAAAAAAAAAACUAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-16T10:59:24.232Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T10:59:24.232Z"
             },
             {
               "$type": "Document",
@@ -877,8 +846,7 @@
               "RelativeToolTip": "Learn\\RigidBodyPrimitive.h",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAcAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-09T05:37:16.886Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T05:37:16.886Z"
             },
             {
               "$type": "Document",
@@ -890,8 +858,7 @@
               "RelativeToolTip": "Learn\\PointCollision.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-08T05:37:04.052Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T05:37:04.052Z"
             },
             {
               "$type": "Document",
@@ -903,8 +870,7 @@
               "RelativeToolTip": "Learn\\PhysicsLitEnumStruct.h",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAAB0AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-14T14:19:17.509Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-14T14:19:17.509Z"
             },
             {
               "$type": "Document",
@@ -916,8 +882,7 @@
               "RelativeToolTip": "Learn\\PhysicsLit.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-16T10:02:44.068Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T10:02:44.068Z"
             },
             {
               "$type": "Document",
@@ -929,8 +894,7 @@
               "RelativeToolTip": "Learn\\OBB.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-08T05:36:43.02Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T05:36:43.02Z"
             },
             {
               "$type": "Document",
@@ -942,8 +906,7 @@
               "RelativeToolTip": "Learn\\ForceGravity.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-14T04:22:12.136Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-14T04:22:12.136Z"
             },
             {
               "$type": "Document",
@@ -955,8 +918,7 @@
               "RelativeToolTip": "Learn\\ForceGenerator.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-14T04:20:03.899Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-14T04:20:03.899Z"
             },
             {
               "$type": "Document",
@@ -968,8 +930,7 @@
               "RelativeToolTip": "Learn\\Ray.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-16T04:58:20.351Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T04:58:20.351Z"
             },
             {
               "$type": "Document",
@@ -981,8 +942,7 @@
               "RelativeToolTip": "Learn\\IntersectionDetector.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-16T04:54:55.628Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T04:54:55.628Z"
             },
             {
               "$type": "Document",
@@ -994,8 +954,7 @@
               "RelativeToolTip": "Learn\\ContactResolver.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-21T12:12:30.539Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T12:12:30.539Z"
             },
             {
               "$type": "Document",
@@ -1007,8 +966,7 @@
               "RelativeToolTip": "Learn\\Contact.h",
               "ViewState": "AgIAACoAAAAAAAAAAAAowEMAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-15T05:48:09.605Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-15T05:48:09.605Z"
             },
             {
               "$type": "Document",
@@ -1020,8 +978,7 @@
               "RelativeToolTip": "Learn\\CollisionPrimitive.h",
               "ViewState": "AgIAABEAAAAAAAAAAAAvwCAAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-15T04:32:19.013Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-15T04:32:19.013Z"
             },
             {
               "$type": "Document",
@@ -1033,8 +990,7 @@
               "RelativeToolTip": "Learn\\CollisionDetector.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-15T13:54:47.035Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-15T13:54:47.035Z"
             },
             {
               "$type": "Document",
@@ -1046,8 +1002,7 @@
               "RelativeToolTip": "Learn\\CollisionData.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-15T13:52:10.293Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-15T13:52:10.293Z"
             },
             {
               "$type": "Document",
@@ -1059,8 +1014,7 @@
               "RelativeToolTip": "Learn\\BVHNode.h",
               "ViewState": "AgIAABIAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-14T14:15:15.087Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-14T14:15:15.087Z"
             },
             {
               "$type": "Document",
@@ -1072,8 +1026,7 @@
               "RelativeToolTip": "Learn\\BoundingSphere.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-14T14:05:26.78Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-14T14:05:26.78Z"
             },
             {
               "$type": "Document",
@@ -1085,8 +1038,7 @@
               "RelativeToolTip": "Learn\\Stage.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-07T05:52:13.246Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T05:52:13.246Z"
             },
             {
               "$type": "Document",
@@ -1098,8 +1050,7 @@
               "RelativeToolTip": "Learn\\CharacterController.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-06-05T02:49:10.701Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-05T02:49:10.701Z"
             },
             {
               "$type": "Document",
@@ -1111,8 +1062,7 @@
               "RelativeToolTip": "Learn\\Math.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-15T13:25:45.034Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-15T13:25:45.034Z"
             },
             {
               "$type": "Document",
@@ -1124,8 +1074,7 @@
               "RelativeToolTip": "Learn\\CVector4.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-16T05:13:20.344Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T05:13:20.344Z"
             },
             {
               "$type": "Document",
@@ -1137,8 +1086,7 @@
               "RelativeToolTip": "Learn\\CVector3.h",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAA4AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-07T06:31:04.04Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T06:31:04.04Z"
             },
             {
               "$type": "Document",
@@ -1150,8 +1098,7 @@
               "RelativeToolTip": "Learn\\CVector2.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-06-03T10:50:56.81Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T10:50:56.81Z"
             },
             {
               "$type": "Document",
@@ -1163,8 +1110,7 @@
               "RelativeToolTip": "Learn\\CQuaternion.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-07T13:09:48.736Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T13:09:48.736Z"
             },
             {
               "$type": "Document",
@@ -1176,8 +1122,7 @@
               "RelativeToolTip": "Learn\\CMatrix4.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-07T06:29:48.801Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T06:29:48.801Z"
             },
             {
               "$type": "Document",
@@ -1189,8 +1134,7 @@
               "RelativeToolTip": "Learn\\CMatrix3.h",
               "ViewState": "AgIAABsAAAAAAAAAAAAAAAMAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-25T13:07:06.045Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-25T13:07:06.045Z"
             },
             {
               "$type": "Document",
@@ -1202,8 +1146,7 @@
               "RelativeToolTip": "Learn\\CEuler.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-07T06:32:24.848Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T06:32:24.848Z"
             },
             {
               "$type": "Document",
@@ -1215,8 +1158,7 @@
               "RelativeToolTip": "Learn\\PhysicsManager.h",
               "ViewState": "AgIAAGEAAAAAAAAAAAAAwG0AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-13T05:18:30.314Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-13T05:18:30.314Z"
             },
             {
               "$type": "Document",
@@ -1228,8 +1170,7 @@
               "RelativeToolTip": "Learn\\InputManager.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-07T06:11:48.243Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T06:11:48.243Z"
             },
             {
               "$type": "Document",
@@ -1241,8 +1182,7 @@
               "RelativeToolTip": "Learn\\GameObject.h",
               "ViewState": "AgIAABsAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-08T10:29:00.782Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T10:29:00.782Z"
             },
             {
               "$type": "Document",
@@ -1254,8 +1194,7 @@
               "RelativeToolTip": "Learn\\GameObjectManager.h",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwCIAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-08T10:33:43.755Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T10:33:43.755Z"
             },
             {
               "$type": "Document",
@@ -1267,8 +1206,7 @@
               "RelativeToolTip": "Learn\\IManager.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-08T09:11:32.534Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T09:11:32.534Z"
             },
             {
               "$type": "Document",
@@ -1280,8 +1218,7 @@
               "RelativeToolTip": "Learn\\EngineMainLoop.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-09T13:44:16.364Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T13:44:16.364Z"
             },
             {
               "$type": "Document",
@@ -1293,8 +1230,7 @@
               "RelativeToolTip": "Learn\\Component.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-08T10:30:22.737Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T10:30:22.737Z"
             },
             {
               "$type": "Document",
@@ -1306,8 +1242,7 @@
               "RelativeToolTip": "Learn\\CModel.h",
               "ViewState": "AgIAABMAAAAAAAAAAAAvwCAAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-06-03T10:42:34.019Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-03T10:42:34.019Z"
             },
             {
               "$type": "Document",
@@ -1319,8 +1254,7 @@
               "RelativeToolTip": "Learn\\CglFont.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-07T09:09:40.588Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T09:09:40.588Z"
             },
             {
               "$type": "Document",
@@ -1332,8 +1266,7 @@
               "RelativeToolTip": "Learn\\Camera.h",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAB0AAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-07T05:35:12.822Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T05:35:12.822Z"
             },
             {
               "$type": "Document",
@@ -1345,8 +1278,7 @@
               "RelativeToolTip": "Learn\\Box.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-07T05:33:44.862Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T05:33:44.862Z"
             },
             {
               "$type": "Document",
@@ -1358,8 +1290,7 @@
               "RelativeToolTip": "Learn\\Transform.h",
               "ViewState": "AgIAAFIAAAAAAAAAAAAAwF4AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-07T05:53:02.773Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T05:53:02.773Z"
             },
             {
               "$type": "Document",
@@ -1371,8 +1302,7 @@
               "RelativeToolTip": "Learn\\SphereCollider.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-06-05T03:13:45.499Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-05T03:13:45.499Z"
             },
             {
               "$type": "Document",
@@ -1384,8 +1314,7 @@
               "RelativeToolTip": "Learn\\RigidBody.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-16T09:39:33.749Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T09:39:33.749Z"
             },
             {
               "$type": "Document",
@@ -1397,8 +1326,7 @@
               "RelativeToolTip": "Learn\\PlaneCollider.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-21T12:34:47.329Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T12:34:47.329Z"
             },
             {
               "$type": "Document",
@@ -1410,8 +1338,7 @@
               "RelativeToolTip": "Learn\\Collider.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-16T10:56:48.964Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T10:56:48.964Z"
             },
             {
               "$type": "Document",
@@ -1423,8 +1350,7 @@
               "RelativeToolTip": "Learn\\BoxCollider.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-16T10:58:26.787Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T10:58:26.787Z"
             },
             {
               "$type": "Document",
@@ -1436,8 +1362,7 @@
               "RelativeToolTip": "Learn\\TimeManager.h",
               "ViewState": "AgIAAB0AAAAAAAAAAAASwC0AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-13T08:11:25.744Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-13T08:11:25.744Z"
             },
             {
               "$type": "Document",
@@ -1449,8 +1374,7 @@
               "RelativeToolTip": "Learn\\RenderManager.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-09T13:51:00.436Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T13:51:00.436Z"
             },
             {
               "$type": "Document",
@@ -1462,8 +1386,7 @@
               "RelativeToolTip": "Learn\\Shape.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-07T05:31:28.984Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T05:31:28.984Z"
             },
             {
               "$type": "Document",
@@ -1475,8 +1398,7 @@
               "RelativeToolTip": "Learn\\ShapeFactory.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-07T05:31:44.009Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T05:31:44.009Z"
             },
             {
               "$type": "Document",
@@ -1488,8 +1410,7 @@
               "RelativeToolTip": "Learn\\Sphere.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-06-05T03:07:32.845Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-05T03:07:32.845Z"
             },
             {
               "$type": "Document",
@@ -1501,8 +1422,7 @@
               "RelativeToolTip": "Learn\\CollisionDetector.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-15T13:55:35.447Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-15T13:55:35.447Z"
             },
             {
               "$type": "Document",
@@ -1514,8 +1434,7 @@
               "RelativeToolTip": "Learn\\IntersectionDetector.cpp",
               "ViewState": "AgIAAOIAAAAAAAAAAAAvwOwAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-16T04:56:29.79Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T04:56:29.79Z"
             },
             {
               "$type": "Document",
@@ -1527,8 +1446,7 @@
               "RelativeToolTip": "Learn\\BVHNode.cpp",
               "ViewState": "AgIAAGQAAAAAAAAAAAAAwGgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-14T14:17:06.603Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-14T14:17:06.603Z"
             },
             {
               "$type": "Document",
@@ -1540,8 +1458,7 @@
               "RelativeToolTip": "Learn\\stdafx.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-07T05:33:51.856Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-07T05:33:51.856Z"
             },
             {
               "$type": "Document",
@@ -1553,8 +1470,7 @@
               "RelativeToolTip": "Learn\\targetver.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-06-05T02:41:59.943Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-05T02:41:59.943Z"
             },
             {
               "$type": "Document",
