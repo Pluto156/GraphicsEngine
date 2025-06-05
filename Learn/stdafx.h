@@ -22,6 +22,7 @@
 #include "CEuler.h"
 #include "CModel.h"
 #include "Box.h"
+#include "Sphere.h"
 #include "Camera.h"
 #include "CglFont.h"
 #include "ShapeFactory.h"
@@ -33,4 +34,5 @@
 #include <sstream>
 #include <queue>
 #include <chrono> 
+#include "CharacterController.h"
 // TODO:  在此处引用程序需要的其他头文件

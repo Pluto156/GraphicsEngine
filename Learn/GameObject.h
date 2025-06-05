@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include "GameObjectManager.h"
 #include "CglFont.h"
 #include "Transform.h"
@@ -21,7 +21,7 @@ public:
         }
         components.clear(); 
         transform = nullptr;
-        GameObjectManager::Instance().Unregister(this);
+        GameObjectManager::Instance().Destroy(this);
     }
 
     template<typename T, typename... Args>

@@ -9,6 +9,7 @@ Mesh::Mesh(std::vector<Vertex> verts, std::vector<unsigned int> inds, unsigned i
 }
 
 void Mesh::Draw() {
+    
     if (textureID != 0) {
         glEnable(GL_TEXTURE_2D);
         glBindTexture(GL_TEXTURE_2D, textureID);
@@ -49,9 +50,13 @@ MeshRenderer::MeshRenderer(const std::string& modelPath, const std::string& text
 }
 
 void MeshRenderer::Draw() {
+    glPushMatrix();  // 保存当前矩阵状态
+    CVector3 localScale = gameObject->transform->localScale;
+    glScalef(localScale.x, localScale.y, localScale.z);  // 应用缩放变换
     for (auto& mesh : meshes) {
-        mesh.Draw();
+        mesh.Draw();  // 渲染网格
     }
+    glPopMatrix();  // 恢复之前的矩阵状态，避免影响后续绘制
 }
 
 void MeshRenderer::loadModel(const std::string& path) {

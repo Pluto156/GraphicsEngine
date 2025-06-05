@@ -3,21 +3,21 @@ namespace PhysicsLit
 {
 	class RigidBodyPrimitive;
 	/// <summary>
-	/// ±íÊ¾ Á½¸ö¸ÕÌåµÄÅö×²£¬²¢Í¨¹ýÏà¹ØµÄ·½·¨À´¼ÆËãÅö×²ºóµÄ·´Ó¦£¬°üÀ¨Åö×²ºóµÄËÙ¶È¡¢Î»ÖÃÐÞÕý£¬ÒÔ¼°Ä¦²ÁÁ¦¡¢»Ö¸´Á¦µÄ¼ÆËã¡£ËüÊÇÒ»¸öÅö×²½âÎöÆ÷ÖÐ·Ç³£ÖØÒªµÄ×é³É²¿·Ö£¬Í¨³£ÔÚÎïÀíÒýÇæÖÐÓÃÓÚ´¦Àí Åö×²ÏìÓ¦¡£
+	/// è¡¨ç¤º ä¸¤ä¸ªåˆšä½“çš„ç¢°æ’žï¼Œå¹¶é€šè¿‡ç›¸å…³çš„æ–¹æ³•æ¥è®¡ç®—ç¢°æ’žåŽçš„ååº”ï¼ŒåŒ…æ‹¬ç¢°æ’žåŽçš„é€Ÿåº¦ã€ä½ç½®ä¿®æ­£ï¼Œä»¥åŠæ‘©æ“¦åŠ›ã€æ¢å¤åŠ›çš„è®¡ç®—ã€‚å®ƒæ˜¯ä¸€ä¸ªç¢°æ’žè§£æžå™¨ä¸­éžå¸¸é‡è¦çš„ç»„æˆéƒ¨åˆ†ï¼Œé€šå¸¸åœ¨ç‰©ç†å¼•æ“Žä¸­ç”¨äºŽå¤„ç† ç¢°æ’žå“åº”ã€‚
 	/// </summary>
 	class Contact
 	{
 		friend class ContactResolver;
 	public:
-		// Åö×²µã×ø±ê
+		// ç¢°æ’žç‚¹åæ ‡
 		CVector3 mContactPoint;
-		// Åö×²·¨Ïß
+		// ç¢°æ’žæ³•çº¿
 		CVector3 mContactNormal;
-		// Åö×²Éî¶È(ÓÐÅö×²»òÏà½»Ê±ÊÇÕýÊý)
+		// ç¢°æ’žæ·±åº¦(æœ‰ç¢°æ’žæˆ–ç›¸äº¤æ—¶æ˜¯æ­£æ•°)
 		float mPenetration = 0.0f;
-		// »Ö¸´ÏµÊý
+		// æ¢å¤ç³»æ•°
 		float mRestitution = 0.0f;
-		// Ä¦²ÁÏµÊý
+		// æ‘©æ“¦ç³»æ•°
 		float mFriction = 0.0f;
 
 		Contact(RigidBodyPrimitive* rigidBody1 = nullptr, RigidBodyPrimitive* rigidBody2 = nullptr);
@@ -25,45 +25,45 @@ namespace PhysicsLit
 		void SetRigidBodies(RigidBodyPrimitive* rigidBody1, RigidBodyPrimitive* rigidBody2);
 
 	private:
-		// Åö×²Ëù¶ÔÓ¦µÄ¸ÕÌå
+		// ç¢°æ’žæ‰€å¯¹åº”çš„åˆšä½“
 		RigidBodyPrimitive* mRigidBodies[2];
-		// ´ÓÅö×²×ø±êÏµµ½ÊÀ½ç×ø±êÏµµÄÐý×ª¾ØÕó
+		// ä»Žç¢°æ’žåæ ‡ç³»åˆ°ä¸–ç•Œåæ ‡ç³»çš„æ—‹è½¬çŸ©é˜µ
 		CMatrix3 mContactToWorld;
 
-		// Åö×²µãÏà¶ÔÓÚÁ½¸ö¸ÕÌåµÄÎ»ÖÃ
+		// ç¢°æ’žç‚¹ç›¸å¯¹äºŽä¸¤ä¸ªåˆšä½“çš„ä½ç½®
 		CVector3 mRelativeContactPosition[2];
-		// Åö×²µãµÄ±ÕºÏËÙ¶È(¼´Á½¸ö¶ÔÏóÏà»¥½Ó½üµÄËÙ¶È£¬Åö×²¿Õ¼ä)
+		// ç¢°æ’žç‚¹çš„é—­åˆé€Ÿåº¦(å³ä¸¤ä¸ªå¯¹è±¡ç›¸äº’æŽ¥è¿‘çš„é€Ÿåº¦ï¼Œç¢°æ’žç©ºé—´)
 		CVector3 mContactVelocity;
-		// µ±Ç°Åö×²Ëù²úÉúµÄÆÚÍûËÙ¶È±ä»¯Á¿(±ÕºÏËÙ¶ÈÔÚÅö×²·¨ÏßÉÏµÄ±ä»¯Á¿)
+		// å½“å‰ç¢°æ’žæ‰€äº§ç”Ÿçš„æœŸæœ›é€Ÿåº¦å˜åŒ–é‡(é—­åˆé€Ÿåº¦åœ¨ç¢°æ’žæ³•çº¿ä¸Šçš„å˜åŒ–é‡)
 		float mDesiredDeltaVelocity = 0.0f;
 
-		// ¶¯Ì¬¸üÐÂÅö×²ÏµÊý£¨Ä¦²ÁºÍ»Ö¸´ÏµÊý£©£¬ÒÔÈ·±£Åö×²ÏìÓ¦¼ÆËãÊ±¿ÉÒÔÊ¹ÓÃÕýÈ·µÄÎïÀí²ÎÊý¡£ÕâÐ©ÏµÊý¶ÔÎïÀíÒýÇæÖÐµÄÅö×²·´Ó¦ÖÁ¹ØÖØÒª£¬¾ö¶¨ÁËÎïÌåÅö×²ºóµÄÐÐÎª£¬Èç·´µ¯¡¢»¬¶¯µÈ
+		// åŠ¨æ€æ›´æ–°ç¢°æ’žç³»æ•°ï¼ˆæ‘©æ“¦å’Œæ¢å¤ç³»æ•°ï¼‰ï¼Œä»¥ç¡®ä¿ç¢°æ’žå“åº”è®¡ç®—æ—¶å¯ä»¥ä½¿ç”¨æ­£ç¡®çš„ç‰©ç†å‚æ•°ã€‚è¿™äº›ç³»æ•°å¯¹ç‰©ç†å¼•æ“Žä¸­çš„ç¢°æ’žååº”è‡³å…³é‡è¦ï¼Œå†³å®šäº†ç‰©ä½“ç¢°æ’žåŽçš„è¡Œä¸ºï¼Œå¦‚åå¼¹ã€æ»‘åŠ¨ç­‰
 		void UpdateCoefficient();
-		// ½»»»Á½¸ö¸ÕÌå£¬Í¬Ê±½«Åö×²·¨ÏßÈ¡·´(µ«ÊÇ²»»á¸üÐÂÆäËüÏà¹Ø±äÁ¿£¬Èç¹ûÐèÒª¸üÐÂÊÖ¶¯µ÷ÓÃUpdateInternalDatas)
+		// äº¤æ¢ä¸¤ä¸ªåˆšä½“ï¼ŒåŒæ—¶å°†ç¢°æ’žæ³•çº¿å–å(ä½†æ˜¯ä¸ä¼šæ›´æ–°å…¶å®ƒç›¸å…³å˜é‡ï¼Œå¦‚æžœéœ€è¦æ›´æ–°æ‰‹åŠ¨è°ƒç”¨UpdateInternalDatas)
 		void SwapRigidBodies();
-		// ¸üÐÂÅö×²ÖÐµÄ¸ÕÌå×´Ì¬£¬Èç¹ûÆäÖÐÒ»¸ö¸ÕÌåÊÇAwake£¬ÁíÒ»¸öÒ²±ØÐëAwake
+		// æ›´æ–°ç¢°æ’žä¸­çš„åˆšä½“çŠ¶æ€ï¼Œå¦‚æžœå…¶ä¸­ä¸€ä¸ªåˆšä½“æ˜¯Awakeï¼Œå¦ä¸€ä¸ªä¹Ÿå¿…é¡»Awake
 		void MatchAwakeState();
 
-		// ´¦ÀíÅö×²´©Í¸£¬Í¨¹ýÒÆ¶¯ºÍÐý×ªÁ½¸ö¸ÕÌå£¬¾¡Á¿ÈÃÁ½¸ö¶ÔÏó²»½»²æ
-		// È»ºóÍ¨¹ýÇ°Á½¸öÖ¸Õë²ÎÊý·µ»Ø´¦ÀíÐÅÏ¢
-		// PS: ´Ëº¯ÊýËäÈ»ÊÇÔÚ´¦ÀíÏà½»£¬Ò²»á¸Ä±ä¸ÕÌåµÄÎ»ÖÃºÍÐý×ª×´Ì¬£¬µ«ÊÇ²¢²»»áÖ±½Ó¸Ä±ämPenetration£¬¶øÊÇÓÉµ÷ÓÃµÄµØ·½È¥µ÷ÕûmPenetration
+		// å¤„ç†ç¢°æ’žç©¿é€ï¼Œé€šè¿‡ç§»åŠ¨å’Œæ—‹è½¬ä¸¤ä¸ªåˆšä½“ï¼Œå°½é‡è®©ä¸¤ä¸ªå¯¹è±¡ä¸äº¤å‰
+		// ç„¶åŽé€šè¿‡å‰ä¸¤ä¸ªæŒ‡é’ˆå‚æ•°è¿”å›žå¤„ç†ä¿¡æ¯
+		// PS: æ­¤å‡½æ•°è™½ç„¶æ˜¯åœ¨å¤„ç†ç›¸äº¤ï¼Œä¹Ÿä¼šæ”¹å˜åˆšä½“çš„ä½ç½®å’Œæ—‹è½¬çŠ¶æ€ï¼Œä½†æ˜¯å¹¶ä¸ä¼šç›´æŽ¥æ”¹å˜mPenetrationï¼Œè€Œæ˜¯ç”±è°ƒç”¨çš„åœ°æ–¹åŽ»è°ƒæ•´mPenetration
 		void ResolvePenetration(CVector3 linearChange[2], CVector3 angularChange[2], float penetration);
-		// ´¦ÀíÅö×²ÖÐµÄËÙ¶È±ä»¯£¬¼ÆËãÁ½¸ö¸ÕÌåµÄËÙ¶È±ä»¯Á¿£¬È»ºóÍ¨¹ý²ÎÊý·µ»Ø
+		// å¤„ç†ç¢°æ’žä¸­çš„é€Ÿåº¦å˜åŒ–ï¼Œè®¡ç®—ä¸¤ä¸ªåˆšä½“çš„é€Ÿåº¦å˜åŒ–é‡ï¼Œç„¶åŽé€šè¿‡å‚æ•°è¿”å›ž
 		void ResolveVelocityChange(CVector3 linearVelocityChange[2], CVector3 angularVelocityChange[2]);
 
-		// ¼ÆËãÓÐÄ¦²ÁÁ¦Çé¿öÏÂµÄ³åÁ¿
+		// è®¡ç®—æœ‰æ‘©æ“¦åŠ›æƒ…å†µä¸‹çš„å†²é‡
 		CVector3 CalculateFrictionImpulse(CMatrix3* inverseInertiaTensor);
-		// ¼ÆËãÎÞÄ¦²ÁÁ¦Çé¿öÏÂµÄ³åÁ¿
+		// è®¡ç®—æ— æ‘©æ“¦åŠ›æƒ…å†µä¸‹çš„å†²é‡
 		CVector3 CalculateFrictionlessImpulse(CMatrix3* inverseInertiaTensor);
 
-		// ¸üÐÂµ±Ç°Åö×²µãµÄ¸÷ÏîÄÚ²¿Êý¾Ý
+		// æ›´æ–°å½“å‰ç¢°æ’žç‚¹çš„å„é¡¹å†…éƒ¨æ•°æ®
 		void UpdateInternalDatas(float duration);
-		// ¸üÐÂÅö×²×ø±êÏµµ½ÊÀ½ç×ø±êÏµµÄÐý×ª¾ØÕó
+		// æ›´æ–°ç¢°æ’žåæ ‡ç³»åˆ°ä¸–ç•Œåæ ‡ç³»çš„æ—‹è½¬çŸ©é˜µ
 		void UpdateOrthogonalBasis();
-		// ¼ÆËãµ±Ç°Åö×²Ëù²úÉúµÄÆÚÍûËÙ¶È±ä»¯Á¿(±ÕºÏËÙ¶È)
+		// è®¡ç®—å½“å‰ç¢°æ’žæ‰€äº§ç”Ÿçš„æœŸæœ›é€Ÿåº¦å˜åŒ–é‡(é—­åˆé€Ÿåº¦)
 		void UpdateDesiredDeltaVelocity(float duration);
 
-		// ¼ÆËãµÚindex¸ö¸ÕÌåÏà¶ÔÓÚÅö×²µãµÄËÙ¶È
+		// è®¡ç®—ç¬¬indexä¸ªåˆšä½“ç›¸å¯¹äºŽç¢°æ’žç‚¹çš„é€Ÿåº¦
 		CVector3 CalculateLocalVelocity(uint32_t index, float duration);
 	};
 }

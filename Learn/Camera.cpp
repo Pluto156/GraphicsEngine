@@ -2,7 +2,7 @@
 #include "Camera.h"
 
 Camera::Camera()
-    : GameObject("Camera",CVector3(0, 3, 20)), camTarget(0, 0, 0),
+    : GameObject("Camera",CVector3(0, 28, 10)), camTarget(0, 0, 0),
     camAngleX(0.0f), camAngleY(0.0f),
     camMoveSpeed(0.1f), camRotateSpeed(0.5f),isControlView(false),ControlViewMode(0)
 {

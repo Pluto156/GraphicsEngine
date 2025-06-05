@@ -49,6 +49,12 @@
     <Filter Include="源文件\Engine\Components">
       <UniqueIdentifier>{0b38798f-5733-4884-a173-7e6f84233578}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\GameLogic">
+      <UniqueIdentifier>{409a9f10-ccac-4c26-bdf4-05dba1735734}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\GameLogic">
+      <UniqueIdentifier>{60c9ddd7-fa9f-43d3-aebc-9dd6340ddc1f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -58,21 +64,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Box.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Stage.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ShapeFactory.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Shape.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="CEuler.h">
@@ -195,27 +186,36 @@
     <ClInclude Include="CVector2.h">
       <Filter>头文件\Math</Filter>
     </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>头文件\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Box.h">
+      <Filter>头文件\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>头文件\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeFactory.h">
+      <Filter>头文件\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Stage.h">
+      <Filter>头文件\GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterController.h">
+      <Filter>头文件\GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere.h">
+      <Filter>头文件\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="SphereCollider.h">
+      <Filter>头文件\Engine\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Assignment_2.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Box.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Camera.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Stage.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="ShapeFactory.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Shape.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="CEuler.cpp">
@@ -337,6 +337,30 @@
     </ClCompile>
     <ClCompile Include="CVector2.cpp">
       <Filter>源文件\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Shape.cpp">
+      <Filter>源文件\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>源文件\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>源文件\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeFactory.cpp">
+      <Filter>源文件\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage.cpp">
+      <Filter>源文件\GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterController.cpp">
+      <Filter>源文件\GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="Sphere.cpp">
+      <Filter>源文件\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="SphereCollider.cpp">
+      <Filter>源文件\Engine\Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

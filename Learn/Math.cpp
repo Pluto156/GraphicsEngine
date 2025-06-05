@@ -51,7 +51,7 @@ float Math::Rad2Deg(float radian)
 
 CMatrix3 Math::Inverse(const CMatrix3& mat)
 {
-	// °éËæ¾ØÕó·¨
+	// ä¼´éšçŸ©é˜µæ³•
 	float oneOverDeterminant = 1.0f / mat.GetDeterminant();
 
 	CMatrix3 resMat = CMatrix3();

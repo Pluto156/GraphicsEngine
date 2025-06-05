@@ -3,7 +3,7 @@
 
 CglFont::CglFont()
     : m_posX(10), m_posY(20), m_font(GLUT_BITMAP_9_BY_15) {
-    m_color[0] = m_color[1] = m_color[2] = 1.0f; // Ä¬ÈÏ°×É«
+    m_color[0] = m_color[1] = m_color[2] = 1.0f; // é»˜è®¤ç™½è‰²
 }
 
 void CglFont::SetColor(float r, float g, float b) {
@@ -22,45 +22,45 @@ void CglFont::SetFont(void* glutFont) {
 }
 
 void CglFont::DrawString(const std::string& text) const {
-    // ±£´æµ±Ç°¾ØÕó×´Ì¬
+    // ä¿å­˜å½“å‰çŸ©é˜µçŠ¶æ€
     glMatrixMode(GL_PROJECTION);
     glPushMatrix();
     glLoadIdentity();
 
-    // »ñÈ¡ÊÓ¿Ú³ß´ç²¢ÉèÖÃÕı½»Í¶Ó°
+    // è·å–è§†å£å°ºå¯¸å¹¶è®¾ç½®æ­£äº¤æŠ•å½±
     GLint viewport[4];
     glGetIntegerv(GL_VIEWPORT, viewport);
-    gluOrtho2D(0, viewport[2], viewport[3], 0); // ×óÉÏ½ÇÎªÔ­µã
+    gluOrtho2D(0, viewport[2], viewport[3], 0); // å·¦ä¸Šè§’ä¸ºåŸç‚¹
 
     glMatrixMode(GL_MODELVIEW);
     glPushMatrix();
     glLoadIdentity();
 
-    // ÉèÖÃÑÕÉ«
+    // è®¾ç½®é¢œè‰²
     glColor3fv(m_color);
 
-    // ¼ÆËãĞĞ¸ß (¸ù¾İ×ÖÌåºÍĞèÒªµ÷Õû)
-    float lineHeight = 20.0f; // ÉèÖÃÃ¿ĞĞÖ®¼äµÄ¸ß¶È
+    // è®¡ç®—è¡Œé«˜ (æ ¹æ®å­—ä½“å’Œéœ€è¦è°ƒæ•´)
+    float lineHeight = 20.0f; // è®¾ç½®æ¯è¡Œä¹‹é—´çš„é«˜åº¦
 
-    // »æÖÆÃ¿¸ö×Ö·û
+    // ç»˜åˆ¶æ¯ä¸ªå­—ç¬¦
     float cursorX = m_posX;
     float cursorY = m_posY;
 
     for (const char c : text) {
         if (c == '\n') {
-            // Óöµ½»»ĞĞ·û£¬ÒÆ¶¯µ½ÏÂÒ»ĞĞ
-            cursorY += lineHeight; // µ÷Õû Y ×ø±ê£¬±íÊ¾»»ĞĞ
-            cursorX = m_posX;      // ÖØÖÃ X ×ø±ê
+            // é‡åˆ°æ¢è¡Œç¬¦ï¼Œç§»åŠ¨åˆ°ä¸‹ä¸€è¡Œ
+            cursorY += lineHeight; // è°ƒæ•´ Y åæ ‡ï¼Œè¡¨ç¤ºæ¢è¡Œ
+            cursorX = m_posX;      // é‡ç½® X åæ ‡
         }
         else {
-            // ÉèÖÃ×Ö·û»æÖÆµÄ×ø±ê
+            // è®¾ç½®å­—ç¬¦ç»˜åˆ¶çš„åæ ‡
             glRasterPos2f(cursorX, cursorY);
             glutBitmapCharacter(m_font, c);
-            cursorX += glutBitmapWidth(m_font, c); // Ôö¼Ó X ×ø±ê£¬ÎªÏÂÒ»¸ö×Ö·ûÁô³ö¿Õ¼ä
+            cursorX += glutBitmapWidth(m_font, c); // å¢åŠ  X åæ ‡ï¼Œä¸ºä¸‹ä¸€ä¸ªå­—ç¬¦ç•™å‡ºç©ºé—´
         }
     }
 
-    // »Ö¸´¾ØÕó×´Ì¬
+    // æ¢å¤çŸ©é˜µçŠ¶æ€
     glPopMatrix();
     glMatrixMode(GL_PROJECTION);
     glPopMatrix();

@@ -38,13 +38,14 @@ void InitStage()
         GameObject* E29 = new GameObject("E29", CVector3(-(29 + 28 * 0.05) / 2 + 0.5, 20, 0));
         GameObject* E25 = new GameObject("E25", CVector3(-(25 + 24 * 0.05) / 2 + 0.5, 20, 0));
         GameObject* Car = new GameObject("Car", CVector3(0, 0.5 + 2.5+5, 0));
-
         GameObject* Car2 = new GameObject("Car2", CVector3(3, 0.5 + 2.5 + 5, 0));
 
-        GameObject* Car3 = new GameObject("Car2", CVector3(3, 0.5 + 2.5 + 5+2.5, 0));
-        Car3->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Model/Tank.obj","E:/sourcecode/GraphicsEngine/Resource/Model/panzer-0000.png");
+        GameObject* Sphere = ShapeFactory::CreateSphere("Sphere",1, CVector3(3, 0.5 + 2.5 + 7.5, 0));
 
+        Car->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Model/T 90.obj","E:/sourcecode/GraphicsEngine/Resource/Model/T 90A.png");
+        Car->AddComponent<CharacterController>();
         Car->transform->isShowLocalAxis = true;
+        Car->transform->SetLocalScale(CVector3(0.2, 0.2, 0.2));
         GameObjectManager::Instance().SetCamera(camera);
         GameObjectManager::Instance().SetStage(stage);
         
@@ -120,42 +121,42 @@ void InitStage()
             }
         }
 
-        // e29鍖猴細2鎺掞紝鍓嶆帓29涓紝鍚庢帓25涓紝澶у皬1x12x0.1锛岄棿璺?.05
-        AreaPos = E29->transform->position;
-        float e29spacing = 0.05f;
-        for (int j = 0; j < 29; ++j) {
-            float xPos = AreaPos.x + j * (1 + e29spacing); // 璁＄畻x浣嶇疆
-            float yPos = AreaPos.y;
-            float zPos = AreaPos.z; // 璁＄畻z浣嶇疆
-            E29->AddChild(ShapeFactory::CreateBox("E29_" + std::to_string((j + 1)),1, 12, 0.1f, CVector3(xPos, yPos, zPos), 0.9, 0.57, 0.12));
-        }
+        //// e29鍖猴細2鎺掞紝鍓嶆帓29涓紝鍚庢帓25涓紝澶у皬1x12x0.1锛岄棿璺?.05
+        //AreaPos = E29->transform->position;
+        //float e29spacing = 0.05f;
+        //for (int j = 0; j < 29; ++j) {
+        //    float xPos = AreaPos.x + j * (1 + e29spacing); // 璁＄畻x浣嶇疆
+        //    float yPos = AreaPos.y;
+        //    float zPos = AreaPos.z; // 璁＄畻z浣嶇疆
+        //    E29->AddChild(ShapeFactory::CreateBox("E29_" + std::to_string((j + 1)),1, 12, 0.1f, CVector3(xPos, yPos, zPos), 0.9, 0.57, 0.12));
+        //}
 
-        // e25鍖猴細2鎺掞紝鍓嶆帓29涓紝鍚庢帓25涓紝澶у皬1x12x0.1锛岄棿璺?.05
-        AreaPos = E25->transform->position;
-        float e25spacing = 0.05f;
-        for (int j = 0; j < 25; ++j) {
-            float xPos = AreaPos.x + j * (1 + e25spacing); // 璁＄畻x浣嶇疆
-            float yPos = AreaPos.y;
-            float zPos = AreaPos.z + 1 * (2 + e25spacing); // 璁＄畻z浣嶇疆
-            E25->AddChild(ShapeFactory::CreateBox("E25_" + std::to_string((j + 1)),1, 12, 0.1f, CVector3(xPos, yPos, zPos), 0.9, 0.57, 0.12));
-        }
+        //// e25鍖猴細2鎺掞紝鍓嶆帓29涓紝鍚庢帓25涓紝澶у皬1x12x0.1锛岄棿璺?.05
+        //AreaPos = E25->transform->position;
+        //float e25spacing = 0.05f;
+        //for (int j = 0; j < 25; ++j) {
+        //    float xPos = AreaPos.x + j * (1 + e25spacing); // 璁＄畻x浣嶇疆
+        //    float yPos = AreaPos.y;
+        //    float zPos = AreaPos.z + 1 * (2 + e25spacing); // 璁＄畻z浣嶇疆
+        //    E25->AddChild(ShapeFactory::CreateBox("E25_" + std::to_string((j + 1)),1, 12, 0.1f, CVector3(xPos, yPos, zPos), 0.9, 0.57, 0.12));
+        //}
         //灏忚溅
-        Box* Car_Body = ShapeFactory::CreateBox("Car_Body", 2, 1, 4, CVector3(), 0.9, 0.9, 0.9, false);
-        Box* Car_Wheel_1 = ShapeFactory::CreateBox("Car_Wheel_1", 1, 1, 1, CVector3(), 0, 0, 0, false);
-        Box* Car_Wheel_2 = ShapeFactory::CreateBox("Car_Wheel_2", 1, 1, 1, CVector3(), 0, 0, 0, false);
-        Box* Car_Wheel_3 = ShapeFactory::CreateBox("Car_Wheel_3", 1, 1, 1, CVector3(), 0, 0, 0, false);
-        Box* Car_Wheel_4 = ShapeFactory::CreateBox("Car_Wheel_4", 1, 1, 1, CVector3(), 0, 0, 0, false);
-        Car->AddChild(Car_Body);
-        Car->AddChild(Car_Wheel_1);
-        Car->AddChild(Car_Wheel_2);
-        Car->AddChild(Car_Wheel_3);
-        Car->AddChild(Car_Wheel_4);
+        //Box* Car_Body = ShapeFactory::CreateBox("Car_Body", 2, 1, 4, CVector3(), 0.9, 0.9, 0.9, false);
+        //Box* Car_Wheel_1 = ShapeFactory::CreateBox("Car_Wheel_1", 1, 1, 1, CVector3(), 0, 0, 0, false);
+        //Box* Car_Wheel_2 = ShapeFactory::CreateBox("Car_Wheel_2", 1, 1, 1, CVector3(), 0, 0, 0, false);
+        //Box* Car_Wheel_3 = ShapeFactory::CreateBox("Car_Wheel_3", 1, 1, 1, CVector3(), 0, 0, 0, false);
+        //Box* Car_Wheel_4 = ShapeFactory::CreateBox("Car_Wheel_4", 1, 1, 1, CVector3(), 0, 0, 0, false);
+        //Car->AddChild(Car_Body);
+        //Car->AddChild(Car_Wheel_1);
+        //Car->AddChild(Car_Wheel_2);
+        //Car->AddChild(Car_Wheel_3);
+        //Car->AddChild(Car_Wheel_4);
 
-        Car_Body->transform->SetLocalPosition(CVector3(0, 1, 0));
-        Car_Wheel_1->transform->SetLocalPosition(CVector3(-0.5, 0, -1.5));
-        Car_Wheel_2->transform->SetLocalPosition(CVector3(0.5, 0, -1.5));
-        Car_Wheel_3->transform->SetLocalPosition(CVector3(-0.5, 0, 1.5));
-        Car_Wheel_4->transform->SetLocalPosition(CVector3(0.5, 0, 1.5));
+        //Car_Body->transform->SetLocalPosition(CVector3(0, 1, 0));
+        //Car_Wheel_1->transform->SetLocalPosition(CVector3(-0.5, 0, -1.5));
+        //Car_Wheel_2->transform->SetLocalPosition(CVector3(0.5, 0, -1.5));
+        //Car_Wheel_3->transform->SetLocalPosition(CVector3(-0.5, 0, 1.5));
+        //Car_Wheel_4->transform->SetLocalPosition(CVector3(0.5, 0, 1.5));
         
         Box* Car2_Body = ShapeFactory::CreateBox("Car2_Body", 2, 1, 4, CVector3(), 0, 0, 0, false);
 
@@ -204,6 +205,21 @@ void InitStage()
         rigidBody3->rigidBodyPrimitive->SetInertiaTensor(BoxCollider3->mCollider->GetInertiaTensor(rigidBody3->rigidBodyPrimitive->GetMass()));
         PhysicsLit::PhysicsManager::Instance().AddGameObject(Car2);
         rigidBody3->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(CVector3(0.0f, -9.8f, 0.0f)));
+        
+        
+        
+        auto rigidBody4 = Sphere->AddComponent<RigidBody>();
+        rigidBody4->rigidBodyPrimitive->SetMass(1000);
+        auto sphereCollider = Sphere->GetComponent<SphereCollider>();
+        sphereCollider->mFriction = 10;
+        sphereCollider->mBounciness = 0.5;
+        sphereCollider->SynchronizeData();
+
+        sphereCollider->mCollider->rigidBodyPrimitive = rigidBody4->rigidBodyPrimitive;
+        rigidBody4->rigidBodyPrimitive->mCollisionVolume = sphereCollider->mCollider;
+        rigidBody4->rigidBodyPrimitive->SetInertiaTensor(sphereCollider->mCollider->GetInertiaTensor(rigidBody4->rigidBodyPrimitive->GetMass()));
+        PhysicsLit::PhysicsManager::Instance().AddGameObject(Sphere);
+        rigidBody4->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(CVector3(0.0f, -9.8f, 0.0f)));
         isInitStage = true;
     }
 

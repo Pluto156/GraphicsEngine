@@ -2,7 +2,7 @@
 #include "CVector3.h"
 #include "CVector4.h"
 
-// Ä¬ÈÏ¹¹Ôìº¯Êı£¬³õÊ¼»¯ÏòÁ¿Îª(0, 0, 0)
+// é»˜è®¤æ„é€ å‡½æ•°ï¼Œåˆå§‹åŒ–å‘é‡ä¸º(0, 0, 0)
 CVector3::CVector3() : x(0), y(0), z(0) {}
 
 CVector3::CVector3(float x, float y, float z)
@@ -19,10 +19,10 @@ CVector3::CVector3(const CVector4& v)
     this->z = v.z;
 }
 
-// Îö¹¹º¯Êı
+// ææ„å‡½æ•°
 CVector3::~CVector3() {}
 
-// ÏòÁ¿¼õ·¨
+// å‘é‡å‡æ³•
 CVector3 CVector3::operator-(const CVector3& v) const {
     return CVector3(x - v.x, y - v.y, z - v.z);
 }
@@ -36,7 +36,7 @@ CVector3 CVector3::operator-=(const CVector3& v)
 }
 
 
-// ÏòÁ¿¼Ó·¨
+// å‘é‡åŠ æ³•
 CVector3 CVector3::operator+(const CVector3& v) const {
     return CVector3(x + v.x, y + v.y, z + v.z);
 }
@@ -48,7 +48,7 @@ CVector3 CVector3::operator+=(const CVector3& v)  {
     return *this;
 }
 
-// ¸³Öµ²Ù×÷·ûÖØÔØ
+// èµ‹å€¼æ“ä½œç¬¦é‡è½½
 CVector3& CVector3::operator=(const CVector3& v) {
     if (this != &v) {
         x = v.x;
@@ -58,7 +58,7 @@ CVector3& CVector3::operator=(const CVector3& v) {
     return *this;
 }
 
-// ÏòÁ¿Êı³Ë²Ù×÷
+// å‘é‡æ•°ä¹˜æ“ä½œ
 CVector3 CVector3::operator*(float scalar) const {
     return CVector3(x * scalar, y * scalar, z * scalar);
 }
@@ -130,12 +130,12 @@ const float& CVector3::operator[] (int i) const
     }
 }
 
-// ÓÑÔªº¯Êı£ºÖ§³Ö 100 * CVector µÄĞÎÊ½
+// å‹å…ƒå‡½æ•°ï¼šæ”¯æŒ 100 * CVector çš„å½¢å¼
 CVector3 operator*(float scalar, const CVector3& v) {
     return CVector3(v.x * scalar, v.y * scalar, v.z * scalar);
 }
 
-// ÏòÁ¿µ¥Î»»¯
+// å‘é‡å•ä½åŒ–
 void CVector3::Normalize() {
     float length = len();
     if (length > 0) {
@@ -153,7 +153,7 @@ CVector3 CVector3::GetNormalize()const
 
 
 
-// ÏòÁ¿ÇóÄ£
+// å‘é‡æ±‚æ¨¡
 float CVector3::len() const {
     return sqrt(x * x + y * y + z * z);
 }
@@ -163,7 +163,7 @@ float CVector3::lenSquared() const
     return x * x + y * y + z * z;
 }
 
-// ÏòÁ¿Í¶Ó°
+// å‘é‡æŠ•å½±
 CVector3 CVector3::project(const CVector3& v) const {
     float dotProduct = Math::Dot(*this,v);
     float lengthSquared = v.len() * v.len();
@@ -175,12 +175,12 @@ float CVector3::projectLen(const CVector3& v) const
     return project(v).len();
 }
 
-// ÏòÁ¿¾àÀë
+// å‘é‡è·ç¦»
 float CVector3::distanceTo(const CVector3& v) const {
     return sqrt((x - v.x) * (x - v.x) + (y - v.y) * (y - v.y) + (z - v.z) * (z - v.z));
 }
 
-// ÏòÁ¿È¡·´£¨Í¨¹ıÖØÔØ - ÔËËã·û£©
+// å‘é‡å–åï¼ˆé€šè¿‡é‡è½½ - è¿ç®—ç¬¦ï¼‰
 CVector3 CVector3::operator-() const {
     return CVector3(-x, -y, -z);
 }
@@ -200,19 +200,19 @@ CEuler CVector3::ToEuler() const
 {
     CEuler euler;
 
-    // ¹éÒ»»¯·½ÏòÏòÁ¿£¬±ÜÃâÓ°Ïì½Ç¶È¼ÆËã
+    // å½’ä¸€åŒ–æ–¹å‘å‘é‡ï¼Œé¿å…å½±å“è§’åº¦è®¡ç®—
     CVector3 dir = this->GetNormalize();
 
-    // Æ«º½½Ç (Yaw) - ÈÆ Y Öá
+    // åèˆªè§’ (Yaw) - ç»• Y è½´
     euler.h = atan2(dir.x, dir.z);
 
-    // ¸©Ñö½Ç (Pitch) - ÈÆ X Öá
+    // ä¿¯ä»°è§’ (Pitch) - ç»• X è½´
     euler.p = -atan2(dir.y, sqrt(dir.x * dir.x + dir.z * dir.z));
 
-    // ·­¹ö½Ç (Roll) - ÎŞ·¨´Ó·½ÏòÏòÁ¿Î¨Ò»È·¶¨£¬ÉèÎª 0
+    // ç¿»æ»šè§’ (Roll) - æ— æ³•ä»æ–¹å‘å‘é‡å”¯ä¸€ç¡®å®šï¼Œè®¾ä¸º 0
     euler.b = 0;
 
-    // ×ª»»Îª½Ç¶È
+    // è½¬æ¢ä¸ºè§’åº¦
     constexpr float RAD2DEG = 180.0f / M_PI;
     euler.h *= RAD2DEG;
     euler.p *= RAD2DEG;
@@ -236,7 +236,7 @@ CVector4 CVector3::ToDirVec4() const
     return CVector4(x, y, z, 0.0f);
 }
 
-// Calculate º¯ÊıÊµÏÖ
+// Calculate å‡½æ•°å®ç°
 #include <cmath>
 #include <iostream>
 
@@ -249,46 +249,46 @@ bool Calculate() {
     while (!feof(fp)) {
         fscanf_s(fp, "%s\n", str, 1024);
 
-        if (strcmp(str, "ÏòÁ¿Ïà¼Ó") == 0) {
+        if (strcmp(str, "å‘é‡ç›¸åŠ ") == 0) {
             CVector3 v1, v2, vout;
             fscanf_s(fp, "%f,%f,%f %f,%f,%f", &v1.x, &v1.y, &v1.z, &v2.x, &v2.y, &v2.z);
             vout = v1 + v2;
             fprintf(fpOut, "%s\n%g,%g,%g \t%g,%g,%g \t%g,%g,%g\n", str, v1.x, v1.y, v1.z, v2.x, v2.y, v2.z, vout.x, vout.y, vout.z);
         }
-        else if (strcmp(str, "ÏòÁ¿µã³Ë") == 0) {
+        else if (strcmp(str, "å‘é‡ç‚¹ä¹˜") == 0) {
             CVector3 v1, v2;
             float vout;
             fscanf_s(fp, "%f,%f,%f %f,%f,%f", &v1.x, &v1.y, &v1.z, &v2.x, &v2.y, &v2.z);
             vout = Math::Dot(v1,v2);
             fprintf(fpOut, "%s\n%g,%g,%g \t%g,%g,%g \t%g\n", str, v1.x, v1.y, v1.z, v2.x, v2.y, v2.z, vout);
         }
-        else if (strcmp(str, "ÏòÁ¿²æ³Ë") == 0) {
+        else if (strcmp(str, "å‘é‡å‰ä¹˜") == 0) {
             CVector3 v1, v2, vout;
             fscanf_s(fp, "%f,%f,%f %f,%f,%f", &v1.x, &v1.y, &v1.z, &v2.x, &v2.y, &v2.z);
             vout = Math::Cross(v1,v2);
             fprintf(fpOut, "%s\n%g,%g,%g \t%g,%g,%g \t%g,%g,%g\n", str, v1.x, v1.y, v1.z, v2.x, v2.y, v2.z, vout.x, vout.y, vout.z);
         }
-        else if (strcmp(str, "ÏòÁ¿±ê×¼»¯") == 0) {
+        else if (strcmp(str, "å‘é‡æ ‡å‡†åŒ–") == 0) {
             CVector3 v1, v2;
             fscanf_s(fp, "%f,%f,%f", &v1.x, &v1.y, &v1.z);
             v2 = v1;
             v2.Normalize();
             fprintf(fpOut, "%s\n%g,%g,%g \t%g,%g,%g \n", str, v1.x, v1.y, v1.z, v2.x, v2.y, v2.z);
         }
-        else if (strcmp(str, "ÏòÁ¿ÇóÄ£") == 0) {
+        else if (strcmp(str, "å‘é‡æ±‚æ¨¡") == 0) {
             CVector3 v1;
             float vout;
             fscanf_s(fp, "%f,%f,%f", &v1.x, &v1.y, &v1.z);
             vout = v1.len();
             fprintf(fpOut, "%s\n%g,%g,%g %g\n", str, v1.x, v1.y, v1.z, vout);
         }
-        else if (strcmp(str, "ÏòÁ¿Í¶Ó°") == 0) {
+        else if (strcmp(str, "å‘é‡æŠ•å½±") == 0) {
             CVector3 v1, v2, vout;
             fscanf_s(fp, "%f,%f,%f %f,%f,%f", &v1.x, &v1.y, &v1.z, &v2.x, &v2.y, &v2.z);
             vout = v1.project(v2);
             fprintf(fpOut, "%s\n%g,%g,%g \t%g,%g,%g \t%g,%g,%g\n", str, v1.x, v1.y, v1.z, v2.x, v2.y, v2.z, vout.x, vout.y, vout.z);
         }
-        else if (strcmp(str, "¾ØÕóÏà³Ë") == 0) {
+        else if (strcmp(str, "çŸ©é˜µç›¸ä¹˜") == 0) {
             CMatrix4 a, b, c;
             fscanf_s(fp, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f",
                 &a[0], &a[1], &a[2], &a[3], &a[4], &a[5], &a[6], &a[7], &a[8], &a[9], &a[10], &a[11], &a[12], &a[13], &a[14], &a[15]
@@ -304,7 +304,7 @@ bool Calculate() {
             );
 
         }
-        else if (strcmp(str, "¾ØÕó³ËÏòÁ¿") == 0) {
+        else if (strcmp(str, "çŸ©é˜µä¹˜å‘é‡") == 0) {
             CMatrix4 a;
             CVector3 b,c;
             fscanf_s(fp, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f",
@@ -317,7 +317,7 @@ bool Calculate() {
                 , b.x, b.y, b.z
                 , c.x, c.y, c.z);
         }
-        else if (strcmp(str, "¾ØÕó³ËÎ»ÖÃ") == 0) {
+        else if (strcmp(str, "çŸ©é˜µä¹˜ä½ç½®") == 0) {
             CMatrix4 a;
             CVector3 b, c;
             fscanf_s(fp, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f",
@@ -330,7 +330,7 @@ bool Calculate() {
                 , b.x, b.y, b.z
                 , c.x, c.y, c.z);
         }
-        else if (strcmp(str, "¾ØÕóÉèÖÃĞı×ª") == 0) {
+        else if (strcmp(str, "çŸ©é˜µè®¾ç½®æ—‹è½¬") == 0) {
             float angle;
             CVector3 v1;
             CMatrix4 c;
@@ -341,7 +341,7 @@ bool Calculate() {
             );
 
         }
-        else if (strcmp(str, "¾ØÕóÉèÖÃÆ½ÒÆ") == 0) {
+        else if (strcmp(str, "çŸ©é˜µè®¾ç½®å¹³ç§»") == 0) {
             CVector3 v1;
             CMatrix4 c;
             fscanf_s(fp, "%f,%f,%f", &v1.x, &v1.y, &v1.z);
@@ -349,7 +349,7 @@ bool Calculate() {
             fprintf(fpOut, "%s\n%g,%g,%g \t%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g\n ", str, v1.x, v1.y, v1.z, c[0], c[1], c[2], c[3], c[4], c[5], c[6], c[7], c[8], c[9], c[10], c[11], c[12], c[13], c[14], c[15]
             );
         }
-        else if (strcmp(str, "¾ØÕóÉèÖÃËõ·Å") == 0) {
+        else if (strcmp(str, "çŸ©é˜µè®¾ç½®ç¼©æ”¾") == 0) {
             CVector3 v1;
             CMatrix4 c;
             fscanf_s(fp, "%f,%f,%f", &v1.x, &v1.y, &v1.z);
@@ -357,7 +357,7 @@ bool Calculate() {
             fprintf(fpOut, "%s\n%g,%g,%g \t%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g\n ", str, v1.x, v1.y, v1.z, c[0], c[1], c[2], c[3], c[4], c[5], c[6], c[7], c[8], c[9], c[10], c[11], c[12], c[13], c[14], c[15]
             );
         }
-        else if (strcmp(str, "¾ØÕóÇóÄæ") == 0) {
+        else if (strcmp(str, "çŸ©é˜µæ±‚é€†") == 0) {
             CMatrix4 a, b, c;
             fscanf_s(fp, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f",
                 &a[0], &a[1], &a[2], &a[3], &a[4], &a[5], &a[6], &a[7], &a[8], &a[9], &a[10], &a[11], &a[12], &a[13], &a[14], &a[15]

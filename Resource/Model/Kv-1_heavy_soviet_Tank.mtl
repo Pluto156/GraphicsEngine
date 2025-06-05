@@ -1,0 +1,68 @@
+# Blender 4.4.3 MTL File: 'Kv-1_heavy_soviet_Tank.blend'
+# www.blender.org
+
+newmtl Body
+Ka 0.900000 0.900000 0.900000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:/Base_Color.png
+map_Ns C:/Roughtness.png
+map_refl C:/Mettalic.png
+
+newmtl Detail
+Ka 0.900000 0.900000 0.900000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd Base_Color.png
+map_Ns C:/Roughtness.png
+map_refl C:/Mettalic.png
+
+newmtl Detail_2
+Ka 0.900000 0.900000 0.900000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 3
+map_Kd C:/Base_Color.png
+map_Ns C:/Roughtness.png
+map_refl C:/Mettalic.png
+map_d C:/Op.png
+
+newmtl Truck
+Ka 0.900000 0.900000 0.900000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:/Base_Color.png
+map_Ns C:/Roughtness.png
+map_refl C:/Mettalic.png
+
+newmtl Truck2
+Ka 0.900000 0.900000 0.900000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 3
+map_Kd C:/Base_Color.png
+map_Ns C:/Roughtness.png
+map_refl C:/Mettalic.png
+map_d C:/Op.png
+
+newmtl Turret
+Ka 0.900000 0.900000 0.900000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd C:/Base_Color.png
+map_Ns C:/Roughtness.png
+map_refl C:/Mettalic.png

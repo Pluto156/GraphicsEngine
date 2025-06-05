@@ -6,17 +6,19 @@ enum class ComponentType
     RigidBody,
     Collider,
     BoxCollider,
+    SphereCollider,
     PlaneCollider,
-    MeshRenderer
+    MeshRenderer,
+    CharacterController
 };
 class GameObject;
 class Component {
 public:
-    GameObject* gameObject = nullptr;  // ·´ÏòÒıÓÃËùÊô¶ÔÏó
+    GameObject* gameObject = nullptr;  // åå‘å¼•ç”¨æ‰€å±å¯¹è±¡
     static ComponentType GetType();
 
-    virtual void Start() {}   // ³õÊ¼»¯Ê±µ÷ÓÃ
-    virtual void Update() {}  // Ã¿Ö¡¸üĞÂ
+    virtual void Start() {}   // åˆå§‹åŒ–æ—¶è°ƒç”¨
+    virtual void Update() {}  // æ¯å¸§æ›´æ–°
     virtual ~Component() = default;
 
 };

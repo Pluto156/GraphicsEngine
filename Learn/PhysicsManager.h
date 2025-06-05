@@ -5,6 +5,7 @@
 #include "BVHNode.h"
 #include "BoxCollider.h"
 #include "PlaneCollider.h"
+#include "SphereCollider.h"
 
 namespace PhysicsLit
 {
@@ -38,9 +39,20 @@ namespace PhysicsLit
                 {
                     auto transform = gameobject->GetComponent<Transform>();
                     auto scale = CVector3(1,1,1);
-                    // ÁÙÊ±°´ÕÕÆ½Ãæ³¤¿íÎª10¼ÆËã
+                    // ä¸´æ—¶æŒ‰ç…§å¹³é¢é•¿å®½ä¸º10è®¡ç®—
                     float radius = sqrtf(scale.x * scale.x * 100.0f + scale.z * scale.z * 100.0f);
                     CVector3 pos = transform->GetPosition();
+                    BoundingSphere bv(pos, radius);
+                    AddBoundingVolume(bv, rigidBodyPrimitive);
+                }
+            }
+            else if (gameobject->GetComponent<SphereCollider>() != nullptr)
+            {
+                auto sphereCollider = gameobject->GetComponent<SphereCollider>();
+                if (sphereCollider)
+                {
+                    float radius = sphereCollider->mCollider->mRadius;
+                    CVector3 pos = gameobject->transform->GetPosition();
                     BoundingSphere bv(pos, radius);
                     AddBoundingVolume(bv, rigidBodyPrimitive);
                 }
@@ -52,13 +64,13 @@ namespace PhysicsLit
         }
 
         void RemoveGameObject(GameObject* gameobject) {
-            // ²éÕÒ²¢ÒÆ³ı¶ÔÓ¦µÄ GameObject
+            // æŸ¥æ‰¾å¹¶ç§»é™¤å¯¹åº”çš„ GameObject
             auto it = std::remove_if(mAllRigidBodyGO.begin(), mAllRigidBodyGO.end(),
                 [gameobject](const std::pair<GameObject*, RigidBodyPrimitive*>& pair) {
                     return pair.first == gameobject;
                 });
 
-            // Èç¹ûÕÒµ½ÁËÆ¥ÅäµÄÌõÄ¿£¬¾ÍÉ¾³ıËü
+            // å¦‚æœæ‰¾åˆ°äº†åŒ¹é…çš„æ¡ç›®ï¼Œå°±åˆ é™¤å®ƒ
             if (it != mAllRigidBodyGO.end()) {
                 mAllRigidBodyGO.erase(it, mAllRigidBodyGO.end());
             }
@@ -86,20 +98,20 @@ namespace PhysicsLit
             if (mBVHRoot)
                 delete mBVHRoot;
         }
-        // ÓÉGameObjectManager¸ºÔğÏú»Ù
-          // µ±Ç°³¡¾°ÖĞµÄËùÓĞ¸ÕÌå
+        // ç”±GameObjectManagerè´Ÿè´£é”€æ¯
+          // å½“å‰åœºæ™¯ä¸­çš„æ‰€æœ‰åˆšä½“
         std::vector<std::pair<GameObject*, RigidBodyPrimitive*>> mAllRigidBodyGO;
-        // Bounding Volume Hierarchy (BVH)Ê÷µÄ¸ù½Úµã
+        // Bounding Volume Hierarchy (BVH)æ ‘çš„æ ¹èŠ‚ç‚¹
         BVHNode* mBVHRoot = nullptr;
 
-        // Åö×²Êı¾İ
+        // ç¢°æ’æ•°æ®
         CollisionData* mCollisionData;
-        // Ç±ÔÚÅö×²Êı×é
+        // æ½œåœ¨ç¢°æ’æ•°ç»„
         PotentialContact* mPotentialContacts;
-        // Ç±ÔÚÅö×²Êı×éµÄ³¤¶È
+        // æ½œåœ¨ç¢°æ’æ•°ç»„çš„é•¿åº¦
         uint32_t mMaxPotentialContacts = 1000;
 
-        // Åö×²´¦ÀíÆ÷
+        // ç¢°æ’å¤„ç†å™¨
         ContactResolver* mContactResolver;
         long long mCurPhyFrame = 0;
     };

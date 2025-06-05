@@ -156,6 +156,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CEuler.h" />
     <ClInclude Include="CglFont.h" />
+    <ClInclude Include="CharacterController.h" />
     <ClInclude Include="CMatrix3.h" />
     <ClInclude Include="CMatrix4.h" />
     <ClInclude Include="CModel.h" />
@@ -191,6 +192,8 @@
     <ClInclude Include="RigidBodyPrimitive.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="ShapeFactory.h" />
+    <ClInclude Include="Sphere.h" />
+    <ClInclude Include="SphereCollider.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -205,6 +208,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CEuler.cpp" />
     <ClCompile Include="CglFont.cpp" />
+    <ClCompile Include="CharacterController.cpp" />
     <ClCompile Include="CMatrix3.cpp" />
     <ClCompile Include="CMatrix4.cpp" />
     <ClCompile Include="CModel.cpp" />
@@ -241,6 +245,8 @@
     <ClCompile Include="RigidBodyPrimitive.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="ShapeFactory.cpp" />
+    <ClCompile Include="Sphere.cpp" />
+    <ClCompile Include="SphereCollider.cpp" />
     <ClCompile Include="Stage.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

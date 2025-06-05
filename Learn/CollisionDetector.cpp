@@ -360,7 +360,6 @@ namespace PhysicsLit
 		// 先做一个相交测试
 		if (!IntersectionDetector::Detect(box, plane))
 			return 0;
-
 		Contact* contact = data->mCurContact;
 		uint32_t contactNum = 0;
 		for (size_t i = 0; i < 8; i++)

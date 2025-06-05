@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "CVector4.h"
 
-// Ä¬ÈÏ¹¹Ôìº¯Êı£¬³õÊ¼»¯ÏòÁ¿Îª(0, 0, 0, 0)
+// é»˜è®¤æ„é€ å‡½æ•°ï¼Œåˆå§‹åŒ–å‘é‡ä¸º(0, 0, 0, 0)
 CVector4::CVector4() : x(0), y(0), z(0), w(0) {}
 
-// ¹¹Ôìº¯Êı£¬³õÊ¼»¯ÏòÁ¿ÎªÖ¸¶¨µÄx, y, z, w
+// æ„é€ å‡½æ•°ï¼Œåˆå§‹åŒ–å‘é‡ä¸ºæŒ‡å®šçš„x, y, z, w
 CVector4::CVector4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w) {}
 
 CVector4::CVector4(const CVector3& v3)
@@ -21,10 +21,10 @@ CVector4::CVector4(const CVector3& v3, float w)
     this->z = v3.z;
     this->w = w;
 }
-// Îö¹¹º¯Êı
+// ææ„å‡½æ•°
 CVector4::~CVector4() {}
 
-// ÏòÁ¿¼õ·¨
+// å‘é‡å‡æ³•
 CVector4 CVector4::operator-(const CVector4& v) const {
     return CVector4(x - v.x, y - v.y, z - v.z, w - v.w);
 }
@@ -38,7 +38,7 @@ CVector4 CVector4::operator-=(const CVector4& v)
     return *this;
 }
 
-// ÏòÁ¿¼Ó·¨
+// å‘é‡åŠ æ³•
 CVector4 CVector4::operator+(const CVector4& v) const {
     return CVector4(x + v.x, y + v.y, z + v.z, w + v.w);
 }
@@ -52,7 +52,7 @@ CVector4 CVector4::operator+=(const CVector4& v)
     return *this;
 }
 
-// ¸³Öµ²Ù×÷·ûÖØÔØ
+// èµ‹å€¼æ“ä½œç¬¦é‡è½½
 CVector4& CVector4::operator=(const CVector4& v)
 {
     if (this != &v)
@@ -65,7 +65,7 @@ CVector4& CVector4::operator=(const CVector4& v)
     return *this;
 }
 
-// ÏòÁ¿Êı³Ë²Ù×÷
+// å‘é‡æ•°ä¹˜æ“ä½œ
 CVector4 CVector4::operator*(float scalar) const {
     return CVector4(x * scalar, y * scalar, z * scalar, w * scalar);
 }
@@ -132,12 +132,12 @@ const float& CVector4::operator[] (int i) const
     }
 }
 
-// ÓÑÔªº¯Êı£ºÖ§³Ö 100 * CVector4 µÄĞÎÊ½
+// å‹å…ƒå‡½æ•°ï¼šæ”¯æŒ 100 * CVector4 çš„å½¢å¼
 CVector4 operator*(float scalar, const CVector4& v) {
     return CVector4(v.x * scalar, v.y * scalar, v.z * scalar, v.w * scalar);
 }
 
-// ÏòÁ¿µ¥Î»»¯
+// å‘é‡å•ä½åŒ–
 void CVector4::Normalize()
 {
     float length = len();
@@ -157,7 +157,7 @@ CVector4 CVector4::GetNormalize() const
     return t;
 }
 
-// ÏòÁ¿ÇóÄ£
+// å‘é‡æ±‚æ¨¡
 float CVector4::len() const
 {
     return sqrt(x * x + y * y + z * z + w * w);
@@ -168,7 +168,7 @@ float CVector4::lenSquared() const
     return x * x + y * y + z * z + w * w;
 }
 
-// ÏòÁ¿È¡¾ø¶ÔÖµ
+// å‘é‡å–ç»å¯¹å€¼
 void CVector4::Absolutize()
 {
     x = fabsf(x);
@@ -182,18 +182,18 @@ std::string CVector4::ToString() const
     return std::to_string(x) + " " + std::to_string(y) + " " + std::to_string(z) + " " + std::to_string(w);
 }
 
-// ×ª»»ÎªÅ·À­½Ç
+// è½¬æ¢ä¸ºæ¬§æ‹‰è§’
 CEuler CVector4::ToEuler() const
 {
     CEuler euler;
 
-    // ¼ÆËã pitch
+    // è®¡ç®— pitch
     euler.h = atan2(x, z);
 
-    // ¼ÆËã roll (ÈÆ X ÖáµÄĞı×ª½Ç)
+    // è®¡ç®— roll (ç»• X è½´çš„æ—‹è½¬è§’)
     euler.p = -atan2(y, sqrt(x * x + z * z));
 
-    // ¼ÙÉè yaw (ÈÆ Z ÖáµÄĞı×ª½Ç) Îª 0
+    // å‡è®¾ yaw (ç»• Z è½´çš„æ—‹è½¬è§’) ä¸º 0
     euler.b = 0;
     euler.h = euler.h * 180 / M_PI;
     euler.p = euler.p * 180 / M_PI;
@@ -201,7 +201,7 @@ CEuler CVector4::ToEuler() const
     return euler;
 }
 
-// ×ª»»Îª¾ØÕó
+// è½¬æ¢ä¸ºçŸ©é˜µ
 CMatrix4 CVector4::ToCMatrix() const
 {
     return ToEuler().ToCMatrix();

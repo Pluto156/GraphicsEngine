@@ -1,4 +1,4 @@
-﻿#include "stdafx.h"
+#include "stdafx.h"
 #include "GameObject.h"
 #include "Transform.h"
 #include "BoxCollider.h"
@@ -10,7 +10,7 @@ GameObject::GameObject(const std::string& name, const CVector3& position,
     transform(new Transform(position, rotation, eulerAngles, isShowLocalAxis)),
     components() // 👈 明确初始化
 {
-    GameObjectManager::Instance().Register(this);
+    GameObjectManager::Instance().Instantiate(this);
     transform = AddComponent<Transform>(position, rotation, eulerAngles, isShowLocalAxis);
     transform->gameObject = this;
     infoFont.SetColor(1.0f, 1.0f, 0.5f);  // 淡黄色
@@ -39,10 +39,7 @@ void GameObject::Draw()
         auto m_width = BoxColliderHalfSize.x * 2;
         auto m_height = BoxColliderHalfSize.y * 2;
         auto m_depth = BoxColliderHalfSize.z * 2;
-
-
         glColor3f(0, 1, 0);
-
         // 前面
         glVertex3f(-m_width / 2, -m_height / 2, m_depth / 2);
         glVertex3f(m_width / 2, -m_height / 2, m_depth / 2);
@@ -121,6 +118,16 @@ void GameObject::Draw()
         glVertex3f(m_width / 2, m_height / 2, -m_depth / 2);
         glVertex3f(m_width / 2, -m_height / 2, -m_depth / 2);
         glEnd();
+    }
+
+    if (GetComponent<SphereCollider>() != nullptr)
+    {
+        float radius = GetComponent<SphereCollider>()->radius;
+        glColor3f(0, 1.0f, 0);
+        glLineWidth(2);
+        glutWireSphere(radius, 16, 16);  // 使用 GLUT 绘制线框球
+        glEnd();
+       
     }
 
     if (GetComponent<MeshRenderer>() != nullptr)

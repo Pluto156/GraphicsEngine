@@ -7,47 +7,47 @@ class TimeManager : public IManager
 {
 public:
 	/// <summary>
-	/// µ±Ç°ÏµÍ³Ê±¼ä´Á£¨Ãë£©
+	/// å½“å‰ç³»ç»Ÿæ—¶é—´æˆ³ï¼ˆç§’ï¼‰
 	/// </summary>
 	static long long curSysTime;
 	/// <summary>
-	/// µ±Ç°ÏµÍ³Ê±¼ä´Á£¨Î¢Ãë£©
+	/// å½“å‰ç³»ç»Ÿæ—¶é—´æˆ³ï¼ˆå¾®ç§’ï¼‰
 	/// </summary>
 	static long long curSysTime_micro;
 	/// <summary>
-	/// µ±Ç°ÏµÍ³Æô¶¯Ê±¼ä´Á£¨Ãë£©
+	/// å½“å‰ç³»ç»Ÿå¯åŠ¨æ—¶é—´æˆ³ï¼ˆç§’ï¼‰
 	/// </summary>
 	static long long curSysStartTime;
 	/// <summary>
-	/// µ±Ç°ÏµÍ³Æô¶¯Ê±¼ä´Á£¨Î¢Ãë£©
+	/// å½“å‰ç³»ç»Ÿå¯åŠ¨æ—¶é—´æˆ³ï¼ˆå¾®ç§’ï¼‰
 	/// </summary>
 	static long long curSysStartTime_micro;
 	/// <summary>
-	/// ´ÓÓÎÏ·Æô¶¯µ½µ±Ç°µÄÊ±¼ä£¨Ãë£©
+	/// ä»æ¸¸æˆå¯åŠ¨åˆ°å½“å‰çš„æ—¶é—´ï¼ˆç§’ï¼‰
 	/// </summary>
 	static float curTime;
 	/// <summary>
-	/// ´ÓÓÎÏ·Æô¶¯µ½µ±Ç°µÄÊ±¼ä£¨Î¢Ãë£©
+	/// ä»æ¸¸æˆå¯åŠ¨åˆ°å½“å‰çš„æ—¶é—´ï¼ˆå¾®ç§’ï¼‰
 	/// </summary>
 	static long long curTime_micro;
 	/// <summary>
-	/// ´ÓÉÏÒ»Ö¡µ½ÏÖÔÚµÄÊ±¼ä£¨Ãë£©
+	/// ä»ä¸Šä¸€å¸§åˆ°ç°åœ¨çš„æ—¶é—´ï¼ˆç§’ï¼‰
 	/// </summary>
 	static float deltaTime;
 	/// <summary>
-	/// ´ÓÉÏÒ»Ö¡µ½ÏÖÔÚµÄÊ±¼ä£¨Î¢Ãë£©
+	/// ä»ä¸Šä¸€å¸§åˆ°ç°åœ¨çš„æ—¶é—´ï¼ˆå¾®ç§’ï¼‰
 	/// </summary>
 	static long long deltaTime_micro;
 	/// <summary>
-	/// ÎïÀíÖ¡ÂÊ
+	/// ç‰©ç†å¸§ç‡
 	/// </summary>
 	static const int fixedFrameRate;
 	/// <summary>
-	/// ÎïÀíÖ¡Ê±¼ä£¨Ãë£©
+	/// ç‰©ç†å¸§æ—¶é—´ï¼ˆç§’ï¼‰
 	/// </summary>
 	static const float fixedDeltaTime;
 	/// <summary>
-	/// ÎïÀíÖ¡Ê±¼ä£¨Î¢Ãë£©
+	/// ç‰©ç†å¸§æ—¶é—´ï¼ˆå¾®ç§’ï¼‰
 	/// </summary>
 	static const long long fixedDeltaTime_micro;
 
@@ -59,17 +59,17 @@ public:
 
 	void Update() override;
 
-    // »ñÈ¡´Ó³ÌĞòÆô¶¯µ½µ±Ç°µÄÔËĞĞÊ±¼ä£¨µ¥Î»£ººÁÃë£©
+    // è·å–ä»ç¨‹åºå¯åŠ¨åˆ°å½“å‰çš„è¿è¡Œæ—¶é—´ï¼ˆå•ä½ï¼šæ¯«ç§’ï¼‰
     long long GetElapsedTime() const {
         return curSysTime_micro;
     }
 
-    // É¾³ı¿½±´¹¹Ôìº¯ÊıºÍ¸³ÖµÔËËã·û£¬È·±£µ¥ÀıÄ£Ê½
+    // åˆ é™¤æ‹·è´æ„é€ å‡½æ•°å’Œèµ‹å€¼è¿ç®—ç¬¦ï¼Œç¡®ä¿å•ä¾‹æ¨¡å¼
     TimeManager(const TimeManager&) = delete;
     void operator=(const TimeManager&) = delete;
 
 private:
-    TimeManager() = default; // ¹¹Ôìº¯ÊıË½ÓĞ»¯£¬È·±£µ¥Àı
-    ~TimeManager() = default; // Îö¹¹º¯ÊıË½ÓĞ»¯£¬È·±£µ¥Àı
+    TimeManager() = default; // æ„é€ å‡½æ•°ç§æœ‰åŒ–ï¼Œç¡®ä¿å•ä¾‹
+    ~TimeManager() = default; // ææ„å‡½æ•°ç§æœ‰åŒ–ï¼Œç¡®ä¿å•ä¾‹
 };
 

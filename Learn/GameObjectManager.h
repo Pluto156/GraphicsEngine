@@ -12,12 +12,12 @@ public:
         return instance;
     }
 
-    GameObject* Register(GameObject* obj) {
+    GameObject* Instantiate(GameObject* obj) {
         gameObjects.push_back(obj);
         return obj;
     }
 
-    void Unregister(GameObject* obj) {
+    void Destroy(GameObject* obj) {
         auto it = std::remove(gameObjects.begin(), gameObjects.end(), obj);
         gameObjects.erase(it, gameObjects.end());
     }
@@ -50,7 +50,7 @@ private:
 
     std::vector<GameObject*> gameObjects; 
 
-    //TODO ²»Ó¦ÔÚÕâÀï
+    //TODO ä¸åº”åœ¨è¿™é‡Œ
     Camera* camera;
     Stage* stage;
     void drawCoordinateAxes();

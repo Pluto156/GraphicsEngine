@@ -8,29 +8,29 @@ namespace PhysicsLit
 	class RigidBodyPrimitive
 	{
 	public:
-		// ¶ÔÓ¦µÄBVH½Úµã
+		// å¯¹åº”çš„BVHèŠ‚ç‚¹
 		BVHNode* mBVHNode = nullptr;
-		// ¶ÔÓ¦µÄÅö×²Ìå
+		// å¯¹åº”çš„ç¢°æ’ä½“
 		CollisionPrimitive* mCollisionVolume = nullptr;
 
 		RigidBodyPrimitive() {};
 		~RigidBodyPrimitive();
 
-		// ¸üĞÂ¸ÕÌåµÄÎ»ÖÃºÍĞı×ª
+		// æ›´æ–°åˆšä½“çš„ä½ç½®å’Œæ—‹è½¬
 		void Integrate(float duration);
-		// ¼ÆËãĞèÒª¸úËæ¸ÕÌå±ä»¯¶ø±ä»¯µÄÏà¹ØÊı¾İ
+		// è®¡ç®—éœ€è¦è·Ÿéšåˆšä½“å˜åŒ–è€Œå˜åŒ–çš„ç›¸å…³æ•°æ®
 		void CalculateDerivedData();
-		// Ö±½ÓÔÚÖÊĞÄÌí¼ÓÒ»¸ö×÷ÓÃÁ¦(ÊÀ½ç×ø±êÏµ)
+		// ç›´æ¥åœ¨è´¨å¿ƒæ·»åŠ ä¸€ä¸ªä½œç”¨åŠ›(ä¸–ç•Œåæ ‡ç³»)
 		void AddForce(const CVector3& force);
-		// ÔÚÄ³¸öµã(ÊÀ½ç×ø±êÏµ)ÉÏÌí¼Ó×÷ÓÃÁ¦(ÊÀ½ç×ø±êÏµ)
+		// åœ¨æŸä¸ªç‚¹(ä¸–ç•Œåæ ‡ç³»)ä¸Šæ·»åŠ ä½œç”¨åŠ›(ä¸–ç•Œåæ ‡ç³»)
 		void AddForceAtPoint(const CVector3& force, const CVector3& point);
-		// ÔÚÄ³¸öµã(¾Ö²¿×ø±êÏµ)ÉÏÌí¼Ó×÷ÓÃÁ¦(ÊÀ½ç×ø±êÏµ)
+		// åœ¨æŸä¸ªç‚¹(å±€éƒ¨åæ ‡ç³»)ä¸Šæ·»åŠ ä½œç”¨åŠ›(ä¸–ç•Œåæ ‡ç³»)
 		void AddForceAtLocalPoint(const CVector3& force, const CVector3& point);
-		// Ìí¼ÓÒ»¸öÁ¦¾Ø(ÊÀ½ç×ø±êÏµ)
+		// æ·»åŠ ä¸€ä¸ªåŠ›çŸ©(ä¸–ç•Œåæ ‡ç³»)
 		void AddTorque(const CVector3& torque);
-		// Çå³ıµ±Ç°ÀÛ¼ÆµÄ×÷ÓÃÁ¦ºÍÁ¦¾Ø
+		// æ¸…é™¤å½“å‰ç´¯è®¡çš„ä½œç”¨åŠ›å’ŒåŠ›çŸ©
 		void ClearAccumulators();
-		// ÅĞ¶ÏÖÊÁ¿ÊÇ·ñÎªÎŞÇî´ó
+		// åˆ¤æ–­è´¨é‡æ˜¯å¦ä¸ºæ— ç©·å¤§
 		bool IsInfiniteMass() const;
 
 		void SetAwake(bool awake);
@@ -43,7 +43,7 @@ namespace PhysicsLit
 
 		void AddForceGenerator(ForceGenerator* generator);
 
-		// ---------- ÏßĞÔÔË¶¯ ----------
+		// ---------- çº¿æ€§è¿åŠ¨ ----------
 
 		void SetMass(float mass);
 		float GetMass() const;
@@ -70,7 +70,7 @@ namespace PhysicsLit
 		void GetLastAcceleration(CVector3& acceleration) const;
 		CVector3 GetLastAcceleration() const;
 
-		// ---------- Ğı×ªÔË¶¯ ----------
+		// ---------- æ—‹è½¬è¿åŠ¨ ----------
 
 		void SetInertiaTensor(const CMatrix3& inertiaTensor);
 		void GetInertiaTensor(CMatrix3& inertiaTensor) const;
@@ -94,46 +94,46 @@ namespace PhysicsLit
 		void AddAngularVelocity(const CVector3& deltaAngularVelocity);
 
 	private:
-		// ´Ë¸ÕÌåÉÏµÄ×÷ÓÃÁ¦Éú³ÉÆ÷ÁĞ±í
+		// æ­¤åˆšä½“ä¸Šçš„ä½œç”¨åŠ›ç”Ÿæˆå™¨åˆ—è¡¨
 		std::vector<ForceGenerator*> mForceGenerators;
 
-		// ÖÊÁ¿µÄµ¹Êı(0´ú±íÖÊÁ¿ÎŞÇî´ó£¬ÎŞÊÓÈÎºÎ×÷ÓÃÁ¦)
+		// è´¨é‡çš„å€’æ•°(0ä»£è¡¨è´¨é‡æ— ç©·å¤§ï¼Œæ— è§†ä»»ä½•ä½œç”¨åŠ›)
 		float mInverseMass = 1.0f;
-		// ÏßĞÔÔË¶¯×èÄáÏµÊı(1±íÊ¾ÎŞ×èÄá)
+		// çº¿æ€§è¿åŠ¨é˜»å°¼ç³»æ•°(1è¡¨ç¤ºæ— é˜»å°¼)
 		float mLinearDamping = 1.0f;
-		// Î»ÖÃ
+		// ä½ç½®
 		CVector3 mPosition;
-		// ËÙ¶È
+		// é€Ÿåº¦
 		CVector3 mVelocity;
-		// ¼ÓËÙ¶È
+		// åŠ é€Ÿåº¦
 		CVector3 mAcceleration;
-		// ÉÏÒ»Ö¡µÄ¼ÓËÙ¶È
+		// ä¸Šä¸€å¸§çš„åŠ é€Ÿåº¦
 		CVector3 mLastAcceleration;
-		// ÀÛ»ı×÷ÓÃÁ¦
+		// ç´¯ç§¯ä½œç”¨åŠ›
 		CVector3 mForceAccum;
 
-		// Local¹ßĞÔÕÅÁ¿(ÒÔ¾ØÕóĞÎÊ½±í´ï,´æ´¢Äæ¾ØÕó·½±ã¼ÆËã)
+		// Localæƒ¯æ€§å¼ é‡(ä»¥çŸ©é˜µå½¢å¼è¡¨è¾¾,å­˜å‚¨é€†çŸ©é˜µæ–¹ä¾¿è®¡ç®—)
 		CMatrix3 mLocalInverseInertiaTensor;
-		// World¹ßĞÔÕÅÁ¿(ÒÔ¾ØÕóĞÎÊ½±í´ï,´æ´¢Äæ¾ØÕó·½±ã¼ÆËã)
+		// Worldæƒ¯æ€§å¼ é‡(ä»¥çŸ©é˜µå½¢å¼è¡¨è¾¾,å­˜å‚¨é€†çŸ©é˜µæ–¹ä¾¿è®¡ç®—)
 		CMatrix3 mWorldInverseInertiaTensor;
-		// Ğı×ªÔË¶¯×èÄáÏµÊı(1±íÊ¾ÎŞ×èÄá)
+		// æ—‹è½¬è¿åŠ¨é˜»å°¼ç³»æ•°(1è¡¨ç¤ºæ— é˜»å°¼)
 		float mAngularDamping = 0.95f;
-		// Ğı×ª
+		// æ—‹è½¬
 		CQuaternion mRotation;
-		// ½ÇËÙ¶È
+		// è§’é€Ÿåº¦
 		CVector3 mAngularVelocity;
-		// ÀÛ»ıÁ¦¾Ø
+		// ç´¯ç§¯åŠ›çŸ©
 		CVector3 mTorqueAccum;
 
-		// localµ½world¿Õ¼äµÄ±ä»»
+		// localåˆ°worldç©ºé—´çš„å˜æ¢
 		CMatrix4 mTransform;
 
-		// Ë¯Ãß×´Ì¬µÄ¸ÕÌå²»½øĞĞÎïÀí¸üĞÂ
+		// ç¡çœ çŠ¶æ€çš„åˆšä½“ä¸è¿›è¡Œç‰©ç†æ›´æ–°
 		bool mIsAwake = true;
-		// ¸ÕÌåÊÇ·ñ¿ÉÒÔ½øÈëË¯Ãß×´Ì¬
-		// Ò»°ãÄ¬ÈÏÎªtrue£¬Ä³Ğ©ÌØÊâ¶ÔÏó£¬±ÈÈçÍæ¼Ò²Ù¿ØµÄ£¬¿ÉÄÜËæÊ±ÊÖ¶¯²úÉú×÷ÓÃÁ¦µÄ¶ÔÏó¿ÉÒÔÉèÖÃÎªfalse
+		// åˆšä½“æ˜¯å¦å¯ä»¥è¿›å…¥ç¡çœ çŠ¶æ€
+		// ä¸€èˆ¬é»˜è®¤ä¸ºtrueï¼ŒæŸäº›ç‰¹æ®Šå¯¹è±¡ï¼Œæ¯”å¦‚ç©å®¶æ“æ§çš„ï¼Œå¯èƒ½éšæ—¶æ‰‹åŠ¨äº§ç”Ÿä½œç”¨åŠ›çš„å¯¹è±¡å¯ä»¥è®¾ç½®ä¸ºfalse
 		bool mCanSleep = true;
-		// ¸ÕÌåµ±Ç°µÄÔË¶¯Á¿£¬°üº¬ÏßĞÔËÙ¶ÈºÍ½ÇËÙ¶È£¬ÎŞÊµ¼ÊÎïÀíÒâÒå£¬½öÓÃÓÚÆÀ¹ÀÔË¶¯×´Ì¬
+		// åˆšä½“å½“å‰çš„è¿åŠ¨é‡ï¼ŒåŒ…å«çº¿æ€§é€Ÿåº¦å’Œè§’é€Ÿåº¦ï¼Œæ— å®é™…ç‰©ç†æ„ä¹‰ï¼Œä»…ç”¨äºè¯„ä¼°è¿åŠ¨çŠ¶æ€
 		float mMotion = SleepMotionEpsilon * 2.0f;
 
 		void IntegrateForceGenerators(float duration);

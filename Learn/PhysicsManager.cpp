@@ -17,10 +17,10 @@ namespace PhysicsLit
 		long long targetFrame = TimeManager::curTime_micro / TimeManager::fixedDeltaTime_micro;
 		long long deltaFrame = targetFrame - mCurPhyFrame;
 
-		// µ±Ç°ÓÎÏ·Ö¡Êı¸ßÓÚÎïÀíÒıÇæµÄÄ¿±êÖ¡Êı£¬Ìø¹ıÕâÒ»Ö¡µÄÎïÀí¸üĞÂ
+		// å½“å‰æ¸¸æˆå¸§æ•°é«˜äºç‰©ç†å¼•æ“çš„ç›®æ ‡å¸§æ•°ï¼Œè·³è¿‡è¿™ä¸€å¸§çš„ç‰©ç†æ›´æ–°
 		if (deltaFrame <= 0)
 			return;
-		// µ±Ç°ÓÎÏ·Ö¡ÊıµÍÓÚÎïÀíÒıÇæµÄÄ¿±êÖ¡Êı£¬ĞèÒª²¹ÎïÀíÖ¡£¬µ«ÊÇ²»ÄÜ²¹Ì«¶à£¬·ñÔò»áµ¼ÖÂÓÎÏ·Ö¡ÂÊ½øÒ»²½½µµÍ£¬¶ñĞÔÑ­»·È»ºó¿¨ËÀ
+		// å½“å‰æ¸¸æˆå¸§æ•°ä½äºç‰©ç†å¼•æ“çš„ç›®æ ‡å¸§æ•°ï¼Œéœ€è¦è¡¥ç‰©ç†å¸§ï¼Œä½†æ˜¯ä¸èƒ½è¡¥å¤ªå¤šï¼Œå¦åˆ™ä¼šå¯¼è‡´æ¸¸æˆå¸§ç‡è¿›ä¸€æ­¥é™ä½ï¼Œæ¶æ€§å¾ªç¯ç„¶åå¡æ­»
 		else if (deltaFrame > 10)
 			deltaFrame = 10;
 
@@ -32,7 +32,7 @@ namespace PhysicsLit
 			EndFrame();
 		}
 
-		// ÎŞÂÛÓĞÃ»ÓĞ²¹Ö¡£¬»òÕß²¹ÁË¶àÉÙÖ¡£¬¶¼µ±×÷ÒÑ¾­×·ÉÏÁËÄ¿±êÖ¡Êı
+		// æ— è®ºæœ‰æ²¡æœ‰è¡¥å¸§ï¼Œæˆ–è€…è¡¥äº†å¤šå°‘å¸§ï¼Œéƒ½å½“ä½œå·²ç»è¿½ä¸Šäº†ç›®æ ‡å¸§æ•°
 		mCurPhyFrame = targetFrame;
 	}
 
@@ -40,14 +40,14 @@ namespace PhysicsLit
 	{
 		if (mBVHRoot == nullptr)
 			return;
-		// ÖØÖÃÅö×²Êı¾İ
+		// é‡ç½®ç¢°æ’æ•°æ®
 		mCollisionData->Reset();
 
 		for (auto& iter : mAllRigidBodyGO)
 		{
-			// Çå³ı¸ÕÌåÔÚÉÏÒ»Ö¡ÀÛ¼ÆµÄÁ¦ºÍÁ¦¾Ø
+			// æ¸…é™¤åˆšä½“åœ¨ä¸Šä¸€å¸§ç´¯è®¡çš„åŠ›å’ŒåŠ›çŸ©
 			iter.second->ClearAccumulators();
-			// ¸üĞÂ¸ÕÌåÔÚÕâÒ»Ö¡µÄÏà¹ØÊı¾İ
+			// æ›´æ–°åˆšä½“åœ¨è¿™ä¸€å¸§çš„ç›¸å…³æ•°æ®
 			iter.second->CalculateDerivedData();
 		}
 	}
@@ -55,7 +55,7 @@ namespace PhysicsLit
 	{
 		if (mBVHRoot == nullptr)
 			return;
-		 //¸üĞÂ¸ÕÌåµÄÎ»ÖÃºÍĞı×ª
+		 //æ›´æ–°åˆšä½“çš„ä½ç½®å’Œæ—‹è½¬
 		for (auto& iter : mAllRigidBodyGO)
 		{
 			//std::cout << rigidbody->forceAccum.ToString() << std::endl;
@@ -63,10 +63,10 @@ namespace PhysicsLit
 			iter.second->Integrate(deltaTime);
 		}
 
-		// Éú³ÉÇ±ÔÚÅö×²
+		// ç”Ÿæˆæ½œåœ¨ç¢°æ’
 		uint32_t potentialContactCount = mBVHRoot->GetPotentialContacts(mPotentialContacts, mMaxPotentialContacts);
 		//std::cout << potentialContactCount << std::endl;
-		// ´ÓÇ±ÔÚÅö×²ÖĞ¼ì²âÅö×²
+		// ä»æ½œåœ¨ç¢°æ’ä¸­æ£€æµ‹ç¢°æ’
 		uint32_t i = 0;
 		while (i < potentialContactCount)
 		{
@@ -75,11 +75,16 @@ namespace PhysicsLit
 				mPotentialContacts[i].mRigidBodies[1]->mCollisionVolume,
 				mCollisionData
 			);
+
+			if (collisionCount > 0)
+			{
+				std::cout << "æœ‰ç¢°æ’" << std::endl;
+			}
 			i++;
 		}
 
 
-		// ´¦ÀíÅö×²
+		// å¤„ç†ç¢°æ’
 		mContactResolver->ResolveContacts(mCollisionData->mContactArray, mCollisionData->mCurContactCount, deltaTime);
 	}
 	void PhysicsManager::EndFrame()
@@ -94,7 +99,7 @@ namespace PhysicsLit
 			transform->SetQuaternion(iter.second->GetRotation());
 			//std::cout << "GetRotation" << iter.second->GetRotation().ToCMatrix4().ToEuler().ToString() << std::endl;
 
-			// ¸üĞÂBVµÄÎ»ÖÃ
+			// æ›´æ–°BVçš„ä½ç½®
 			if (iter.second->mBVHNode)
 			{
 				iter.second->mBVHNode->mBoundingVolume.mCenter = iter.second->GetPosition();

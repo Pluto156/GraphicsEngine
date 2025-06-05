@@ -24,9 +24,9 @@ public:
 		float m10, float m11, float m12,
 		float m20, float m21, float m22
 	);
-	// Ğ±¶Ô³Æ¾ØÕó¹¹Ôìº¯Êı
+	// æ–œå¯¹ç§°çŸ©é˜µæ„é€ å‡½æ•°
 	CMatrix3(const CVector3& v);
-	// Ğı×ª¾ØÕó¹¹Ôìº¯Êı(ÈÆaxisÖáĞı×ªangle¶È)
+	// æ—‹è½¬çŸ©é˜µæ„é€ å‡½æ•°(ç»•axisè½´æ—‹è½¬angleåº¦)
 	CMatrix3(const CVector3& axis, float angle);
 
 	float GetNorm() const;
@@ -65,11 +65,11 @@ private:
 		float m[3][3];
 		struct
 		{
-			// µÚÒ»ĞĞ
+			// ç¬¬ä¸€è¡Œ
 			float m00; float m01; float m02;
-			// µÚ¶şĞĞ
+			// ç¬¬äºŒè¡Œ
 			float m10; float m11; float m12;
-			// µÚÈıĞĞ
+			// ç¬¬ä¸‰è¡Œ
 			float m20; float m21; float m22;
 		};
 	};

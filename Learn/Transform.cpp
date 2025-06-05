@@ -6,7 +6,7 @@ ComponentType Transform::GetType()
 }
 void Transform::SetPosition(const CVector3& newPos) {
     if (parent) {
-        // ½«ÊÀ½ç×ø±ê×ª»»Îª¸¸¿Õ¼äµÄ±¾µØ×ø±ê
+        // å°†ä¸–ç•Œåæ ‡è½¬æ¢ä¸ºçˆ¶ç©ºé—´çš„æœ¬åœ°åæ ‡
         CVector3 parentSpacePos = newPos - parent->position;
         localPosition = parent->rotation.GetInverse().vecMulVector3(parentSpacePos);
     }
@@ -31,9 +31,14 @@ void Transform::SetPosition(const CVector3& newPos) {
  void Transform::SetLocalPositionDelta(float x, float y, float z) {
     SetLocalPosition(localPosition + CVector3(x, y, z));
 }
+ void Transform::SetLocalScale(const CVector3& newLocalScale)
+ {
+     localScale = newLocalScale;
+ }
+
 
 /// <summary>
-/// ¸Ãº¯ÊıÉèÖÃµÄÕâ¸öĞı×ª¾ØÕóÊÇÓ¦ÓÃÓÚ¸¸×ø±êÏµµÄ
+/// è¯¥å‡½æ•°è®¾ç½®çš„è¿™ä¸ªæ—‹è½¬çŸ©é˜µæ˜¯åº”ç”¨äºçˆ¶åæ ‡ç³»çš„
 /// </summary>
 /// <param name="newRotation"></param>
  void Transform::SetRotation(const CMatrix4& newRotation) {
@@ -41,7 +46,7 @@ void Transform::SetPosition(const CVector3& newPos) {
     UpdateTransformFromLocal();
 }
 /// <summary>
-/// lookDirÊÇ»ùÓÚÊÀ½ç×ø±êÏµµÄÏòÁ¿
+/// lookDiræ˜¯åŸºäºä¸–ç•Œåæ ‡ç³»çš„å‘é‡
 /// </summary>
 /// <param name="lookDir"></param>
  void Transform::LookAt(const CVector3& lookDir) {
@@ -67,7 +72,7 @@ void Transform::SetPosition(const CVector3& newPos) {
 
 void Transform::SetRotationDelta(const CMatrix4& newRotation) {
     if (parent) {
-        // ¼ÆËãÏà¶ÔÓÚ¸¸ÎïÌåµÄ±¾µØĞı×ª
+        // è®¡ç®—ç›¸å¯¹äºçˆ¶ç‰©ä½“çš„æœ¬åœ°æ—‹è½¬
         localRotation = parent->rotation * newRotation;
     }
     else {
@@ -105,12 +110,12 @@ void Transform::SetQuaternionDelta(float w, float x, float y, float z)
 }
 
  void Transform::SetEulerAngles(const CEuler& newAngles) {
-    // ÏŞÖÆ´¹Ö±ÊÓ½ÇµÄ·¶Î§£¬±ÜÃâÉãÏñ»úÍêÈ«·­×ª
+    // é™åˆ¶å‚ç›´è§†è§’çš„èŒƒå›´ï¼Œé¿å…æ‘„åƒæœºå®Œå…¨ç¿»è½¬
     CEuler newAnglesCopy = newAngles;
     if (newAnglesCopy.p > 89.0f) newAnglesCopy.p = 89.0f;
     if (newAnglesCopy.p < -89.0f) newAnglesCopy.p = -89.0f;
     if (parent) {
-        // ¼ÆËãÏà¶ÔÓÚ¸¸ÎïÌåµÄ±¾µØÅ·À­½Ç
+        // è®¡ç®—ç›¸å¯¹äºçˆ¶ç‰©ä½“çš„æœ¬åœ°æ¬§æ‹‰è§’
         CMatrix4 worldRot = newAnglesCopy.ToCMatrix();
         localRotation = parent->rotation.GetInverse() * worldRot;
         localEulerAngles = localRotation.ToEuler();
@@ -132,10 +137,10 @@ void Transform::SetQuaternionDelta(float w, float x, float y, float z)
     SetEulerAngles(eulerAngles + CEuler(h, p, b));
 }
 
-// ´Ó±¾µØ×ø±êÏµ¸üĞÂÊÀ½ç×ø±êÏµ
+// ä»æœ¬åœ°åæ ‡ç³»æ›´æ–°ä¸–ç•Œåæ ‡ç³»
 void Transform::UpdateTransformFromLocal(bool updateColliderTransform) {
     if (parent) {
-        // ¼ÆËãÊÀ½ç×ø±êÏµ±ä»»
+        // è®¡ç®—ä¸–ç•Œåæ ‡ç³»å˜æ¢
         rotation = parent->rotation * localRotation;
         position = parent->position + parent->rotation.vecMulVector3(localPosition);
     }
@@ -158,17 +163,17 @@ void Transform::UpdateTransformFromLocal(bool updateColliderTransform) {
 
 }
 
-// ¸üĞÂ×ÓÎïÌå±ä»»
+// æ›´æ–°å­ç‰©ä½“å˜æ¢
 void Transform::UpdateChildrenTransform() {
     for (auto& child : children) {
         if (!child) continue;
 
-        // ×ÓÎïÌåµÄÊÀ½çĞı×ª = ¸¸Ğı×ª * ×Ó±¾µØĞı×ª
+        // å­ç‰©ä½“çš„ä¸–ç•Œæ—‹è½¬ = çˆ¶æ—‹è½¬ * å­æœ¬åœ°æ—‹è½¬
         child->rotation = rotation * child->localRotation;
-        // ×ÓÎïÌåµÄÊÀ½çÎ»ÖÃ = ¸¸Î»ÖÃ + ¸¸Ğı×ªºóµÄ±¾µØÎ»ÖÃ
+        // å­ç‰©ä½“çš„ä¸–ç•Œä½ç½® = çˆ¶ä½ç½® + çˆ¶æ—‹è½¬åçš„æœ¬åœ°ä½ç½®
         child->position = position + rotation.vecMulVector3(child->localPosition);
         child->eulerAngles = child->rotation.ToEuler();
-        // µİ¹é¸üĞÂ×ÓÎïÌå
+        // é€’å½’æ›´æ–°å­ç‰©ä½“
         child->UpdateChildrenTransform();
     }
 }
@@ -206,39 +211,39 @@ void Transform::AddChild(Transform* child) {
     children.push_back(child);
     child->parent = this;
 
-    // ³õÊ¼»¯×ÓÎïÌåµÄ±¾µØ×ø±ê
+    // åˆå§‹åŒ–å­ç‰©ä½“çš„æœ¬åœ°åæ ‡
     child->localPosition = rotation.GetInverse().vecMulVector3(child->position - position);
     child->localRotation = rotation.GetInverse() * child->rotation;
     child->localEulerAngles = child->localRotation.ToEuler();
 
-    // ¸üĞÂ×ÓÎïÌåµÄÊÀ½ç×ø±ê
+    // æ›´æ–°å­ç‰©ä½“çš„ä¸–ç•Œåæ ‡
     child->UpdateTransformFromLocal();
 }
 
 void Transform::ApplyTransform()
 {
-    //Transform ±ä»»²¿·Ö
+    //Transform å˜æ¢éƒ¨åˆ†
     glTranslatef(position.x, position.y, position.z);
-    glRotatef(eulerAngles.h, 0, 1, 0); // ÈÆ Y ÖáĞı×ª
-    glRotatef(eulerAngles.p, 1, 0, 0); // ÈÆ X ÖáĞı×ª
-    glRotatef(eulerAngles.b, 0, 0, 1); // ÈÆ Z ÖáĞı×ª
+    glRotatef(eulerAngles.h, 0, 1, 0); // ç»• Y è½´æ—‹è½¬
+    glRotatef(eulerAngles.p, 1, 0, 0); // ç»• X è½´æ—‹è½¬
+    glRotatef(eulerAngles.b, 0, 0, 1); // ç»• Z è½´æ—‹è½¬
 
     if (isShowLocalAxis) {
-        // »æÖÆ±¾µØ×ø±êÏµ
+        // ç»˜åˆ¶æœ¬åœ°åæ ‡ç³»
         glBegin(GL_LINES);
-        glColor3f(1.0f, 0.0f, 0.0f); // ºìÉ«£¨X Öá£©
+        glColor3f(1.0f, 0.0f, 0.0f); // çº¢è‰²ï¼ˆX è½´ï¼‰
         glVertex3f(0.0f, 0.0f, 0.0f);
         glVertex3f(100.0f, 0.0f, 0.0f);
         glEnd();
 
         glBegin(GL_LINES);
-        glColor3f(0.0f, 1.0f, 0.0f); // ÂÌÉ«£¨Y Öá£©
+        glColor3f(0.0f, 1.0f, 0.0f); // ç»¿è‰²ï¼ˆY è½´ï¼‰
         glVertex3f(0.0f, 0.0f, 0.0f);
         glVertex3f(0.0f, 100.0f, 0.0f);
         glEnd();
 
         glBegin(GL_LINES);
-        glColor3f(0.0f, 0.0f, 1.0f); // À¶É«£¨Z Öá£©
+        glColor3f(0.0f, 0.0f, 1.0f); // è“è‰²ï¼ˆZ è½´ï¼‰
         glVertex3f(0.0f, 0.0f, 0.0f);
         glVertex3f(0.0f, 0.0f, 100.0f);
         glEnd();

@@ -6,14 +6,14 @@
 #include <assimp/postprocess.h>
 #include "Component.h"
 
-// ¶¥µã½á¹¹Ìå
+// é¡¶ç‚¹ç»“æ„ä½“
 struct Vertex {
     float Position[3];
     float Normal[3];
     float TexCoords[2];
 };
 
-// µ¥¸öÍø¸ñÀà
+// å•ä¸ªç½‘æ ¼ç±»
 class Mesh {
 public:
     Mesh(std::vector<Vertex> verts, std::vector<unsigned int> inds, unsigned int texID);
@@ -22,10 +22,10 @@ public:
 private:
     std::vector<Vertex> vertices;
     std::vector<unsigned int> indices;
-    unsigned int textureID; // OpenGL ÎÆÀí ID
+    unsigned int textureID; // OpenGL çº¹ç† ID
 };
 
-// Ä£ĞÍÀà
+// æ¨¡å‹ç±»
 class MeshRenderer : public Component {
 public:
     static ComponentType GetType();

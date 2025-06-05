@@ -20,6 +20,8 @@ public:
     CMatrix4 localRotation;    // 相对于父 Transform 的旋转矩阵
     CEuler localEulerAngles;  // 相对于父 Transform 的欧拉角
 
+    CVector3 localScale;
+
     CVector3 Up;
     CVector3 Forward;
     CVector3 Right;
@@ -38,42 +40,44 @@ public:
         const CEuler& eulerAngles = CEuler(), bool isShowLocalAxis = false)
         :position(position), rotation(rotation),
         eulerAngles(eulerAngles), quaternion(CQuaternion()), localPosition(position),
-        localRotation(rotation), localEulerAngles(eulerAngles),isShowLocalAxis(isShowLocalAxis)
+        localRotation(rotation), localEulerAngles(eulerAngles),localScale(CVector3(1,1,1)), isShowLocalAxis(isShowLocalAxis)
     {
         UpdateTransformFromLocal(false); // 初始化时确保数据同步
         
     }
 
-    virtual void SetPosition(const CVector3& newPos);
-    virtual void SetPositionDelta(const CVector3& newPosDelta);
-    virtual void SetPositionDelta(float x, float y, float z);
-    virtual void SetLocalPosition(const CVector3& newPos);
-    virtual void SetLocalPositionDelta(const CVector3& newPosDelta);
-    virtual void SetLocalPositionDelta(float x, float y, float z);
+    void SetPosition(const CVector3& newPos);
+    void SetPositionDelta(const CVector3& newPosDelta);
+    void SetPositionDelta(float x, float y, float z);
+    void SetLocalPosition(const CVector3& newPos);
+    void SetLocalPositionDelta(const CVector3& newPosDelta);
+    void SetLocalPositionDelta(float x, float y, float z);
+    void SetLocalScale(const CVector3& newLocalScale);
+
     
     /// <summary>
     /// 该函数设置的这个旋转矩阵是应用于父坐标系的
     /// </summary>
     /// <param name="newRotation"></param>
-    virtual void SetRotation(const CMatrix4& newRotation);
+    void SetRotation(const CMatrix4& newRotation);
     /// <summary>
     /// lookDir是基于世界坐标系的向量
     /// </summary>
     /// <param name="lookDir"></param>
-    virtual void LookAt(const CVector3& lookDir);
-    virtual void SetRotationDelta(const CMatrix4& newRotation);
-    virtual void SetRotationDelta(CEuler rotationDelta);
-    virtual void SetRotationDelta(float h, float p, float b);
+    void LookAt(const CVector3& lookDir);
+    void SetRotationDelta(const CMatrix4& newRotation);
+    void SetRotationDelta(CEuler rotationDelta);
+    void SetRotationDelta(float h, float p, float b);
 
-    virtual void SetQuaternion(CQuaternion quaternion);
-    virtual void SetQuaternionDelta(CQuaternion quaternionDelta);
-    virtual void SetQuaternionDelta(float w,float x,float y,float z);
+    void SetQuaternion(CQuaternion quaternion);
+    void SetQuaternionDelta(CQuaternion quaternionDelta);
+    void SetQuaternionDelta(float w,float x,float y,float z);
 
 
-    virtual void SetEulerAngles(float h, float p, float b);
-    virtual void SetEulerAngles(const CEuler& newAngles);
-    virtual void SetEulerAnglesDelta(CEuler eulerAnglesDelta);
-    virtual void SetEulerAnglesDelta(float h, float p, float b);
+    void SetEulerAngles(float h, float p, float b);
+    void SetEulerAngles(const CEuler& newAngles);
+    void SetEulerAnglesDelta(CEuler eulerAnglesDelta);
+    void SetEulerAnglesDelta(float h, float p, float b);
 
     // 从本地坐标系更新世界坐标系
     void UpdateTransformFromLocal(bool UpdateColliderTransform = true);
@@ -88,21 +92,21 @@ public:
     void AddChild(Transform* child);
 
     // 获取位置
-    virtual CVector3 GetPosition() const {
+    CVector3 GetPosition() const {
         return position;
     }
 
     // 获取旋转矩阵
-    virtual CMatrix4 GetRotation() const {
+    CMatrix4 GetRotation() const {
         return rotation;
     }
 
-    virtual CQuaternion GetQuaternion() const {
+    CQuaternion GetQuaternion() const {
         return quaternion;
     }
 
     // 获取欧拉角
-    virtual CEuler GetEulerAngles() const {
+    CEuler GetEulerAngles() const {
         return eulerAngles;
     }
 
@@ -123,7 +127,7 @@ public:
         return localEulerAngles;
     }
 
-    virtual void UpdateFRU()
+    void UpdateFRU()
     {
         Forward = rotation.GetForward();
         Right = rotation.GetRight();

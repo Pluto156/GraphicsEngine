@@ -17,10 +17,10 @@ void TimeManager::Update()
 	long long time = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 	long long time_micro = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 
-	// Èç¹ûÊÇµÚÒ»´ÎUpdate£¬±£³ÖdeltaTimeÎª0²»±ä£¬·ñÔò»á±ä³ÉÊ±¼ä´Á
+	// å¦‚æœæ˜¯ç¬¬ä¸€æ¬¡Updateï¼Œä¿æŒdeltaTimeä¸º0ä¸å˜ï¼Œå¦åˆ™ä¼šå˜æˆæ—¶é—´æˆ³
 	if (curSysTime_micro != 0)
 	{
-		// ÕâÀïÓÃÎ¢Ãë¼ÆËãdeltaTime£¬ÓÃºÁÃëÓĞ¿ÉÄÜ¾«¶È²»¹»
+		// è¿™é‡Œç”¨å¾®ç§’è®¡ç®—deltaTimeï¼Œç”¨æ¯«ç§’æœ‰å¯èƒ½ç²¾åº¦ä¸å¤Ÿ
 		deltaTime_micro = time_micro - curSysTime_micro;
 		deltaTime = static_cast<float>(deltaTime_micro) / 1'000'000.0f;
 	}

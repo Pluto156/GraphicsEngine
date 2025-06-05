@@ -16,25 +16,25 @@ void GameObjectManager::Update() {
 
 void GameObjectManager::drawCoordinateAxes()
 {
-    // XÖá£¨ºìÉ«£©
+    // Xè½´ï¼ˆçº¢è‰²ï¼‰
     glBegin(GL_LINES);
-    glColor3f(1.0f, 0.0f, 0.0f);  // ºìÉ«
+    glColor3f(1.0f, 0.0f, 0.0f);  // çº¢è‰²
     glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(50.0f, 0.0f, 0.0f);  // XÖáÕı·½Ïò
+    glVertex3f(50.0f, 0.0f, 0.0f);  // Xè½´æ­£æ–¹å‘
     glEnd();
 
-    // YÖá£¨ÂÌÉ«£©
+    // Yè½´ï¼ˆç»¿è‰²ï¼‰
     glBegin(GL_LINES);
-    glColor3f(0.0f, 1.0f, 0.0f);  // ÂÌÉ«
+    glColor3f(0.0f, 1.0f, 0.0f);  // ç»¿è‰²
     glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, 50.0f, 0.0f);  // YÖáÕı·½Ïò
+    glVertex3f(0.0f, 50.0f, 0.0f);  // Yè½´æ­£æ–¹å‘
     glEnd();
 
-    // ZÖá£¨À¶É«£©
+    // Zè½´ï¼ˆè“è‰²ï¼‰
     glBegin(GL_LINES);
-    glColor3f(0.0f, 0.0f, 1.0f);  // À¶É«
+    glColor3f(0.0f, 0.0f, 1.0f);  // è“è‰²
     glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, 0.0f, 50.0f);  // ZÖáÕı·½Ïò
+    glVertex3f(0.0f, 0.0f, 50.0f);  // Zè½´æ­£æ–¹å‘
     glEnd();
 }
 

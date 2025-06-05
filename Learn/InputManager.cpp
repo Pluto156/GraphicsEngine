@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "InputManager.h"
 void InputManager::Update() {
-    // 处理键盘事件
+    // 澶勭悊閿洏浜嬩欢
     while (!keyboard_events_.empty()) {
         auto& event = keyboard_events_.front();
         for (auto* control : controls_) {
@@ -18,7 +18,7 @@ void InputManager::Update() {
         specialkey_events_.pop();
     }
 
-    // 处理鼠标事件
+    // 澶勭悊榧犳爣浜嬩欢
     while (!mouse_events_.empty()) {
         auto& event = mouse_events_.front();
         for (auto* control : controls_) {
@@ -27,7 +27,7 @@ void InputManager::Update() {
         mouse_events_.pop();
     }
 
-    // 处理鼠标移动事件
+    // 澶勭悊榧犳爣绉诲姩浜嬩欢
     while (!mouse_motion_events_.empty()) {
         auto& event = mouse_motion_events_.front();
         for (auto* control : controls_) {
