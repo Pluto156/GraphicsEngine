@@ -8,6 +8,7 @@ ComponentType PlaneCollider::GetType()
 PlaneCollider::PlaneCollider()
 {
 	mCollider = new PhysicsLit::CollisionPlane();
+	mCollider->colliderComponent = this;
 }
 
 PlaneCollider::~PlaneCollider()

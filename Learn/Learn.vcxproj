@@ -178,6 +178,8 @@
     <ClInclude Include="ForceGravity.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectManager.h" />
+    <ClInclude Include="GameScript.h" />
+    <ClInclude Include="GameScriptManager.h" />
     <ClInclude Include="IManager.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="IntersectionDetector.h" />
@@ -231,6 +233,8 @@
     <ClCompile Include="ForceGravity.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
+    <ClCompile Include="GameScript.cpp" />
+    <ClCompile Include="GameScriptManager.cpp" />
     <ClCompile Include="IManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IntersectionDetector.cpp" />

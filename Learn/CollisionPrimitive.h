@@ -1,4 +1,5 @@
 #pragma once
+#include "Collider.h"
 namespace PhysicsLit
 {
 	class RigidBodyPrimitive;
@@ -19,7 +20,6 @@ namespace PhysicsLit
 		CombineType mFrictionCombine = CombineType::Average;
 		// 回弹系数组合方式
 		CombineType mBounceCombine = CombineType::Average;
-
 		virtual ~CollisionPrimitive();
 
 		virtual void SynchronizeTransform(const CMatrix4& transform);
@@ -28,6 +28,7 @@ namespace PhysicsLit
 		virtual ColliderType GetType() const = 0;
 		// 生成对应形状的均质惯性张量
 		virtual CMatrix4 GetInertiaTensor(float mass) const = 0;
+		Collider* colliderComponent;
 	};
 
 	class CollisionBox : public CollisionPrimitive

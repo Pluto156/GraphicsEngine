@@ -2,6 +2,8 @@
 #include "CollisionPrimitive.h"
 namespace PhysicsLit
 {
+
+
 	CollisionPrimitive::~CollisionPrimitive()
 	{
 		if (rigidBodyPrimitive && rigidBodyPrimitive->mCollisionVolume == this)

@@ -7,8 +7,8 @@ ComponentType SphereCollider::GetType()
 
 SphereCollider::SphereCollider(float mRadius)
 {
-	mCollider = new 
-		PhysicsLit::CollisionSphere();
+	mCollider = new PhysicsLit::CollisionSphere();
+	mCollider->colliderComponent = this;
 	mCollider->mRadius = mRadius;
 	this->radius = mRadius;
 }

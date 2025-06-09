@@ -43,7 +43,6 @@ void InitStage()
         GameObject* Sphere = ShapeFactory::CreateSphere("Sphere",1, CVector3(3, 0.5 + 2.5 + 7.5, 0));
 
         Car->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Model/T 90.obj","E:/sourcecode/GraphicsEngine/Resource/Model/T 90A.png");
-        Car->AddComponent<CharacterController>();
         Car->transform->isShowLocalAxis = true;
         Car->transform->SetLocalScale(CVector3(0.2, 0.2, 0.2));
         GameObjectManager::Instance().SetCamera(camera);
@@ -220,6 +219,9 @@ void InitStage()
         rigidBody4->rigidBodyPrimitive->SetInertiaTensor(sphereCollider->mCollider->GetInertiaTensor(rigidBody4->rigidBodyPrimitive->GetMass()));
         PhysicsLit::PhysicsManager::Instance().AddGameObject(Sphere);
         rigidBody4->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(CVector3(0.0f, -9.8f, 0.0f)));
+        
+        GameScriptManager::Instance().registerScript(Car->AddComponent<CharacterController>());
+        
         isInitStage = true;
     }
 

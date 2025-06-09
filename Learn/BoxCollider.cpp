@@ -17,6 +17,7 @@ BoxCollider::~BoxCollider()
 void BoxCollider::Start()
 {
 	mCollider = new PhysicsLit::CollisionBox();
+	mCollider->colliderComponent = this;
 	mCollider->mHalfSize = halfSizes;
 	SynchronizeData();
 	auto rigidBody = gameObject->GetComponent<RigidBody>();

@@ -28,6 +28,7 @@ namespace PhysicsLit
 		{
 			BeginFrame();
 			GameObjectManager::Instance().Update();
+			GameScriptManager::Instance().Update();
 			UpdatePhysics(TimeManager::fixedDeltaTime);
 			EndFrame();
 		}
@@ -75,11 +76,10 @@ namespace PhysicsLit
 				mPotentialContacts[i].mRigidBodies[1]->mCollisionVolume,
 				mCollisionData
 			);
-
-			if (collisionCount > 0)
-			{
-				std::cout << "有碰撞" << std::endl;
+			if (collisionCount > 0) {
+				GameScriptManager::Instance().ReportCollision(mPotentialContacts[i].mRigidBodies[0], mPotentialContacts[i].mRigidBodies[1]);
 			}
+
 			i++;
 		}
 

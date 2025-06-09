@@ -8,7 +8,6 @@ public:
 
 public:
 	PhysicsLit::CollisionBox* mCollider = nullptr;
-
 	BoxCollider(const CVector3& halfSizes);
 	~BoxCollider();
 	void Start() override;

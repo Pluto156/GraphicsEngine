@@ -64,3 +64,19 @@ void CharacterController::processMouseMotion(int x, int y)
 {
 
 }
+
+void CharacterController::OnColliderEnter(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
+{
+    std::cout << "OnColliderEnter" << std::endl;
+
+}
+void CharacterController::OnColliderStay(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
+{
+    std::cout << "OnColliderStay" << std::endl;
+
+}
+void CharacterController::OnColliderExit(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
+{
+    std::cout << "OnColliderExit" << std::endl;
+
+}

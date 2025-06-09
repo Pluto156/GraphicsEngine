@@ -30,6 +30,8 @@
 #include "GameObject.h"
 #include "TimeManager.h"
 #include "PhysicsManager.h"
+#include "GameScriptManager.h"
+#include "GameScript.h"
 #include <iostream>
 #include <sstream>
 #include <queue>

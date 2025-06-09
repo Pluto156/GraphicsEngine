@@ -9,7 +9,8 @@ enum class ComponentType
     SphereCollider,
     PlaneCollider,
     MeshRenderer,
-    CharacterController
+    CharacterController,
+    GameScript
 };
 class GameObject;
 class Component {
