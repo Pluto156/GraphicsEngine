@@ -7,10 +7,17 @@ e:\sourcecode\graphicsengine\packages\assimp.3.0.0\build\native\include\assimp\m
 e:\sourcecode\graphicsengine\packages\assimp.3.0.0\build\native\include\assimp\matrix4x4.inl : warning C4828: 文件包含在偏移 0x4405 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
 e:\sourcecode\graphicsengine\learn\gameobjectmanager.h(47): warning C4150: 删除指向不完整“GameObject”类型的指针；没有调用析构函数
   e:\sourcecode\graphicsengine\learn\gameobjectmanager.h(7): note: 参见“GameObject”的声明
-e:\sourcecode\graphicsengine\learn\physicsmanager.h(95): warning C4150: 删除指向不完整“PhysicsLit::CollisionData”类型的指针；没有调用析构函数
-  e:\sourcecode\graphicsengine\learn\physicsmanager.h(12): note: 参见“PhysicsLit::CollisionData”的声明
-e:\sourcecode\graphicsengine\learn\physicsmanager.h(96): warning C4150: 删除指向不完整“PhysicsLit::ContactResolver”类型的指针；没有调用析构函数
-  e:\sourcecode\graphicsengine\learn\physicsmanager.h(13): note: 参见“PhysicsLit::ContactResolver”的声明
+e:\sourcecode\graphicsengine\learn\gamescript.h : warning C4828: 文件包含在偏移 0x2b 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+e:\sourcecode\graphicsengine\learn\gamescript.h : warning C4828: 文件包含在偏移 0x2d 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+e:\sourcecode\graphicsengine\learn\gamescript.h : warning C4828: 文件包含在偏移 0x2e 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+e:\sourcecode\graphicsengine\learn\gamescript.h : warning C4828: 文件包含在偏移 0x30 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+e:\sourcecode\graphicsengine\learn\gamescript.h : warning C4828: 文件包含在偏移 0x31 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+e:\sourcecode\graphicsengine\learn\gamescript.h : warning C4828: 文件包含在偏移 0x33 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+e:\sourcecode\graphicsengine\learn\gamescript.h : warning C4828: 文件包含在偏移 0x35 处开始的字符，该字符在当前源字符集中无效(代码页 65001)。
+e:\sourcecode\graphicsengine\learn\physicsmanager.h(93): warning C4150: 删除指向不完整“PhysicsLit::CollisionData”类型的指针；没有调用析构函数
+  e:\sourcecode\graphicsengine\learn\physicsmanager.h(13): note: 参见“PhysicsLit::CollisionData”的声明
+e:\sourcecode\graphicsengine\learn\physicsmanager.h(94): warning C4150: 删除指向不完整“PhysicsLit::ContactResolver”类型的指针；没有调用析构函数
+  e:\sourcecode\graphicsengine\learn\physicsmanager.h(14): note: 参见“PhysicsLit::ContactResolver”的声明
   Transform.cpp
   TimeManager.cpp
   Stage.cpp

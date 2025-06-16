@@ -44,7 +44,7 @@ namespace PhysicsLit
 		// 重置碰撞数据
 		mCollisionData->Reset();
 
-		for (auto& iter : mAllRigidBodyGO)
+		for (auto& iter : GoToRigidBody)
 		{
 			// 清除刚体在上一帧累计的力和力矩
 			iter.second->ClearAccumulators();
@@ -57,7 +57,7 @@ namespace PhysicsLit
 		if (mBVHRoot == nullptr)
 			return;
 		 //更新刚体的位置和旋转
-		for (auto& iter : mAllRigidBodyGO)
+		for (auto& iter : GoToRigidBody)
 		{
 			//std::cout << rigidbody->forceAccum.ToString() << std::endl;
 
@@ -92,7 +92,7 @@ namespace PhysicsLit
 		if (mBVHRoot == nullptr)
 			return;
 
-		for (auto& iter : mAllRigidBodyGO)
+		for (auto& iter : GoToRigidBody)
 		{
 			auto transform = iter.first->GetComponent<Transform>();
 			transform->SetPosition(iter.second->GetPosition());

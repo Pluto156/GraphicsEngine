@@ -220,7 +220,7 @@ void InitStage()
         PhysicsLit::PhysicsManager::Instance().AddGameObject(Sphere);
         rigidBody4->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(CVector3(0.0f, -9.8f, 0.0f)));
         
-        GameScriptManager::Instance().registerScript(Car->AddComponent<CharacterController>());
+        Car->AddComponent<CharacterController>();
         
         isInitStage = true;
     }

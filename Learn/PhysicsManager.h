@@ -1,6 +1,7 @@
 #pragma once
 #include "IManager.h"
-#include "vector"
+#include <unordered_map>
+#include <vector>
 #include "Rigidbody.h"
 #include "BVHNode.h"
 #include "BoxCollider.h"
@@ -11,7 +12,8 @@ namespace PhysicsLit
 {
     class CollisionData;
     class ContactResolver;
-    class PhysicsManager :public IManager {
+
+    class PhysicsManager : public IManager {
     public:
         static PhysicsManager& Instance() {
             static PhysicsManager instance;
@@ -21,63 +23,60 @@ namespace PhysicsLit
         RigidBody* AddGameObject(GameObject* gameobject) {
             RigidBody* rigidbody = gameobject->GetComponent<RigidBody>();
             auto rigidBodyPrimitive = rigidbody ? rigidbody->rigidBodyPrimitive : nullptr;
-            mAllRigidBodyGO.push_back(std::make_pair(gameobject, rigidBodyPrimitive));
 
+            GoToRigidBody[gameobject] = rigidBodyPrimitive;
+            if (rigidBodyPrimitive) {
+                RigidBodyToGO[rigidBodyPrimitive] = gameobject;
+            }
 
-            if (gameobject->GetComponent<BoxCollider>() != nullptr)
-            {
-                auto boxCollider = gameobject->GetComponent<BoxCollider>();
-                float radius = boxCollider->mCollider->mHalfSize.len();
+            // 添加包围体
+            if (auto box = gameobject->GetComponent<BoxCollider>()) {
+                float radius = box->mCollider->mHalfSize.len();
                 CVector3 pos = gameobject->GetComponent<Transform>()->GetPosition();
-                BoundingSphere bv(pos, radius);
-                AddBoundingVolume(bv, rigidBodyPrimitive);
+                AddBoundingVolume(BoundingSphere(pos, radius), rigidBodyPrimitive);
             }
-            else if (gameobject->GetComponent<PlaneCollider>() != nullptr)
-            {
-                auto planeCollider = gameobject->GetComponent<PlaneCollider>();
-                if (planeCollider)
-                {
-                    auto transform = gameobject->GetComponent<Transform>();
-                    auto scale = CVector3(1,1,1);
-                    // 临时按照平面长宽为10计算
-                    float radius = sqrtf(scale.x * scale.x * 100.0f + scale.z * scale.z * 100.0f);
-                    CVector3 pos = transform->GetPosition();
-                    BoundingSphere bv(pos, radius);
-                    AddBoundingVolume(bv, rigidBodyPrimitive);
-                }
+            else if (auto plane = gameobject->GetComponent<PlaneCollider>()) {
+                float radius = sqrtf(1 * 1 * 100.0f + 1 * 1 * 100.0f);
+                CVector3 pos = gameobject->GetComponent<Transform>()->GetPosition();
+                AddBoundingVolume(BoundingSphere(pos, radius), rigidBodyPrimitive);
             }
-            else if (gameobject->GetComponent<SphereCollider>() != nullptr)
-            {
-                auto sphereCollider = gameobject->GetComponent<SphereCollider>();
-                if (sphereCollider)
-                {
-                    float radius = sphereCollider->mCollider->mRadius;
-                    CVector3 pos = gameobject->transform->GetPosition();
-                    BoundingSphere bv(pos, radius);
-                    AddBoundingVolume(bv, rigidBodyPrimitive);
-                }
+            else if (auto sphere = gameobject->GetComponent<SphereCollider>()) {
+                float radius = sphere->mCollider->mRadius;
+                CVector3 pos = gameobject->transform->GetPosition();
+                AddBoundingVolume(BoundingSphere(pos, radius), rigidBodyPrimitive);
             }
-
-
 
             return rigidbody;
         }
 
         void RemoveGameObject(GameObject* gameobject) {
-            // 查找并移除对应的 GameObject
-            auto it = std::remove_if(mAllRigidBodyGO.begin(), mAllRigidBodyGO.end(),
-                [gameobject](const std::pair<GameObject*, RigidBodyPrimitive*>& pair) {
-                    return pair.first == gameobject;
-                });
-
-            // 如果找到了匹配的条目，就删除它
-            if (it != mAllRigidBodyGO.end()) {
-                mAllRigidBodyGO.erase(it, mAllRigidBodyGO.end());
+            auto it = GoToRigidBody.find(gameobject);
+            if (it != GoToRigidBody.end()) {
+                if (it->second) {
+                    RigidBodyToGO.erase(it->second);
+                }
+                GoToRigidBody.erase(it);
             }
         }
 
+        std::string GetGameObjectName(RigidBodyPrimitive* rigidbody) {
+            auto it = RigidBodyToGO.find(rigidbody);
+            if (it != RigidBodyToGO.end() && it->second) {
+                return it->second->name;  
+            }
+            return "NULL";
+        }
 
-        void Update()override;
+        GameScript* TryGetGameScript(RigidBodyPrimitive* rigidbody)
+        {
+            auto it = RigidBodyToGO.find(rigidbody);
+            if (it != RigidBodyToGO.end() && it->second) {
+                return it->second->gameScript;
+            }
+            return nullptr;
+        }
+
+        void Update() override;
         void BeginFrame();
         void UpdatePhysics(const float deltaTime);
         void EndFrame();
@@ -90,31 +89,23 @@ namespace PhysicsLit
     private:
         PhysicsManager();
 
-        ~PhysicsManager()
-        {
+        ~PhysicsManager() {
             delete mCollisionData;
             delete mContactResolver;
             delete[] mPotentialContacts;
             if (mBVHRoot)
                 delete mBVHRoot;
         }
-        // 由GameObjectManager负责销毁
-          // 当前场景中的所有刚体
-        std::vector<std::pair<GameObject*, RigidBodyPrimitive*>> mAllRigidBodyGO;
-        // Bounding Volume Hierarchy (BVH)树的根节点
+
+        // 双向索引结构
+        std::unordered_map<GameObject*, RigidBodyPrimitive*> GoToRigidBody;
+        std::unordered_map<RigidBodyPrimitive*, GameObject*> RigidBodyToGO;
+
         BVHNode* mBVHRoot = nullptr;
-
-        // 碰撞数据
         CollisionData* mCollisionData;
-        // 潜在碰撞数组
         PotentialContact* mPotentialContacts;
-        // 潜在碰撞数组的长度
         uint32_t mMaxPotentialContacts = 1000;
-
-        // 碰撞处理器
         ContactResolver* mContactResolver;
         long long mCurPhyFrame = 0;
     };
 }
-
-

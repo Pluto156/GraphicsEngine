@@ -2,13 +2,14 @@
 #include "GameObjectManager.h"
 #include "CglFont.h"
 #include "Transform.h"
-
+#include "GameScript.h"
 
 class Component;
 class GameObject {
 public:
     std::string name;
     Transform* transform = nullptr;
+    GameScript* gameScript = nullptr;
     CglFont infoFont;
     GameObject(const std::string& name, const CVector3& position = CVector3(),
         const CMatrix4& rotation = CMatrix4(),
@@ -29,9 +30,26 @@ public:
         T* component = new T(std::forward<Args>(args)...);
         component->gameObject = this;
         components.push_back(component);
-        component->Start();  
+
+        using DecayedT = std::decay_t<T>;
+        constexpr bool is_script = std::is_base_of<GameScript, DecayedT>::value;
+
+        AssignIfGameScript(component, std::bool_constant<is_script>{});
+
+        component->Start();
         return component;
     }
+
+    // 非 GameScript 时：空函数
+    template<typename T>
+    void AssignIfGameScript(T*, std::false_type) {}
+
+    // 是 GameScript 时
+    template<typename T>
+    void AssignIfGameScript(T* ptr, std::true_type) {
+        this->gameScript = static_cast<GameScript*>(ptr);
+    }
+
 
     template<typename T>
     T* GetComponent() {

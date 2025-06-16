@@ -9,5 +9,5 @@ GameScript::GameScript() {
 	//GameScriptManager::Instance().registerScript(this);
 }
 GameScript:: ~GameScript() {
-	GameScriptManager::Instance().unregisterScript(this);
+	//GameScriptManager::Instance().unregisterScript(this);
 }

@@ -17,24 +17,6 @@ public:
         return instance;
     }
 
-    void registerScript(GameScript* script) {
-        scripts_.push_back(script);
-        auto rigidbody = script->gameObject->GetComponent<RigidBody>();
-        if (rigidbody != nullptr)
-        {
-            RigidBodyToScript_[rigidbody->rigidBodyPrimitive] = script;
-
-        }
-    }
-
-    void unregisterScript(GameScript* script) {
-        auto it = std::find(scripts_.begin(), scripts_.end(), script);
-        if (it != scripts_.end()) {
-            scripts_.erase(it);
-            RigidBodyToScript_.erase(script->gameObject->GetComponent<RigidBody>()->rigidBodyPrimitive);
-        }
-    }
-
     void ReportCollision(PhysicsLit::RigidBodyPrimitive* a, PhysicsLit::RigidBodyPrimitive* b) {
         auto key = MakePairKey(a, b);
         currentFrameContacts.insert(key);
@@ -42,6 +24,7 @@ public:
     }
 
     void Update() override;
+
 
 private:
     GameScriptManager() = default;
@@ -52,8 +35,6 @@ private:
     using RigidBodyPrimitivePair = std::pair<PhysicsLit::RigidBodyPrimitive*, PhysicsLit::RigidBodyPrimitive*>;
 
     std::vector<GameScript*> scripts_;
-    std::unordered_map<PhysicsLit::RigidBodyPrimitive*, GameScript*> RigidBodyToScript_;
-
     std::set<RigidBodyPrimitivePair> currentFrameContacts;
     std::set<RigidBodyPrimitivePair> lastFrameContacts;
 
@@ -83,11 +64,16 @@ private:
     using CollisionCallback = void (GameScript::*)(PhysicsLit::RigidBodyPrimitive*);
 
     void Notify(PhysicsLit::RigidBodyPrimitive* a, PhysicsLit::RigidBodyPrimitive* b, CollisionCallback callback) {
-        if (RigidBodyToScript_.count(a)) {
-            (RigidBodyToScript_[a]->*callback)(b);
+        GameScript* gs = nullptr;
+        gs = PhysicsLit::PhysicsManager::Instance().TryGetGameScript(a);
+        if (gs!=nullptr) {
+            (gs->*callback)(b);
         }
-        if (RigidBodyToScript_.count(b)) {
-            (RigidBodyToScript_[b]->*callback)(a);
+        gs = PhysicsLit::PhysicsManager::Instance().TryGetGameScript(b);
+        if (gs != nullptr) {
+            (gs->*callback)(a);
         }
     }
+
+
 };

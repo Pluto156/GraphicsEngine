@@ -3,12 +3,10 @@
 #include "Transform.h"
 #include "BoxCollider.h"
 
-
 GameObject::GameObject(const std::string& name, const CVector3& position,
     const CMatrix4& rotation,
     const CEuler& eulerAngles, bool isShowLocalAxis) : name(name),
-    transform(new Transform(position, rotation, eulerAngles, isShowLocalAxis)),
-    components() // 👈 明确初始化
+    components() 
 {
     GameObjectManager::Instance().Instantiate(this);
     transform = AddComponent<Transform>(position, rotation, eulerAngles, isShowLocalAxis);
