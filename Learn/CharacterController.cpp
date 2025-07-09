@@ -1,9 +1,5 @@
 #include "stdafx.h"
 #include "CharacterController.h"
-ComponentType CharacterController::GetType()
-{
-    return ComponentType::RigidBody;
-}
 
 void CharacterController::processKeyboard(unsigned char key, int x, int y)
 {

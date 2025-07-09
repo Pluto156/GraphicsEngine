@@ -17,10 +17,7 @@ public:
         return obj;
     }
 
-    void Destroy(GameObject* obj) {
-        auto it = std::remove(gameObjects.begin(), gameObjects.end(), obj);
-        gameObjects.erase(it, gameObjects.end());
-    }
+    void Destroy(GameObject* obj);
 
     void Update() override;
 

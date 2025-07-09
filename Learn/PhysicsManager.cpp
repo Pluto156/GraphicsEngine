@@ -115,4 +115,23 @@ namespace PhysicsLit
 		else
 			mBVHRoot = new BVHNode(nullptr, boundingVolume, rigidBody);
 	}
+
+	void PhysicsLit::PhysicsManager::RemoveBoundingVolume(RigidBodyPrimitive* rigidBody)
+	{
+		if (!rigidBody || !rigidBody->mBVHNode)
+			return;
+
+		BVHNode* node = rigidBody->mBVHNode;
+
+		if (node == mBVHRoot) {
+			delete mBVHRoot;
+			mBVHRoot = nullptr;
+		}
+		else {
+			delete node;
+		}
+
+		rigidBody->mBVHNode = nullptr;
+	}
+
 }

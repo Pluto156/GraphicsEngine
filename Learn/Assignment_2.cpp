@@ -40,7 +40,7 @@ void InitStage()
         GameObject* Car = new GameObject("Car", CVector3(0, 0.5 + 2.5+5, 0));
         GameObject* Car2 = new GameObject("Car2", CVector3(3, 0.5 + 2.5 + 5, 0));
 
-        GameObject* Sphere = ShapeFactory::CreateSphere("Sphere",1, CVector3(3, 0.5 + 2.5 + 7.5, 0));
+        GameObject* Sphere = ShapeFactory::CreateSphere("Sphere",1, CVector3(6, 20, 0));
 
         Car->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Model/T 90.obj","E:/sourcecode/GraphicsEngine/Resource/Model/T 90A.png");
         Car->transform->isShowLocalAxis = true;
@@ -177,6 +177,8 @@ void InitStage()
         rigidBody1->rigidBodyPrimitive->mCollisionVolume = planeCollider->mCollider;
         rigidBody1->rigidBodyPrimitive->SetInertiaTensor(planeCollider->mCollider->GetInertiaTensor(rigidBody1->rigidBodyPrimitive->GetMass()));
         PhysicsLit::PhysicsManager::Instance().AddGameObject(B1);
+        B1->transform->UpdateColliderTransform();
+
 
         auto rigidBody2 = Car->AddComponent<RigidBody>();
         rigidBody2->rigidBodyPrimitive->SetMass(100);
@@ -190,6 +192,7 @@ void InitStage()
         rigidBody2->rigidBodyPrimitive->SetInertiaTensor(BoxCollider2->mCollider->GetInertiaTensor(rigidBody2->rigidBodyPrimitive->GetMass()));
         PhysicsLit::PhysicsManager::Instance().AddGameObject(Car);
         rigidBody2->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(CVector3(0.0f, -9.8f, 0.0f)));
+        Car->transform->UpdateColliderTransform();
 
 
         auto rigidBody3 = Car2->AddComponent<RigidBody>();
@@ -204,7 +207,8 @@ void InitStage()
         rigidBody3->rigidBodyPrimitive->SetInertiaTensor(BoxCollider3->mCollider->GetInertiaTensor(rigidBody3->rigidBodyPrimitive->GetMass()));
         PhysicsLit::PhysicsManager::Instance().AddGameObject(Car2);
         rigidBody3->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(CVector3(0.0f, -9.8f, 0.0f)));
-        
+        Car2->transform->UpdateColliderTransform();
+
         
         
         auto rigidBody4 = Sphere->AddComponent<RigidBody>();
@@ -219,8 +223,11 @@ void InitStage()
         rigidBody4->rigidBodyPrimitive->SetInertiaTensor(sphereCollider->mCollider->GetInertiaTensor(rigidBody4->rigidBodyPrimitive->GetMass()));
         PhysicsLit::PhysicsManager::Instance().AddGameObject(Sphere);
         rigidBody4->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(CVector3(0.0f, -9.8f, 0.0f)));
-        
+        Sphere->transform->UpdateColliderTransform();
+
+
         Car->AddComponent<CharacterController>();
+        Sphere->AddComponent<Bullet>();
         
         isInitStage = true;
     }

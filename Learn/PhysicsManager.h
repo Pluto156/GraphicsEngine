@@ -53,6 +53,7 @@ namespace PhysicsLit
             auto it = GoToRigidBody.find(gameobject);
             if (it != GoToRigidBody.end()) {
                 if (it->second) {
+                    RemoveBoundingVolume(it->second); 
                     RigidBodyToGO.erase(it->second);
                 }
                 GoToRigidBody.erase(it);
@@ -82,6 +83,7 @@ namespace PhysicsLit
         void EndFrame();
 
         void AddBoundingVolume(const BoundingSphere& boundingVolume, RigidBodyPrimitive* rigidBody);
+        void RemoveBoundingVolume(RigidBodyPrimitive* rigidBody);
 
         PhysicsManager(const PhysicsManager&) = delete;
         void operator=(const PhysicsManager&) = delete;

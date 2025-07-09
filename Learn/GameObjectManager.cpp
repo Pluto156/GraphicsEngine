@@ -14,6 +14,20 @@ void GameObjectManager::Update() {
     glutSwapBuffers();
 }
 
+
+
+void GameObjectManager::Destroy(GameObject* obj) {
+    auto it = std::remove(gameObjects.begin(), gameObjects.end(), obj);
+    gameObjects.erase(it, gameObjects.end());
+
+    if (obj->GetComponent<RigidBody>() != nullptr)
+    {
+        PhysicsLit::PhysicsManager::Instance().RemoveGameObject(obj);
+    }
+
+    delete obj;
+}
+
 void GameObjectManager::drawCoordinateAxes()
 {
     // X轴（红色）

@@ -22,7 +22,6 @@ public:
         }
         components.clear(); 
         transform = nullptr;
-        GameObjectManager::Instance().Destroy(this);
     }
 
     template<typename T, typename... Args>
