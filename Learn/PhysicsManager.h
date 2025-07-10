@@ -46,6 +46,8 @@ namespace PhysicsLit
                 AddBoundingVolume(BoundingSphere(pos, radius), rigidBodyPrimitive);
             }
 
+            PhysicsManager::Instance().CheckImmediateCollision(rigidbody->rigidBodyPrimitive);
+
             return rigidbody;
         }
 
@@ -87,6 +89,7 @@ namespace PhysicsLit
 
         PhysicsManager(const PhysicsManager&) = delete;
         void operator=(const PhysicsManager&) = delete;
+        void CheckImmediateCollision(RigidBodyPrimitive* newRigid);
 
     private:
         PhysicsManager();

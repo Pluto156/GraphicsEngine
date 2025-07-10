@@ -177,6 +177,7 @@
     <ClInclude Include="EngineMainLoop.h" />
     <ClInclude Include="ForceGenerator.h" />
     <ClInclude Include="ForceGravity.h" />
+    <ClInclude Include="ForceSpring.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="GameScript.h" />
@@ -233,6 +234,7 @@
     <ClCompile Include="EngineMainLoop.cpp" />
     <ClCompile Include="ForceGenerator.cpp" />
     <ClCompile Include="ForceGravity.cpp" />
+    <ClCompile Include="ForceSpring.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="GameScript.cpp" />

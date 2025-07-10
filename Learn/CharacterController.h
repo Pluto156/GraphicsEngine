@@ -11,5 +11,6 @@ public:
     void OnColliderEnter(PhysicsLit::RigidBodyPrimitive*);
     void OnColliderStay(PhysicsLit::RigidBodyPrimitive*);
     void OnColliderExit(PhysicsLit::RigidBodyPrimitive*);
+    int cnt = 0;
 };
 

@@ -182,7 +182,7 @@ void InitStage()
 
         auto rigidBody2 = Car->AddComponent<RigidBody>();
         rigidBody2->rigidBodyPrimitive->SetMass(100);
-        auto BoxCollider2 = Car->AddComponent<BoxCollider>(CVector3(1, 0.5, 2));
+        auto BoxCollider2 = Car->AddComponent<BoxCollider>(CVector3(0.5, 0.5, 0.5));
         BoxCollider2->mFriction = 10;
         BoxCollider2->mBounciness = 0.5;
         BoxCollider2->SynchronizeData();
@@ -221,9 +221,9 @@ void InitStage()
         sphereCollider->mCollider->rigidBodyPrimitive = rigidBody4->rigidBodyPrimitive;
         rigidBody4->rigidBodyPrimitive->mCollisionVolume = sphereCollider->mCollider;
         rigidBody4->rigidBodyPrimitive->SetInertiaTensor(sphereCollider->mCollider->GetInertiaTensor(rigidBody4->rigidBodyPrimitive->GetMass()));
-        PhysicsLit::PhysicsManager::Instance().AddGameObject(Sphere);
         rigidBody4->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(CVector3(0.0f, -9.8f, 0.0f)));
         Sphere->transform->UpdateColliderTransform();
+        PhysicsLit::PhysicsManager::Instance().AddGameObject(Sphere);
 
 
         Car->AddComponent<CharacterController>();

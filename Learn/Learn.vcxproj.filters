@@ -219,6 +219,9 @@
     <ClInclude Include="Bullet.h">
       <Filter>头文件\Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="ForceSpring.h">
+      <Filter>头文件\Physics\Force</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -379,6 +382,9 @@
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
       <Filter>源文件\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="ForceSpring.cpp">
+      <Filter>源文件\Physics\Force</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -327,7 +327,7 @@ namespace PhysicsLit
 		float distance = centerLine.len();
 
 		// 两个碰撞球的距离大于两者半径之和则不碰撞
-		if (distance <= 0.0f || distance >= sphere1.mRadius + sphere2.mRadius)
+		if (distance < 0.0f || distance >= sphere1.mRadius + sphere2.mRadius)
 		{
 			return 0;
 		}

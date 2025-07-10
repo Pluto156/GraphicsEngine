@@ -66,7 +66,6 @@ namespace PhysicsLit
 
 		// 生成潜在碰撞
 		uint32_t potentialContactCount = mBVHRoot->GetPotentialContacts(mPotentialContacts, mMaxPotentialContacts);
-		//std::cout << potentialContactCount << std::endl;
 		// 从潜在碰撞中检测碰撞
 		uint32_t i = 0;
 		while (i < potentialContactCount)
@@ -123,15 +122,41 @@ namespace PhysicsLit
 
 		BVHNode* node = rigidBody->mBVHNode;
 
+		// 如果是根节点，直接清空整棵树
 		if (node == mBVHRoot) {
 			delete mBVHRoot;
 			mBVHRoot = nullptr;
 		}
 		else {
-			delete node;
+			node->Remove();  // 正确方式：由 BVHNode::Remove() 执行结构重组和 delete
 		}
 
 		rigidBody->mBVHNode = nullptr;
 	}
+	void PhysicsManager::CheckImmediateCollision(RigidBodyPrimitive* bullet)
+	{
+		if (!bullet || !bullet->mCollisionVolume || !bullet->mBVHNode || mBVHRoot == nullptr)
+			return;
+
+		std::vector<BVHNode*> candidates;
+		mBVHRoot->QueryPotentialContacts(bullet->mBVHNode->mBoundingVolume, candidates);
+
+		for (auto* node : candidates) {
+			if (!node || node->mRigidBody == nullptr || node->mRigidBody == bullet)
+				continue;
+
+			uint32_t collisionCount = CollisionDetector::Detect(
+				bullet->mCollisionVolume,
+				node->mRigidBody->mCollisionVolume,
+				mCollisionData
+			);
+
+			if (collisionCount > 0) {
+				GameScriptManager::Instance().ReportCollision(bullet, node->mRigidBody);
+			}
+		}
+	}
+
+
 
 }

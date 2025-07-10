@@ -79,6 +79,11 @@ public:
         const static CVector3 Forward(0, 0, 1);
         return Forward;
     }
+    const static CVector3& Zero()
+    {
+        const static CVector3 Zero(0, 0, 0);
+        return Zero;
+    }
 };
 
 bool Calculate();

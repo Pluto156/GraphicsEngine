@@ -54,7 +54,32 @@ void CharacterController::processSpecialKeys(int key, int x, int y)
 }
 void CharacterController::processMouse(int button, int state, int x, int y)
 {
+    if (button == GLUT_LEFT_BUTTON)
+    {
+        if (state == GLUT_DOWN)
+        {
+            std::cout << "GLUT_LEFT_BUTTON " <<gameObject->transform->position.ToString() <<std::endl;
 
+            GameObject* Sphere = ShapeFactory::CreateSphere("Sphere"+ std::to_string(cnt++), 0.2, gameObject->transform->position+gameObject->transform->Forward+CVector3(0,5,0));
+
+            auto rigidBody4 = Sphere->AddComponent<RigidBody>();
+            rigidBody4->rigidBodyPrimitive->SetMass(1000);
+            auto sphereCollider = Sphere->GetComponent<SphereCollider>();
+            sphereCollider->mFriction = 10;
+            sphereCollider->mBounciness = 0.5;
+            sphereCollider->SynchronizeData();
+
+            sphereCollider->mCollider->rigidBodyPrimitive = rigidBody4->rigidBodyPrimitive;
+            rigidBody4->rigidBodyPrimitive->mCollisionVolume = sphereCollider->mCollider;
+            rigidBody4->rigidBodyPrimitive->SetInertiaTensor(sphereCollider->mCollider->GetInertiaTensor(rigidBody4->rigidBodyPrimitive->GetMass()));
+            rigidBody4->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(CVector3::Zero()));
+            Sphere->transform->UpdateColliderTransform();
+            Sphere->AddComponent<Bullet>();
+            PhysicsLit::PhysicsManager::Instance().AddGameObject(Sphere);
+
+
+        }
+    }
 }
 void CharacterController::processMouseMotion(int x, int y)
 {
