@@ -8,7 +8,6 @@
 #include "IManager.h"
 #include "GameScript.h"
 
-
 class GameScriptManager : public IManager {
 public:
 
@@ -20,11 +19,23 @@ public:
     void ReportCollision(PhysicsLit::RigidBodyPrimitive* a, PhysicsLit::RigidBodyPrimitive* b) {
         auto key = MakePairKey(a, b);
         currentFrameContacts.insert(key);
-
     }
 
-    void Update() override;
+    void ReportTrigger(PhysicsLit::RigidBodyPrimitive* a, PhysicsLit::RigidBodyPrimitive* b) {
+        auto key = MakePairKey(a, b);
+        currentFrameTriggers.insert(key);
+    }
 
+    void Update() override {
+        TriggerCollisionEvents();
+        TriggerTriggerEvents();
+
+        std::swap(currentFrameContacts, lastFrameContacts);
+        currentFrameContacts.clear();
+
+        std::swap(currentFrameTriggers, lastFrameTriggers);
+        currentFrameTriggers.clear();
+    }
 
 private:
     GameScriptManager() = default;
@@ -37,13 +48,14 @@ private:
     std::vector<GameScript*> scripts_;
     std::set<RigidBodyPrimitivePair> currentFrameContacts;
     std::set<RigidBodyPrimitivePair> lastFrameContacts;
+    std::set<RigidBodyPrimitivePair> currentFrameTriggers;
+    std::set<RigidBodyPrimitivePair> lastFrameTriggers;
 
     static RigidBodyPrimitivePair MakePairKey(PhysicsLit::RigidBodyPrimitive* a, PhysicsLit::RigidBodyPrimitive* b) {
         return (a < b) ? std::make_pair(a, b) : std::make_pair(b, a);
     }
 
     void TriggerCollisionEvents() {
-        // Enter
         for (const auto& pair : currentFrameContacts) {
             if (lastFrameContacts.find(pair) == lastFrameContacts.end()) {
                 Notify(pair.first, pair.second, &GameScript::OnColliderEnter);
@@ -53,7 +65,6 @@ private:
             }
         }
 
-        // Exit
         for (const auto& pair : lastFrameContacts) {
             if (currentFrameContacts.find(pair) == currentFrameContacts.end()) {
                 Notify(pair.first, pair.second, &GameScript::OnColliderExit);
@@ -61,12 +72,28 @@ private:
         }
     }
 
+    void TriggerTriggerEvents() {
+        for (const auto& pair : currentFrameTriggers) {
+            if (lastFrameTriggers.find(pair) == lastFrameTriggers.end()) {
+                Notify(pair.first, pair.second, &GameScript::OnTriggerEnter);
+            }
+            else {
+                Notify(pair.first, pair.second, &GameScript::OnTriggerStay);
+            }
+        }
+
+        for (const auto& pair : lastFrameTriggers) {
+            if (currentFrameTriggers.find(pair) == currentFrameTriggers.end()) {
+                Notify(pair.first, pair.second, &GameScript::OnTriggerExit);
+            }
+        }
+    }
+
     using CollisionCallback = void (GameScript::*)(PhysicsLit::RigidBodyPrimitive*);
 
     void Notify(PhysicsLit::RigidBodyPrimitive* a, PhysicsLit::RigidBodyPrimitive* b, CollisionCallback callback) {
-        GameScript* gs = nullptr;
-        gs = PhysicsLit::PhysicsManager::Instance().TryGetGameScript(a);
-        if (gs!=nullptr) {
+        GameScript* gs = PhysicsLit::PhysicsManager::Instance().TryGetGameScript(a);
+        if (gs != nullptr) {
             (gs->*callback)(b);
         }
         gs = PhysicsLit::PhysicsManager::Instance().TryGetGameScript(b);
@@ -74,6 +101,4 @@ private:
             (gs->*callback)(a);
         }
     }
-
-
 };

@@ -97,4 +97,10 @@ namespace PhysicsLit
 		// ÔİÎ´ÊµÏÖ2DÅö×²
 		return CMatrix4();
 	}
+
+	void CollisionPrimitive::SetLayer(Layer layer, uint32_t mask)
+	{
+		this->layer = layer;
+		this->layerMask = mask;
+	}
 }

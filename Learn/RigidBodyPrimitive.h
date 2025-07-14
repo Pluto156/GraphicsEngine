@@ -93,6 +93,9 @@ namespace PhysicsLit
 		CVector3 GetAngularVelocity() const;
 		void AddAngularVelocity(const CVector3& deltaAngularVelocity);
 
+		void SetGameObjectName(std::string name);
+		std::string GetGameObjectName();
+
 	private:
 		// 此刚体上的作用力生成器列表
 		std::vector<ForceGenerator*> mForceGenerators;
@@ -135,6 +138,8 @@ namespace PhysicsLit
 		bool mCanSleep = true;
 		// 刚体当前的运动量，包含线性速度和角速度，无实际物理意义，仅用于评估运动状态
 		float mMotion = SleepMotionEpsilon * 2.0f;
+
+		std::string GameObjectName;
 
 		void IntegrateForceGenerators(float duration);
 		void UpdateTransform();

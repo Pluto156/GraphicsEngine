@@ -222,6 +222,9 @@
     <ClInclude Include="ForceSpring.h">
       <Filter>头文件\Physics\Force</Filter>
     </ClInclude>
+    <ClInclude Include="LayerDef.h">
+      <Filter>头文件\Physics\Collision</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -385,6 +388,9 @@
     </ClCompile>
     <ClCompile Include="ForceSpring.cpp">
       <Filter>源文件\Physics\Force</Filter>
+    </ClCompile>
+    <ClCompile Include="LayerDef.cpp">
+      <Filter>源文件\Physics\Collision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

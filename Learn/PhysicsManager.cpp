@@ -56,36 +56,55 @@ namespace PhysicsLit
 	{
 		if (mBVHRoot == nullptr)
 			return;
-		 //更新刚体的位置和旋转
+
+		// 更新刚体的位置和旋转
 		for (auto& iter : GoToRigidBody)
 		{
-			//std::cout << rigidbody->forceAccum.ToString() << std::endl;
-
 			iter.second->Integrate(deltaTime);
 		}
 
 		// 生成潜在碰撞
 		uint32_t potentialContactCount = mBVHRoot->GetPotentialContacts(mPotentialContacts, mMaxPotentialContacts);
-		// 从潜在碰撞中检测碰撞
-		uint32_t i = 0;
-		while (i < potentialContactCount)
+
+		// 清空当前碰撞数据计数
+		mCollisionData->mCurContactCount = 0;
+
+		for (uint32_t i = 0; i < potentialContactCount; ++i)
 		{
-			uint32_t collisionCount = CollisionDetector::Detect(
-				mPotentialContacts[i].mRigidBodies[0]->mCollisionVolume,
-				mPotentialContacts[i].mRigidBodies[1]->mCollisionVolume,
-				mCollisionData
-			);
-			if (collisionCount > 0) {
-				GameScriptManager::Instance().ReportCollision(mPotentialContacts[i].mRigidBodies[0], mPotentialContacts[i].mRigidBodies[1]);
+			auto& contact = mPotentialContacts[i];
+			CollisionPrimitive* a = contact.mRigidBodies[0]->mCollisionVolume;
+			CollisionPrimitive* b = contact.mRigidBodies[1]->mCollisionVolume;
+
+			if (!CanCollide(a, b))
+			{
+				continue;
 			}
 
-			i++;
+			//std::cout << contact.mRigidBodies[1]->GetGameObjectName() << std::endl;
+			if (a->isTrigger || b->isTrigger)
+			{
+				// 碰撞检测确认是否真正重叠
+				uint32_t triggerCollisionCount = CollisionDetector::Detect(a, b, &CollisionData(1));
+				if (triggerCollisionCount > 0) {
+				GameScriptManager::Instance().ReportTrigger(contact.mRigidBodies[0], contact.mRigidBodies[1]);
+				}
+			}
+			else
+			{
+				// 普通碰撞检测，成功则记录碰撞信息
+				uint32_t collisionCount = CollisionDetector::Detect(a, b, mCollisionData);
+				if (collisionCount > 0)
+				{
+					GameScriptManager::Instance().ReportCollision(contact.mRigidBodies[0], contact.mRigidBodies[1]);
+				}
+			}
 		}
 
-
-		// 处理碰撞
+		// 统一处理所有碰撞响应
 		mContactResolver->ResolveContacts(mCollisionData->mContactArray, mCollisionData->mCurContactCount, deltaTime);
+
 	}
+
 	void PhysicsManager::EndFrame()
 	{
 		if (mBVHRoot == nullptr)
@@ -137,6 +156,8 @@ namespace PhysicsLit
 	{
 		if (!bullet || !bullet->mCollisionVolume || !bullet->mBVHNode || mBVHRoot == nullptr)
 			return;
+
+		if (bullet->mCollisionVolume->isTrigger)return;
 
 		std::vector<BVHNode*> candidates;
 		mBVHRoot->QueryPotentialContacts(bullet->mBVHNode->mBoundingVolume, candidates);

@@ -15,6 +15,9 @@ namespace PhysicsLit
 
     class PhysicsManager : public IManager {
     public:
+
+
+
         static PhysicsManager& Instance() {
             static PhysicsManager instance;
             return instance;
@@ -90,6 +93,12 @@ namespace PhysicsLit
         PhysicsManager(const PhysicsManager&) = delete;
         void operator=(const PhysicsManager&) = delete;
         void CheckImmediateCollision(RigidBodyPrimitive* newRigid);
+
+        bool CanCollide(CollisionPrimitive* a, CollisionPrimitive* b) {
+            return ((1 << b->layer) & a->layerMask) != 0 &&
+                ((1 << a->layer) & b->layerMask) != 0;
+        }
+
 
     private:
         PhysicsManager();

@@ -60,7 +60,7 @@ void CharacterController::processMouse(int button, int state, int x, int y)
         {
             std::cout << "GLUT_LEFT_BUTTON " <<gameObject->transform->position.ToString() <<std::endl;
 
-            GameObject* Sphere = ShapeFactory::CreateSphere("Sphere"+ std::to_string(cnt++), 0.2, gameObject->transform->position+gameObject->transform->Forward+CVector3(0,5,0));
+            GameObject* Sphere = ShapeFactory::CreateSphere("Sphere"+ std::to_string(cnt++), 0.2, gameObject->transform->position+gameObject->transform->Forward);
 
             auto rigidBody4 = Sphere->AddComponent<RigidBody>();
             rigidBody4->rigidBodyPrimitive->SetMass(1000);
@@ -68,11 +68,15 @@ void CharacterController::processMouse(int button, int state, int x, int y)
             sphereCollider->mFriction = 10;
             sphereCollider->mBounciness = 0.5;
             sphereCollider->SynchronizeData();
-
             sphereCollider->mCollider->rigidBodyPrimitive = rigidBody4->rigidBodyPrimitive;
+            sphereCollider->mCollider->isTrigger = true;
+            sphereCollider->mCollider->SetLayer(PhysicsLit::Layer::BULLET, (1 << PhysicsLit::Layer::ENEMY));
+
             rigidBody4->rigidBodyPrimitive->mCollisionVolume = sphereCollider->mCollider;
             rigidBody4->rigidBodyPrimitive->SetInertiaTensor(sphereCollider->mCollider->GetInertiaTensor(rigidBody4->rigidBodyPrimitive->GetMass()));
-            rigidBody4->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(CVector3::Zero()));
+            rigidBody4->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(gameObject->transform->Forward));
+            
+
             Sphere->transform->UpdateColliderTransform();
             Sphere->AddComponent<Bullet>();
             PhysicsLit::PhysicsManager::Instance().AddGameObject(Sphere);
@@ -88,7 +92,7 @@ void CharacterController::processMouseMotion(int x, int y)
 
 void CharacterController::OnColliderEnter(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
 {
-    std::cout << gameObject->name << " OnColliderEnter " << PhysicsLit::PhysicsManager::Instance().GetGameObjectName(rigidBodyPrimitive)<< std::endl;
+    //std::cout << gameObject->name << " OnColliderEnter " << PhysicsLit::PhysicsManager::Instance().GetGameObjectName(rigidBodyPrimitive)<< std::endl;
 
 }
 void CharacterController::OnColliderStay(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
@@ -98,6 +102,19 @@ void CharacterController::OnColliderStay(PhysicsLit::RigidBodyPrimitive* rigidBo
 }
 void CharacterController::OnColliderExit(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
 {
-    std::cout << gameObject->name << " OnColliderExit " << PhysicsLit::PhysicsManager::Instance().GetGameObjectName(rigidBodyPrimitive) << std::endl;
+    //std::cout << gameObject->name << " OnColliderExit " << PhysicsLit::PhysicsManager::Instance().GetGameObjectName(rigidBodyPrimitive) << std::endl;
+
+}
+
+void CharacterController::OnTriggerEnter(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
+{
+
+}
+void CharacterController::OnTriggerStay(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
+{
+
+}
+void CharacterController::OnTriggerExit(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
+{
 
 }

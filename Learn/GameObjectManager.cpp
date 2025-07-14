@@ -1,26 +1,64 @@
 #include "stdafx.h"
 #include "GameObjectManager.h"
-void GameObjectManager::Update() {
+#include "GameObject.h"               // assumed definitions
+#include "PhysicsManager.h"           // for PhysicsLit::PhysicsManager
 
+// ------------------------- dtor -------------------------
+GameObjectManager::~GameObjectManager()
+{
+    // Delete all remaining objects (if any)
+    for (auto* obj : gameObjects) {
+        delete obj;
+    }
+}
+
+// ------------------------- Destroy ----------------------
+// Mark for deferred destruction
+void GameObjectManager::Destroy(GameObject* obj)
+{
+    if (!obj) return;
+    // Avoid duplicate entries
+    if (std::find(pendingDestroy.begin(), pendingDestroy.end(), obj) == pendingDestroy.end())
+        pendingDestroy.push_back(obj);
+}
+
+// ------------------------- Update -----------------------
+void GameObjectManager::Update()
+{
+    // ----- 1. Render preparation -------------------------------------------------
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glPushMatrix();
-    camera->LookAt();
-    glGetDoublev(GL_MODELVIEW_MATRIX, stage->modelViewMatrix);
+    if (camera) camera->LookAt();
+    if (stage)  glGetDoublev(GL_MODELVIEW_MATRIX, stage->modelViewMatrix);
+
     drawCoordinateAxes();
-    for (auto obj : gameObjects) {
+
+    // ----- 2. Update all active objects -----------------------------------------
+    for (auto* obj : gameObjects) {
         if (obj) obj->Update();
     }
+
+    // ----- 3. Deferred destruction ----------------------------------------------
+    for (auto* obj : pendingDestroy) {
+        if (!obj) continue;
+        reallyDestroy(obj);
+    }
+    pendingDestroy.clear();
+
+    // ----- 4. Finish frame -------------------------------------------------------
     glPopMatrix();
     glutSwapBuffers();
 }
 
-
-
-void GameObjectManager::Destroy(GameObject* obj) {
+// -------------------- reallyDestroy (private) -----------------------------------
+void GameObjectManager::reallyDestroy(GameObject* obj)
+{
+    // Remove from active list
     auto it = std::remove(gameObjects.begin(), gameObjects.end(), obj);
     gameObjects.erase(it, gameObjects.end());
 
-    if (obj->GetComponent<RigidBody>() != nullptr)
+    // Inform physics manager (if any)
+    if (obj && obj->GetComponent<RigidBody>() != nullptr)
     {
         PhysicsLit::PhysicsManager::Instance().RemoveGameObject(obj);
     }
@@ -28,28 +66,27 @@ void GameObjectManager::Destroy(GameObject* obj) {
     delete obj;
 }
 
+// ------------------- drawCoordinateAxes -----------------------------------------
 void GameObjectManager::drawCoordinateAxes()
 {
-    // X轴（红色）
+    // X axis (red)
     glBegin(GL_LINES);
-    glColor3f(1.0f, 0.0f, 0.0f);  // 红色
+    glColor3f(1.0f, 0.0f, 0.0f);
     glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(50.0f, 0.0f, 0.0f);  // X轴正方向
+    glVertex3f(50.0f, 0.0f, 0.0f);
     glEnd();
 
-    // Y轴（绿色）
+    // Y axis (green)
     glBegin(GL_LINES);
-    glColor3f(0.0f, 1.0f, 0.0f);  // 绿色
+    glColor3f(0.0f, 1.0f, 0.0f);
     glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, 50.0f, 0.0f);  // Y轴正方向
+    glVertex3f(0.0f, 50.0f, 0.0f);
     glEnd();
 
-    // Z轴（蓝色）
+    // Z axis (blue)
     glBegin(GL_LINES);
-    glColor3f(0.0f, 0.0f, 1.0f);  // 蓝色
+    glColor3f(0.0f, 0.0f, 1.0f);
     glVertex3f(0.0f, 0.0f, 0.0f);
-    glVertex3f(0.0f, 0.0f, 50.0f);  // Z轴正方向
+    glVertex3f(0.0f, 0.0f, 50.0f);
     glEnd();
 }
-
-

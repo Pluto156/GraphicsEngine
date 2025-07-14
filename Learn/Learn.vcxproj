@@ -185,6 +185,7 @@
     <ClInclude Include="IManager.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="IntersectionDetector.h" />
+    <ClInclude Include="LayerDef.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="OBB.h" />
     <ClInclude Include="PhysicsLit.h" />
@@ -242,6 +243,7 @@
     <ClCompile Include="IManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IntersectionDetector.cpp" />
+    <ClCompile Include="LayerDef.cpp" />
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="OBB.cpp" />
     <ClCompile Include="PhysicsLit.cpp" />

@@ -1,5 +1,6 @@
 #pragma once
 #include "Collider.h"
+#include "LayerDef.h"
 namespace PhysicsLit
 {
 	class RigidBodyPrimitive;
@@ -29,6 +30,13 @@ namespace PhysicsLit
 		// 生成对应形状的均质惯性张量
 		virtual CMatrix4 GetInertiaTensor(float mass) const = 0;
 		Collider* colliderComponent;
+		bool isTrigger = false;
+
+		uint32_t layer = 0;        // 所属的 layer，例如 Layer::BULLET = 3
+		uint32_t layerMask = 0xFFFFFFFF; // 默认可以与所有层交互（32个bit）
+
+		void SetLayer(Layer layer, uint32_t mask = 0xFFFFFFFF);
+			
 	};
 
 	class CollisionBox : public CollisionPrimitive

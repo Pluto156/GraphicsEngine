@@ -392,5 +392,16 @@ namespace PhysicsLit
 	{
 		mAngularVelocity += deltaAngularVelocity;
 	}
+
+	void RigidBodyPrimitive::SetGameObjectName(std::string name)
+	{
+		GameObjectName = name;
+	}
+
+	std::string RigidBodyPrimitive::GetGameObjectName()
+	{
+		return GameObjectName;
+	}
+
 }
 

@@ -38,4 +38,6 @@
 #include <chrono> 
 #include "CharacterController.h"
 #include "Bullet.h"
+#include "LayerDef.h"
+
 // TODO:  在此处引用程序需要的其他头文件

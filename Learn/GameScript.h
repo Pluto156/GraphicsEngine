@@ -15,6 +15,10 @@ public:
     virtual void OnColliderEnter(PhysicsLit::RigidBodyPrimitive*) = 0;
     virtual void OnColliderStay(PhysicsLit::RigidBodyPrimitive*) = 0;
     virtual void OnColliderExit(PhysicsLit::RigidBodyPrimitive*) = 0;
+
+    virtual void OnTriggerEnter(PhysicsLit::RigidBodyPrimitive*) = 0;
+    virtual void OnTriggerStay(PhysicsLit::RigidBodyPrimitive*) = 0;
+    virtual void OnTriggerExit(PhysicsLit::RigidBodyPrimitive*) = 0;
 };
 
 
