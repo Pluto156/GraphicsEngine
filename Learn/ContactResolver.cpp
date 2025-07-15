@@ -60,7 +60,7 @@ namespace PhysicsLit
 		// 处理碰撞相交
 		AdjustPositions(contacts, numContacts, duration);
 		// 处理碰撞速度变化
-		//AdjustVelocities(contacts, numContacts, duration);
+		AdjustVelocities(contacts, numContacts, duration);
 	}
 
 	void ContactResolver::PrepareContacts(Contact* contacts, uint32_t numContacts, float duration)

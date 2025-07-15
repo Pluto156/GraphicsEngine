@@ -54,16 +54,8 @@ namespace PhysicsLit
             return rigidbody;
         }
 
-        void RemoveGameObject(GameObject* gameobject) {
-            auto it = GoToRigidBody.find(gameobject);
-            if (it != GoToRigidBody.end()) {
-                if (it->second) {
-                    RemoveBoundingVolume(it->second); 
-                    RigidBodyToGO.erase(it->second);
-                }
-                GoToRigidBody.erase(it);
-            }
-        }
+        void RemoveGameObject(GameObject* gameobject);
+
 
         std::string GetGameObjectName(RigidBodyPrimitive* rigidbody) {
             auto it = RigidBodyToGO.find(rigidbody);

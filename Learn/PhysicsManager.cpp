@@ -13,6 +13,20 @@ namespace PhysicsLit
 		mPotentialContacts = new PotentialContact[mMaxPotentialContacts];
 	}
 
+	void PhysicsManager::RemoveGameObject(GameObject* gameobject) {
+
+		auto it = GoToRigidBody.find(gameobject);
+		if (it != GoToRigidBody.end()) {
+			GameScriptManager::Instance().InvalidateObject(it->second);
+
+			if (it->second) {
+				RemoveBoundingVolume(it->second);
+				RigidBodyToGO.erase(it->second);
+			}
+			GoToRigidBody.erase(it);
+		}
+	}
+
 	void PhysicsManager::Update() {
 		long long targetFrame = TimeManager::curTime_micro / TimeManager::fixedDeltaTime_micro;
 		long long deltaFrame = targetFrame - mCurPhyFrame;
@@ -80,13 +94,38 @@ namespace PhysicsLit
 				continue;
 			}
 
-			//std::cout << contact.mRigidBodies[1]->GetGameObjectName() << std::endl;
+			// 普通碰撞检测，成功则记录碰撞信息
+			uint32_t collisionCount = CollisionDetector::Detect(a, b, mCollisionData);
+			if (collisionCount > 0)
+			{
+				GameScriptManager::Instance().ReportCollision(contact.mRigidBodies[0], contact.mRigidBodies[1]);
+			}
+			
+		}
+
+		// 统一处理所有碰撞响应
+		mContactResolver->ResolveContacts(mCollisionData->mContactArray, mCollisionData->mCurContactCount, deltaTime);
+		for (uint32_t i = 0; i < potentialContactCount; ++i)
+		{
+			auto& contact = mPotentialContacts[i];
+			CollisionPrimitive* a = contact.mRigidBodies[0]->mCollisionVolume;
+			CollisionPrimitive* b = contact.mRigidBodies[1]->mCollisionVolume;
+			if (!CanCollide(a, b))
+			{
+				continue;
+			}
+			/*if (contact.mRigidBodies[0]->GetGameObjectName() == "Car2")
+			{
+				std::cout<<"After " << contact.mRigidBodies[0]->GetPosition().ToString() << std::endl;
+
+			}*/
+
 			if (a->isTrigger || b->isTrigger)
 			{
 				// 碰撞检测确认是否真正重叠
 				uint32_t triggerCollisionCount = CollisionDetector::Detect(a, b, &CollisionData(1));
 				if (triggerCollisionCount > 0) {
-				GameScriptManager::Instance().ReportTrigger(contact.mRigidBodies[0], contact.mRigidBodies[1]);
+					GameScriptManager::Instance().ReportTrigger(contact.mRigidBodies[0], contact.mRigidBodies[1]);
 				}
 			}
 			else
@@ -100,9 +139,7 @@ namespace PhysicsLit
 			}
 		}
 
-		// 统一处理所有碰撞响应
-		mContactResolver->ResolveContacts(mCollisionData->mContactArray, mCollisionData->mCurContactCount, deltaTime);
-
+		
 	}
 
 	void PhysicsManager::EndFrame()

@@ -9,10 +9,13 @@ public:
     void OnTriggerStay(PhysicsLit::RigidBodyPrimitive*);
     void OnTriggerExit(PhysicsLit::RigidBodyPrimitive*);
 
+    void Start()override;
     void Update()override;
-
-private:
     CVector3 StartPos;
+    CVector3 MoveDir;
+private:
+
     float MaxFlyDistance = 10;
+    PhysicsLit::RigidBodyPrimitive* rigidBody;
 };
 

@@ -58,27 +58,27 @@ void CharacterController::processMouse(int button, int state, int x, int y)
     {
         if (state == GLUT_DOWN)
         {
-            std::cout << "GLUT_LEFT_BUTTON " <<gameObject->transform->position.ToString() <<std::endl;
-
             GameObject* Sphere = ShapeFactory::CreateSphere("Sphere"+ std::to_string(cnt++), 0.2, gameObject->transform->position+gameObject->transform->Forward);
 
             auto rigidBody4 = Sphere->AddComponent<RigidBody>();
-            rigidBody4->rigidBodyPrimitive->SetMass(1000);
+            rigidBody4->rigidBodyPrimitive->SetMass(1);
             auto sphereCollider = Sphere->GetComponent<SphereCollider>();
             sphereCollider->mFriction = 10;
             sphereCollider->mBounciness = 0.5;
             sphereCollider->SynchronizeData();
             sphereCollider->mCollider->rigidBodyPrimitive = rigidBody4->rigidBodyPrimitive;
             sphereCollider->mCollider->isTrigger = true;
-            sphereCollider->mCollider->SetLayer(PhysicsLit::Layer::BULLET, (1 << PhysicsLit::Layer::ENEMY));
+            sphereCollider->mCollider->SetLayer(PhysicsLit::Layer::BULLET);
 
             rigidBody4->rigidBodyPrimitive->mCollisionVolume = sphereCollider->mCollider;
             rigidBody4->rigidBodyPrimitive->SetInertiaTensor(sphereCollider->mCollider->GetInertiaTensor(rigidBody4->rigidBodyPrimitive->GetMass()));
-            rigidBody4->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(gameObject->transform->Forward));
-            
+            //rigidBody4->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(gameObject->transform->Forward));
+            rigidBody4->rigidBodyPrimitive->SetGameObjectName("Sphere" + std::to_string(cnt));
 
             Sphere->transform->UpdateColliderTransform();
-            Sphere->AddComponent<Bullet>();
+            Bullet* bullet = Sphere->AddComponent<Bullet>();
+            bullet->StartPos = Sphere->transform->position;
+            bullet->MoveDir = gameObject->transform->Forward;
             PhysicsLit::PhysicsManager::Instance().AddGameObject(Sphere);
 
 

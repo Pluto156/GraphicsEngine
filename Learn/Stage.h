@@ -27,6 +27,9 @@ public:
     float angle = 0;
     Camera* camera;
 
+    GameObject* Car;
+    GameObject* Car2;
+
     float prevMouseX;
     float prevMouseY;
     bool isLeft, isRight;

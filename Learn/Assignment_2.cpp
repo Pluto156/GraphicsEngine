@@ -47,7 +47,8 @@ void InitStage()
         Car->transform->SetLocalScale(CVector3(0.2, 0.2, 0.2));
         GameObjectManager::Instance().SetCamera(camera);
         GameObjectManager::Instance().SetStage(stage);
-        
+        stage->Car = Car;
+        stage->Car2 = Car2;
 
         stage->transform->isShowLocalAxis = true;
         stage->camera = GameObjectManager::Instance().GetCamera();
@@ -193,7 +194,7 @@ void InitStage()
         PhysicsLit::PhysicsManager::Instance().AddGameObject(Car);
         rigidBody2->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(CVector3(0.0f, -9.8f, 0.0f)));
         Car->transform->UpdateColliderTransform();
-
+        rigidBody2->rigidBodyPrimitive->SetGameObjectName("Car");
 
         auto rigidBody3 = Car2->AddComponent<RigidBody>();
         rigidBody3->rigidBodyPrimitive->SetMass(1000);
@@ -201,13 +202,14 @@ void InitStage()
         BoxCollider3->mFriction = 10;
         BoxCollider3->mBounciness = 0.5;
         BoxCollider3->SynchronizeData();
-
+        BoxCollider3->mCollider->SetLayer(PhysicsLit::Layer::ENEMY);
         BoxCollider3->mCollider->rigidBodyPrimitive = rigidBody3->rigidBodyPrimitive;
         rigidBody3->rigidBodyPrimitive->mCollisionVolume = BoxCollider3->mCollider;
         rigidBody3->rigidBodyPrimitive->SetInertiaTensor(BoxCollider3->mCollider->GetInertiaTensor(rigidBody3->rigidBodyPrimitive->GetMass()));
         PhysicsLit::PhysicsManager::Instance().AddGameObject(Car2);
         rigidBody3->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(CVector3(0.0f, -9.8f, 0.0f)));
         Car2->transform->UpdateColliderTransform();
+        rigidBody3->rigidBodyPrimitive->SetGameObjectName("Car2");
 
         
         
