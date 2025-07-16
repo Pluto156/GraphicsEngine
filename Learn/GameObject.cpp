@@ -18,6 +18,7 @@ GameObject::GameObject(const std::string& name, const CVector3& position,
 //用于渲染帧更新
 void GameObject::Update()
 {
+    if (isPendingDestroy)return;
     glPushMatrix();  
     transform->ApplyTransform();
     Draw();

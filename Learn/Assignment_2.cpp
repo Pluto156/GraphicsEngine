@@ -229,6 +229,7 @@ void InitStage()
 
 
         Car->AddComponent<CharacterController>();
+        Car2->AddComponent<Unit>();
         Sphere->AddComponent<Bullet>();
         
         isInitStage = true;

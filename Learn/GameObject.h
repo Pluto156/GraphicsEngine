@@ -65,8 +65,17 @@ public:
     virtual void Update();
     virtual void Draw();
 
+    void SetIsPendingDestroy(bool isPendingDestroy)
+    {
+        this->isPendingDestroy = isPendingDestroy;
+    }
 
+    bool IsPendingDestroy()
+    {
+        return this->isPendingDestroy;
+    }
 
 private:
     std::vector<Component*> components;
+    bool isPendingDestroy = false;
 };

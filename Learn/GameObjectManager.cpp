@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "GameObjectManager.h"
 #include "GameObject.h"               // assumed definitions
 #include "PhysicsManager.h"           // for PhysicsLit::PhysicsManager
@@ -14,10 +14,22 @@ GameObjectManager::~GameObjectManager()
 
 // ------------------------- Destroy ----------------------
 // Mark for deferred destruction
-void GameObjectManager::Destroy(GameObject* obj)
-{
-    if (!obj) return;
-    // Avoid duplicate entries
+void GameObjectManager::Destroy(GameObject* obj) {
+    if (!obj || obj->IsPendingDestroy()) return;
+
+    obj->SetIsPendingDestroy(true);
+
+    // ✅ 首先递归销毁其所有子 GameObject
+    auto transform = obj->GetComponent<Transform>();
+    if (transform) {
+        for (auto* child : transform->children) {
+            if (child && child->gameObject) {
+                Destroy(child->gameObject);
+            }
+        }
+    }
+
+    // 再加入待销毁列表
     if (std::find(pendingDestroy.begin(), pendingDestroy.end(), obj) == pendingDestroy.end())
         pendingDestroy.push_back(obj);
 }
@@ -35,7 +47,10 @@ void GameObjectManager::Update()
 
     // ----- 2. Update all active objects -----------------------------------------
     for (auto* obj : gameObjects) {
-        if (obj) obj->Update();
+        if (obj)
+        {
+            obj->Update();
+        }
     }
 
     // ----- 3. Deferred destruction ----------------------------------------------
@@ -56,13 +71,15 @@ void GameObjectManager::reallyDestroy(GameObject* obj)
     // Remove from active list
     auto it = std::remove(gameObjects.begin(), gameObjects.end(), obj);
     gameObjects.erase(it, gameObjects.end());
-
+    // 父Transform需要销毁其引用
+    if (obj->transform) {
+        obj->transform->DetachFromParent();
+    }
     // Inform physics manager (if any)
     if (obj && obj->GetComponent<RigidBody>() != nullptr)
     {
         PhysicsLit::PhysicsManager::Instance().RemoveGameObject(obj);
     }
-
     delete obj;
 }
 

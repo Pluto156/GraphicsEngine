@@ -225,6 +225,9 @@
     <ClInclude Include="LayerDef.h">
       <Filter>头文件\Physics\Collision</Filter>
     </ClInclude>
+    <ClInclude Include="Unit.h">
+      <Filter>头文件\Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -391,6 +394,9 @@
     </ClCompile>
     <ClCompile Include="LayerDef.cpp">
       <Filter>源文件\Physics\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit.cpp">
+      <Filter>源文件\Scripts</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

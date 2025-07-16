@@ -222,7 +222,7 @@ void Stage::StageDebug()
 {
     // 构建显示信息
     std::ostringstream oss;
-    CVector3 tpos = Car2->GetComponent<RigidBody>()->rigidBodyPrimitive->GetPosition();
+    //CVector3 tpos = Car2->GetComponent<RigidBody>()->rigidBodyPrimitive->GetPosition();
     oss << "Camera Position: ("
         << camera->transform->position.x << ", "
         << camera->transform->position.y << ", "
@@ -237,14 +237,14 @@ void Stage::StageDebug()
         << "Car Position: ("
         << Car->transform->position.x << ", "
         << Car->transform->position.y << ", "
-        << Car->transform->position.z << ")\n"
-        << "Car2 Position: ("
-        << Car2->transform->position.x << ", "
-        << Car2->transform->position.y << ", "
-        << Car2->transform->position.z << ")\n"
-        << tpos.x << ", "
-        << tpos.y << ", "
-        << tpos.z << ")\n";
+        << Car->transform->position.z << ")\n";
+        //<< "Car2 Position: ("
+        //<< Car2->transform->position.x << ", "
+        //<< Car2->transform->position.y << ", "
+        //<< Car2->transform->position.z << ")\n"
+        //<< tpos.x << ", "
+        //<< tpos.y << ", "
+        //<< tpos.z << ")\n";
 
     if (curSelectShape)
     {

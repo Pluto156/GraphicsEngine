@@ -135,10 +135,16 @@ public:
     }
     CMatrix4 GetWorldTransformMatrix();
 
-    virtual ~Transform() {
-        for (auto& child : children) {
-            if (child) delete child;
+    void DetachFromParent() {
+        if (parent) {
+            auto& siblings = parent->children;
+            siblings.erase(std::remove(siblings.begin(), siblings.end(), this), siblings.end());
+            parent = nullptr;
         }
+    }
+    virtual ~Transform() {
+        // 不要 delete children 的 Transform 子物体 删除子物体逻辑由GameObjectManager管理
+        children.clear();  
     }
 
 
