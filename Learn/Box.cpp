@@ -40,43 +40,49 @@ void Box::Draw() {
     glBegin(GL_QUADS);
     glColor3f(r, g, b);
 
-    // 前面
+    // 前面 Z+
+    glNormal3f(0, 0, 1);  // ✅ 添加法线
     glVertex3f(-m_width / 2, -m_height / 2, m_depth / 2);
     glVertex3f(m_width / 2, -m_height / 2, m_depth / 2);
     glVertex3f(m_width / 2, m_height / 2, m_depth / 2);
     glVertex3f(-m_width / 2, m_height / 2, m_depth / 2);
 
-    // 后面
+    // 后面 Z-
+    glNormal3f(0, 0, -1);
     glVertex3f(-m_width / 2, -m_height / 2, -m_depth / 2);
     glVertex3f(-m_width / 2, m_height / 2, -m_depth / 2);
     glVertex3f(m_width / 2, m_height / 2, -m_depth / 2);
     glVertex3f(m_width / 2, -m_height / 2, -m_depth / 2);
 
-    // 上面
+    // 上面 Y+
+    glNormal3f(0, 1, 0);
     glVertex3f(-m_width / 2, m_height / 2, m_depth / 2);
     glVertex3f(m_width / 2, m_height / 2, m_depth / 2);
     glVertex3f(m_width / 2, m_height / 2, -m_depth / 2);
     glVertex3f(-m_width / 2, m_height / 2, -m_depth / 2);
 
-    // 下面
+    // 下面 Y-
+    glNormal3f(0, -1, 0);
     glVertex3f(-m_width / 2, -m_height / 2, m_depth / 2);
     glVertex3f(-m_width / 2, -m_height / 2, -m_depth / 2);
     glVertex3f(m_width / 2, -m_height / 2, -m_depth / 2);
     glVertex3f(m_width / 2, -m_height / 2, m_depth / 2);
 
-    // 左面
+    // 左面 X-
+    glNormal3f(-1, 0, 0);
     glVertex3f(-m_width / 2, -m_height / 2, -m_depth / 2);
     glVertex3f(-m_width / 2, -m_height / 2, m_depth / 2);
     glVertex3f(-m_width / 2, m_height / 2, m_depth / 2);
     glVertex3f(-m_width / 2, m_height / 2, -m_depth / 2);
 
-    // 右面
+    // 右面 X+
+    glNormal3f(1, 0, 0);
     glVertex3f(m_width / 2, -m_height / 2, -m_depth / 2);
     glVertex3f(m_width / 2, m_height / 2, -m_depth / 2);
     glVertex3f(m_width / 2, m_height / 2, m_depth / 2);
     glVertex3f(m_width / 2, -m_height / 2, m_depth / 2);
 
-    glEnd();  // 结束绘制填充面
+    glEnd();
 
     // 绘制边界
     if (isSelect)

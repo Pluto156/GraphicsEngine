@@ -1,4 +1,16 @@
-﻿  GameObjectManager.cpp
+﻿  Assignment_2.cpp
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(71): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(73): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(74): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(76): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(77): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(85): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(106): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(124): warning C4305: “初始化”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(132): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(133): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(146): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(158): warning C4305: “参数”: 从“double”到“float”截断
 soil.lib(SOIL.obj) : warning LNK4099: 未找到 PDB“SOIL.pdb”(使用“soil.lib(SOIL.obj)”或在“E:\sourcecode\GraphicsEngine\run\SOIL.pdb”中寻找)；正在链接对象，如同没有调试信息一样
 soil.lib(stb_image_aug.obj) : warning LNK4099: 未找到 PDB“SOIL.pdb”(使用“soil.lib(stb_image_aug.obj)”或在“E:\sourcecode\GraphicsEngine\run\SOIL.pdb”中寻找)；正在链接对象，如同没有调试信息一样
 soil.lib(image_helper.obj) : warning LNK4099: 未找到 PDB“SOIL.pdb”(使用“soil.lib(image_helper.obj)”或在“E:\sourcecode\GraphicsEngine\run\SOIL.pdb”中寻找)；正在链接对象，如同没有调试信息一样

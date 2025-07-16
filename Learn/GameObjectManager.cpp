@@ -33,6 +33,7 @@ void GameObjectManager::Destroy(GameObject* obj) {
     if (std::find(pendingDestroy.begin(), pendingDestroy.end(), obj) == pendingDestroy.end())
         pendingDestroy.push_back(obj);
 }
+static float angle = 0.0f;
 
 // ------------------------- Update -----------------------
 void GameObjectManager::Update()
@@ -41,6 +42,21 @@ void GameObjectManager::Update()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glPushMatrix();
     if (camera) camera->LookAt();
+
+
+
+    angle += 0.01f; // 每帧增加一点角度
+    float radius = 5.0f;
+    GLfloat light_pos[] = {
+        radius * cos(angle),
+        5.0f,
+        radius * sin(angle),
+        1.0f  // 点光源
+    };
+    glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
+
+
+
     if (stage)  glGetDoublev(GL_MODELVIEW_MATRIX, stage->modelViewMatrix);
 
     drawCoordinateAxes();

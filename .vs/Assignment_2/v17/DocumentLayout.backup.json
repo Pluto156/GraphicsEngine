@@ -3,8 +3,36 @@
   "WorkspaceRootPath": "E:\\sourcecode\\GraphicsEngine\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Assignment_2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Assignment_2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Sphere.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Sphere.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Box.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Box.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\GameObjectManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\GameObjectManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\PhysicsManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\PhysicsManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Box.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Box.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Sphere.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Sphere.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\GameObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\GameObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\GameObjectManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -29,18 +57,6 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|c:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\include\\xutility||{3B902123-F8A7-4915-9F01-361F908088D0}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\PhysicsManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\PhysicsManager.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Assignment_2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Assignment_2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Box.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Box.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Shape.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Shape.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -51,14 +67,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Unit.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Unit.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\GameObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\GameObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Box.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Box.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Bullet.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -252,10 +260,6 @@
       "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\SphereCollider.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Sphere.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Sphere.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\GameScript.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\GameScript.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -416,10 +420,6 @@
       "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\RenderManager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\Sphere.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\Sphere.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|E:\\sourcecode\\GraphicsEngine\\Learn\\IntersectionDetector.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F8408940-0126-45D3-B401-AAB9E4908946}|Learn\\Learn.vcxproj|solutionrelative:Learn\\IntersectionDetector.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -466,7 +466,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -474,94 +474,111 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Transform.h",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Transform.h",
-              "RelativeDocumentMoniker": "Learn\\Transform.h",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Transform.h",
-              "RelativeToolTip": "Learn\\Transform.h",
-              "ViewState": "AgIAAHwAAAAAAAAAAAAawIgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-07T05:53:02.773Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "xutility",
-              "DocumentMoniker": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\include\\xutility",
-              "ToolTip": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\include\\xutility",
-              "ViewState": "AgIAAJYAAAAAAAAAAAAAAKUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-07-09T10:30:51.51Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Stage.cpp",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Stage.cpp",
-              "RelativeDocumentMoniker": "Learn\\Stage.cpp",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Stage.cpp",
-              "RelativeToolTip": "Learn\\Stage.cpp",
-              "ViewState": "AgIAAFUAAAAAAAAAAAAAAFkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-07T05:46:53.579Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "vector",
-              "DocumentMoniker": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\include\\vector",
-              "ToolTip": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\include\\vector",
-              "ViewState": "AgIAABIEAAAAAAAAAAAAACEEAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-04-25T11:12:43.717Z",
+              "Title": "Box.h",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Box.h",
+              "RelativeDocumentMoniker": "Learn\\Box.h",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Box.h",
+              "RelativeToolTip": "Learn\\Box.h",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-07T05:33:44.862Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "GameObject.h",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\GameObject.h",
-              "RelativeDocumentMoniker": "Learn\\GameObject.h",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\GameObject.h",
-              "RelativeToolTip": "Learn\\GameObject.h",
-              "ViewState": "AgIAADkAAAAAAAAAAAAAAEgAAAAbAAAAAAAAAA==",
+              "Title": "Box.cpp",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Box.cpp",
+              "RelativeDocumentMoniker": "Learn\\Box.cpp",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Box.cpp",
+              "RelativeToolTip": "Learn\\Box.cpp",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAcwFYAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-07T05:13:52.842Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Sphere.h",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Sphere.h",
+              "RelativeDocumentMoniker": "Learn\\Sphere.h",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Sphere.h",
+              "RelativeToolTip": "Learn\\Sphere.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-08T10:29:00.782Z",
+              "WhenOpened": "2025-06-05T03:07:32.845Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "GameObjectManager.h",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\GameObjectManager.h",
-              "RelativeDocumentMoniker": "Learn\\GameObjectManager.h",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\GameObjectManager.h",
-              "RelativeToolTip": "Learn\\GameObjectManager.h",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAADwAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-08T10:33:43.755Z",
+              "Title": "Sphere.cpp",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Sphere.cpp",
+              "RelativeDocumentMoniker": "Learn\\Sphere.cpp",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Sphere.cpp",
+              "RelativeToolTip": "Learn\\Sphere.cpp",
+              "ViewState": "AgIAABsAAAAAAAAAAAAcwCcAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-06-05T03:08:46.061Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Assignment_2.cpp",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Assignment_2.cpp",
+              "RelativeDocumentMoniker": "Learn\\Assignment_2.cpp",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Assignment_2.cpp*",
+              "RelativeToolTip": "Learn\\Assignment_2.cpp*",
+              "ViewState": "AgIAAPYAAAAAAAAAAAAawAcBAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-06T14:16:05.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PhysicsManager.cpp",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\PhysicsManager.cpp",
+              "RelativeDocumentMoniker": "Learn\\PhysicsManager.cpp",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\PhysicsManager.cpp",
+              "RelativeToolTip": "Learn\\PhysicsManager.cpp",
+              "ViewState": "AgIAABYAAAAAAAAAAAAawCsAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-07-14T09:39:00.699Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "GameObjectManager.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\GameObjectManager.cpp",
               "RelativeDocumentMoniker": "Learn\\GameObjectManager.cpp",
               "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\GameObjectManager.cpp",
               "RelativeToolTip": "Learn\\GameObjectManager.cpp",
-              "ViewState": "AgIAAEMAAAAAAAAAAAAcwE8AAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAAAcwDcAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-04-08T12:07:22.438Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 7,
+              "Title": "GameObject.cpp",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\GameObject.cpp",
+              "RelativeDocumentMoniker": "Learn\\GameObject.cpp",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\GameObject.cpp",
+              "RelativeToolTip": "Learn\\GameObject.cpp",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-08T11:55:47.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
               "Title": "Shape.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Shape.h",
               "RelativeDocumentMoniker": "Learn\\Shape.h",
@@ -574,20 +591,81 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Box.h",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Box.h",
-              "RelativeDocumentMoniker": "Learn\\Box.h",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Box.h",
-              "RelativeToolTip": "Learn\\Box.h",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "GameObjectManager.h",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\GameObjectManager.h",
+              "RelativeDocumentMoniker": "Learn\\GameObjectManager.h",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\GameObjectManager.h",
+              "RelativeToolTip": "Learn\\GameObjectManager.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-04-07T05:33:44.862Z",
+              "WhenOpened": "2025-04-08T10:33:43.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "GameObject.h",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\GameObject.h",
+              "RelativeDocumentMoniker": "Learn\\GameObject.h",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\GameObject.h",
+              "RelativeToolTip": "Learn\\GameObject.h",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAEgAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-08T10:29:00.782Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "vector",
+              "DocumentMoniker": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\include\\vector",
+              "ToolTip": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\include\\vector",
+              "ViewState": "AgIAABIEAAAAAAAAAAAAACEEAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-04-25T11:12:43.717Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
+              "Title": "Stage.cpp",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Stage.cpp",
+              "RelativeDocumentMoniker": "Learn\\Stage.cpp",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Stage.cpp",
+              "RelativeToolTip": "Learn\\Stage.cpp",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAAAFkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-04-07T05:46:53.579Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "xutility",
+              "DocumentMoniker": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\include\\xutility",
+              "ToolTip": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\include\\xutility",
+              "ViewState": "AgIAAJYAAAAAAAAAAAAAAKUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-07-09T10:30:51.51Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Transform.h",
+              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Transform.h",
+              "RelativeDocumentMoniker": "Learn\\Transform.h",
+              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Transform.h",
+              "RelativeToolTip": "Learn\\Transform.h",
+              "ViewState": "AgIAAHwAAAAAAAAAAAAawIgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-04-07T05:53:02.773Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "Unit.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Unit.h",
               "RelativeDocumentMoniker": "Learn\\Unit.h",
@@ -600,33 +678,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PhysicsManager.cpp",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\PhysicsManager.cpp",
-              "RelativeDocumentMoniker": "Learn\\PhysicsManager.cpp",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\PhysicsManager.cpp",
-              "RelativeToolTip": "Learn\\PhysicsManager.cpp",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-07-14T09:39:00.699Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Assignment_2.cpp",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Assignment_2.cpp",
-              "RelativeDocumentMoniker": "Learn\\Assignment_2.cpp",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Assignment_2.cpp",
-              "RelativeToolTip": "Learn\\Assignment_2.cpp",
-              "ViewState": "AgIAAJwAAAAAAAAAAAAAAD4AAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-06T14:16:05.565Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 16,
               "Title": "Unit.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Unit.cpp",
               "RelativeDocumentMoniker": "Learn\\Unit.cpp",
@@ -639,33 +691,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Box.cpp",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Box.cpp",
-              "RelativeDocumentMoniker": "Learn\\Box.cpp",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Box.cpp",
-              "RelativeToolTip": "Learn\\Box.cpp",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-07T05:13:52.842Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "GameObject.cpp",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\GameObject.cpp",
-              "RelativeDocumentMoniker": "Learn\\GameObject.cpp",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\GameObject.cpp",
-              "RelativeToolTip": "Learn\\GameObject.cpp",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-04-08T11:55:47.548Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "CharacterController.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CharacterController.cpp",
               "RelativeDocumentMoniker": "Learn\\CharacterController.cpp",
@@ -678,7 +704,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "stdafx.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\stdafx.h",
               "RelativeDocumentMoniker": "Learn\\stdafx.h",
@@ -691,7 +717,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "Bullet.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Bullet.cpp",
               "RelativeDocumentMoniker": "Learn\\Bullet.cpp",
@@ -704,7 +730,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "Bullet.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Bullet.h",
               "RelativeDocumentMoniker": "Learn\\Bullet.h",
@@ -717,7 +743,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "GameScriptManager.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\GameScriptManager.h",
               "RelativeDocumentMoniker": "Learn\\GameScriptManager.h",
@@ -730,7 +756,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "ContactResolver.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\ContactResolver.cpp",
               "RelativeDocumentMoniker": "Learn\\ContactResolver.cpp",
@@ -742,7 +768,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 24,
               "Title": "CollisionData.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CollisionData.cpp",
               "RelativeDocumentMoniker": "Learn\\CollisionData.cpp",
@@ -754,7 +780,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "RigidBody.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\RigidBody.cpp",
               "RelativeDocumentMoniker": "Learn\\RigidBody.cpp",
@@ -766,7 +792,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 28,
               "Title": "Contact.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Contact.cpp",
               "RelativeDocumentMoniker": "Learn\\Contact.cpp",
@@ -778,7 +804,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 26,
               "Title": "RigidBodyPrimitive.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\RigidBodyPrimitive.cpp",
               "RelativeDocumentMoniker": "Learn\\RigidBodyPrimitive.cpp",
@@ -790,7 +816,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "CollisionDetector.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CollisionDetector.cpp",
               "RelativeDocumentMoniker": "Learn\\CollisionDetector.cpp",
@@ -802,7 +828,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 27,
               "Title": "Stage.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Stage.h",
               "RelativeDocumentMoniker": "Learn\\Stage.h",
@@ -814,7 +840,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 29,
               "Title": "ShapeFactory.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\ShapeFactory.cpp",
               "RelativeDocumentMoniker": "Learn\\ShapeFactory.cpp",
@@ -826,7 +852,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 31,
               "Title": "BoxCollider.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\BoxCollider.cpp",
               "RelativeDocumentMoniker": "Learn\\BoxCollider.cpp",
@@ -838,7 +864,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 30,
               "Title": "BoxCollider.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\BoxCollider.h",
               "RelativeDocumentMoniker": "Learn\\BoxCollider.h",
@@ -850,7 +876,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 32,
               "Title": "Transform.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Transform.cpp",
               "RelativeDocumentMoniker": "Learn\\Transform.cpp",
@@ -862,7 +888,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 33,
               "Title": "PhysicsManager.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\PhysicsManager.h",
               "RelativeDocumentMoniker": "Learn\\PhysicsManager.h",
@@ -874,7 +900,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 34,
               "Title": "GameScriptManager.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\GameScriptManager.cpp",
               "RelativeDocumentMoniker": "Learn\\GameScriptManager.cpp",
@@ -886,7 +912,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 35,
               "Title": "LayerDef.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\LayerDef.h",
               "RelativeDocumentMoniker": "Learn\\LayerDef.h",
@@ -898,7 +924,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 37,
               "Title": "Component.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Component.cpp",
               "RelativeDocumentMoniker": "Learn\\Component.cpp",
@@ -910,7 +936,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 38,
               "Title": "Collider.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Collider.h",
               "RelativeDocumentMoniker": "Learn\\Collider.h",
@@ -922,7 +948,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 36,
               "Title": "Component.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Component.h",
               "RelativeDocumentMoniker": "Learn\\Component.h",
@@ -934,7 +960,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 39,
               "Title": "RigidBody.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\RigidBody.h",
               "RelativeDocumentMoniker": "Learn\\RigidBody.h",
@@ -946,7 +972,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 40,
               "Title": "GameScript.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\GameScript.h",
               "RelativeDocumentMoniker": "Learn\\GameScript.h",
@@ -958,7 +984,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 41,
               "Title": "CVector3.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector3.cpp",
               "RelativeDocumentMoniker": "Learn\\CVector3.cpp",
@@ -970,7 +996,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 42,
               "Title": "CharacterController.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CharacterController.h",
               "RelativeDocumentMoniker": "Learn\\CharacterController.h",
@@ -982,7 +1008,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 43,
               "Title": "CollisionPrimitive.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CollisionPrimitive.cpp",
               "RelativeDocumentMoniker": "Learn\\CollisionPrimitive.cpp",
@@ -994,7 +1020,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 44,
               "Title": "CollisionPrimitive.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CollisionPrimitive.h",
               "RelativeDocumentMoniker": "Learn\\CollisionPrimitive.h",
@@ -1006,7 +1032,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 45,
               "Title": "SphereCollider.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\SphereCollider.h",
               "RelativeDocumentMoniker": "Learn\\SphereCollider.h",
@@ -1018,7 +1044,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 46,
               "Title": "RigidBodyPrimitive.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\RigidBodyPrimitive.h",
               "RelativeDocumentMoniker": "Learn\\RigidBodyPrimitive.h",
@@ -1030,7 +1056,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 47,
               "Title": "CollisionDetector.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CollisionDetector.h",
               "RelativeDocumentMoniker": "Learn\\CollisionDetector.h",
@@ -1042,7 +1068,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 48,
               "Title": "stdafx.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\stdafx.cpp",
               "RelativeDocumentMoniker": "Learn\\stdafx.cpp",
@@ -1054,7 +1080,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 49,
               "Title": "PhysicsLitEnumStruct.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\PhysicsLitEnumStruct.h",
               "RelativeDocumentMoniker": "Learn\\PhysicsLitEnumStruct.h",
@@ -1066,7 +1092,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 50,
               "Title": "RenderManager.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\RenderManager.cpp",
               "RelativeDocumentMoniker": "Learn\\RenderManager.cpp",
@@ -1078,7 +1104,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 51,
               "Title": "Collider.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Collider.cpp",
               "RelativeDocumentMoniker": "Learn\\Collider.cpp",
@@ -1090,7 +1116,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 52,
               "Title": "CVector3.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector3.h",
               "RelativeDocumentMoniker": "Learn\\CVector3.h",
@@ -1102,7 +1128,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 53,
               "Title": "BVHNode.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\BVHNode.cpp",
               "RelativeDocumentMoniker": "Learn\\BVHNode.cpp",
@@ -1114,7 +1140,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 54,
               "Title": "BVHNode.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\BVHNode.h",
               "RelativeDocumentMoniker": "Learn\\BVHNode.h",
@@ -1126,7 +1152,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 55,
               "Title": "oleidl.h",
               "DocumentMoniker": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\um\\oleidl.h",
               "ToolTip": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.26100.0\\um\\oleidl.h",
@@ -1136,7 +1162,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 56,
               "Title": "ForceSpring.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\ForceSpring.cpp",
               "RelativeDocumentMoniker": "Learn\\ForceSpring.cpp",
@@ -1148,7 +1174,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 59,
               "Title": "ForceGravity.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\ForceGravity.h",
               "RelativeDocumentMoniker": "Learn\\ForceGravity.h",
@@ -1160,7 +1186,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 58,
               "Title": "ForceGravity.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\ForceGravity.cpp",
               "RelativeDocumentMoniker": "Learn\\ForceGravity.cpp",
@@ -1172,7 +1198,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 57,
               "Title": "ForceSpring.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\ForceSpring.h",
               "RelativeDocumentMoniker": "Learn\\ForceSpring.h",
@@ -1184,7 +1210,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 61,
               "Title": "InputManager.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\InputManager.h",
               "RelativeDocumentMoniker": "Learn\\InputManager.h",
@@ -1196,7 +1222,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 60,
               "Title": "ForceGenerator.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\ForceGenerator.h",
               "RelativeDocumentMoniker": "Learn\\ForceGenerator.h",
@@ -1208,7 +1234,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 62,
               "Title": "InputManager.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\InputManager.cpp",
               "RelativeDocumentMoniker": "Learn\\InputManager.cpp",
@@ -1220,7 +1246,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 63,
               "Title": "PlaneCollider.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\PlaneCollider.cpp",
               "RelativeDocumentMoniker": "Learn\\PlaneCollider.cpp",
@@ -1232,7 +1258,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 64,
               "Title": "SphereCollider.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\SphereCollider.cpp",
               "RelativeDocumentMoniker": "Learn\\SphereCollider.cpp",
@@ -1244,19 +1270,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
-              "Title": "Sphere.cpp",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Sphere.cpp",
-              "RelativeDocumentMoniker": "Learn\\Sphere.cpp",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Sphere.cpp",
-              "RelativeToolTip": "Learn\\Sphere.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-06-05T03:08:46.061Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 65,
               "Title": "GameScript.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\GameScript.cpp",
               "RelativeDocumentMoniker": "Learn\\GameScript.cpp",
@@ -1268,7 +1282,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 66,
               "Title": "TimeManager.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\TimeManager.cpp",
               "RelativeDocumentMoniker": "Learn\\TimeManager.cpp",
@@ -1280,7 +1294,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 67,
               "Title": "CEuler.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CEuler.h",
               "RelativeDocumentMoniker": "Learn\\CEuler.h",
@@ -1292,7 +1306,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 68,
               "Title": "CMatrix3.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CMatrix3.cpp",
               "RelativeDocumentMoniker": "Learn\\CMatrix3.cpp",
@@ -1304,7 +1318,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 69,
               "Title": "ShapeFactory.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\ShapeFactory.h",
               "RelativeDocumentMoniker": "Learn\\ShapeFactory.h",
@@ -1316,7 +1330,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
+              "DocumentIndex": 70,
               "Title": "PlaneCollider.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\PlaneCollider.h",
               "RelativeDocumentMoniker": "Learn\\PlaneCollider.h",
@@ -1328,7 +1342,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 70,
+              "DocumentIndex": 71,
               "Title": "CModel.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CModel.cpp",
               "RelativeDocumentMoniker": "Learn\\CModel.cpp",
@@ -1340,7 +1354,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 72,
               "Title": "Math.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Math.cpp",
               "RelativeDocumentMoniker": "Learn\\Math.cpp",
@@ -1352,7 +1366,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 72,
+              "DocumentIndex": 73,
               "Title": "CVector4.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector4.cpp",
               "RelativeDocumentMoniker": "Learn\\CVector4.cpp",
@@ -1364,7 +1378,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 73,
+              "DocumentIndex": 74,
               "Title": "CVector2.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector2.cpp",
               "RelativeDocumentMoniker": "Learn\\CVector2.cpp",
@@ -1376,7 +1390,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 74,
+              "DocumentIndex": 75,
               "Title": "CQuaternion.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CQuaternion.cpp",
               "RelativeDocumentMoniker": "Learn\\CQuaternion.cpp",
@@ -1388,7 +1402,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 75,
+              "DocumentIndex": 76,
               "Title": "CMatrix4.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CMatrix4.cpp",
               "RelativeDocumentMoniker": "Learn\\CMatrix4.cpp",
@@ -1400,7 +1414,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 76,
+              "DocumentIndex": 77,
               "Title": "CEuler.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CEuler.cpp",
               "RelativeDocumentMoniker": "Learn\\CEuler.cpp",
@@ -1412,7 +1426,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 77,
+              "DocumentIndex": 78,
               "Title": "Shape.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Shape.cpp",
               "RelativeDocumentMoniker": "Learn\\Shape.cpp",
@@ -1424,7 +1438,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 78,
+              "DocumentIndex": 79,
               "Title": "IManager.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\IManager.cpp",
               "RelativeDocumentMoniker": "Learn\\IManager.cpp",
@@ -1436,7 +1450,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 79,
+              "DocumentIndex": 80,
               "Title": "EngineMainLoop.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\EngineMainLoop.cpp",
               "RelativeDocumentMoniker": "Learn\\EngineMainLoop.cpp",
@@ -1448,7 +1462,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 80,
+              "DocumentIndex": 81,
               "Title": "CglFont.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CglFont.cpp",
               "RelativeDocumentMoniker": "Learn\\CglFont.cpp",
@@ -1460,7 +1474,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 81,
+              "DocumentIndex": 82,
               "Title": "Camera.cpp",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Camera.cpp",
               "RelativeDocumentMoniker": "Learn\\Camera.cpp",
@@ -1472,7 +1486,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 82,
+              "DocumentIndex": 83,
               "Title": "PointCollision.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\PointCollision.h",
               "RelativeDocumentMoniker": "Learn\\PointCollision.h",
@@ -1484,7 +1498,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 83,
+              "DocumentIndex": 84,
               "Title": "PhysicsLit.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\PhysicsLit.h",
               "RelativeDocumentMoniker": "Learn\\PhysicsLit.h",
@@ -1496,7 +1510,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 84,
+              "DocumentIndex": 85,
               "Title": "OBB.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\OBB.h",
               "RelativeDocumentMoniker": "Learn\\OBB.h",
@@ -1508,7 +1522,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 85,
+              "DocumentIndex": 86,
               "Title": "Ray.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Ray.h",
               "RelativeDocumentMoniker": "Learn\\Ray.h",
@@ -1520,7 +1534,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 86,
+              "DocumentIndex": 87,
               "Title": "IntersectionDetector.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\IntersectionDetector.h",
               "RelativeDocumentMoniker": "Learn\\IntersectionDetector.h",
@@ -1532,7 +1546,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 87,
+              "DocumentIndex": 88,
               "Title": "ContactResolver.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\ContactResolver.h",
               "RelativeDocumentMoniker": "Learn\\ContactResolver.h",
@@ -1544,7 +1558,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 88,
+              "DocumentIndex": 89,
               "Title": "Contact.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Contact.h",
               "RelativeDocumentMoniker": "Learn\\Contact.h",
@@ -1556,7 +1570,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 89,
+              "DocumentIndex": 90,
               "Title": "CollisionData.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CollisionData.h",
               "RelativeDocumentMoniker": "Learn\\CollisionData.h",
@@ -1568,7 +1582,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 90,
+              "DocumentIndex": 91,
               "Title": "BoundingSphere.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\BoundingSphere.h",
               "RelativeDocumentMoniker": "Learn\\BoundingSphere.h",
@@ -1580,7 +1594,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 91,
+              "DocumentIndex": 92,
               "Title": "Math.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Math.h",
               "RelativeDocumentMoniker": "Learn\\Math.h",
@@ -1592,7 +1606,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 92,
+              "DocumentIndex": 93,
               "Title": "CVector4.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector4.h",
               "RelativeDocumentMoniker": "Learn\\CVector4.h",
@@ -1604,7 +1618,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 93,
+              "DocumentIndex": 94,
               "Title": "CVector2.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CVector2.h",
               "RelativeDocumentMoniker": "Learn\\CVector2.h",
@@ -1616,7 +1630,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 94,
+              "DocumentIndex": 95,
               "Title": "CQuaternion.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CQuaternion.h",
               "RelativeDocumentMoniker": "Learn\\CQuaternion.h",
@@ -1628,7 +1642,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 95,
+              "DocumentIndex": 96,
               "Title": "CMatrix4.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CMatrix4.h",
               "RelativeDocumentMoniker": "Learn\\CMatrix4.h",
@@ -1640,7 +1654,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 96,
+              "DocumentIndex": 97,
               "Title": "CMatrix3.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CMatrix3.h",
               "RelativeDocumentMoniker": "Learn\\CMatrix3.h",
@@ -1652,7 +1666,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 97,
+              "DocumentIndex": 98,
               "Title": "IManager.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\IManager.h",
               "RelativeDocumentMoniker": "Learn\\IManager.h",
@@ -1664,7 +1678,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 98,
+              "DocumentIndex": 99,
               "Title": "EngineMainLoop.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\EngineMainLoop.h",
               "RelativeDocumentMoniker": "Learn\\EngineMainLoop.h",
@@ -1676,7 +1690,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 99,
+              "DocumentIndex": 100,
               "Title": "CModel.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CModel.h",
               "RelativeDocumentMoniker": "Learn\\CModel.h",
@@ -1688,7 +1702,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 100,
+              "DocumentIndex": 101,
               "Title": "CglFont.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\CglFont.h",
               "RelativeDocumentMoniker": "Learn\\CglFont.h",
@@ -1700,7 +1714,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 101,
+              "DocumentIndex": 102,
               "Title": "Camera.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Camera.h",
               "RelativeDocumentMoniker": "Learn\\Camera.h",
@@ -1712,7 +1726,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 102,
+              "DocumentIndex": 103,
               "Title": "TimeManager.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\TimeManager.h",
               "RelativeDocumentMoniker": "Learn\\TimeManager.h",
@@ -1724,7 +1738,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 103,
+              "DocumentIndex": 104,
               "Title": "RenderManager.h",
               "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\RenderManager.h",
               "RelativeDocumentMoniker": "Learn\\RenderManager.h",
@@ -1733,18 +1747,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-04-09T13:51:00.436Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 104,
-              "Title": "Sphere.h",
-              "DocumentMoniker": "E:\\sourcecode\\GraphicsEngine\\Learn\\Sphere.h",
-              "RelativeDocumentMoniker": "Learn\\Sphere.h",
-              "ToolTip": "E:\\sourcecode\\GraphicsEngine\\Learn\\Sphere.h",
-              "RelativeToolTip": "Learn\\Sphere.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-06-05T03:07:32.845Z"
             },
             {
               "$type": "Document",

@@ -1,5 +1,7 @@
 #include "stdafx.h"
 bool isInitStage = false;
+// 是否启用光照
+bool gEnableLighting = true;
 void myDisplay(void);
 void myTimerFunc(int val);
 void SetRC();
@@ -15,11 +17,47 @@ void myTimerFunc(int val)
     glutTimerFunc(1, myTimerFunc, 0);
 }
 
-// 璁剧疆娓叉煋鐜
+
+// 初始化光照的函数
+void InitLighting()
+{
+    if (!gEnableLighting) {
+        glDisable(GL_LIGHTING);
+        return;
+    }
+
+    glEnable(GL_LIGHTING);         // 启用光照系统
+    glEnable(GL_LIGHT0);           // 启用第 0 号光源
+    glEnable(GL_COLOR_MATERIAL);  // 启用颜色材质绑定
+
+    // 让 glColor 影响材质的 ambient 和 diffuse
+    glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
+
+    // 光源参数
+    GLfloat light_pos[] = { 5.0f, 5.0f, 5.0f, 1.0f };  // 点光源
+    GLfloat light_ambient[] = { 0.2f, 0.2f, 0.2f, 1.0f };
+    GLfloat light_diffuse[] = { 0.8f, 0.8f, 0.8f, 1.0f };
+    GLfloat light_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+
+    glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
+    glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
+    glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+    glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
+
+    glEnable(GL_DEPTH_TEST);  // 深度测试，避免遮挡错误
+}
+// 每帧都更新光源位置
+void UpdateLightingPerFrame()
+{
+    if (!gEnableLighting) return;
+    GLfloat light_pos[] = { 5.0f, 5.0f, 5.0f, 1.0f };
+    glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
+}
+
 void SetRC()
 {
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-    glEnable(GL_DEPTH_TEST);  // 鍚敤娣卞害娴嬭瘯锛岀‘淇濈墿浣撴寜姝ｇ‘鐨勯『搴忔覆鏌?
+    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    InitLighting(); // 初始化光照
 }
 
 
@@ -223,14 +261,14 @@ void InitStage()
         sphereCollider->mCollider->rigidBodyPrimitive = rigidBody4->rigidBodyPrimitive;
         rigidBody4->rigidBodyPrimitive->mCollisionVolume = sphereCollider->mCollider;
         rigidBody4->rigidBodyPrimitive->SetInertiaTensor(sphereCollider->mCollider->GetInertiaTensor(rigidBody4->rigidBodyPrimitive->GetMass()));
-        rigidBody4->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(CVector3(0.0f, -9.8f, 0.0f)));
+        //rigidBody4->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(CVector3(0.0f, -9.8f, 0.0f)));
         Sphere->transform->UpdateColliderTransform();
         PhysicsLit::PhysicsManager::Instance().AddGameObject(Sphere);
 
 
         Car->AddComponent<CharacterController>();
         Car2->AddComponent<Unit>();
-        Sphere->AddComponent<Bullet>();
+        //Sphere->AddComponent<Bullet>();
         
         isInitStage = true;
     }
@@ -243,6 +281,8 @@ void myDisplay(void) {
     TimeManager::Instance().Update();  
     InputManager::Instance().Update();
     PhysicsLit::PhysicsManager::Instance().Update();
+    //UpdateLightingPerFrame(); // 每帧刷新光照位置
+
 }
 
 
@@ -261,6 +301,10 @@ void myReshape(int w, int h)
 void processKeyboard(unsigned char key, int x, int y)
 {
     InputManager::Instance().enqueueKeyboardEvent(key, x, y);
+    if (key == 'l' || key == 'L') {
+        gEnableLighting = !gEnableLighting;
+        InitLighting();  // 切换光照时重新初始化
+    }
     glutPostRedisplay();
 }
 
@@ -283,30 +327,23 @@ void processMouseMotion(int x, int y)
     InputManager::Instance().enqueueMouseMotionEvent(x, y);
 }
 
-// 涓荤▼搴?
 int main(int argc, char* argv[])
 {
-    Calculate();
-    // 鍒濆鍖?GLUT
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
     glutInitWindowPosition(100, 100);
     glutInitWindowSize(1024, 768);
-    glutCreateWindow("av");
+    glutCreateWindow("Lighting Toggle Example");
 
-    // 璁剧疆 GLUT 鍥炶皟鍑芥暟
     glutDisplayFunc(&myDisplay);
     glutTimerFunc(1, myTimerFunc, 0);
     glutReshapeFunc(&myReshape);
-    glutKeyboardFunc(&processKeyboard);   // 娉ㄥ唽閿洏杈撳叆
+    glutKeyboardFunc(&processKeyboard);
     glutSpecialFunc(&processSpecialKeys);
-    glutMouseFunc(&processMouse);         // 娉ㄥ唽榧犳爣鎸夐敭杈撳叆
-    glutMotionFunc(&processMouseMotion);  // 娉ㄥ唽榧犳爣鎷栧姩
+    glutMouseFunc(&processMouse);
+    glutMotionFunc(&processMouseMotion);
 
-    // 璁剧疆娓叉煋鐜
-    SetRC();
-
-    // 杩涘叆 GLUT 涓诲惊鐜?
+    SetRC(); // 初始化光照和其他渲染设置
     glutMainLoop();
     return 0;
 }

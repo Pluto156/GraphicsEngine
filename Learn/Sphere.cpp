@@ -16,22 +16,28 @@ void Sphere::Draw() {
     glScalef(localScale.x, localScale.y, localScale.z);
 
     glColor3f(r, g, b);
-    for (int i = 0; i <= stacks; ++i) {
-        float lat0 = Math::PI * (-0.5f + (float)(i - 1) / stacks);
+
+    for (int i = 0; i < stacks; ++i) {
+        float lat0 = Math::PI * (-0.5f + (float)i / stacks);
         float z0 = sin(lat0);
         float zr0 = cos(lat0);
 
-        float lat1 = Math::PI * (-0.5f + (float)i / stacks);
+        float lat1 = Math::PI * (-0.5f + (float)(i + 1) / stacks);
         float z1 = sin(lat1);
         float zr1 = cos(lat1);
 
         glBegin(GL_QUAD_STRIP);
         for (int j = 0; j <= slices; ++j) {
-            float lng = 2 * Math::PI * (float)(j - 1) / slices;
+            float lng = 2.0f * Math::PI * (float)j / slices;
             float x = cos(lng);
             float y = sin(lng);
 
+            // 顶点1
+            glNormal3f(x * zr0, y * zr0, z0); // 法线设置
             glVertex3f(m_radius * x * zr0, m_radius * y * zr0, m_radius * z0);
+
+            // 顶点2
+            glNormal3f(x * zr1, y * zr1, z1); // 法线设置
             glVertex3f(m_radius * x * zr1, m_radius * y * zr1, m_radius * z1);
         }
         glEnd();
@@ -44,3 +50,4 @@ void Sphere::Draw() {
         glutWireSphere(m_radius, slices, stacks);  // 使用 GLUT 绘制线框球
     }
 }
+
