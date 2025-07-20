@@ -72,5 +72,6 @@ public:
     void Slerp(const CQuaternion& Vend, int n, float* t, CQuaternion* Result);
 
     CMatrix4 CQuaternion::ToCMatrix4();
+    CEuler CQuaternion::ToCEuler();
 };
 

@@ -6,7 +6,7 @@ void myDisplay(void);
 void myTimerFunc(int val);
 void SetRC();
 void myReshape(int w, int h);
-void processKeyboard(unsigned char key, int x, int y);  // 澶勭悊閿洏杈撳叆
+void processKeyboard(unsigned char key, int x, int y);  
 void processSpecialKeys(int key, int x, int y);
 void processMouse(int button, int state, int x, int y); // 澶勭悊榧犳爣杈撳叆
 void processMouseMotion(int x, int y);
@@ -329,6 +329,7 @@ void processMouseMotion(int x, int y)
 
 int main(int argc, char* argv[])
 {
+    Calculate();
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
     glutInitWindowPosition(100, 100);

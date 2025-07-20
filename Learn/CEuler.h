@@ -1,31 +1,31 @@
 #pragma once
-class CEuler
-{
+#include <string>
+#include "CVector3.h"
+#include "CMatrix4.h"
+
+class CEuler {
 public:
-    float h, p, b; // 欧拉角：俯仰、偏航、滚转
+    float h, p, b; // 欧拉角：偏航（heading），俯仰（pitch），滚转（bank）
 
-    // 设置欧拉角
     void Set(float fh, float fp, float fb);
-
-    // 转换为 CVector 向量
     CVector3 ToCVector();
-
-    // 转换为 CMatrix 矩阵
-    CMatrix4 ToCMatrix()const;
+    CMatrix4 ToCMatrix() const;
+    CQuaternion ToCQuaternion() const;
+    void CEuler::Normal();//h,b角度在-180~180，p角度在-90~90。万向锁时,h代替所有b的度数。
+    CEuler CEuler::GetNormal();//h,b角度在-180~180，p角度在-90~90。万向锁时,h代替所有b的度数。
 
     operator float* () { return &h; }
-    // 重载加法运算符
+
     CEuler operator+(const CEuler& other) const {
         return CEuler(h + other.h, p + other.p, b + other.b);
     }
-    // 重载减法运算符
     CEuler operator-(const CEuler& other) const {
         return CEuler(h - other.h, p - other.p, b - other.b);
     }
-    CEuler operator-() const
-    {
+    CEuler operator-() const {
         return CEuler(-h, -p, -b);
     }
+
     CEuler();
     CEuler(float fh, float fp, float fb);
     std::string ToString();

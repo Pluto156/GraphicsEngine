@@ -19,7 +19,7 @@ Camera::Camera()
     float m[16] = {
         transform->Right.x, transform->Right.y, transform->Right.z, 0,
         transform->Up.x, transform->Up.y, transform->Up.z, 0,
-        -transform->Forward.x, -transform->Forward.y, -transform->Forward.z, 0,
+        transform->Forward.x, transform->Forward.y, transform->Forward.z, 0,
         0,          0,          0,          1
     };
 

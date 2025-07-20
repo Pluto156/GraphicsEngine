@@ -179,13 +179,14 @@ CQuaternion CQuaternion::Div(const CQuaternion& b)
     return *this * bInverse;
 }
 
-// 获取旋转角度和旋转轴
 void CQuaternion::GetAngle(float& angle, CVector3& axis)
 {
-    angle = 2.0f * acos(w);
+    angle = 2.0f * acos(w);  // 以弧度计算
     float s = sqrt(1.0f - w * w);
+
     if (s < 0.001f)
     {
+        // 旋转角度非常小，任意指定一个轴
         axis.x = 1.0f; axis.y = 0.0f; axis.z = 0.0f;
     }
     else
@@ -194,7 +195,12 @@ void CQuaternion::GetAngle(float& angle, CVector3& axis)
         axis.y = y / s;
         axis.z = z / s;
     }
+
+    // 将角度从弧度转换为角度制（度）
+    constexpr float RAD2DEG = 180.0f / 3.14159265358979323846f;
+    angle *= RAD2DEG;
 }
+
 
 void CQuaternion::Rotate(const CVector3& axis, float angle)
 {
@@ -259,4 +265,39 @@ CMatrix4 CQuaternion::ToCMatrix4()
     t.m22 = 1 - 2 * x * x - 2 * y * y;
     return t;
 }
+
+CEuler CQuaternion::ToCEuler()
+{
+    CEuler euler;
+
+    //// yaw (h), pitch (p), roll (b)
+    //float ysqr = y * y;
+
+    //// 计算 pitch（绕X轴旋转，p）
+    //float t0 = 2.0f * (w * x + y * z);
+    //float t1 = 1.0f - 2.0f * (x * x + ysqr);
+    //euler.p = atan2(t0, t1);
+
+    //// 计算 yaw（绕Y轴旋转，h）
+    //float t2 = 2.0f * (w * y - z * x);
+    //t2 = std::clamp(t2, -1.0f, 1.0f); // 避免浮点精度引发的非法输入
+    //euler.h = asin(t2);
+
+    //// 计算 roll（绕Z轴旋转，b）
+    //float t3 = 2.0f * (w * z + x * y);
+    //float t4 = 1.0f - 2.0f * (ysqr + z * z);
+    //euler.b = atan2(t3, t4);
+
+    //// 转为角度制（如有需要）
+    //constexpr float RAD2DEG = 180.0f / 3.14159265358979323846f;
+    //euler.h *= RAD2DEG;
+    //euler.p *= RAD2DEG;
+    //euler.b *= RAD2DEG;
+
+    //// 归一化角度范围（如 [-180,180], [-90,90] 等）
+    //euler.Normal();
+
+    return euler;
+}
+
 
