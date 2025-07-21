@@ -15,6 +15,8 @@ public:
 	static float PIx2;
 	static float SQRT2;
 	static float INV_SQRT2;
+	static float DEG2RAD;
+	static float RAD2DEG;
 	static bool Approximately(float a, float b, float eps = FLT_EPSILON);
 	static float Dot(const CVector3& left, const CVector3& right);
 	static float Dot(const CVector4& left, const CVector4& right);

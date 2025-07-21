@@ -18,10 +18,9 @@ CEuler::CEuler(float fh, float fp, float fb) {
 }
 
 CVector3 CEuler::ToCVector() {
-    constexpr float DEG2RAD = 3.14159265358979323846f / 180.0f;
 
-    float yaw = h * DEG2RAD;
-    float pitch = p * DEG2RAD;
+    float yaw = h * Math::DEG2RAD;
+    float pitch = p * Math::DEG2RAD;
 
     float x = -cos(pitch) * sin(yaw);
     float y = sin(pitch);
@@ -51,11 +50,9 @@ CMatrix4 CEuler::ToCMatrix() const {
 }
 
 CQuaternion CEuler::ToCQuaternion() const {
-    constexpr float DEG2RAD = 3.14159265358979323846f / 180.0f;
-
-    float hRad = h * DEG2RAD;  // Yaw
-    float pRad = p * DEG2RAD;  // Pitch
-    float bRad = b * DEG2RAD;  // Roll
+    float hRad = h * Math::DEG2RAD;  // Yaw
+    float pRad = p * Math::DEG2RAD;  // Pitch
+    float bRad = b * Math::DEG2RAD;  // Roll
 
     float ch = cos(hRad * 0.5f);
     float sh = sin(hRad * 0.5f);

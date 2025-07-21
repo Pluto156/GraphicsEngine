@@ -149,20 +149,33 @@ BOOL CQuaternion::Normalize()
     return TRUE;
 }
 
-// 计算四元数的逆（改变当前四元数）
+CQuaternion CQuaternion::GetNormalize()
+{
+    CQuaternion t = *this;
+    t.Normalize();
+    return t;
+}
+
 CQuaternion& CQuaternion::Inverse()
 {
-    float lengthSquared = w * w + x * x + y * y + z * z;
-    if (lengthSquared > 0)
+    float normSquared = w * w + x * x + y * y + z * z;
+    if (normSquared > 1e-6f) // 防止除以 0
     {
-        float invLen = 1.0f / lengthSquared;
-        w = w * invLen;
-        x = -x * invLen;
-        y = -y * invLen;
-        z = -z * invLen;
+        float invNorm = 1.0f / normSquared;
+        w *= invNorm;
+        x *= -invNorm;
+        y *= -invNorm;
+        z *= -invNorm;
+    }
+    else
+    {
+        // 长度太小，不可逆，设为单位四元数或其他默认处理
+        w = 1.0f;
+        x = y = z = 0.0f;
     }
     return *this;
 }
+
 
 // 获取四元数的逆（不改变当前四元数）
 CQuaternion CQuaternion::GetInverse() const
@@ -175,8 +188,9 @@ CQuaternion CQuaternion::GetInverse() const
 // 求四元数的差：a - b
 CQuaternion CQuaternion::Div(const CQuaternion& b)
 {
-    CQuaternion bInverse = b.GetInverse();
-    return *this * bInverse;
+    CQuaternion t = b;
+    CQuaternion aInverse = GetInverse();
+    return t * aInverse;
 }
 
 void CQuaternion::GetAngle(float& angle, CVector3& axis)
@@ -215,30 +229,43 @@ void CQuaternion::Rotate(const CVector3& axis, float angle)
 }
 
 
-// 四元数的Slerp插值
 CQuaternion CQuaternion::Slerp(const CQuaternion& Vend, float t)
 {
-    // 计算四元数之间的夹角
-    float dot = dotMul(Vend);
+
+    CQuaternion q1 = *this;
+    CQuaternion q2 = Vend;
+    q1.Normalize();
+    q2.Normalize();
+
+    float dot = q1.dotMul(q2);
+    CQuaternion v1 = q2;
+
+    // 如果dot < 0，则取反目标四元数，保证短路径插值
+    if (dot < 0.0f)
+    {
+        v1 = -q2;
+        dot = -dot;
+    }
+
     const float THRESHOLD = 0.9995f;
 
     if (dot > THRESHOLD)
     {
-        CQuaternion result = *this + (Vend - *this) * t;
+        // 如果两四元数非常接近，退化为线性插值
+        CQuaternion result = q1 + (v1 - q1) * t;
         result.Normalize();
         return result;
     }
 
-    dot = fmin(fmax(dot, -1.0f), 1.0f);
-    float theta_0 = acos(dot);
-    float theta = theta_0 * t;
+    // 标准SLERP公式
+    dot = fmin(fmax(dot, -1.0f), 1.0f);  // clamp到[-1,1]
+    float theta_0 = acos(dot);          // 起始角度
 
-    CQuaternion VendTemp = Vend - *this * dot;
-    VendTemp.Normalize();
-
-    CQuaternion result = *this * cos(theta) + VendTemp * sin(theta);
+    CQuaternion result = (q1) * (theta_0 *sin(1-t)/sin(theta_0)) + v1 * (sin(t* theta_0)/ sin(theta_0));
+    result.Normalize(); // 最后归一化
     return result;
 }
+
 
 // 四元数插值，生成n个数据
 void CQuaternion::Slerp(const CQuaternion& Vend, int n, float* t, CQuaternion* Result)
@@ -270,34 +297,29 @@ CEuler CQuaternion::ToCEuler()
 {
     CEuler euler;
 
-    //// yaw (h), pitch (p), roll (b)
-    //float ysqr = y * y;
+    float sinp = 2.0f * (w * x - y * z);
+    // Clamp sinp to [-1,1] to avoid NaNs from asin
+    sinp = Math::Clamp(sinp, -1.0f, 1.0f);
+    euler.p = Math::Rad2Deg(std::asin(sinp));  // p
 
-    //// 计算 pitch（绕X轴旋转，p）
-    //float t0 = 2.0f * (w * x + y * z);
-    //float t1 = 1.0f - 2.0f * (x * x + ysqr);
-    //euler.p = atan2(t0, t1);
+    float cosp = std::cos(euler.p);
 
-    //// 计算 yaw（绕Y轴旋转，h）
-    //float t2 = 2.0f * (w * y - z * x);
-    //t2 = std::clamp(t2, -1.0f, 1.0f); // 避免浮点精度引发的非法输入
-    //euler.h = asin(t2);
-
-    //// 计算 roll（绕Z轴旋转，b）
-    //float t3 = 2.0f * (w * z + x * y);
-    //float t4 = 1.0f - 2.0f * (ysqr + z * z);
-    //euler.b = atan2(t3, t4);
-
-    //// 转为角度制（如有需要）
-    //constexpr float RAD2DEG = 180.0f / 3.14159265358979323846f;
-    //euler.h *= RAD2DEG;
-    //euler.p *= RAD2DEG;
-    //euler.b *= RAD2DEG;
-
-    //// 归一化角度范围（如 [-180,180], [-90,90] 等）
-    //euler.Normal();
+    if (std::abs(cosp) > 1e-6f) // avoid gimbal lock
+    {
+        euler.h = Math::Rad2Deg(std::atan2(2.0f * (z * x + w * y),
+            1.0f - 2.0f * (x * x + y * y)));  // h
+        euler.b = Math::Rad2Deg(std::atan2(2.0f * (x * y + w * z),
+            1.0f - 2.0f * (z * z + x * x)));     // b
+    }
+    else
+    {
+        euler.h = Math::Rad2Deg(std::atan2(2.0f * (w * y - z * x),
+            1.0f - 2.0f * (y * y + z * z)));  // simplified h
+        euler.b = 0.0f;
+    }
 
     return euler;
 }
+
 
 

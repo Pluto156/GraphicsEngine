@@ -138,10 +138,16 @@ CVector3 operator*(float scalar, const CVector3& v) {
 // 向量单位化
 void CVector3::Normalize() {
     float length = len();
-    if (length > 0) {
+    if (length > 1e-6f) {
         x /= length;
         y /= length;
         z /= length;
+    }
+    else
+    {
+        x = 1;
+        y = 0;
+        z = 0;
     }
 }
 CVector3 CVector3::GetNormalize()const
@@ -249,14 +255,14 @@ CVector4 CVector3::ToDirVec4() const
 // Calculate 函数实现
 #include <cmath>
 #include <iostream>
-
+bool isEnd = false;
 bool Calculate() {
     FILE* fp, * fpOut;
     char str[1024];
     fopen_s(&fp, "test.txt", "rt");
     fopen_s(&fpOut, "out.txt", "wt");
 
-    while (!feof(fp)) {
+    while (!feof(fp)&& !isEnd) {
         fscanf_s(fp, "%s\n", str, 1024);
 
         if (strcmp(str, "向量相加") == 0) {
@@ -380,7 +386,7 @@ bool Calculate() {
         }
         else if (strcmp(str, "四元数点乘") == 0) {
             CQuaternion a, b, c;
-            fscanf_s(fp, "%f,%f,%f,%f\t%f,%f,%f,%f",
+            fscanf_s(fp, "%f,%f,%f,%f %f,%f,%f,%f",
                 &a[0], &a[1], &a[2], &a[3],
                 &b[0], &b[1], &b[2], &b[3]);
 
@@ -401,7 +407,7 @@ bool Calculate() {
         else if (strcmp(str, "欧拉角转换四元数") == 0) {
             CEuler a;
             CQuaternion b;
-            fscanf_s(fp, "%f,%f,%f\t",
+            fscanf_s(fp, "%f,%f,%f ",
                 &a[0], &a[1], &a[2]);
             b = a.ToCQuaternion();
             fprintf(fpOut, "%s\n%g,%g,%g\t%g,%g,%g,%g\n", str
@@ -411,7 +417,7 @@ bool Calculate() {
         else if (strcmp(str, "欧拉角转换向量") == 0) {
             CEuler a;
             CVector3 b;
-            fscanf_s(fp, "%f,%f,%f\t",
+            fscanf_s(fp, "%f,%f,%f",
                 &a[0], &a[1], &a[2]);
             b = a.ToCVector();
             fprintf(fpOut, "%s\n%g,%g,%g\t%g,%g,%g\n", str
@@ -421,18 +427,18 @@ bool Calculate() {
         else if (strcmp(str, "欧拉角标准化") == 0) {
             CEuler a;
             CEuler b;
-            fscanf_s(fp, "%f,%f,%f\t",
+            fscanf_s(fp, "%f,%f,%f",
                 &a[0], &a[1], &a[2]);
             b = a.GetNormal();
             fprintf(fpOut, "%s\n%g,%g,%g\t%g,%g,%g\n", str
                 , a[0], a[1], a[2], b[0], b[1], b[2]
             );
             }
-        else if (strcmp(str, "四元数求角度和旋转轴") == 0) {
+            else if (strcmp(str, "四元数求角度和旋转轴") == 0) {
             CQuaternion a;
             float angle;
             CVector3 b;
-            fscanf_s(fp, "%f,%f,%f,%f\t",
+            fscanf_s(fp, "%f,%f,%f,%f",
                 &a[0], &a[1], &a[2], &a[3]);
             a.GetAngle(angle, b);
 
@@ -443,7 +449,7 @@ bool Calculate() {
         else if (strcmp(str, "四元数转换矩阵") == 0) {
                 CQuaternion a;
                 CMatrix4 c;
-                fscanf_s(fp, "%f,%f,%f,%f\t",
+                fscanf_s(fp, "%f,%f,%f,%f",
                     &a[0], &a[1], &a[2], &a[3]);
                 c = a.ToCMatrix4();
 
@@ -452,18 +458,138 @@ bool Calculate() {
                     c[0], c[1], c[2], c[3], c[4], c[5], c[6], c[7], c[8], c[9], c[10], c[11], c[12], c[13], c[14], c[15]
                 );
                 }
-        /*else if (strcmp(str, "四元数转换欧拉角") == 0) {
+        else if (strcmp(str, "四元数转换欧拉角") == 0) {
             CQuaternion a;
             CEuler c;
-            fscanf_s(fp, "%f,%f,%f,%f\t",
+            fscanf_s(fp, "%f,%f,%f,%f",
                 &a[0], &a[1], &a[2], &a[3]);
-            c = a.ToCMatrix4();
+            c = a.ToCEuler();
 
-            fprintf(fpOut, "%s\n%g,%g,%g,%g\t%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g  \n", str
+            fprintf(fpOut, "%s\n%g,%g,%g,%g\t%g,%g,%g\n", str
                 , a[0], a[1], a[2], a[3],
+                c[0], c[1], c[2]
+            );
+            }
+            else if (strcmp(str, "欧拉角转换矩阵") == 0) {
+            CEuler a;
+            CMatrix4 c;
+            fscanf_s(fp, "%f,%f,%f",
+                &a[0], &a[1], &a[2]);
+            a.Normal();
+            c = a.ToCMatrix();
+
+            fprintf(fpOut, "%s\n%g,%g,%g\t%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g  \n", str
+                , a[0], a[1], a[2],
                 c[0], c[1], c[2], c[3], c[4], c[5], c[6], c[7], c[8], c[9], c[10], c[11], c[12], c[13], c[14], c[15]
             );
-            }*/
+            }
+        else if (strcmp(str, "矩阵转换欧拉角") == 0) {
+                CMatrix4 a;
+                CEuler b;
+                fscanf_s(fp, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f",
+                    &a[0], &a[1], &a[2], &a[3], &a[4], &a[5], &a[6], &a[7], &a[8], &a[9], &a[10], &a[11], &a[12], &a[13], &a[14], &a[15]
+                );
+                b = a.ToEuler();
+
+                fprintf(fpOut, "%s\n%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g\t%g,%g,%g \n", str
+                    , a[0], a[1], a[2], a[3],a[4], a[5], a[6], a[7], a[8], a[9], a[10], a[11], a[12], a[13], a[14], a[15],
+                    b[0],b[1],b[2]
+                );
+                }
+        else if (strcmp(str, "四元数单位化") == 0) {
+            CQuaternion a;
+            CQuaternion c;
+            fscanf_s(fp, "%f,%f,%f,%f",
+                &a[0], &a[1], &a[2], &a[3]);
+            c = a.GetNormalize();
+
+            fprintf(fpOut, "%s\n%g,%g,%g,%g\t%g,%g,%g,%g\n", str
+                , a[0], a[1], a[2], a[3],
+                c[0], c[1], c[2],c[3]
+            );
+            }
+        else if (strcmp(str, "四元数插值") == 0) {
+            CQuaternion a;
+            CQuaternion b;
+            CQuaternion c;
+            float t;
+            fscanf_s(fp, "%f,%f,%f,%f %f,%f,%f,%f %f",
+                &a[0], &a[1], &a[2], &a[3], &b[0], &b[1], &b[2], &b[3],&t);
+            c = a.Slerp(b,t);
+
+            fprintf(fpOut, "%s\n%g,%g,%g,%g\t%g,%g,%g,%g\t%g\t%g,%g,%g,%g\n", str
+                , a[0], a[1], a[2], a[3],
+                b[0], b[1], b[2], b[3],t,
+                c[0], c[1], c[2], c[3]
+            );
+            }
+        else if (strcmp(str, "矩阵转换四元数") == 0) {
+                CMatrix4 a;
+                CQuaternion b;
+                fscanf_s(fp, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f",
+                    &a[0], &a[1], &a[2], &a[3], &a[4], &a[5], &a[6], &a[7], &a[8], &a[9], &a[10], &a[11], &a[12], &a[13], &a[14], &a[15]
+                );
+                b = a.ToQuaternion();
+
+                fprintf(fpOut, "%s\n%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g\t%g,%g,%g,%g \n", str
+                    , a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8], a[9], a[10], a[11], a[12], a[13], a[14], a[15],
+                    b[0], b[1], b[2],b[3]
+                );
+                }
+        else if (strcmp(str, "矩阵正交化") == 0) {
+            CMatrix4 a;
+            CMatrix4 b;
+            fscanf_s(fp, "%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f",
+                &a[0], &a[1], &a[2], &a[3], &a[4], &a[5], &a[6], &a[7], &a[8], &a[9], &a[10], &a[11], &a[12], &a[13], &a[14], &a[15]
+            );
+            b = a;
+            b.Orthogonalize();
+            fprintf(fpOut, "%s\n%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g\t%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g,%g \n", str
+                , a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7], a[8], a[9], a[10], a[11], a[12], a[13], a[14], a[15],
+                 b[0], b[1], b[2], b[3], b[4], b[5], b[6], b[7], b[8], b[9], b[10], b[11], b[12], b[13], b[14], b[15]
+            );
+            }
+        else if (strcmp(str, "四元数求逆") == 0) {
+            CQuaternion a;
+            CQuaternion c;
+            fscanf_s(fp, "%f,%f,%f,%f",
+                &a[0], &a[1], &a[2], &a[3]);
+            c = a.GetInverse();
+
+            fprintf(fpOut, "%s\n%g,%g,%g,%g\t%g,%g,%g,%g\n", str
+                , a[0], a[1], a[2], a[3],
+                c[0], c[1], c[2], c[3]
+            );
+            }
+        else if (strcmp(str, "四元数求差") == 0) {
+            CQuaternion a;
+            CQuaternion b;
+            CQuaternion c;
+            fscanf_s(fp, "%f,%f,%f,%f %f,%f,%f,%f",
+                &a[0], &a[1], &a[2], &a[3], &b[0], &b[1], &b[2], &b[3]);
+            c = a.Div(b);
+
+            fprintf(fpOut, "%s\n%g,%g,%g,%g\t%g,%g,%g,%g\t%g,%g,%g,%g\n", str
+                , a[0], a[1], a[2], a[3],
+                b[0], b[1], b[2], b[3],
+                c[0], c[1], c[2], c[3]
+            );
+            }
+        else if (strcmp(str, "四元数相乘") == 0) {
+            CQuaternion a;
+            CQuaternion b;
+            CQuaternion c;
+            fscanf_s(fp, "%f,%f,%f,%f %f,%f,%f,%f",
+                &a[0], &a[1], &a[2], &a[3], &b[0], &b[1], &b[2], &b[3]);
+            c = a * b;
+
+            fprintf(fpOut, "%s\n%g,%g,%g,%g\t%g,%g,%g,%g\t%g,%g,%g,%g\n", str
+                , a[0], a[1], a[2], a[3],
+                b[0], b[1], b[2], b[3],
+                c[0], c[1], c[2], c[3]
+            );
+            isEnd = true;
+            }
         else {
             fgets(str, 1024, fp);
         }

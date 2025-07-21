@@ -402,7 +402,7 @@ CMatrix4 CMatrix4::CreateRotationMatrix(float angle, const CVector3& axis) {
     CVector3 t = axis;
     t.Normalize();
     CMatrix4 mat;
-    angle = (angle)*M_PI / 180;
+    angle = Math::Deg2Rad(angle);
     float costheta = cos(angle);
     float sintheta = sin(angle);
 
@@ -487,6 +487,59 @@ void CMatrix4::Translate(const CVector3& v)
     m13 += v.y;
     m23 += v.z;
 }
+
+
+
+void CMatrix4::Orthogonalize()
+{
+    // 读取原始基向量（列主序）
+    CVector3 right(m00, m10, m20);    // 第一列
+    CVector3 up(m01, m11, m21);       // 第二列
+    CVector3 forward(m02, m12, m22);  // 第三列
+
+    const float eps = 1e-6f; // 统一精度阈值
+
+    // 处理零向量避免NaN
+    if (right.lenSquared() < eps) {
+        right = CVector3(1, 0, 0); // 重置为默认方向
+    }
+    right.Normalize();
+
+    // 正交化up
+    up = up - right * (Math::Dot(right, up));
+    if (up.lenSquared() < eps) {
+        // 生成安全的正交向量：取与right垂直的方向
+        if (std::abs(right.x) > eps || std::abs(right.z) > eps) {
+            up = Math::Cross(right, CVector3(0, 1, 0)); // 优先y轴方向
+        }
+        else {
+            up = Math::Cross(right, CVector3(1, 0, 0)); // 备用x轴方向
+        }
+    }
+    up.Normalize();
+
+    // 正交化forward
+    forward = forward
+        - right * (Math::Dot(right , forward))
+        - up * (Math::Dot(up , forward));
+    if (forward.lenSquared() < eps) {
+        forward = Math::Cross(right, up); // 确保右手坐标系
+    }
+    forward.Normalize();
+
+    // 写回矩阵
+    m00 = right.x; m10 = right.y; m20 = right.z;
+    m01 = up.x;    m11 = up.y;    m21 = up.z;
+    m02 = forward.x; m12 = forward.y; m22 = forward.z;
+
+    // 保持齐次坐标
+    m03 = m13 = m23 = 0;
+    m30 = m31 = m32 = 0;
+    m33 = 1;
+}
+
+
+
 
 
 std::string CMatrix4::ToString()

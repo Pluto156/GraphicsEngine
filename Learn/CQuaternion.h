@@ -35,6 +35,11 @@ public:
     // 四元数乘法操作符重载
     CQuaternion operator*(const CQuaternion& p);
     CQuaternion operator*=(const CQuaternion& p);
+    // 一元负号运算符重载：返回取反后的四元数
+    CQuaternion CQuaternion::operator-() const
+    {
+        return CQuaternion(-x, -y, -z, -w);
+    }
 
 
     // 点乘操作
@@ -45,6 +50,7 @@ public:
 
     // 求标准化
     BOOL Normalize();
+    CQuaternion GetNormalize();
 
     // 求逆四元数，会改变当前四元数
     CQuaternion& Inverse();

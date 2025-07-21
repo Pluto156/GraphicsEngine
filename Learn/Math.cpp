@@ -4,6 +4,9 @@ float Math::PI = 3.141592653f;
 float Math::PIx2 = 6.283185306f;
 float Math::SQRT2 = 1.414213562f;
 float Math::INV_SQRT2 = 0.707106781f;
+float Math::DEG2RAD = Math::PI / 180.0f;
+float Math::RAD2DEG = 180.0f / Math::PI;
+
 bool Math::Approximately(float a, float b, float eps)
 {
 	return fabs(a - b) <= eps;

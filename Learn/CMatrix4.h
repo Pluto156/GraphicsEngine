@@ -77,6 +77,7 @@ public:
     CEuler ToEuler();
     CQuaternion ToQuaternion()const;
     void Translate(const CVector3& v);
+    void Orthogonalize();  // 对旋转部分（前三列）进行正交化
     std::string ToString();
 
 private:
