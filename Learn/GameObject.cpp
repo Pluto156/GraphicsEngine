@@ -8,7 +8,6 @@ GameObject::GameObject(const std::string& name, const CVector3& position,
     const CEuler& eulerAngles, bool isShowLocalAxis) : name(name),
     components() 
 {
-    GameObjectManager::Instance().Instantiate(this);
     transform = AddComponent<Transform>(position, rotation, eulerAngles, isShowLocalAxis);
     transform->gameObject = this;
     infoFont.SetColor(1.0f, 1.0f, 0.5f);  // 淡黄色

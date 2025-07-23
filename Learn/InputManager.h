@@ -1,92 +1,58 @@
 #pragma once
-#include<queue>
+#include <unordered_set>
+#include <unordered_map>
+#include <vector>
 #include "IManager.h"
-class InputManager:public IManager {
+
+class InputManager : public IManager {
 public:
-    class IInputControl {
-    public:
-        IInputControl() {
-            InputManager::Instance().registerControl(this);
-        }
-
-        virtual ~IInputControl() {
-            InputManager::Instance().unregisterControl(this);
-        }
-
-        virtual void processKeyboard(unsigned char key, int x, int y) = 0;
-        virtual void processSpecialKeys(int key, int x, int y) = 0;
-        virtual void processMouse(int button, int state, int x, int y) = 0;
-        virtual void processMouseMotion(int x, int y) = 0;
-    };
-
     static InputManager& Instance() {
         static InputManager instance;
         return instance;
     }
 
-    void registerControl(IInputControl* control) {
-        controls_.push_back(control);
-    }
+    // GLUT 回调接口
+    void onKeyDown(int key, int x, int y);
+    void onKeyUp(int key, int x, int y);
+    void onSpecialKeyDown(int key, int x, int y);
+    void onSpecialKeyUp(int key, int x, int y);
 
-    void unregisterControl(IInputControl* control) {
-        auto it = std::find(controls_.begin(), controls_.end(), control);
-        if (it != controls_.end()) {
-            controls_.erase(it);
-        }
-    }
+    // 状态查询接口（类似 Unity）
+    bool GetKey(int key) const;
+    bool GetKeyDown(int key) const;
+    bool GetKeyUp(int key) const;
 
-    void enqueueKeyboardEvent(unsigned char key, int x, int y) {
-        keyboard_events_.push({ key, x, y });
-    }
+    bool GetSpecialKey(int key) const;
+    bool GetSpecialKeyDown(int key) const;
+    bool GetSpecialKeyUp(int key) const;
 
-    void enqueueSpecialKeyEvent(int key, int x, int y) {
-        specialkey_events_.push({ key, x, y });
-    }
+    // 每帧调用：清理上一帧的状态
+    void Update() override;
+    void LateUpdate();
 
-    void enqueueMouseEvent(int button, int state, int x, int y) {
-        mouse_events_.push({ button, state, x, y });
-    }
-
-    void enqueueMouseMotionEvent(int x, int y) {
-        mouse_motion_events_.push({ x, y });
-    }
-
-    void Update()override;
+    void onMouseMove(int x, int y);
+    float GetAxis(const std::string& axisName) const;
+    void onMouseButton(int button, int state, int x, int y);
 
 private:
-    struct KeyboardEvent {
-        unsigned char key;
-        int x;
-        int y;
-    };
-
-    struct SpecialKeyEvent {
-        int key;
-        int x;
-        int y;
-    };
-
-    struct MouseEvent {
-        int button;
-        int state;
-        int x;
-        int y;
-    };
-
-    struct MouseMotionEvent {
-        int x;
-        int y;
-    };
-
-    std::vector<IInputControl*> controls_;
-    std::queue<KeyboardEvent> keyboard_events_;
-    std::queue<SpecialKeyEvent> specialkey_events_;
-    std::queue<MouseEvent> mouse_events_;
-    std::queue<MouseMotionEvent> mouse_motion_events_;
-
     InputManager() = default;
     ~InputManager() = default;
     InputManager(const InputManager&) = delete;
     InputManager& operator=(const InputManager&) = delete;
-};
 
+    std::unordered_set<int> keys_down_;       // 本帧按下
+    std::unordered_set<int> keys_held_;       // 当前按住
+    std::unordered_set<int> keys_up_;         // 本帧抬起
+
+    std::unordered_set<int> special_keys_down_;
+    std::unordered_set<int> special_keys_held_;
+    std::unordered_set<int> special_keys_up_;
+
+    std::unordered_set<int> mouse_buttons_held_;
+    std::unordered_set<int> mouse_buttons_down_;
+    std::unordered_set<int> mouse_buttons_up_;
+
+    int mouse_x_ = 0, mouse_y_ = 0;
+    int last_mouse_x_ = 0, last_mouse_y_ = 0;
+    int mouse_delta_x_ = 0, mouse_delta_y_ = 0;
+};

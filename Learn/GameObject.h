@@ -28,25 +28,10 @@ public:
     T* AddComponent(Args&&... args) {
         T* component = new T(std::forward<Args>(args)...);
         component->gameObject = this;
+        component->transform = transform;
         components.push_back(component);
-
-        using DecayedT = std::decay_t<T>;
-        constexpr bool is_script = std::is_base_of<GameScript, DecayedT>::value;
-
-        AssignIfGameScript(component, std::bool_constant<is_script>{});
-
         component->Start();
         return component;
-    }
-
-    // 非 GameScript 时：空函数
-    template<typename T>
-    void AssignIfGameScript(T*, std::false_type) {}
-
-    // 是 GameScript 时
-    template<typename T>
-    void AssignIfGameScript(T* ptr, std::true_type) {
-        this->gameScript = static_cast<GameScript*>(ptr);
     }
 
 

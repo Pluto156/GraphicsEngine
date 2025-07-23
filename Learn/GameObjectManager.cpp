@@ -35,7 +35,6 @@ void GameObjectManager::Destroy(GameObject* obj) {
 }
 static float angle = 0.0f;
 
-// ------------------------- Update -----------------------
 void GameObjectManager::Update()
 {
     // ----- 1. Render preparation -------------------------------------------------
@@ -43,22 +42,17 @@ void GameObjectManager::Update()
     glPushMatrix();
     if (camera) camera->LookAt();
 
-
-
-    angle += 0.01f; // 每帧增加一点角度
+    angle += 0.01f;
     float radius = 5.0f;
     GLfloat light_pos[] = {
         radius * cos(angle),
         5.0f,
         radius * sin(angle),
-        1.0f  // 点光源
+        1.0f
     };
     glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
 
-
-
-    if (stage)  glGetDoublev(GL_MODELVIEW_MATRIX, stage->modelViewMatrix);
-
+    if (stage) glGetDoublev(GL_MODELVIEW_MATRIX, stage->modelViewMatrix);
     drawCoordinateAxes();
 
     // ----- 2. Update all active objects -----------------------------------------
@@ -69,17 +63,24 @@ void GameObjectManager::Update()
         }
     }
 
-    // ----- 3. Deferred destruction ----------------------------------------------
+    // ----- 3. Deferred creation --------------------------------------------------
+    if (!pendingCreate.empty()) {
+        gameObjects.insert(gameObjects.end(), pendingCreate.begin(), pendingCreate.end());
+        pendingCreate.clear();
+    }
+
+    // ----- 4. Deferred destruction ----------------------------------------------
     for (auto* obj : pendingDestroy) {
         if (!obj) continue;
         reallyDestroy(obj);
     }
     pendingDestroy.clear();
 
-    // ----- 4. Finish frame -------------------------------------------------------
+    // ----- 5. Finish frame -------------------------------------------------------
     glPopMatrix();
     glutSwapBuffers();
 }
+
 
 // -------------------- reallyDestroy (private) -----------------------------------
 void GameObjectManager::reallyDestroy(GameObject* obj)

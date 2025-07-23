@@ -1,19 +1,10 @@
 #pragma once
-class CharacterController:public GameScript, public InputManager::IInputControl
+class CharacterController:public GameScript
 {
 public:
 
-    void processKeyboard(unsigned char key, int x, int y)override;
-    void processSpecialKeys(int key, int x, int y) override;
-    void processMouse(int button, int state, int x, int y)override;
-    void processMouseMotion(int x, int y)override;
+    void Update()override;
 
-    void OnColliderEnter(PhysicsLit::RigidBodyPrimitive*);
-    void OnColliderStay(PhysicsLit::RigidBodyPrimitive*);
-    void OnColliderExit(PhysicsLit::RigidBodyPrimitive*);
-    void OnTriggerEnter(PhysicsLit::RigidBodyPrimitive*);
-    void OnTriggerStay(PhysicsLit::RigidBodyPrimitive*);
-    void OnTriggerExit(PhysicsLit::RigidBodyPrimitive*);
     int cnt = 0;
 };
 

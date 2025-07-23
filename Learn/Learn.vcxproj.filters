@@ -186,16 +186,7 @@
     <ClInclude Include="CVector2.h">
       <Filter>头文件\Math</Filter>
     </ClInclude>
-    <ClInclude Include="Shape.h">
-      <Filter>头文件\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Box.h">
-      <Filter>头文件\Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>头文件\Engine</Filter>
-    </ClInclude>
-    <ClInclude Include="ShapeFactory.h">
       <Filter>头文件\Engine</Filter>
     </ClInclude>
     <ClInclude Include="Stage.h">
@@ -203,9 +194,6 @@
     </ClInclude>
     <ClInclude Include="CharacterController.h">
       <Filter>头文件\Scripts</Filter>
-    </ClInclude>
-    <ClInclude Include="Sphere.h">
-      <Filter>头文件\Engine</Filter>
     </ClInclude>
     <ClInclude Include="SphereCollider.h">
       <Filter>头文件\Engine\Components</Filter>
@@ -356,16 +344,7 @@
     <ClCompile Include="CVector2.cpp">
       <Filter>源文件\Math</Filter>
     </ClCompile>
-    <ClCompile Include="Shape.cpp">
-      <Filter>源文件\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="Box.cpp">
-      <Filter>源文件\Engine</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>源文件\Engine</Filter>
-    </ClCompile>
-    <ClCompile Include="ShapeFactory.cpp">
       <Filter>源文件\Engine</Filter>
     </ClCompile>
     <ClCompile Include="Stage.cpp">
@@ -373,9 +352,6 @@
     </ClCompile>
     <ClCompile Include="CharacterController.cpp">
       <Filter>源文件\Scripts</Filter>
-    </ClCompile>
-    <ClCompile Include="Sphere.cpp">
-      <Filter>源文件\Engine</Filter>
     </ClCompile>
     <ClCompile Include="SphereCollider.cpp">
       <Filter>源文件\Engine\Components</Filter>

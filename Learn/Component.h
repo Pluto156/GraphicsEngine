@@ -8,14 +8,18 @@ enum class ComponentType
     BoxCollider,
     SphereCollider,
     PlaneCollider,
+    MeshFilter,
     MeshRenderer,
     CharacterController,
-    GameScript
+    GameScript,
 };
 class GameObject;
+class Transform;
 class Component {
 public:
     GameObject* gameObject = nullptr;  // 反向引用所属对象
+    Transform* transform;// 反向引用所属对象Transform
+
     static ComponentType GetType();
 
     virtual void Start() {}   // 初始化时调用

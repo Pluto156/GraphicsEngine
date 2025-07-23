@@ -1,22 +1,17 @@
 #pragma once
 #include "CVector3.h"
 #include "GameObject.h"
-class Stage : public GameObject,public InputManager::IInputControl {
+class Stage : public GameScript {
 public:
-    // 构造函数，初始化舞台并设置每个区域的中心位置
-    Stage(std::string name);
-    Stage(std::string name,float posx, float posy, float posz);
-    void Draw()override;
-    void IntersectWithRay(
-        const CVector3& origin,
-        const CVector3& direct,
-        float length) const;
-    mutable Shape* curSelectShape;
 
-    void processKeyboard(unsigned char key, int x, int y)override;
-    void processSpecialKeys(int key, int x, int y) override;
-    void processMouse(int button, int state, int x, int y)override;
-    void processMouseMotion(int x, int y)override;
+    void Update()override;
+
+    //void IntersectWithRay(
+    //    const CVector3& origin,
+    //    const CVector3& direct,
+    //    float length) const;
+    mutable GameObject* curSelectShape;
+
 
     void StageDebug();
 

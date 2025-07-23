@@ -13,30 +13,65 @@ struct Vertex {
     float TexCoords[2];
 };
 
-// 单个网格类
 class Mesh {
 public:
-    Mesh(std::vector<Vertex> verts, std::vector<unsigned int> inds, unsigned int texID);
-    void Draw();
+    Mesh(std::vector<Vertex> verts, std::vector<unsigned int> inds);
+    void Draw(bool useTexture, unsigned int textureID) const;
+
+    const std::vector<Vertex>& GetVertices() const;
+    const std::vector<unsigned int>& GetIndices() const;
 
 private:
     std::vector<Vertex> vertices;
     std::vector<unsigned int> indices;
-    unsigned int textureID; // OpenGL 纹理 ID
 };
 
-// 模型类
+// 基础几何体类型
+enum class PrimitiveType {
+    Cube,
+    Sphere
+};
+
+// MeshFilter：负责持有 Mesh 数据
+class MeshFilter : public Component {
+public:
+    static ComponentType GetType();
+    std::vector<Mesh> meshes;
+
+    void SetPrimitive(PrimitiveType type, float size = 1.0f, int slices = 16, int stacks = 16);
+    void LoadModel(const std::string& path);
+
+private:
+    void generateCube(float size);
+    void generateSphere(float radius, int slices, int stacks);
+    void processMesh(const struct aiMesh* mesh);
+};
+
+// MeshRenderer：负责绘制
+struct Material {
+    CVector3 diffuseColor = { 1.0f, 1.0f, 1.0f }; // 漫反射颜色
+    CVector3 specularColor = { 1.0f, 1.0f, 1.0f }; //高光颜色
+    float shininess = 32.0f; // 高光强度
+};
 class MeshRenderer : public Component {
 public:
     static ComponentType GetType();
-public:
-    MeshRenderer(const std::string& modelPath, const std::string& texturePath = "");
+
+    MeshRenderer(const std::string& texturePath = "");
+
     void Draw();
 
+    void SetMaterial(const Material& mat) { material = mat; }
+    void SetTexture(const std::string& path);
+    const Material& GetMaterial() const { return material; }
+
 private:
-    std::vector<Mesh> meshes;
     unsigned int textureID = 0;
-    void loadModel(const std::string& path);
-    void processMesh(const struct aiMesh* mesh);
+    bool useTexture = false;
+    Material material;
+
     void loadTexture(const std::string& texturePath);
 };
+
+
+

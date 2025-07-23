@@ -20,8 +20,10 @@ public:
     /*--------------------------------------------------
      *  Object life‑cycle
      *--------------------------------------------------*/
-    GameObject* Instantiate(GameObject* obj) {
-        gameObjects.push_back(obj);
+    template<typename... Args>
+    GameObject* Instantiate(Args&&... args) {
+        GameObject* obj = new GameObject(std::forward<Args>(args)...);
+        pendingCreate.push_back(obj);
         return obj;
     }
 
@@ -62,8 +64,10 @@ private:
 
 private:
     std::vector<GameObject*> gameObjects;      // active objects
+    std::vector<GameObject*> pendingCreate;
     std::vector<GameObject*> pendingDestroy;   // objects waiting to die
 
     Camera* camera = nullptr;                // owned elsewhere
     Stage* stage = nullptr;                // owned elsewhere
+
 };

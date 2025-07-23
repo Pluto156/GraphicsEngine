@@ -12,13 +12,14 @@ public:
     GameScript();
     virtual ~GameScript();
 
-    virtual void OnColliderEnter(PhysicsLit::RigidBodyPrimitive*) = 0;
-    virtual void OnColliderStay(PhysicsLit::RigidBodyPrimitive*) = 0;
-    virtual void OnColliderExit(PhysicsLit::RigidBodyPrimitive*) = 0;
+    // 触发器和碰撞器函数：非纯虚，提供默认空实现
+    virtual void OnColliderEnter(PhysicsLit::RigidBodyPrimitive*) {}
+    virtual void OnColliderStay(PhysicsLit::RigidBodyPrimitive*) {}
+    virtual void OnColliderExit(PhysicsLit::RigidBodyPrimitive*) {}
 
-    virtual void OnTriggerEnter(PhysicsLit::RigidBodyPrimitive*) = 0;
-    virtual void OnTriggerStay(PhysicsLit::RigidBodyPrimitive*) = 0;
-    virtual void OnTriggerExit(PhysicsLit::RigidBodyPrimitive*) = 0;
+    virtual void OnTriggerEnter(PhysicsLit::RigidBodyPrimitive*) {}
+    virtual void OnTriggerStay(PhysicsLit::RigidBodyPrimitive*) {}
+    virtual void OnTriggerExit(PhysicsLit::RigidBodyPrimitive*) {}
 };
 
 

@@ -1,10 +1,7 @@
 #include "stdafx.h"
 #include "Camera.h"
 
-Camera::Camera()
-    : GameObject("Camera",CVector3(0, 28, 10)), camTarget(0, 0, 0),
-    camAngleX(0.0f), camAngleY(0.0f),
-    camMoveSpeed(0.1f), camRotateSpeed(0.5f),isControlView(false),ControlViewMode(0)
+void Camera::Start()
 {
     //z
     transform->Forward = camTarget - transform->position;
@@ -32,25 +29,27 @@ Camera::~Camera()
 {
 }
 
-void Camera::processKeyboard(unsigned char key, int x, int y)
+void Camera::Update()
 {
-    if (key == 'w')  // 向前
+    auto& input = InputManager::Instance();
+
+    if (input.GetKey('w'))  // 向前
     {
         transform->SetPositionDelta(-transform->Forward * camMoveSpeed);
     }
-    if (key == 's')  // 向后
+    if (input.GetKey('s'))  // 向后
     {
         transform->SetPositionDelta(transform->Forward * camMoveSpeed);
     }
-    if (key == 'a')  // 向左
+    if (input.GetKey('a'))  // 向左
     {
         transform->SetPositionDelta(-transform->Right * camMoveSpeed);
     }
-    if (key == 'd')  // 向右
+    if (input.GetKey('d'))  // 向右
     {
         transform->SetPositionDelta(transform->Right * camMoveSpeed);
     }
-    if (key == '1')
+    if (input.GetKey('1'))
     {
         /*if (ControlViewMode == 1)
         {
@@ -58,42 +57,24 @@ void Camera::processKeyboard(unsigned char key, int x, int y)
         }
         ControlViewMode = ControlViewMode == 0 ? 1 : 0;*/
     }
-}
 
-void Camera::processSpecialKeys(int key, int x, int y)
-{
-    
-}
-
-void Camera::processMouse(int button, int state, int x, int y)
-{
-    if (button == GLUT_MIDDLE_BUTTON)
+    if (input.GetKey(GLUT_LEFT_BUTTON))
     {
-        if (state == GLUT_DOWN)
-        {
-            prevMouseX = x;
-            prevMouseY = y;
-            isControlView = true;
-        }
-        else
-        {
-            isControlView = false;
-        }
+        isControlView = true;
     }
     else
     {
         isControlView = false;
     }
-}
 
-void Camera::processMouseMotion(int x, int y)
-{
     if (!isControlView)return;
 
     // 根据鼠标移动调整视角
-    camAngleY = (x - prevMouseX) * camRotateSpeed;  // 水平方向旋转
-    camAngleX = (y - prevMouseY) * camRotateSpeed;  // 垂直方向旋转
-    
+    camAngleY = input.GetAxis("Mouse X") * camRotateSpeed;  // 水平方向旋转
+    camAngleX = input.GetAxis("Mouse Y") * camRotateSpeed;  // 垂直方向旋转
+
+    //std::cout << input.GetAxis("Mouse X") <<" "<< input.GetAxis("Mouse Y") << std::endl;
+
     if (ControlViewMode == 0)
     {
         transform->SetEulerAnglesDelta(-camAngleY, -camAngleX, 0);
@@ -103,10 +84,8 @@ void Camera::processMouseMotion(int x, int y)
         transform->SetRotationDelta(CMatrix4::CreateRotationMatrix(camAngleY, CVector3::Up()));
         transform->SetRotationDelta(CMatrix4::CreateRotationMatrix(camAngleX, CVector3::Right()));
     }
-
-    prevMouseX = x;
-    prevMouseY = y;
 }
+
 
 void Camera::LookAt()
 {
@@ -124,4 +103,33 @@ void Camera::LookAt()
         glRotatef(-transform->eulerAngles.h, 0, 1, 0);
     }
     glTranslatef(-transform->position.x, -transform->position.y, -transform->position.z);
+}
+
+void Camera::OnColliderEnter(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
+{
+    //std::cout << gameObject->name << " OnColliderEnter " << PhysicsLit::PhysicsManager::Instance().GetGameObjectName(rigidBodyPrimitive)<< std::endl;
+
+}
+void Camera::OnColliderStay(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
+{
+    //std::cout << gameObject->name << " OnColliderStay " << PhysicsLit::PhysicsManager::Instance().GetGameObjectName(rigidBodyPrimitive) << std::endl;
+
+}
+void Camera::OnColliderExit(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
+{
+    //std::cout << gameObject->name << " OnColliderExit " << PhysicsLit::PhysicsManager::Instance().GetGameObjectName(rigidBodyPrimitive) << std::endl;
+
+}
+
+void Camera::OnTriggerEnter(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
+{
+
+}
+void Camera::OnTriggerStay(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
+{
+
+}
+void Camera::OnTriggerExit(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
+{
+
 }

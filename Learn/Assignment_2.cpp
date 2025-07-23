@@ -66,30 +66,42 @@ void InitStage()
 {
     if (!isInitStage)
     {
-        Camera* camera = new Camera();
-        Stage* stage = new Stage("stage", 0, 0, 0);
-        GameObject* Floor = new GameObject("Floor", CVector3(0, -1 - 0.05, 0));
-        GameObject* A = new GameObject("A", CVector3(0, 6, 0));
-        GameObject* B1 = new GameObject("B1", CVector3(-(9 + 8 * 0.05) / 2 + 0.5, 0, 0));
-        GameObject* B2 = new GameObject("B2", CVector3(-(15 + 14 * 0.05) / 2 + 0.5, 1, -4 - 4 * 0.05));
-        GameObject* C = new GameObject("C", CVector3(0, 2.5 + 5.5, 5));
-        GameObject* E29 = new GameObject("E29", CVector3(-(29 + 28 * 0.05) / 2 + 0.5, 20, 0));
-        GameObject* E25 = new GameObject("E25", CVector3(-(25 + 24 * 0.05) / 2 + 0.5, 20, 0));
-        GameObject* Car = new GameObject("Car", CVector3(0, 0.5 + 2.5+5, 0));
-        GameObject* Car2 = new GameObject("Car2", CVector3(3, 0.5 + 2.5 + 5, 0));
+        GameObject* camera = GameObjectManager::Instance().Instantiate("Camera");
+        GameObject* stage = GameObjectManager::Instance().Instantiate("stage", CVector3());
+        GameObject* Floor = GameObjectManager::Instance().Instantiate("Floor", CVector3(0, -1 - 0.05, 0));
+        GameObject* A = GameObjectManager::Instance().Instantiate("A", CVector3(0, 6, 0));
+        GameObject* B1 = GameObjectManager::Instance().Instantiate("B1", CVector3(-(9 + 8 * 0.05) / 2 + 0.5, 0, 0));
+        GameObject* B2 = GameObjectManager::Instance().Instantiate("B2", CVector3(-(15 + 14 * 0.05) / 2 + 0.5, 1, -4 - 4 * 0.05));
+        GameObject* C = GameObjectManager::Instance().Instantiate("C", CVector3(0, 2.5 + 5.5, 5));
+        GameObject* E29 = GameObjectManager::Instance().Instantiate("E29", CVector3(-(29 + 28 * 0.05) / 2 + 0.5, 20, 0));
+        GameObject* E25 = GameObjectManager::Instance().Instantiate("E25", CVector3(-(25 + 24 * 0.05) / 2 + 0.5, 20, 0));
+        GameObject* Car = GameObjectManager::Instance().Instantiate("Car", CVector3(0, 0.5 + 2.5+5, 0));
+        GameObject* Car2 = GameObjectManager::Instance().Instantiate("Car2", CVector3(3, 0.5 + 2.5 + 5, 0));
+        GameObject* Sphere = GameObjectManager::Instance().Instantiate("Sphere",CVector3(6, 20, 0));
+        Stage* StageCom = stage->AddComponent<Stage>();
+        Camera* CameraCom = camera->AddComponent<Camera>();
 
-        GameObject* Sphere = ShapeFactory::CreateSphere("Sphere",1, CVector3(6, 20, 0));
-
-        Car->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Model/T 90.obj","E:/sourcecode/GraphicsEngine/Resource/Model/T 90A.png");
+        Car->AddComponent<MeshFilter>()->LoadModel("E:/sourcecode/GraphicsEngine/Resource/Model/T 90.obj");
+        Car->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Model/T 90A.png");
         Car->transform->isShowLocalAxis = true;
         Car->transform->SetLocalScale(CVector3(0.2, 0.2, 0.2));
-        GameObjectManager::Instance().SetCamera(camera);
-        GameObjectManager::Instance().SetStage(stage);
-        stage->Car = Car;
-        stage->Car2 = Car2;
+        Car2->AddComponent<MeshFilter>()->LoadModel("E:/sourcecode/GraphicsEngine/Resource/Model/T 90.obj");
+        Car2->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Model/T 90A.png");
+        Car2->transform->isShowLocalAxis = true;
+        Car2->transform->SetLocalScale(CVector3(0.2, 0.2, 0.2));
+        Sphere->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Sphere, 1.0f, 32, 16);
+        Sphere->AddComponent<MeshRenderer>();
+
+        Floor->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
+        Floor->AddComponent<MeshRenderer>();
+
+        GameObjectManager::Instance().SetCamera(CameraCom);
+        GameObjectManager::Instance().SetStage(StageCom);
+        StageCom->Car = Car;
+        StageCom->Car2 = Car2;
 
         stage->transform->isShowLocalAxis = true;
-        stage->camera = GameObjectManager::Instance().GetCamera();
+        StageCom->camera = GameObjectManager::Instance().GetCamera();
         //stage.AddArea(&Floor);
         stage->AddChild(A);
         stage->AddChild(B1);
@@ -101,61 +113,106 @@ void InitStage()
         stage->AddChild(Car2);
 
         stage->transform->position=CVector3(0, 0, 0);
-        // 鍦版澘鍖?
         CVector3 AreaPos = Floor->transform->position;
-        Floor->AddChild(ShapeFactory::CreateBox("floor",100, 0.1, 100, AreaPos, 0.5f, 0.5f, 0.5f));
 
-        //B1.isShowLocalAxis = true;
         AreaPos = B1->transform->position;
-        // B1鍖猴細10鎺?鍒?x5x1鐨勮垶鍙板潡锛岄棿璺?.05
-        float b1Spacing = 0.05f; // 鏂瑰潡闂撮殧
+        float b1Spacing = 0.05f; 
         for (int i = 0; i < 10; ++i) {
             for (int j = 0; j < 9; ++j) {
-                float xPos = AreaPos.x + j * (1 + b1Spacing); // 璁＄畻x浣嶇疆
+                float xPos = AreaPos.x + j * (1 + b1Spacing); 
                 float yPos = AreaPos.y;
-                float zPos = AreaPos.z + i * (1 + b1Spacing); // 璁＄畻z浣嶇疆
-                B1->AddChild(ShapeFactory::CreateBox("B1_"+ std::to_string((i+1))+'_' + std::to_string((j + 1)), 1, 5, 1, CVector3(xPos, yPos, zPos), 0.117f, 0.506f, 0.69f));
+                float zPos = AreaPos.z + i * (1 + b1Spacing); 
+
+                GameObject* t = GameObjectManager::Instance().Instantiate("B1_" + std::to_string((i + 1)) + '_' + std::to_string((j + 1)), CVector3(xPos, yPos, zPos));
+                t->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
+                auto renderer = t->AddComponent<MeshRenderer>();
+                t->transform->localScale = CVector3(1,5,1);
+                Material mat;
+                mat.diffuseColor = CVector3(0.117f, 0.506f, 0.69f);
+                mat.specularColor = CVector3(1.0f, 1.0f, 1.0f);
+                mat.shininess = 64.0f;
+                renderer->SetMaterial(mat);
+                B1->AddChild(t);
             }
         }
 
-        // a鍖猴細22涓?x12x1鐨勬柟鍧楋紝寮у舰鎺掑垪锛岃绠楁瘡涓猙ox鐨勪綅缃?
-        float radius = 10.0f; // 鍋囪寮у舰鐨勫崐寰?
+        float radius = 10.0f; 
         A->transform->position.z= radius-10;
-        float anglestep = 0.15; // 灏?2涓潡骞冲潎鍒嗗竷鍦ㄥ姬褰笂
+        float anglestep = 0.15; 
         AreaPos = A->transform->position;
 
         for (int i = 0; i < 11; ++i) {
-            float angle = i * anglestep;  // 姣忎釜鏂瑰潡鐨勮搴?
-            float xPos = AreaPos.x - radius * sin(angle);  // 璁＄畻x浣嶇疆
-            float yPos = AreaPos.y;  // y浣嶇疆淇濇寔涓嶅彉
-            float zPos = AreaPos.z - radius * cos(angle);  // 璁＄畻z浣嶇疆
-            A->AddChild(ShapeFactory::CreateBox("A_" + std::to_string(i+1),1, 12, 1, CVector3(xPos, yPos, zPos),CMatrix4::CreateRotationMatrix(angle * 180 / M_PI,CVector3::Up()),CEuler(angle*180/M_PI,0,0), 0.117f, 0.506f, 0.69f));
-            A->AddChild(ShapeFactory::CreateBox("A_" + std::to_string(2*(i+i)),1, 12, 1, CVector3(-xPos, yPos, zPos), CMatrix4::CreateRotationMatrix(-angle * 180 / M_PI, CVector3::Up()), CEuler(-angle * 180 / M_PI, 0, 0), 0.117f, 0.506f, 0.69f));
+            float angle = i * anglestep;  
+            float xPos = AreaPos.x - radius * sin(angle); 
+            float yPos = AreaPos.y;  
+            float zPos = AreaPos.z - radius * cos(angle); 
+
+
+
+            GameObject* t1 = GameObjectManager::Instance().Instantiate("A_" + std::to_string(i + 1), CVector3(xPos, yPos, zPos),CMatrix4::CreateRotationMatrix(angle * 180 / M_PI, CVector3::Up()), CEuler(angle * 180 / M_PI, 0, 0));
+            t1->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
+            auto renderer1 = t1->AddComponent<MeshRenderer>();
+            t1->transform->localScale = CVector3(1, 12, 1);
+            Material mat1;
+            mat1.diffuseColor = CVector3(0.117f, 0.506f, 0.69f);
+            mat1.specularColor = CVector3(1.0f, 1.0f, 1.0f);
+            mat1.shininess = 64.0f;
+            renderer1->SetMaterial(mat1);
+
+            GameObject* t2 = GameObjectManager::Instance().Instantiate("A_" + std::to_string(i + 1), CVector3(-xPos, yPos, zPos), CMatrix4::CreateRotationMatrix(-angle * 180 / M_PI, CVector3::Up()), CEuler(-angle * 180 / M_PI, 0, 0));
+            t2->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
+            auto renderer2 = t2->AddComponent<MeshRenderer>();
+            t2->transform->localScale = CVector3(1, 12, 1);
+            Material mat2;
+            mat2.diffuseColor = CVector3(0.117f, 0.506f, 0.69f);
+            mat2.specularColor = CVector3(1.0f, 1.0f, 1.0f);
+            mat2.shininess = 64.0f;
+            renderer2->SetMaterial(mat2);
+
+            A->AddChild(t1);
+            A->AddChild(t2);
             
         }
 
 
-        // b2鍖猴細4鎺?5鍒?x3x1鐨勮垶鍙板潡锛岄棿璺?.05
         AreaPos = B2->transform->position;
-        float b2spacing = 0.05f; // 鏂瑰潡闂撮殧
+        float b2spacing = 0.05f;
         for (int i = 0; i < 4; ++i) {
             for (int j = 0; j < 15; ++j) {
-                float xPos = AreaPos.x + j * (1 + b2spacing); // 璁＄畻x浣嶇疆
+                float xPos = AreaPos.x + j * (1 + b2spacing); 
                 float yPos = AreaPos.y;
-                float zPos = AreaPos.z + i * (1 + b2spacing); // 璁＄畻z浣嶇疆
-                B2->AddChild(ShapeFactory::CreateBox("B2_" + std::to_string((i + 1)) + '_' + std::to_string((j + 1)), 1, 3, 1, CVector3(xPos, yPos, zPos), 0.08, 0.3, 0.6));
+                float zPos = AreaPos.z + i * (1 + b2spacing); 
+
+                GameObject* t = GameObjectManager::Instance().Instantiate("B2_" + std::to_string((i + 1)) + '_' + std::to_string((j + 1)), CVector3(xPos, yPos, zPos));
+                t->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
+                auto renderer = t->AddComponent<MeshRenderer>();
+                t->transform->localScale = CVector3(1, 3, 1);
+                Material mat;
+                mat.diffuseColor = CVector3(0.08, 0.3, 0.6);
+                mat.specularColor = CVector3(1.0f, 1.0f, 1.0f);
+                mat.shininess = 64.0f;
+                renderer->SetMaterial(mat);
+                B2->AddChild(t);
             }
         }
 
-        // c鍖猴細8鍧?x11x0.5鐨勮垶鍙板潡锛屽乏鍙冲悇4鍧楋紝闂磋窛0.05
         AreaPos = C->transform->position;
         float cspacing = 0.05f;
         for (int i = 0; i < 2; ++i) {
             for (int j = 0; j < 4; ++j) {
-                float xPos = AreaPos.x + (i * 2 - 1) * (10 + cspacing); // 璁＄畻x浣嶇疆
+                float xPos = AreaPos.x + (i * 2 - 1) * (10 + cspacing); 
                 float yPos = AreaPos.y;
-                float zPos = AreaPos.z + j * (2 + cspacing); // 璁＄畻z浣嶇疆
-                C->AddChild(ShapeFactory::CreateBox("C_" + std::to_string((i + 1)) + '_' + std::to_string((j + 1)), 3, 11, 0.5f, CVector3(xPos, yPos, zPos), 1, 0.89, 0));
+                float zPos = AreaPos.z + j * (2 + cspacing); 
+                GameObject* t = GameObjectManager::Instance().Instantiate("C_" + std::to_string((i + 1)) + '_' + std::to_string((j + 1)), CVector3(xPos, yPos, zPos));
+                t->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
+                auto renderer = t->AddComponent<MeshRenderer>();
+                t->transform->localScale = CVector3(3, 11, 0.5f);
+                Material mat;
+                mat.diffuseColor = CVector3(1, 0.89, 0);
+                mat.specularColor = CVector3(1.0f, 1.0f, 1.0f);
+                mat.shininess = 64.0f;
+                renderer->SetMaterial(mat);
+                C->AddChild(t);
             }
         }
 
@@ -196,10 +253,10 @@ void InitStage()
         //Car_Wheel_3->transform->SetLocalPosition(CVector3(-0.5, 0, 1.5));
         //Car_Wheel_4->transform->SetLocalPosition(CVector3(0.5, 0, 1.5));
         
-        Box* Car2_Body = ShapeFactory::CreateBox("Car2_Body", 2, 1, 4, CVector3(), 0, 0, 0, false);
+        //Box* Car2_Body = ShapeFactory::CreateBox("Car2_Body", 2, 1, 4, CVector3(), 0, 0, 0, false);
 
-        Car2->AddChild(Car2_Body);
-        Car2_Body->transform->SetLocalPosition(CVector3(0, 0, 0));
+        //Car2->AddChild(Car2_Body);
+        //Car2_Body->transform->SetLocalPosition(CVector3(0, 0, 0));
 
 
         auto rigidBody1 = B1->AddComponent<RigidBody>();
@@ -236,7 +293,7 @@ void InitStage()
 
         auto rigidBody3 = Car2->AddComponent<RigidBody>();
         rigidBody3->rigidBodyPrimitive->SetMass(1000);
-        auto BoxCollider3 = Car2->AddComponent<BoxCollider>(CVector3(1, 0.5, 2));
+        auto BoxCollider3 = Car2->AddComponent<BoxCollider>(CVector3(0.5, 0.5, 0.5));
         BoxCollider3->mFriction = 10;
         BoxCollider3->mBounciness = 0.5;
         BoxCollider3->SynchronizeData();
@@ -253,7 +310,7 @@ void InitStage()
         
         auto rigidBody4 = Sphere->AddComponent<RigidBody>();
         rigidBody4->rigidBodyPrimitive->SetMass(1000);
-        auto sphereCollider = Sphere->GetComponent<SphereCollider>();
+        auto sphereCollider = Sphere->AddComponent<SphereCollider>(1);
         sphereCollider->mFriction = 10;
         sphereCollider->mBounciness = 0.5;
         sphereCollider->SynchronizeData();
@@ -282,6 +339,7 @@ void myDisplay(void) {
     InputManager::Instance().Update();
     PhysicsLit::PhysicsManager::Instance().Update();
     //UpdateLightingPerFrame(); // 每帧刷新光照位置
+    InputManager::Instance().LateUpdate();
 
 }
 
@@ -297,10 +355,8 @@ void myReshape(int w, int h)
     glLoadIdentity();
 }
 
-// 澶勭悊閿洏杈撳叆
 void processKeyboard(unsigned char key, int x, int y)
 {
-    InputManager::Instance().enqueueKeyboardEvent(key, x, y);
     if (key == 'l' || key == 'L') {
         gEnableLighting = !gEnableLighting;
         InitLighting();  // 切换光照时重新初始化
@@ -308,24 +364,20 @@ void processKeyboard(unsigned char key, int x, int y)
     glutPostRedisplay();
 }
 
-// 澶勭悊閿洏杈撳叆
 void processSpecialKeys(int key, int x, int y)
 {
-    InputManager::Instance().enqueueSpecialKeyEvent(key, x, y);
     glutPostRedisplay();
 }
 
-// 澶勭悊榧犳爣鎸夐敭杈撳叆
 void processMouse(int button, int state, int x, int y)
 {
-    InputManager::Instance().enqueueMouseEvent(button, state, x, y);
 }
 
-// 澶勭悊榧犳爣绉诲姩
 void processMouseMotion(int x, int y)
 {
-    InputManager::Instance().enqueueMouseMotionEvent(x, y);
 }
+
+
 
 int main(int argc, char* argv[])
 {
@@ -343,6 +395,35 @@ int main(int argc, char* argv[])
     glutSpecialFunc(&processSpecialKeys);
     glutMouseFunc(&processMouse);
     glutMotionFunc(&processMouseMotion);
+
+    // 注册键盘事件处理
+    glutKeyboardFunc([](unsigned char key, int x, int y) {
+        InputManager::Instance().onKeyDown(key, x, y);
+        });
+
+    glutKeyboardUpFunc([](unsigned char key, int x, int y) {
+        InputManager::Instance().onKeyUp(key, x, y);
+        });
+
+    glutSpecialFunc([](int key, int x, int y) {
+        InputManager::Instance().onSpecialKeyDown(key, x, y);
+        });
+
+    glutSpecialUpFunc([](int key, int x, int y) {
+        InputManager::Instance().onSpecialKeyUp(key, x, y);
+        });
+
+    glutMotionFunc([](int x, int y) {
+        InputManager::Instance().onMouseMove(x, y);
+        });
+
+    glutPassiveMotionFunc([](int x, int y) {
+        InputManager::Instance().onMouseMove(x, y);
+        });
+    glutMouseFunc([](int button, int state, int x, int y) {
+        InputManager::Instance().onMouseButton(button, state, x, y);
+        });
+
 
     SetRC(); // 初始化光照和其他渲染设置
     glutMainLoop();
