@@ -66,7 +66,7 @@ void InitStage()
 {
     if (!isInitStage)
     {
-        GameObject* camera = GameObjectManager::Instance().Instantiate("Camera");
+        GameObject* camera = GameObjectManager::Instance().Instantiate("Camera",CVector3(0,20,20));
         GameObject* stage = GameObjectManager::Instance().Instantiate("stage", CVector3());
         GameObject* Floor = GameObjectManager::Instance().Instantiate("Floor", CVector3(0, -1 - 0.05, 0));
         GameObject* A = GameObjectManager::Instance().Instantiate("A", CVector3(0, 6, 0));
@@ -337,6 +337,8 @@ void myDisplay(void) {
     InitStage();
     TimeManager::Instance().Update();  
     InputManager::Instance().Update();
+    GameObjectManager::Instance().Update();
+    GameScriptManager::Instance().Update();
     PhysicsLit::PhysicsManager::Instance().Update();
     //UpdateLightingPerFrame(); // 每帧刷新光照位置
     InputManager::Instance().LateUpdate();

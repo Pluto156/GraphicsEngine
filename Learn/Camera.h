@@ -11,7 +11,7 @@ class Camera:public GameScript
 {
 public:
     // 摄像机目标
-    CVector3 camTarget;
+    CVector3 camTarget = CVector3();
 
     float prevMouseX;
     float prevMouseY;

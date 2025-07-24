@@ -2,7 +2,7 @@
 #include "Bullet.h"
 void Bullet::OnColliderEnter(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
 {
-	//std::cout << gameObject->name << " OnColliderEnter " << PhysicsLit::PhysicsManager::Instance().GetGameObjectName(rigidBodyPrimitive) << std::endl;
+	std::cout << gameObject->name << " OnColliderEnter " << PhysicsLit::PhysicsManager::Instance().GetGameObjectName(rigidBodyPrimitive) << std::endl;
 	//GameObjectManager::Instance().Destroy(gameObject);
 
 }
@@ -16,7 +16,7 @@ void Bullet::OnColliderExit(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
 }
 void Bullet::OnTriggerEnter(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
 {
-	//std::cout << gameObject->name << " OnTriggerEnter " << PhysicsLit::PhysicsManager::Instance().GetGameObjectName(rigidBodyPrimitive) << std::endl;
+	std::cout << gameObject->name << " OnTriggerEnter " << PhysicsLit::PhysicsManager::Instance().GetGameObjectName(rigidBodyPrimitive) << std::endl;
 	GameObjectManager::Instance().Destroy(gameObject);
 }
 void Bullet::OnTriggerStay(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)

@@ -41,8 +41,7 @@ namespace PhysicsLit
 		for (long long i = 0; i < deltaFrame; i++)
 		{
 			BeginFrame();
-			GameObjectManager::Instance().Update();
-			GameScriptManager::Instance().Update();
+
 			UpdatePhysics(TimeManager::fixedDeltaTime);
 			EndFrame();
 		}

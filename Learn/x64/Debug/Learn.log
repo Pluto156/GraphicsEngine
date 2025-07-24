@@ -1,7 +1,22 @@
-﻿  CModel.cpp
-e:\sourcecode\graphicsengine\learn\cmodel.cpp(32): warning C4267: “参数”: 从“size_t”转换到“GLsizei”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\cmodel.cpp(146): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\cmodel.cpp(149): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+﻿  Assignment_2.cpp
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(71): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(73): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(74): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(76): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(77): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(87): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(91): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(141): warning C4305: “初始化”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(152): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(162): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(191): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\assignment_2.cpp(211): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\gameobject.h(29): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+  e:\sourcecode\graphicsengine\learn\assignment_2.cpp(313): note: 参见对正在编译的函数 模板 实例化“T *GameObject::AddComponent<SphereCollider,int>(int &&)”的引用
+          with
+          [
+              T=SphereCollider
+          ]
 soil.lib(SOIL.obj) : warning LNK4099: 未找到 PDB“SOIL.pdb”(使用“soil.lib(SOIL.obj)”或在“E:\sourcecode\GraphicsEngine\run\SOIL.pdb”中寻找)；正在链接对象，如同没有调试信息一样
 soil.lib(stb_image_aug.obj) : warning LNK4099: 未找到 PDB“SOIL.pdb”(使用“soil.lib(stb_image_aug.obj)”或在“E:\sourcecode\GraphicsEngine\run\SOIL.pdb”中寻找)；正在链接对象，如同没有调试信息一样
 soil.lib(image_helper.obj) : warning LNK4099: 未找到 PDB“SOIL.pdb”(使用“soil.lib(image_helper.obj)”或在“E:\sourcecode\GraphicsEngine\run\SOIL.pdb”中寻找)；正在链接对象，如同没有调试信息一样

@@ -12,41 +12,22 @@ void CharacterController::Update()
     {
         rigidBody->SetPosition(trans->position + CVector3(0, 0, -0.1));
         rigidBody->SetRotation(CVector3(0, 0, 1).ToCMatrix().ToQuaternion());
-        //std::cout << "GLUT_KEY_UP" << CVector3(0, 0, -1).ToCMatrix().ToQuaternion().ToCMatrix4().ToEuler().ToString() << std::endl;
-
-
-        //transform->children[6]->SetLocalPositionDelta(0, 0, -0.1);
-        //transform->children[6]->LookAt(-transform->Forward);
 
     }
     if (input.GetKey('g'))
     {
         rigidBody->SetPosition(trans->position + CVector3(0, 0, 0.1));
         rigidBody->SetRotation(CVector3(0, 0, -1).ToCMatrix().ToQuaternion());
-        //std::cout << "GLUT_KEY_DOWN" << CVector3(0, 0, 1).ToCMatrix().ToQuaternion().ToCMatrix4().ToEuler().ToString() << std::endl;
-
-        //transform->children[6]->SetLocalPositionDelta(0, 0, 0.1);
-        //transform->children[6]->LookAt(transform->Forward);
-
     }
     if (input.GetKey('f'))
     {
         rigidBody->SetPosition(trans->position + CVector3(-0.1, 0, 0));
         rigidBody->SetRotation(CVector3(1, 0, 0).ToCMatrix().ToQuaternion());
-        //std::cout << "GLUT_KEY_LEFT" << CVector3(-1, 0, 0).ToCMatrix().ToQuaternion().ToCMatrix4().ToEuler().ToString() << std::endl;
-
-        //transform->children[6]->SetLocalPositionDelta(-0.1, 0, 0);
-        //transform->children[6]->LookAt(-transform->Right);
-
     }
     if (input.GetKey('h'))
     {
         rigidBody->SetPosition(trans->position + CVector3(0.1, 0, 0));
         rigidBody->SetRotation(CVector3(-1, 0, 0).ToCMatrix().ToQuaternion());
-        //std::cout << "GLUT_KEY_RIGHT" << CVector3(1, 0, 0).ToCMatrix().ToQuaternion().ToCMatrix4().ToEuler().ToString() << std::endl;
-
-        //transform->children[6]->SetLocalPositionDelta(0.1, 0, 0);
-        //transform->children[6]->LookAt(transform->Right);
     }
 
     if (input.GetKeyDown('j'))
