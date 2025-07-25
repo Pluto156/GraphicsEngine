@@ -1,16 +1,10 @@
 #include "stdafx.h"
 bool isInitStage = false;
-// 是否启用光照
-bool gEnableLighting = true;
+
 void myDisplay(void);
 void myTimerFunc(int val);
 void SetRC();
 void myReshape(int w, int h);
-void processKeyboard(unsigned char key, int x, int y);  
-void processSpecialKeys(int key, int x, int y);
-void processMouse(int button, int state, int x, int y); // 澶勭悊榧犳爣杈撳叆
-void processMouseMotion(int x, int y);
-// 瀹氭椂鍣ㄥ洖璋冨嚱鏁?
 void myTimerFunc(int val)
 {
     myDisplay();
@@ -18,46 +12,14 @@ void myTimerFunc(int val)
 }
 
 
-// 初始化光照的函数
-void InitLighting()
-{
-    if (!gEnableLighting) {
-        glDisable(GL_LIGHTING);
-        return;
-    }
 
-    glEnable(GL_LIGHTING);         // 启用光照系统
-    glEnable(GL_LIGHT0);           // 启用第 0 号光源
-    glEnable(GL_COLOR_MATERIAL);  // 启用颜色材质绑定
 
-    // 让 glColor 影响材质的 ambient 和 diffuse
-    glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
-
-    // 光源参数
-    GLfloat light_pos[] = { 5.0f, 5.0f, 5.0f, 1.0f };  // 点光源
-    GLfloat light_ambient[] = { 0.2f, 0.2f, 0.2f, 1.0f };
-    GLfloat light_diffuse[] = { 0.8f, 0.8f, 0.8f, 1.0f };
-    GLfloat light_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-
-    glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
-    glLightfv(GL_LIGHT0, GL_AMBIENT, light_ambient);
-    glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
-    glLightfv(GL_LIGHT0, GL_SPECULAR, light_specular);
-
-    glEnable(GL_DEPTH_TEST);  // 深度测试，避免遮挡错误
-}
-// 每帧都更新光源位置
-void UpdateLightingPerFrame()
-{
-    if (!gEnableLighting) return;
-    GLfloat light_pos[] = { 5.0f, 5.0f, 5.0f, 1.0f };
-    glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
-}
 
 void SetRC()
 {
+    glEnable(GL_DEPTH_TEST);  // 深度测试，避免遮挡错误
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-    InitLighting(); // 初始化光照
+    LightManager::Instance().InitLighting(); // 初始化光照
 }
 
 
@@ -66,6 +28,7 @@ void InitStage()
 {
     if (!isInitStage)
     {
+        GameObject* Light0 = GameObjectManager::Instance().Instantiate("Light0", CVector3(0, 20, 20));
         GameObject* camera = GameObjectManager::Instance().Instantiate("Camera",CVector3(0,20,20));
         GameObject* stage = GameObjectManager::Instance().Instantiate("stage", CVector3());
         GameObject* Floor = GameObjectManager::Instance().Instantiate("Floor", CVector3(0, -1 - 0.05, 0));
@@ -76,21 +39,48 @@ void InitStage()
         GameObject* E29 = GameObjectManager::Instance().Instantiate("E29", CVector3(-(29 + 28 * 0.05) / 2 + 0.5, 20, 0));
         GameObject* E25 = GameObjectManager::Instance().Instantiate("E25", CVector3(-(25 + 24 * 0.05) / 2 + 0.5, 20, 0));
         GameObject* Car = GameObjectManager::Instance().Instantiate("Car", CVector3(0, 0.5 + 2.5+5, 0));
+        GameObject* CarHealthBar = GameObjectManager::Instance().Instantiate("CarCarHealthBar");
+        GameObject* Car2HealthBar = GameObjectManager::Instance().Instantiate("Car2CarHealthBar");
         GameObject* Car2 = GameObjectManager::Instance().Instantiate("Car2", CVector3(3, 0.5 + 2.5 + 5, 0));
-        GameObject* Sphere = GameObjectManager::Instance().Instantiate("Sphere",CVector3(6, 20, 0));
         Stage* StageCom = stage->AddComponent<Stage>();
         Camera* CameraCom = camera->AddComponent<Camera>();
+        Light* light = Light0->AddComponent<Light>();
+        Light0->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Sphere, 0.1f, 32, 16);
+        Light0->AddComponent<MeshRenderer>();
+        light->color = CVector3(1.0f,1,1);   // 白色光
+        light->intensity = 0.1f;
+        light->range = 15.0f;
+        Light0->AddComponent<LightController>()->Light = light;
 
         Car->AddComponent<MeshFilter>()->LoadModel("E:/sourcecode/GraphicsEngine/Resource/Model/T 90.obj");
         Car->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Model/T 90A.png");
         Car->transform->isShowLocalAxis = true;
         Car->transform->SetLocalScale(CVector3(0.2, 0.2, 0.2));
+        CarHealthBar->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
+        auto renderer = CarHealthBar->AddComponent<MeshRenderer>();
+        Material mat;
+        mat.diffuseColor = CVector3(1, 0,0);
+        mat.specularColor = CVector3(0,0,0);
+        mat.shininess = 0;
+        renderer->SetMaterial(mat);
+
+        Car->AddChild(CarHealthBar);
+        CarHealthBar->transform->localPosition = CVector3(0, 1, 0);
+        CarHealthBar->transform->localScale = CVector3(1.5, 0.05, 0.05);
+
         Car2->AddComponent<MeshFilter>()->LoadModel("E:/sourcecode/GraphicsEngine/Resource/Model/T 90.obj");
         Car2->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Model/T 90A.png");
         Car2->transform->isShowLocalAxis = true;
         Car2->transform->SetLocalScale(CVector3(0.2, 0.2, 0.2));
-        Sphere->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Sphere, 1.0f, 32, 16);
-        Sphere->AddComponent<MeshRenderer>();
+        Car2->AddChild(Car2HealthBar);
+        Car2HealthBar->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
+        renderer = Car2HealthBar->AddComponent<MeshRenderer>();
+        renderer->SetMaterial(mat);
+        Car2HealthBar->transform->localPosition = CVector3(0, 1, 0);
+        Car2HealthBar->transform->localScale = CVector3(1.5, 0.05, 0.05);
+
+
+
 
         Floor->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
         Floor->AddComponent<MeshRenderer>();
@@ -307,24 +297,11 @@ void InitStage()
         rigidBody3->rigidBodyPrimitive->SetGameObjectName("Car2");
 
         
-        
-        auto rigidBody4 = Sphere->AddComponent<RigidBody>();
-        rigidBody4->rigidBodyPrimitive->SetMass(1000);
-        auto sphereCollider = Sphere->AddComponent<SphereCollider>(1);
-        sphereCollider->mFriction = 10;
-        sphereCollider->mBounciness = 0.5;
-        sphereCollider->SynchronizeData();
-
-        sphereCollider->mCollider->rigidBodyPrimitive = rigidBody4->rigidBodyPrimitive;
-        rigidBody4->rigidBodyPrimitive->mCollisionVolume = sphereCollider->mCollider;
-        rigidBody4->rigidBodyPrimitive->SetInertiaTensor(sphereCollider->mCollider->GetInertiaTensor(rigidBody4->rigidBodyPrimitive->GetMass()));
-        //rigidBody4->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(CVector3(0.0f, -9.8f, 0.0f)));
-        Sphere->transform->UpdateColliderTransform();
-        PhysicsLit::PhysicsManager::Instance().AddGameObject(Sphere);
 
 
         Car->AddComponent<CharacterController>();
-        Car2->AddComponent<Unit>();
+        Car2->AddComponent<Unit>()->HealthBar = Car2HealthBar->transform;
+        
         //Sphere->AddComponent<Bullet>();
         
         isInitStage = true;
@@ -332,7 +309,6 @@ void InitStage()
 
 }
 
-// 娓叉煋鍦烘櫙
 void myDisplay(void) {
     InitStage();
     TimeManager::Instance().Update();  
@@ -340,13 +316,11 @@ void myDisplay(void) {
     GameObjectManager::Instance().Update();
     GameScriptManager::Instance().Update();
     PhysicsLit::PhysicsManager::Instance().Update();
-    //UpdateLightingPerFrame(); // 每帧刷新光照位置
     InputManager::Instance().LateUpdate();
 
 }
 
 
-// 澶勭悊绐楀彛澶у皬鍙樺寲
 void myReshape(int w, int h)
 {
     glViewport(0, 0, w, h);
@@ -357,27 +331,9 @@ void myReshape(int w, int h)
     glLoadIdentity();
 }
 
-void processKeyboard(unsigned char key, int x, int y)
-{
-    if (key == 'l' || key == 'L') {
-        gEnableLighting = !gEnableLighting;
-        InitLighting();  // 切换光照时重新初始化
-    }
-    glutPostRedisplay();
-}
 
-void processSpecialKeys(int key, int x, int y)
-{
-    glutPostRedisplay();
-}
 
-void processMouse(int button, int state, int x, int y)
-{
-}
 
-void processMouseMotion(int x, int y)
-{
-}
 
 
 
@@ -393,10 +349,6 @@ int main(int argc, char* argv[])
     glutDisplayFunc(&myDisplay);
     glutTimerFunc(1, myTimerFunc, 0);
     glutReshapeFunc(&myReshape);
-    glutKeyboardFunc(&processKeyboard);
-    glutSpecialFunc(&processSpecialKeys);
-    glutMouseFunc(&processMouse);
-    glutMotionFunc(&processMouseMotion);
 
     // 注册键盘事件处理
     glutKeyboardFunc([](unsigned char key, int x, int y) {

@@ -13,6 +13,7 @@ Mesh::Mesh(std::vector<Vertex> verts, std::vector<unsigned int> inds)
 }
 
 void Mesh::Draw(bool useTexture, unsigned int textureID) const {
+    // === 启用纹理 ===
     if (useTexture && textureID != 0) {
         glEnable(GL_TEXTURE_2D);
         glBindTexture(GL_TEXTURE_2D, textureID);
@@ -21,6 +22,7 @@ void Mesh::Draw(bool useTexture, unsigned int textureID) const {
         glDisable(GL_TEXTURE_2D);
     }
 
+    // === 启用客户端状态 ===
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_NORMAL_ARRAY);
     glEnableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -29,8 +31,22 @@ void Mesh::Draw(bool useTexture, unsigned int textureID) const {
     glNormalPointer(GL_FLOAT, sizeof(Vertex), &vertices[0].Normal);
     glTexCoordPointer(2, GL_FLOAT, sizeof(Vertex), &vertices[0].TexCoords);
 
+    // === 第一次绘制：填充面 ===
     glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, indices.data());
 
+    // === 如果启用描边 ===
+    if (DebugManager::Instance().EnableGizmos) {
+        glDisable(GL_TEXTURE_2D); // 轮廓线不使用纹理
+        glColor3f(0.0f, 0.0f, 0.0f); // 黑色线条
+        glLineWidth(1.5f);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // 改为线框绘制
+
+        glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, indices.data());
+
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL); // 恢复为填充模式
+    }
+
+    // === 关闭客户端状态 ===
     glDisableClientState(GL_VERTEX_ARRAY);
     glDisableClientState(GL_NORMAL_ARRAY);
     glDisableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -40,6 +56,7 @@ void Mesh::Draw(bool useTexture, unsigned int textureID) const {
         glDisable(GL_TEXTURE_2D);
     }
 }
+
 
 const std::vector<Vertex>& Mesh::GetVertices() const { return vertices; }
 const std::vector<unsigned int>& Mesh::GetIndices() const { return indices; }
@@ -62,6 +79,7 @@ void MeshFilter::LoadModel(const std::string& path) {
     Assimp::Importer importer;
     const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate |
         aiProcess_GenNormals |         // 自动生成法线
+        aiProcess_FlipUVs |
         aiProcess_JoinIdenticalVertices |
         aiProcess_ImproveCacheLocality |
         aiProcess_SortByPType);
@@ -186,17 +204,10 @@ void MeshRenderer::Draw() {
     if (!filter || !transform) return;
 
     glPushMatrix();
-
-    // 应用缩放
     const CVector3& scale = transform->localScale;
     glScalef(scale.x, scale.y, scale.z);
 
-
-
-    // 禁用 ColorMaterial（避免颜色被 glColor 覆盖）
-    glDisable(GL_COLOR_MATERIAL);
-
-    // 设置材质参数（用于固定管线光照）
+    // 设置材质属性（用材质控制，不使用 glColor4f）
     GLfloat diffuse[] = {
         material.diffuseColor.x,
         material.diffuseColor.y,
@@ -209,29 +220,107 @@ void MeshRenderer::Draw() {
         material.specularColor.z,
         1.0f
     };
+    GLfloat ambientMat[] = {
+        material.diffuseColor.x * 0.2f,
+        material.diffuseColor.y * 0.2f,
+        material.diffuseColor.z * 0.2f,
+        1.0f
+    };
     GLfloat shininess = material.shininess;
 
+    // 设置材质影响光照
     glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diffuse);
     glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, specular);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ambientMat);
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, shininess);
 
-    // 如果使用纹理，启用并设置纹理环境为 MODULATE（乘以材质颜色）
+    if (LightManager::Instance().EnableLighting)
+    {
+        glEnable(GL_LIGHTING);
+        glEnable(GL_COLOR_MATERIAL);  // 启用颜色材质跟踪
+        glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);  // 使用 glColor 设置环境+漫反射
+
+        std::vector<PointLightData> lights;
+        LightManager::Instance().GatherLightUniforms(lights);
+
+        for (int i = 0; i < std::min(8, (int)lights.size()); ++i) {
+            GLenum lightId = GL_LIGHT0 + i;
+            glEnable(lightId);
+
+            const auto& light = lights[i];
+            GLfloat ambient[] = {
+                light.color.x * light.intensity * 0.5f,
+                light.color.y * light.intensity * 0.5f,
+                light.color.z * light.intensity * 0.5f,
+                1.0f
+            };
+            GLfloat col[] = {
+                light.color.x * light.intensity,
+                light.color.y * light.intensity,
+                light.color.z * light.intensity,
+                1.0f
+            };
+            GLfloat pos[] = {
+                light.position.x,
+                light.position.y,
+                light.position.z,
+                1.0f
+            };
+
+            glLightfv(lightId, GL_AMBIENT, ambient);
+            glLightfv(lightId, GL_DIFFUSE, col);
+            glLightfv(lightId, GL_SPECULAR, col);
+            glLightfv(lightId, GL_POSITION, pos);
+            glLightf(lightId, GL_CONSTANT_ATTENUATION, 1.0f);
+            glLightf(lightId, GL_LINEAR_ATTENUATION, 0.0f);
+            glLightf(lightId, GL_QUADRATIC_ATTENUATION, 0.0f);
+        }
+
+        // 清除未使用光源
+        for (int i = lights.size(); i < 8; ++i) {
+            glDisable(GL_LIGHT0 + i);
+        }
+
+        // 设置绘制颜色（将影响 GL_COLOR_MATERIAL 追踪）
+        glColor4f(
+            material.diffuseColor.x,
+            material.diffuseColor.y,
+            material.diffuseColor.z,
+            1.0f
+        );
+    }
+    else {
+        glDisable(GL_LIGHTING);
+        glDisable(GL_COLOR_MATERIAL);
+        glColor4f(
+            material.diffuseColor.x,
+            material.diffuseColor.y,
+            material.diffuseColor.z,
+            1.0f
+        );
+    }
+
+    // 处理纹理
     if (useTexture && textureID) {
         glEnable(GL_TEXTURE_2D);
         glBindTexture(GL_TEXTURE_2D, textureID);
-        glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+        if (LightManager::Instance().EnableLighting)
+            glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);  // 光照混合纹理
+        else
+            glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);   // 无光照直接用纹理色
     }
     else {
         glDisable(GL_TEXTURE_2D);
     }
 
-    // 绘制所有 mesh
+    // 绘制网格
     for (const auto& mesh : filter->meshes) {
         mesh.Draw(useTexture, textureID);
     }
 
     glPopMatrix();
 }
+
 
 
 void MeshRenderer::loadTexture(const std::string& path) {

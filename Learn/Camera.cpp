@@ -58,7 +58,7 @@ void Camera::Update()
         ControlViewMode = ControlViewMode == 0 ? 1 : 0;*/
     }
 
-    if (input.GetKey(GLUT_LEFT_BUTTON))
+    if (input.GetKey(GLUT_MIDDLE_BUTTON))
     {
         isControlView = true;
     }

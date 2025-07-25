@@ -5,134 +5,80 @@
 // 绘制舞台中的所有区域
 void Stage::Update() {
 
-    if (isRotate)
+    auto& input = InputManager::Instance();
+    if (input.GetKeyDown('l')|| input.GetKeyDown('L'))
     {
-        angle = (angle + 0.1) / 10;
-        angle = angle >= 360 ? angle - 360 : angle;
-        gameObject->transform->SetRotationDelta(CMatrix4::CreateRotationMatrix(angle, CVector3::Up()));
+        LightManager::Instance().EnableLighting = !LightManager::Instance().EnableLighting;
+        LightManager::Instance().InitLighting();  // 切换光照时重新初始化
     }
 
-    if (isBAnimation)
+    if (input.GetKeyDown(';'))
     {
-        Transform* B1 = gameObject->transform->children[1];
-        Transform* B2 = gameObject->transform->children[2];
-        for (int i = 0; i < 14; ++i) {
-            if (i < 4)
-            {
-                for (int j = 0; j < 15; ++j) {
-                    // 计算每一排盒子在 y 方向上的波浪位移
-                    // sin(BAnimationAngle) 控制波浪的高度，每一排的波浪同步
-                    float waveHeight = sin((BAnimationAngle + i * 30.0f) * M_PI / 180) / 100.0f; // 每排不同相位
-
-                    // 设置所有盒子在 y 方向上的升降
-                    B2->children[i * 15 + j]->SetPositionDelta(0, waveHeight, 0);
-                }
-            }
-            else
-            {
-                for (int j = 0; j < 9; ++j) {
-                    // 计算每一排盒子在 y 方向上的波浪位移
-                    // sin(BAnimationAngle) 控制波浪的高度，每一排的波浪同步
-                    float waveHeight = sin((BAnimationAngle + i * 30.0f) * M_PI / 180) / 100.0f; // 每排不同相位
-
-                    // 设置所有盒子在 y 方向上的升降
-                    B1->children[(i - 4) * 9 + j]->SetPositionDelta(0, waveHeight, 0);
-                }
-            }
-
-        }
-
-        // 增加动画角度，模拟波浪的传播
-        BAnimationAngle += 1;
-        BAnimationAngle = BAnimationAngle > 360 ? BAnimationAngle - 360 : BAnimationAngle;
+        DebugManager::Instance().EnableGizmos = !DebugManager::Instance().EnableGizmos;
     }
-
-    if (isCAnimation)
-    {
-        /*Transform* C = transform->children[3];
-
-        for (int i = 0; i < 2; ++i) {
-            for (int j = 0; j < 4; ++j) {
-                C->children[i * 4 + j]->SetRotationDelta(CAnimationAngle, 0, 0);
-                C->children[i * 4 + j]->SetPositionDelta(sin((CAnimationAngle + 90) * M_PI / 180) / 100, 0, 0);
-            }
-        }
-        CAnimationAngle += 0.3;
-        CAnimationAngle = CAnimationAngle > 360 ? CAnimationAngle - 360 : CAnimationAngle;*/\
-        Transform* C = gameObject->transform->children[7];
-        RigidBody *rig = C->gameObject->GetComponent<RigidBody>();
-
-
-        rig->rigidBodyPrimitive->SetRotation(CVector3(sin(Math::Deg2Rad(CAnimationAngle)), 0, cos(Math::Deg2Rad(CAnimationAngle))).ToCMatrix().ToQuaternion());
-        CAnimationAngle += 2;
-        CAnimationAngle = CAnimationAngle > 360 ? CAnimationAngle - 360 : CAnimationAngle;
-    }
-
     StageDebug();
-
-
 }
 
 
 
-//void Stage::IntersectWithRay(
-//    const CVector3& origin,
-//    const CVector3& direct,
-//    float length) const
-//{
-//    float minDistance = FLT_MAX; // 初始值设置为最大浮动值
-//    Shape* closestShape = nullptr; // 用于存储最近的Shape 
-//    PhysicsLit::Ray ray(origin,direct);
-//
-//    for (const auto area : gameObject->transform->children) {
-//        for (auto shape : area->children) {
-//            PhysicsLit::RayHitInfo rayHitInfo;
-//            Box* boxPtr = dynamic_cast<Box*>(shape->gameObject);
-//            if (boxPtr)
-//            {
-//                // 检测与射线的碰撞
-//                if (boxPtr->boxCollider->IntersectRay(ray, rayHitInfo)) {
-//                    // 计算射线与交点的距离
-//                    float distance = rayHitInfo.distance;
-//
-//                    // 如果当前碰撞的距离比最小距离更小，更新最近的 Box
-//                    if (distance < minDistance) {
-//                        minDistance = distance;
-//                        closestShape = boxPtr; // 更新最近的 Box
-//                    }
-//                }
-//            }
-//        }
-//    }
-//
-//    // 如果找到最近的 box，则将其设置为选中状态
-//    if (closestShape != nullptr) {
-//        closestShape->isSelect = !closestShape->isSelect;
-//
-//        if (closestShape->isSelect)
-//        {
-//            curSelectShape = closestShape;
-//
-//            //curSelectShape->rigidBody->AddForce(CVector3(0, 100, 0));
-//            //std::cout << curSelectBox->ToString();
-//        }
-//    }
-//    else
-//    {
-//        curSelectShape = nullptr;
-//    }
-//
-//    // 可以考虑是否需要重置其他 box 的 isSelect 为 false
-//    // 如果是每次都要重新计算选择的 box，那么可以遍历并将其他 box 的 isSelect 设置为 false
-//    for (const auto area : gameObject->transform->children) {
-//        for (auto shape : area->children) {
-//            Shape* boxPtr = dynamic_cast<Shape*>(shape->gameObject);
-//            if (boxPtr != closestShape) {
-//                boxPtr->isSelect = false;
-//            }
-//        }
-//    }
-//}
+void Stage::IntersectWithRay(
+    const CVector3& origin,
+    const CVector3& direct,
+    float length) const
+{
+    //float minDistance = FLT_MAX; // 初始值设置为最大浮动值
+    //GameObject* closestShape = nullptr; // 用于存储最近的Shape 
+    //PhysicsLit::Ray ray(origin,direct);
+
+    //for (const auto area : gameObject->transform->children) {
+    //    for (auto shape : area->children) {
+    //        PhysicsLit::RayHitInfo rayHitInfo;
+    //        Box* boxPtr = dynamic_cast<Box*>(shape->gameObject);
+    //        if (boxPtr)
+    //        {
+    //            // 检测与射线的碰撞
+    //            if (boxPtr->boxCollider->IntersectRay(ray, rayHitInfo)) {
+    //                // 计算射线与交点的距离
+    //                float distance = rayHitInfo.distance;
+
+    //                // 如果当前碰撞的距离比最小距离更小，更新最近的 Box
+    //                if (distance < minDistance) {
+    //                    minDistance = distance;
+    //                    closestShape = boxPtr; // 更新最近的 Box
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
+
+    //// 如果找到最近的 box，则将其设置为选中状态
+    //if (closestShape != nullptr) {
+    //    closestShape->isSelect = !closestShape->isSelect;
+
+    //    if (closestShape->isSelect)
+    //    {
+    //        curSelectShape = closestShape;
+
+    //        //curSelectShape->rigidBody->AddForce(CVector3(0, 100, 0));
+    //        //std::cout << curSelectBox->ToString();
+    //    }
+    //}
+    //else
+    //{
+    //    curSelectShape = nullptr;
+    //}
+
+    //// 可以考虑是否需要重置其他 box 的 isSelect 为 false
+    //// 如果是每次都要重新计算选择的 box，那么可以遍历并将其他 box 的 isSelect 设置为 false
+    //for (const auto area : gameObject->transform->children) {
+    //    for (auto shape : area->children) {
+    //        Shape* boxPtr = dynamic_cast<Shape*>(shape->gameObject);
+    //        if (boxPtr != closestShape) {
+    //            boxPtr->isSelect = false;
+    //        }
+    //    }
+    //}
+}
 //
 //void Stage::processMouse(int button, int state, int x, int y)
 //{

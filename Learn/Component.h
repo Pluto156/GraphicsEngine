@@ -12,6 +12,7 @@ enum class ComponentType
     MeshRenderer,
     CharacterController,
     GameScript,
+    Light
 };
 class GameObject;
 class Transform;

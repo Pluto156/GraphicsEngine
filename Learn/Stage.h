@@ -6,10 +6,10 @@ public:
 
     void Update()override;
 
-    //void IntersectWithRay(
-    //    const CVector3& origin,
-    //    const CVector3& direct,
-    //    float length) const;
+    void IntersectWithRay(
+        const CVector3& origin,
+        const CVector3& direct,
+        float length) const;
     mutable GameObject* curSelectShape;
 
 

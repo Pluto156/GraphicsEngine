@@ -28,7 +28,7 @@ public:
 
     // 每帧调用：清理上一帧的状态
     void Update() override;
-    void LateUpdate();
+    void LateUpdate() override;
 
     void onMouseMove(int x, int y);
     float GetAxis(const std::string& axisName) const;

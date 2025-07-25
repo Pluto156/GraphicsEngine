@@ -28,14 +28,22 @@
 #include "TimeManager.h"
 #include "PhysicsManager.h"
 #include "GameScriptManager.h"
+#include "LightManager.h"
+#include "DebugManager.h"
 #include "GameScript.h"
 #include <iostream>
 #include <sstream>
 #include <queue>
 #include <chrono> 
+
+
+
+//scripts
 #include "CharacterController.h"
 #include "Bullet.h"
+#include "LightController.h"
 #include "LayerDef.h"
 #include "Unit.h"
+#include "CombatManager.h"
 
 // TODO:  在此处引用程序需要的其他头文件

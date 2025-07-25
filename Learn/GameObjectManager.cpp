@@ -41,17 +41,6 @@ void GameObjectManager::Update()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glPushMatrix();
     if (camera) camera->LookAt();
-
-    angle += 0.01f;
-    float radius = 5.0f;
-    GLfloat light_pos[] = {
-        radius * cos(angle),
-        5.0f,
-        radius * sin(angle),
-        1.0f
-    };
-    glLightfv(GL_LIGHT0, GL_POSITION, light_pos);
-
     if (stage) glGetDoublev(GL_MODELVIEW_MATRIX, stage->modelViewMatrix);
     drawCoordinateAxes();
 

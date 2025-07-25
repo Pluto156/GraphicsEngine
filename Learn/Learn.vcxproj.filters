@@ -216,6 +216,18 @@
     <ClInclude Include="Unit.h">
       <Filter>头文件\Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="LightManager.h">
+      <Filter>头文件\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugManager.h">
+      <Filter>头文件\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="LightController.h">
+      <Filter>头文件\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="CombatManager.h">
+      <Filter>头文件\Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -372,6 +384,18 @@
       <Filter>源文件\Physics\Collision</Filter>
     </ClCompile>
     <ClCompile Include="Unit.cpp">
+      <Filter>源文件\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="LightManager.cpp">
+      <Filter>源文件\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugManager.cpp">
+      <Filter>源文件\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="LightController.cpp">
+      <Filter>源文件\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="CombatManager.cpp">
       <Filter>源文件\Scripts</Filter>
     </ClCompile>
   </ItemGroup>

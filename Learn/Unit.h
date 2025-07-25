@@ -11,9 +11,15 @@ public:
 
     void Start()override;
     void Update()override;
+    Transform* HealthBar;
+
+    void ReSet();
+
 
 private:
 
-    int Health = 1;
+    int FullHealth = 10;
+    int CurHealth = 10;
+
 };
 
