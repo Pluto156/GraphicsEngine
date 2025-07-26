@@ -11,18 +11,12 @@ void myTimerFunc(int val)
     glutTimerFunc(1, myTimerFunc, 0);
 }
 
-
-
-
-
 void SetRC()
 {
     glEnable(GL_DEPTH_TEST);  // 深度测试，避免遮挡错误
     glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     LightManager::Instance().InitLighting(); // 初始化光照
 }
-
-
 
 void InitStage()
 {
@@ -206,49 +200,6 @@ void InitStage()
             }
         }
 
-        //// e29鍖猴細2鎺掞紝鍓嶆帓29涓紝鍚庢帓25涓紝澶у皬1x12x0.1锛岄棿璺?.05
-        //AreaPos = E29->transform->position;
-        //float e29spacing = 0.05f;
-        //for (int j = 0; j < 29; ++j) {
-        //    float xPos = AreaPos.x + j * (1 + e29spacing); // 璁＄畻x浣嶇疆
-        //    float yPos = AreaPos.y;
-        //    float zPos = AreaPos.z; // 璁＄畻z浣嶇疆
-        //    E29->AddChild(ShapeFactory::CreateBox("E29_" + std::to_string((j + 1)),1, 12, 0.1f, CVector3(xPos, yPos, zPos), 0.9, 0.57, 0.12));
-        //}
-
-        //// e25鍖猴細2鎺掞紝鍓嶆帓29涓紝鍚庢帓25涓紝澶у皬1x12x0.1锛岄棿璺?.05
-        //AreaPos = E25->transform->position;
-        //float e25spacing = 0.05f;
-        //for (int j = 0; j < 25; ++j) {
-        //    float xPos = AreaPos.x + j * (1 + e25spacing); // 璁＄畻x浣嶇疆
-        //    float yPos = AreaPos.y;
-        //    float zPos = AreaPos.z + 1 * (2 + e25spacing); // 璁＄畻z浣嶇疆
-        //    E25->AddChild(ShapeFactory::CreateBox("E25_" + std::to_string((j + 1)),1, 12, 0.1f, CVector3(xPos, yPos, zPos), 0.9, 0.57, 0.12));
-        //}
-        //灏忚溅
-        //Box* Car_Body = ShapeFactory::CreateBox("Car_Body", 2, 1, 4, CVector3(), 0.9, 0.9, 0.9, false);
-        //Box* Car_Wheel_1 = ShapeFactory::CreateBox("Car_Wheel_1", 1, 1, 1, CVector3(), 0, 0, 0, false);
-        //Box* Car_Wheel_2 = ShapeFactory::CreateBox("Car_Wheel_2", 1, 1, 1, CVector3(), 0, 0, 0, false);
-        //Box* Car_Wheel_3 = ShapeFactory::CreateBox("Car_Wheel_3", 1, 1, 1, CVector3(), 0, 0, 0, false);
-        //Box* Car_Wheel_4 = ShapeFactory::CreateBox("Car_Wheel_4", 1, 1, 1, CVector3(), 0, 0, 0, false);
-        //Car->AddChild(Car_Body);
-        //Car->AddChild(Car_Wheel_1);
-        //Car->AddChild(Car_Wheel_2);
-        //Car->AddChild(Car_Wheel_3);
-        //Car->AddChild(Car_Wheel_4);
-
-        //Car_Body->transform->SetLocalPosition(CVector3(0, 1, 0));
-        //Car_Wheel_1->transform->SetLocalPosition(CVector3(-0.5, 0, -1.5));
-        //Car_Wheel_2->transform->SetLocalPosition(CVector3(0.5, 0, -1.5));
-        //Car_Wheel_3->transform->SetLocalPosition(CVector3(-0.5, 0, 1.5));
-        //Car_Wheel_4->transform->SetLocalPosition(CVector3(0.5, 0, 1.5));
-        
-        //Box* Car2_Body = ShapeFactory::CreateBox("Car2_Body", 2, 1, 4, CVector3(), 0, 0, 0, false);
-
-        //Car2->AddChild(Car2_Body);
-        //Car2_Body->transform->SetLocalPosition(CVector3(0, 0, 0));
-
-
         auto rigidBody1 = B1->AddComponent<RigidBody>();
         //rigidBody1->rigidBodyPrimitive->SetMass(100);
         auto planeCollider = B1->AddComponent<PlaneCollider>();
@@ -296,13 +247,24 @@ void InitStage()
         Car2->transform->UpdateColliderTransform();
         rigidBody3->rigidBodyPrimitive->SetGameObjectName("Car2");
 
-        
 
+        auto CarController =  Car->AddComponent<CharacterController>();
+        CarController->BindUpKey(KeyCode::T);
+        CarController->BindDownKey(KeyCode::G);
+        CarController->BindLeftKey(KeyCode::F);
+        CarController->BindRightKey(KeyCode::H);
+        CarController->BindFireKey(KeyCode::J);
 
-        Car->AddComponent<CharacterController>();
+        auto Car2Controller = Car2->AddComponent<CharacterController>();
+        Car2Controller->BindUpKey(KeyCode::UpArrow);
+        Car2Controller->BindDownKey(KeyCode::DownArrow);
+        Car2Controller->BindLeftKey(KeyCode::LeftArrow);
+        Car2Controller->BindRightKey(KeyCode::RightArrow);
+        Car2Controller->BindFireKey(KeyCode::Alpha1);
+
+        Car->AddComponent<Unit>()->HealthBar = CarHealthBar->transform;
         Car2->AddComponent<Unit>()->HealthBar = Car2HealthBar->transform;
         
-        //Sphere->AddComponent<Bullet>();
         
         isInitStage = true;
     }

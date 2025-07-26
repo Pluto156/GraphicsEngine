@@ -33,23 +33,23 @@ void Camera::Update()
 {
     auto& input = InputManager::Instance();
 
-    if (input.GetKey('w'))  // 向前
+    if (input.GetKey(KeyCode::W))  // 向前
     {
         transform->SetPositionDelta(-transform->Forward * camMoveSpeed);
     }
-    if (input.GetKey('s'))  // 向后
+    if (input.GetKey(KeyCode::S))  // 向后
     {
         transform->SetPositionDelta(transform->Forward * camMoveSpeed);
     }
-    if (input.GetKey('a'))  // 向左
+    if (input.GetKey(KeyCode::A))  // 向左
     {
         transform->SetPositionDelta(-transform->Right * camMoveSpeed);
     }
-    if (input.GetKey('d'))  // 向右
+    if (input.GetKey(KeyCode::D))  // 向右
     {
         transform->SetPositionDelta(transform->Right * camMoveSpeed);
     }
-    if (input.GetKey('1'))
+    if (input.GetKeyDown(KeyCode::Alpha1))
     {
         /*if (ControlViewMode == 1)
         {
@@ -58,7 +58,7 @@ void Camera::Update()
         ControlViewMode = ControlViewMode == 0 ? 1 : 0;*/
     }
 
-    if (input.GetKey(GLUT_MIDDLE_BUTTON))
+    if (input.GetKey(KeyCode::Mouse2))
     {
         isControlView = true;
     }

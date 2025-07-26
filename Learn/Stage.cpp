@@ -6,13 +6,13 @@
 void Stage::Update() {
 
     auto& input = InputManager::Instance();
-    if (input.GetKeyDown('l')|| input.GetKeyDown('L'))
+    if (input.GetKeyDown(KeyCode::L))
     {
         LightManager::Instance().EnableLighting = !LightManager::Instance().EnableLighting;
         LightManager::Instance().InitLighting();  // 切换光照时重新初始化
     }
 
-    if (input.GetKeyDown(';'))
+    if (input.GetKeyDown(KeyCode::Semicolon))
     {
         DebugManager::Instance().EnableGizmos = !DebugManager::Instance().EnableGizmos;
     }

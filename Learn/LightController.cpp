@@ -3,11 +3,11 @@
 void LightController::Update()
 {
     auto& input = InputManager::Instance();
-    if (input.GetKey('['))
+    if (input.GetKey(KeyCode::LeftBracket))
     {
         Light->intensity -= 0.02f;
     }
-    if (input.GetKey(']'))
+    if (input.GetKey(KeyCode::RightBracket))
     {
         Light->intensity += 0.02f;
     }

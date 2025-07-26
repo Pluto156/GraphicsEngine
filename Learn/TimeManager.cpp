@@ -11,9 +11,11 @@ long long TimeManager::deltaTime_micro = 0;
 const int TimeManager::fixedFrameRate = 100;
 const float TimeManager::fixedDeltaTime = 1.0f / TimeManager::fixedFrameRate;
 const long long TimeManager::fixedDeltaTime_micro = 1'000'000 / TimeManager::fixedFrameRate;
+long long TimeManager::frameCount = 0;
 
 void TimeManager::Update()
 {
+	++frameCount;
 	long long time = std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 	long long time_micro = std::chrono::duration_cast<std::chrono::microseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 

@@ -7,6 +7,10 @@ class TimeManager : public IManager
 {
 public:
 	/// <summary>
+	/// 当前帧号
+	/// </summary>
+	static long long frameCount;
+	/// <summary>
 	/// 当前系统时间戳（秒）
 	/// </summary>
 	static long long curSysTime;

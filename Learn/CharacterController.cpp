@@ -8,29 +8,29 @@ void CharacterController::Update()
     Transform* trans = gameObject->transform;
     PhysicsLit::RigidBodyPrimitive* rigidBody = trans->gameObject->GetComponent<RigidBody>()->rigidBodyPrimitive;
     //小车控制
-    if (input.GetKey('t'))
+    if (input.GetKey(UpKey))
     {
         rigidBody->SetPosition(trans->position + CVector3(0, 0, -0.1));
         rigidBody->SetRotation(CVector3(0, 0, 1).ToCMatrix().ToQuaternion());
 
     }
-    if (input.GetKey('g'))
+    if (input.GetKey(DownKey))
     {
         rigidBody->SetPosition(trans->position + CVector3(0, 0, 0.1));
         rigidBody->SetRotation(CVector3(0, 0, -1).ToCMatrix().ToQuaternion());
     }
-    if (input.GetKey('f'))
+    if (input.GetKey(LeftKey))
     {
         rigidBody->SetPosition(trans->position + CVector3(-0.1, 0, 0));
         rigidBody->SetRotation(CVector3(1, 0, 0).ToCMatrix().ToQuaternion());
     }
-    if (input.GetKey('h'))
+    if (input.GetKey(RightKey))
     {
         rigidBody->SetPosition(trans->position + CVector3(0.1, 0, 0));
         rigidBody->SetRotation(CVector3(-1, 0, 0).ToCMatrix().ToQuaternion());
     }
 
-    if (input.GetKeyDown('j'))
+    if (input.GetKeyDown(FireKey))
     {
         GameObject* Sphere = GameObjectManager::Instance().Instantiate("Sphere" + std::to_string(cnt++), gameObject->transform->position + gameObject->transform->Forward);
         Sphere->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Sphere, 0.2f, 32, 16);
@@ -57,6 +57,28 @@ void CharacterController::Update()
         bullet->MoveDir = gameObject->transform->Forward;
         PhysicsLit::PhysicsManager::Instance().AddGameObject(Sphere);
     }
+}
+
+
+void CharacterController::BindUpKey(KeyCode key)
+{
+    this->UpKey = key;
+}
+void CharacterController::BindDownKey(KeyCode key)
+{
+    this->DownKey = key;
+}
+void CharacterController::BindLeftKey(KeyCode key)
+{
+    this->LeftKey = key;
+}
+void CharacterController::BindRightKey(KeyCode key)
+{
+    this->RightKey = key;
+}
+void CharacterController::BindFireKey(KeyCode key)
+{
+    this->FireKey = key;
 }
 
 

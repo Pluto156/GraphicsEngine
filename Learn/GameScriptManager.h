@@ -131,11 +131,6 @@ private:
     // ¹¤¾ßº¯Êý
 
     void Notify(RigidPtr a, RigidPtr b, CollisionCallback cb) {
-        if (a->GetGameObjectName().find("Sphere") != std::string::npos || b->GetGameObjectName().find("Sphere") != std::string::npos)
-        {
-            std::cout << "DEBUG " << a->GetGameObjectName() << " " << b->GetGameObjectName() << " " << PhysicsLit::PhysicsManager::Instance().TryGetGameScript(a)<<" "<< PhysicsLit::PhysicsManager::Instance().TryGetGameScript(b)<< std::endl;
-        }
-
         GameScript* ga = PhysicsLit::PhysicsManager::Instance().TryGetGameScript(a);
         if (ga) (ga->*cb)(b);
         GameScript* gb = PhysicsLit::PhysicsManager::Instance().TryGetGameScript(b);
