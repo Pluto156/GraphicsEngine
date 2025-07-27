@@ -1,18 +1,17 @@
-﻿  Assignment_2.cpp
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(28): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(30): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(31): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(33): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(34): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(52): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(63): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(68): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(74): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(125): warning C4305: “初始化”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(136): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(146): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(175): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(195): warning C4305: “参数”: 从“double”到“float”截断
+﻿  CharacterController.cpp
+e:\sourcecode\graphicsengine\learn\charactercontroller.cpp(13): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\charactercontroller.cpp(19): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\charactercontroller.cpp(24): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\charactercontroller.cpp(29): warning C4305: “参数”: 从“double”到“float”截断
+e:\sourcecode\graphicsengine\learn\gameobject.h(29): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
+  e:\sourcecode\graphicsengine\learn\charactercontroller.cpp(42): note: 参见对正在编译的函数 模板 实例化“T *GameObject::AddComponent<SphereCollider,double>(double &&)”的引用
+          with
+          [
+              T=SphereCollider
+          ]
+  Bullet.cpp
+  正在生成代码...
+    正在创建库 E:\sourcecode\GraphicsEngine\run\Learn.lib 和对象 E:\sourcecode\GraphicsEngine\run\Learn.exp
 soil.lib(SOIL.obj) : warning LNK4099: 未找到 PDB“SOIL.pdb”(使用“soil.lib(SOIL.obj)”或在“E:\sourcecode\GraphicsEngine\run\SOIL.pdb”中寻找)；正在链接对象，如同没有调试信息一样
 soil.lib(stb_image_aug.obj) : warning LNK4099: 未找到 PDB“SOIL.pdb”(使用“soil.lib(stb_image_aug.obj)”或在“E:\sourcecode\GraphicsEngine\run\SOIL.pdb”中寻找)；正在链接对象，如同没有调试信息一样
 soil.lib(image_helper.obj) : warning LNK4099: 未找到 PDB“SOIL.pdb”(使用“soil.lib(image_helper.obj)”或在“E:\sourcecode\GraphicsEngine\run\SOIL.pdb”中寻找)；正在链接对象，如同没有调试信息一样

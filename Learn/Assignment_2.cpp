@@ -343,6 +343,7 @@ int main(int argc, char* argv[])
 
     SetRC(); // 初始化光照和其他渲染设置
     glutMainLoop();
+
     return 0;
 }
 
