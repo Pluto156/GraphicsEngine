@@ -1,15 +1,7 @@
 #pragma once
-#include "CVector3.h"
-#include "CMatrix4.h"
-#include "CEuler.h"
-#include "CQuaternion.h"
-#include "Component.h"
+#include "stdafx.h"
 
-#include <vector>
-#include <string>
 class Transform :public Component{
-public:
-    static ComponentType GetType();
 public:
     CVector3 position;   // 世界坐标
     CMatrix4 rotation;   // 世界旋转矩阵
@@ -147,8 +139,30 @@ public:
         children.clear();  
     }
 
-
-
 private:
     CMatrix4 worldTransformMatrix;//世界变换矩阵
+
+    //拷贝相关
+    REGISTER_COMPONENT(Transform, ComponentType::Transform)
+
+    static void RegisterFields(TypeInfo& info) {
+    // 注意：parent/children 指针由 CloneGameObjectTree 处理
+    REGISTER_FIELD(Transform, position);
+    REGISTER_FIELD(Transform, rotation);
+    REGISTER_FIELD(Transform, eulerAngles);
+    REGISTER_FIELD(Transform, quaternion);
+    REGISTER_FIELD(Transform, localPosition);
+    REGISTER_FIELD(Transform, localRotation);
+    REGISTER_FIELD(Transform, localEulerAngles);
+    REGISTER_FIELD(Transform, localScale);
+    REGISTER_FIELD(Transform, Up);
+    REGISTER_FIELD(Transform, Forward);
+    REGISTER_FIELD(Transform, Right);
+    REGISTER_FIELD(Transform, isShowLocalAxis);
+
+    // 忽略以下字段：
+    // - gameobject: GameObject::CloneTree 时重新绑定
+    // - parent/children: 外部处理 Transform 层级
+}
+
 };

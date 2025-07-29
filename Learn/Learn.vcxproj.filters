@@ -228,6 +228,9 @@
     <ClInclude Include="CombatManager.h">
       <Filter>头文件\Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="CountDownTimerManager.h">
+      <Filter>头文件\Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -397,6 +400,9 @@
     </ClCompile>
     <ClCompile Include="CombatManager.cpp">
       <Filter>源文件\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="CountDownTimerManager.cpp">
+      <Filter>源文件\Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

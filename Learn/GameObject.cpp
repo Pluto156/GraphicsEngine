@@ -140,3 +140,29 @@ void GameObject::AddChild(GameObject* child)
 {
     this->transform->AddChild(child->transform);
 }
+
+GameObject* GameObject::Clone()  const {
+    // 新建一个 GameObject，复制名称和变换（可定制）
+    GameObject* clone = new GameObject(name, transform->GetPosition(), transform->GetRotation(), transform->GetEulerAngles());
+
+    // 克隆组件（注意：每个组件类型需支持深拷贝或自带 Clone 方法）
+    for (auto comp : components) {
+        // 伪代码：你需要为每个 Component 派生类实现 Clone()
+        Component* cloned = comp->Clone();
+        clone->AddComponentRaw(cloned); // 下面说明 AddComponentRaw 是什么
+    }
+
+    return clone;
+}
+
+// 用于组件克隆，跳过 Start 调用（避免多次初始化）
+void GameObject::AddComponentRaw(Component* comp) {
+    comp->gameObject = this;
+    comp->transform = this->transform;
+    components.push_back(comp);
+
+    // 检查是否是 GameScript 类型
+    using DecayedT = std::decay_t<decltype(*comp)>;
+    constexpr bool is_script = std::is_base_of<GameScript, DecayedT>::value;
+    AssignIfGameScript(comp, std::bool_constant<is_script>{});
+}

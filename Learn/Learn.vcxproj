@@ -170,6 +170,7 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="Contact.h" />
     <ClInclude Include="ContactResolver.h" />
+    <ClInclude Include="CountDownTimerManager.h" />
     <ClInclude Include="CQuaternion.h" />
     <ClInclude Include="CVector2.h" />
     <ClInclude Include="CVector3.h" />
@@ -228,6 +229,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Contact.cpp" />
     <ClCompile Include="ContactResolver.cpp" />
+    <ClCompile Include="CountDownTimerManager.cpp" />
     <ClCompile Include="CQuaternion.cpp" />
     <ClCompile Include="CVector2.cpp" />
     <ClCompile Include="CVector3.cpp" />

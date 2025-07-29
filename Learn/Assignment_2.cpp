@@ -36,6 +36,10 @@ void InitStage()
         GameObject* CarHealthBar = GameObjectManager::Instance().Instantiate("CarCarHealthBar");
         GameObject* Car2HealthBar = GameObjectManager::Instance().Instantiate("Car2CarHealthBar");
         GameObject* Car2 = GameObjectManager::Instance().Instantiate("Car2", CVector3(3, 0.5 + 2.5 + 5, 0));
+        GameObject* HealthPack = GameObjectManager::Instance().Instantiate("HealthPack", CVector3(0, 0.5 + 2.5 + 5, 0));
+        GameObject* HealthPackPart1 = GameObjectManager::Instance().Instantiate("HealthPackPart1", CVector3(0, 0.5 + 2.5 + 5, 0));
+        GameObject* HealthPackPart2 = GameObjectManager::Instance().Instantiate("HealthPackPart2", CVector3(0, 0.5 + 2.5 + 5, 0));
+
         Stage* StageCom = stage->AddComponent<Stage>();
         Camera* CameraCom = camera->AddComponent<Camera>();
         Light* light = Light0->AddComponent<Light>();
@@ -73,6 +77,19 @@ void InitStage()
         Car2HealthBar->transform->localPosition = CVector3(0, 1, 0);
         Car2HealthBar->transform->localScale = CVector3(1.5, 0.05, 0.05);
 
+        HealthPack->AddChild(HealthPackPart1);
+        HealthPack->AddChild(HealthPackPart2);
+        HealthPackPart1->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
+        renderer = HealthPackPart1->AddComponent<MeshRenderer>();
+        renderer->SetMaterial(mat);
+        HealthPackPart1->transform->localPosition = CVector3(0, 0, 0);
+        HealthPackPart1->transform->localScale = CVector3(0.5, 1.5, 0.5);
+        HealthPackPart2->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
+        renderer = HealthPackPart2->AddComponent<MeshRenderer>();
+        renderer->SetMaterial(mat);
+        HealthPackPart2->transform->localPosition = CVector3(0, 0, 0);
+        HealthPackPart2->transform->SetEulerAngles(CEuler(0, 90, 0));
+        HealthPackPart2->transform->localScale = CVector3(0.5, 1.5, 0.5);
 
 
 
@@ -273,13 +290,13 @@ void InitStage()
 
 void myDisplay(void) {
     InitStage();
-    TimeManager::Instance().Update();  
+    TimeManager::Instance().Update(); 
+    CountDownTimerManager::Instance().Update();
     InputManager::Instance().Update();
     GameObjectManager::Instance().Update();
     GameScriptManager::Instance().Update();
     PhysicsLit::PhysicsManager::Instance().Update();
     InputManager::Instance().LateUpdate();
-
 }
 
 

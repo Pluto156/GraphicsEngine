@@ -26,11 +26,13 @@
 #include "Stage.h"
 #include "GameObject.h"
 #include "TimeManager.h"
+#include "CountDownTimerManager.h"
 #include "PhysicsManager.h"
 #include "GameScriptManager.h"
 #include "LightManager.h"
 #include "DebugManager.h"
 #include "GameScript.h"
+#include "Reflection.h"
 #include <iostream>
 #include <sstream>
 #include <queue>

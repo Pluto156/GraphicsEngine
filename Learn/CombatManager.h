@@ -1,5 +1,7 @@
 #pragma once
-class CombatManager:public GameScript
+#include "CountDownTimerManager.h"
+
+class CombatManager : public GameScript
 {
 public:
 
@@ -7,22 +9,29 @@ public:
         static CombatManager instance;
         return instance;
     }
+
     GameObject* Car;
     GameObject* Car2;
 
-    void RecycleCar(GameObject* Car)
+    void RecycleCar(GameObject* car)
     {
-        auto unit = Car->GetComponent<Unit>();
+        auto unit = car->GetComponent<Unit>();
         unit->ReSet();
-        PhysicsLit::RigidBodyPrimitive* rigidBody = Car->GetComponent<RigidBody>()->rigidBodyPrimitive;
+
+        PhysicsLit::RigidBodyPrimitive* rigidBody = car->GetComponent<RigidBody>()->rigidBodyPrimitive;
         rigidBody->SetPosition(CVector3(0, -1000, 0));
-        ReSpawnCar(Car);
+
+        // 用计时器延迟3秒后调用 ReSpawnCar
+        CountDownTimerManager::Instance().AddTimer(3.0f, [this, car]() {
+            this->ReSpawnCar(car);
+            Debug::Log("3秒后重生");
+            });
     }
 
-    void ReSpawnCar(GameObject* Car)
+    void ReSpawnCar(GameObject* car)
     {
-        PhysicsLit::RigidBodyPrimitive* rigidBody = Car->GetComponent<RigidBody>()->rigidBodyPrimitive;
-        rigidBody->SetPosition(CVector3(6, 0.5 + 2.5 , 0));
+        PhysicsLit::RigidBodyPrimitive* rigidBody = car->GetComponent<RigidBody>()->rigidBodyPrimitive;
+        rigidBody->SetPosition(CVector3(6, 0.5 + 2.5, 0));
     }
 
 private:
@@ -31,4 +40,3 @@ private:
     CombatManager(const CombatManager&) = delete;
     void operator=(const CombatManager&) = delete;
 };
-

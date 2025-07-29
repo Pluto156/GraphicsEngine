@@ -72,7 +72,12 @@ public:
         return this->isPendingDestroy;
     }
 
+    GameObject* Clone() const;
+
 private:
     std::vector<Component*> components;
     bool isPendingDestroy = false;
+
+    // 用于组件克隆，跳过 Start 调用（避免多次初始化）
+    void AddComponentRaw(Component* comp);
 };

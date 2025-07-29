@@ -1,0 +1,5 @@
+// 提示文件帮助 Visual Studio IDE 解释 Visual C++ 标识符,
+// 如函数和宏的名称。
+// 有关详细信息，请参见 https://go.microsoft.com/fwlink/?linkid=865984
+#define REGISTER_COMPONENT(CLASS, ENUM_TYPE) public: static Component* CreateInstance() { return new CLASS(); } virtual const char* GetTypeName() const override { return #CLASS; } virtual ComponentType GetType() const override { return ENUM_TYPE; } virtual void PostClone(CloneContext&) override {} static void RegisterFields(TypeInfo& info); private: static struct AutoRegister_##CLASS { AutoRegister_##CLASS() { TypeInfo info; info.name = #CLASS; info.creator = []() -> void* { return new CLASS(); }; CLASS::RegisterFields(info); ReflectionRegistry::Instance().RegisterType(ENUM_TYPE, info); } } autoRegisterInstance_##CLASS;
+#define REGISTER_FIELD(field) info.fields.push_back(FieldInfo{ #field, offsetof(std::decay_t<decltype(*this)>, field), sizeof(field), FieldCopyType::RawCopy, nullptr });
