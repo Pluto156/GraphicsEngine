@@ -27,6 +27,8 @@ public:
         return obj;
     }
 
+
+
     /**
      * Mark an object to be destroyed at the end of the current Update()
      * call.  This prevents iterator invalidation while we are traversing

@@ -6,17 +6,28 @@
 #include <cstring>
 #include <cassert>
 #include <type_traits>
-
-#include "Component.h"
-#include "GameObject.h"  // Ã·«∞…˘√˜ªÚ∞¸∫¨ GameObject ∂®“Â
-
+enum class ComponentType
+{
+    Component,
+    Transform,
+    RigidBody,
+    Collider,
+    BoxCollider,
+    SphereCollider,
+    PlaneCollider,
+    MeshFilter,
+    MeshRenderer,
+    CharacterController,
+    GameScript,
+    Light
+};
 // ---------- FieldInfo ----------
 enum class FieldCopyType {
     RawCopy,
     Custom
 };
 
-struct CloneContext; // «∞œÚ…˘√˜
+struct CloneContext;
 
 struct FieldInfo {
     std::string name;
@@ -27,15 +38,18 @@ struct FieldInfo {
 };
 
 // ---------- TypeInfo ----------
+class Component;
 struct TypeInfo {
     std::string name;
     std::function<void* ()> creator;
     std::vector<FieldInfo> fields;
+    const TypeInfo* base = nullptr;  // ‚úÖ Êñ∞Â¢ûÔºöÊåáÂêëÁà∂Á±ªÁöÑ TypeInfo
 
     Component* Clone(const Component* src, CloneContext& ctx) const;
 };
 
 // ---------- CloneContext ----------
+class GameObject;
 struct CloneContext {
     std::unordered_map<const void*, void*> pointerMap;
     GameObject* root = nullptr;
@@ -66,22 +80,48 @@ private:
 };
 
 // ---------- Macros ----------
-#define REGISTER_COMPONENT(CLASS, ENUM_TYPE)                                      \
-public:                                                                           \
-    static Component* CreateInstance() { return new CLASS(); }                   \
-    virtual ComponentType GetType() const override { return ENUM_TYPE; }         \
-    virtual void PostClone(CloneContext&) override {}                            \
-    static void RegisterFields(TypeInfo& info);                                   \
-private:                                                                          \
-    static struct AutoRegister_##CLASS {                                          \
-        AutoRegister_##CLASS() {                                                  \
-            TypeInfo info;                                                        \
-            info.name = #CLASS;                                                   \
-            info.creator = []() -> void* { return new CLASS(); };                \
-            CLASS::RegisterFields(info);                                          \
-            ReflectionRegistry::Instance().RegisterType(ENUM_TYPE, info);         \
-        }                                                                          \
+#define REGISTER_COMPONENT_BASELESS(CLASS, ENUM_TYPE)                            \
+public:                                                                          \
+    using BaseClassType = void;                                                  \
+    static Component* CreateInstance() { return new CLASS(); }                  \
+    virtual ComponentType GetType() const { return ENUM_TYPE; }        \
+    virtual void PostClone(CloneContext&);                             \
+    static void RegisterFields(TypeInfo& info);                                 \
+    static constexpr ComponentType StaticType() { return ENUM_TYPE; }           \
+private:                                                                         \
+    static struct AutoRegister_##CLASS {                                         \
+        AutoRegister_##CLASS() {                                                 \
+            TypeInfo info;                                                       \
+            info.name = #CLASS;                                                  \
+            info.creator = []() -> void* { return new CLASS(); };               \
+            CLASS::RegisterFields(info);                                         \
+            ReflectionRegistry::Instance().RegisterType(ENUM_TYPE, info);       \
+        }                                                                        \
     } autoRegisterInstance_##CLASS;
+
+#define REGISTER_COMPONENT_DERIVED(CLASS, ENUM_TYPE, BASE_CLASS)                \
+public:                                                                          \
+    using BaseClassType = BASE_CLASS;                                            \
+    static Component* CreateInstance() { return new CLASS(); }                  \
+    virtual ComponentType GetType() const override { return ENUM_TYPE; }        \
+    virtual void PostClone(CloneContext&) override;                             \
+    static void RegisterFields(TypeInfo& info);                                 \
+    static constexpr ComponentType StaticType() { return ENUM_TYPE; }           \
+private:                                                                         \
+    static struct AutoRegister_##CLASS {                                         \
+        AutoRegister_##CLASS() {                                                 \
+            TypeInfo info;                                                       \
+            info.name = #CLASS;                                                  \
+            info.creator = []() -> void* { return new CLASS(); };               \
+            info.base = ReflectionRegistry::Instance().GetTypeInfo(             \
+                BASE_CLASS::StaticType()                                         \
+            );                                                                   \
+            CLASS::RegisterFields(info);                                         \
+            ReflectionRegistry::Instance().RegisterType(ENUM_TYPE, info);       \
+        }                                                                        \
+    } autoRegisterInstance_##CLASS;
+
+
 
 #define REGISTER_FIELD(CLASS, field)                                       \
     info.fields.push_back(FieldInfo{                                       \
@@ -92,18 +132,19 @@ private:                                                                        
         nullptr                                                            \
     });
 
-#define REGISTER_FIELD_CUSTOM(field, copyFunc)                                     \
+#define REGISTER_FIELD_CUSTOM(CLASS, field, copyFunc)                             \
     info.fields.push_back(FieldInfo{                                              \
         #field,                                                                   \
-        offsetof(std::decay_t<decltype(*this)>, field),                           \
-        sizeof(field),                                                            \
+        offsetof(CLASS, field),                                                   \
+        sizeof(((CLASS*)nullptr)->field),                                         \
         FieldCopyType::Custom,                                                    \
         [](void* dstObj, const void* srcObj, CloneContext& ctx) {                 \
-            auto* dst = reinterpret_cast<std::decay_t<decltype(*this)>*>(dstObj); \
-            auto* src = reinterpret_cast<const std::decay_t<decltype(*this)>*>(srcObj); \
+            auto* dst = reinterpret_cast<CLASS*>(dstObj);                         \
+            auto* src = reinterpret_cast<const CLASS*>(srcObj);                   \
             dst->field = copyFunc(src->field, ctx);                               \
         }                                                                         \
     });
 
-// ---------- Clone Entry ----------
-GameObject* CloneGameObjectTree(const GameObject* root);
+
+
+

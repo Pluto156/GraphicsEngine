@@ -231,6 +231,12 @@
     <ClInclude Include="CountDownTimerManager.h">
       <Filter>头文件\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="HealthPack.h">
+      <Filter>头文件\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="Reflection.h">
+      <Filter>头文件\Engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -404,8 +410,15 @@
     <ClCompile Include="CountDownTimerManager.cpp">
       <Filter>源文件\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="HealthPack.cpp">
+      <Filter>源文件\Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="Reflection.cpp">
+      <Filter>源文件\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

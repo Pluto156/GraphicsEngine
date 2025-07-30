@@ -184,6 +184,7 @@
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="GameScript.h" />
     <ClInclude Include="GameScriptManager.h" />
+    <ClInclude Include="HealthPack.h" />
     <ClInclude Include="IManager.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="IntersectionDetector.h" />
@@ -198,6 +199,7 @@
     <ClInclude Include="PlaneCollider.h" />
     <ClInclude Include="PointCollision.h" />
     <ClInclude Include="Ray.h" />
+    <ClInclude Include="Reflection.h" />
     <ClInclude Include="RenderManager.h" />
     <ClInclude Include="RigidBody.h" />
     <ClInclude Include="RigidBodyPrimitive.h" />
@@ -244,6 +246,7 @@
     <ClCompile Include="GameObjectManager.cpp" />
     <ClCompile Include="GameScript.cpp" />
     <ClCompile Include="GameScriptManager.cpp" />
+    <ClCompile Include="HealthPack.cpp" />
     <ClCompile Include="IManager.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IntersectionDetector.cpp" />
@@ -258,6 +261,7 @@
     <ClCompile Include="PlaneCollider.cpp" />
     <ClCompile Include="PointCollision.cpp" />
     <ClCompile Include="Ray.cpp" />
+    <ClCompile Include="Reflection.cpp" />
     <ClCompile Include="RenderManager.cpp" />
     <ClCompile Include="RigidBody.cpp" />
     <ClCompile Include="RigidBodyPrimitive.cpp" />
@@ -274,6 +278,7 @@
     <ClCompile Include="Unit.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="cpp.hint" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

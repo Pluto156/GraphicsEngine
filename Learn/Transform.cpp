@@ -1,9 +1,31 @@
 #include "stdafx.h"
 #include "Transform.h"
-ComponentType Transform::GetType()
-{
-    return ComponentType::Transform;
+
+void Transform::RegisterFields(TypeInfo& info) {
+    REGISTER_FIELD(Transform, position);
+    REGISTER_FIELD(Transform, rotation);
+    REGISTER_FIELD(Transform, eulerAngles);
+    REGISTER_FIELD(Transform, quaternion);
+    REGISTER_FIELD(Transform, localPosition);
+    REGISTER_FIELD(Transform, localRotation);
+    REGISTER_FIELD(Transform, localEulerAngles);
+    REGISTER_FIELD(Transform, localScale);
+    REGISTER_FIELD(Transform, Up);
+    REGISTER_FIELD(Transform, Forward);
+    REGISTER_FIELD(Transform, Right);
+    REGISTER_FIELD(Transform, isShowLocalAxis);
+
+    // parent / children 不在此处注册，而在 PostClone 中处理
 }
+void Transform::PostClone(CloneContext& ctx) {
+    if (parent) {
+        Transform* mappedParent = ctx.MapPointer(parent);
+        if (mappedParent) {
+            this->SetParent(mappedParent); // 自动建立 parent/children 关系
+        }
+    }
+}
+
 void Transform::SetPosition(const CVector3& newPos) {
     if (parent) {
         // 将世界坐标转换为父空间的本地坐标
@@ -207,18 +229,9 @@ void Transform::UpdateColliderTransform()
 
 void Transform::AddChild(Transform* child) {
     if (!child) return;
-
-    children.push_back(child);
-    child->parent = this;
-
-    // 初始化子物体的本地坐标
-    child->localPosition = rotation.GetInverse().vecMulVector3(child->position - position);
-    child->localRotation = rotation.GetInverse() * child->rotation;
-    child->localEulerAngles = child->localRotation.ToEuler();
-
-    // 更新子物体的世界坐标
-    child->UpdateTransformFromLocal();
+    child->SetParent(this);  // 统一通过 SetParent 来维护关系和变换
 }
+
 
 void Transform::ApplyTransform()
 {
@@ -258,4 +271,37 @@ CMatrix4 Transform::GetWorldTransformMatrix()
     worldTransformMatrix.m13 = position.y;
     worldTransformMatrix.m23 = position.z;
     return worldTransformMatrix;
+}
+
+void Transform::SetParent(Transform* newParent)
+{
+    // 如果当前已有父对象，先从旧父对象的 children 列表中移除自己
+    if (parent)
+    {
+        auto& siblings = parent->children;
+        siblings.erase(std::remove(siblings.begin(), siblings.end(), this), siblings.end());
+    }
+
+    parent = newParent;
+
+    if (newParent)
+    {
+        // 将自己加入新父对象的 children 列表
+        newParent->children.push_back(this);
+
+        // 重新计算 localPosition 和 localRotation
+        localPosition = newParent->rotation.GetInverse().vecMulVector3(position - newParent->position);
+        localRotation = newParent->rotation.GetInverse() * rotation;
+        localEulerAngles = localRotation.ToEuler();
+    }
+    else
+    {
+        // 没有父对象，local 变为世界坐标
+        localPosition = position;
+        localRotation = rotation;
+        localEulerAngles = eulerAngles;
+    }
+
+    // 重新同步本地和世界变换
+    UpdateTransformFromLocal();
 }

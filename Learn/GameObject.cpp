@@ -141,19 +141,33 @@ void GameObject::AddChild(GameObject* child)
     this->transform->AddChild(child->transform);
 }
 
-GameObject* GameObject::Clone()  const {
-    // 新建一个 GameObject，复制名称和变换（可定制）
+GameObject* GameObject::Clone() const {
+    CloneContext ctx;
+    return Clone(ctx);
+}
+GameObject* GameObject::Clone(CloneContext& ctx) const {
+    // 创建新 GameObject，复制基础属性
     GameObject* clone = new GameObject(name, transform->GetPosition(), transform->GetRotation(), transform->GetEulerAngles());
 
-    // 克隆组件（注意：每个组件类型需支持深拷贝或自带 Clone 方法）
-    for (auto comp : components) {
-        // 伪代码：你需要为每个 Component 派生类实现 Clone()
-        Component* cloned = comp->Clone();
-        clone->AddComponentRaw(cloned); // 下面说明 AddComponentRaw 是什么
+    // 注册当前对象的克隆映射，供后续修复指针引用用
+    ctx.RegisterPointer(this, clone);
+    ctx.RegisterPointer(transform, clone->transform); // 可选：transform 指针也注册一下
+
+    // 克隆组件（每个组件必须实现 Clone(CloneContext&) 方法）
+    for (Component* comp : components) {
+        Component* clonedComp = comp->Clone(ctx);
+        clone->AddComponentRaw(clonedComp);  // 注意不要触发 Awake/Start 等生命周期函数
     }
 
+    // 克隆子对象
+    for (Transform* child : transform->children) {
+        GameObject* childGO = child->gameObject;
+        GameObject* clonedChild = childGO->Clone(ctx); // 递归克隆
+        clonedChild->transform->SetParent(clone->transform); // 建立父子关系
+    }
     return clone;
 }
+
 
 // 用于组件克隆，跳过 Start 调用（避免多次初始化）
 void GameObject::AddComponentRaw(Component* comp) {

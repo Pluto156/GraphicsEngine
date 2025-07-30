@@ -1,7 +1,8 @@
 #pragma once
-#include "stdafx.h"
-
 class Transform :public Component{
+    //拷贝相关
+    REGISTER_COMPONENT_DERIVED(Transform, ComponentType::Transform, Component)
+
 public:
     CVector3 position;   // 世界坐标
     CMatrix4 rotation;   // 世界旋转矩阵
@@ -18,15 +19,10 @@ public:
     CVector3 Forward;
     CVector3 Right;
 
-    GameObject* gameobject = nullptr;
     Transform* parent = nullptr;     // 父对象
     std::vector<Transform*> children; // 子对象列表
 
-
     bool isShowLocalAxis;
-
-
-
     Transform(const CVector3& position = CVector3(),
         const CMatrix4& rotation = CMatrix4(),
         const CEuler& eulerAngles = CEuler(), bool isShowLocalAxis = false)
@@ -127,6 +123,8 @@ public:
     }
     CMatrix4 GetWorldTransformMatrix();
 
+    void SetParent(Transform* newParent);
+
     void DetachFromParent() {
         if (parent) {
             auto& siblings = parent->children;
@@ -141,28 +139,5 @@ public:
 
 private:
     CMatrix4 worldTransformMatrix;//世界变换矩阵
-
-    //拷贝相关
-    REGISTER_COMPONENT(Transform, ComponentType::Transform)
-
-    static void RegisterFields(TypeInfo& info) {
-    // 注意：parent/children 指针由 CloneGameObjectTree 处理
-    REGISTER_FIELD(Transform, position);
-    REGISTER_FIELD(Transform, rotation);
-    REGISTER_FIELD(Transform, eulerAngles);
-    REGISTER_FIELD(Transform, quaternion);
-    REGISTER_FIELD(Transform, localPosition);
-    REGISTER_FIELD(Transform, localRotation);
-    REGISTER_FIELD(Transform, localEulerAngles);
-    REGISTER_FIELD(Transform, localScale);
-    REGISTER_FIELD(Transform, Up);
-    REGISTER_FIELD(Transform, Forward);
-    REGISTER_FIELD(Transform, Right);
-    REGISTER_FIELD(Transform, isShowLocalAxis);
-
-    // 忽略以下字段：
-    // - gameobject: GameObject::CloneTree 时重新绑定
-    // - parent/children: 外部处理 Transform 层级
-}
-
 };
+
