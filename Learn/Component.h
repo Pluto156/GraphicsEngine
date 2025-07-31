@@ -23,6 +23,8 @@ public:
 
     // Called after clone + pointer map fix
     Component* Clone(CloneContext& ctx) const;
+
+    virtual bool IsGameScript() const { return false; }
 };
 
 

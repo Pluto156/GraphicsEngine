@@ -14,8 +14,9 @@ void Unit::OnColliderExit(PhysicsLit::RigidBodyPrimitive*)
 
 }
 
-void Unit::OnTriggerEnter(PhysicsLit::RigidBodyPrimitive*)
+void Unit::OnTriggerEnter(PhysicsLit::RigidBodyPrimitive* a)
 {
+	Debug::Log("hit " + a->GetGameObjectName());
 	--this->CurHealth;
 
 	HealthBar->localScale = CVector3(1.5* CurHealth/FullHealth,0.05,0.05);

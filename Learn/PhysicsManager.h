@@ -15,9 +15,6 @@ namespace PhysicsLit
 
     class PhysicsManager : public IManager {
     public:
-
-
-
         static PhysicsManager& Instance() {
             static PhysicsManager instance;
             return instance;
@@ -57,13 +54,7 @@ namespace PhysicsLit
         void RemoveGameObject(GameObject* gameobject);
 
 
-        std::string GetGameObjectName(RigidBodyPrimitive* rigidbody) {
-            auto it = RigidBodyToGO.find(rigidbody);
-            if (it != RigidBodyToGO.end() && it->second) {
-                return it->second->name;  
-            }
-            return "NULL";
-        }
+        std::string GetGameObjectName(RigidBodyPrimitive* rigidbody);
 
         GameScript* TryGetGameScript(RigidBodyPrimitive* rigidbody)
         {

@@ -59,6 +59,8 @@ void CharacterController::Update()
         GameObject* Sphere = GameObjectManager::Instance().Clone(BullutPrefab);
         Sphere->name = "Sphere" + std::to_string(cnt++);
         Sphere->transform->SetPosition(gameObject->transform->position + gameObject->transform->Forward);
+        Sphere->transform->UpdateRigidBodyTransform();
+        Sphere->transform->UpdateColliderTransform();
         Bullet* bullet = Sphere->GetComponent<Bullet>();
         bullet->StartPos = Sphere->transform->position;
         bullet->MoveDir = gameObject->transform->Forward;

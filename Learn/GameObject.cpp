@@ -154,11 +154,20 @@ GameObject* GameObject::Clone(CloneContext& ctx) const {
     // 第一步：只创建实例并注册，不拷贝字段，不调用 PostClone
     std::vector<Component*> clonedComponents;
     for (Component* comp : components) {
+
         const TypeInfo* typeInfo = comp->GetTypeInfo();
-        Component* clonedComp = static_cast<Component*>(typeInfo->creator());
+        Component* clonedComp;
+        if (comp->GetTypeInfo() == TypeInfo::Get<Transform>()) {
+            clonedComp = clone->transform;
+        }
+        else
+        {
+            clonedComp = static_cast<Component*>(typeInfo->creator());
+            clone->AddComponentRaw(clonedComp);
+
+        }
         ctx.RegisterPointer(comp, clonedComp);
         clonedComponents.push_back(clonedComp);
-        clone->AddComponentRaw(clonedComp);
     }
 
     // 第二步：拷贝字段（不调用 PostClone）
@@ -207,8 +216,10 @@ void GameObject::AddComponentRaw(Component* comp) {
     comp->transform = this->transform;
     components.push_back(comp);
 
-    // 检查是否是 GameScript 类型
-    using DecayedT = std::decay_t<decltype(*comp)>;
-    constexpr bool is_script = std::is_base_of<GameScript, DecayedT>::value;
-    AssignIfGameScript(comp, std::bool_constant<is_script>{});
+    if (comp->IsGameScript()) {
+        AssignIfGameScript(comp, std::true_type{});
+    }
+    else {
+        AssignIfGameScript(comp, std::false_type{});
+    }
 }

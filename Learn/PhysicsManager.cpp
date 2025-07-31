@@ -121,6 +121,10 @@ namespace PhysicsLit
 
 			if (a->isTrigger || b->isTrigger)
 			{
+				if (contact.mRigidBodies[0]->GetGameObjectName() == "123" || contact.mRigidBodies[1]->GetGameObjectName() == "123")
+				{
+					Debug::Log("asd1");
+				}
 				// 碰撞检测确认是否真正重叠
 				uint32_t triggerCollisionCount = CollisionDetector::Detect(a, b, &CollisionData(1));
 				if (triggerCollisionCount > 0) {
@@ -214,6 +218,14 @@ namespace PhysicsLit
 		}
 	}
 
+
+	std::string PhysicsManager::GetGameObjectName(RigidBodyPrimitive* rigidbody) {
+		auto it = RigidBodyToGO.find(rigidbody);
+		if (it != RigidBodyToGO.end() && it->second) {
+			return it->second->name;
+		}
+		return "NULL";
+	}
 
 
 }

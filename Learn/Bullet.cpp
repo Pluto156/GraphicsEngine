@@ -24,7 +24,7 @@ void Bullet::OnColliderExit(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
 }
 void Bullet::OnTriggerEnter(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
 {
-	Debug::Log(gameObject->name+" OnTriggerEnter "+ PhysicsLit::PhysicsManager::Instance().GetGameObjectName(rigidBodyPrimitive));
+	Debug::Log(gameObject->name+" OnTriggerEnter "+ transform->position.ToString()+" "+ PhysicsLit::PhysicsManager::Instance().GetGameObjectName(rigidBodyPrimitive) + " " + rigidBodyPrimitive->GetGameObjectName());
 	GameObjectManager::Instance().Destroy(gameObject);
 }
 void Bullet::OnTriggerStay(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
