@@ -1,9 +1,7 @@
 #pragma once
 class PlaneCollider : public Collider
 {
-public:
-	static ComponentType GetType();
-
+	REGISTER_COMPONENT_DERIVED(PlaneCollider, ComponentType::PlaneCollider, Collider)
 public:
 	PhysicsLit::CollisionPlane* mCollider = nullptr;
 

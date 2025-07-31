@@ -1,4 +1,19 @@
+
 #include "stdafx.h"
+
+DEFINE_COMPONENT_AUTOREGISTER(Transform)
+DEFINE_COMPONENT_AUTOREGISTER(RigidBody)
+DEFINE_COMPONENT_AUTOREGISTER(Collider)
+DEFINE_COMPONENT_AUTOREGISTER(BoxCollider)
+DEFINE_COMPONENT_AUTOREGISTER(SphereCollider)
+DEFINE_COMPONENT_AUTOREGISTER(PlaneCollider)
+DEFINE_COMPONENT_AUTOREGISTER(MeshFilter)
+DEFINE_COMPONENT_AUTOREGISTER(MeshRenderer)
+DEFINE_COMPONENT_AUTOREGISTER(Light)
+
+DEFINE_COMPONENT_AUTOREGISTER(GameScript)
+DEFINE_COMPONENT_AUTOREGISTER(Bullet)
+
 bool isInitStage = false;
 
 void myDisplay(void);
@@ -281,8 +296,33 @@ void InitStage()
 
         Car->AddComponent<Unit>()->HealthBar = CarHealthBar->transform;
         Car2->AddComponent<Unit>()->HealthBar = Car2HealthBar->transform;
+
+
+        GameObject* Sphere = GameObjectManager::Instance().Instantiate("Sphere");
+        Sphere->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Sphere, 0.2f, 32, 16);
+        Sphere->AddComponent<MeshRenderer>();
+
+        auto rigidBody4 = Sphere->AddComponent<RigidBody>();
+        rigidBody4->rigidBodyPrimitive->SetMass(1);
+        auto sphereCollider = Sphere->AddComponent<SphereCollider>(0.2);
+        sphereCollider->mFriction = 10;
+        sphereCollider->mBounciness = 0.5;
+        sphereCollider->SynchronizeData();
+        sphereCollider->mCollider->rigidBodyPrimitive = rigidBody4->rigidBodyPrimitive;
+        sphereCollider->mCollider->isTrigger = true;
+        sphereCollider->mCollider->SetLayer(PhysicsLit::Layer::BULLET);
+
+        rigidBody4->rigidBodyPrimitive->mCollisionVolume = sphereCollider->mCollider;
+        rigidBody4->rigidBodyPrimitive->SetInertiaTensor(sphereCollider->mCollider->GetInertiaTensor(rigidBody4->rigidBodyPrimitive->GetMass()));
+        //rigidBody4->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(gameObject->transform->Forward));
+        rigidBody4->rigidBodyPrimitive->SetGameObjectName("Sphere");
+
+        Sphere->transform->UpdateColliderTransform();
+        Bullet* bullet = Sphere->AddComponent<Bullet>();
         
-        
+        CarController->BullutPrefab = Sphere;
+        Car2Controller->BullutPrefab = Sphere;
+
         isInitStage = true;
     }
 

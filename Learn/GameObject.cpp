@@ -146,27 +146,59 @@ GameObject* GameObject::Clone() const {
     return Clone(ctx);
 }
 GameObject* GameObject::Clone(CloneContext& ctx) const {
-    // 创建新 GameObject，复制基础属性
-    GameObject* clone = new GameObject(name, transform->GetPosition(), transform->GetRotation(), transform->GetEulerAngles());
+    GameObject* clone = GameObjectManager::Instance().Instantiate(name, transform->GetPosition(), transform->GetRotation(), transform->GetEulerAngles());
 
-    // 注册当前对象的克隆映射，供后续修复指针引用用
     ctx.RegisterPointer(this, clone);
-    ctx.RegisterPointer(transform, clone->transform); // 可选：transform 指针也注册一下
+    ctx.RegisterPointer(transform, clone->transform);
 
-    // 克隆组件（每个组件必须实现 Clone(CloneContext&) 方法）
+    // 第一步：只创建实例并注册，不拷贝字段，不调用 PostClone
+    std::vector<Component*> clonedComponents;
     for (Component* comp : components) {
-        Component* clonedComp = comp->Clone(ctx);
-        clone->AddComponentRaw(clonedComp);  // 注意不要触发 Awake/Start 等生命周期函数
+        const TypeInfo* typeInfo = comp->GetTypeInfo();
+        Component* clonedComp = static_cast<Component*>(typeInfo->creator());
+        ctx.RegisterPointer(comp, clonedComp);
+        clonedComponents.push_back(clonedComp);
+        clone->AddComponentRaw(clonedComp);
+    }
+
+    // 第二步：拷贝字段（不调用 PostClone）
+    for (size_t i = 0; i < components.size(); ++i) {
+        Component* src = components[i];
+        Component* dst = clonedComponents[i];
+
+        const TypeInfo* typeInfo = src->GetTypeInfo();
+        const TypeInfo* current = typeInfo;
+        while (current) {
+            for (const auto& field : current->fields) {
+                void* dstField = reinterpret_cast<char*>(dst) + field.offset;
+                const void* srcField = reinterpret_cast<const char*>(src) + field.offset;
+
+                if (field.copyType == FieldCopyType::RawCopy) {
+                    std::memcpy(dstField, srcField, field.size);
+                }
+                else if (field.copyType == FieldCopyType::Custom && field.customCopy) {
+                    field.customCopy(dst, src, ctx);
+                }
+            }
+            current = current->base;
+        }
+    }
+
+    // 第三步：统一调用 PostClone（此时所有组件都已克隆并注册）
+    for (Component* comp : clonedComponents) {
+        comp->PostClone(ctx);
     }
 
     // 克隆子对象
     for (Transform* child : transform->children) {
         GameObject* childGO = child->gameObject;
-        GameObject* clonedChild = childGO->Clone(ctx); // 递归克隆
-        clonedChild->transform->SetParent(clone->transform); // 建立父子关系
+        GameObject* clonedChild = childGO->Clone(ctx);
+        clonedChild->transform->SetParent(clone->transform);
     }
+
     return clone;
 }
+
 
 
 // 用于组件克隆，跳过 Start 调用（避免多次初始化）

@@ -1,9 +1,12 @@
 #include "stdafx.h"
 #include "GameScript.h"
 #include "GameScriptManager.h"
-ComponentType GameScript::GetType()
-{
-	return ComponentType::GameScript;
+void GameScript::RegisterFields(TypeInfo& info) {
+
+}
+
+void GameScript::PostClone(CloneContext& ctx) {
+    // 一般无需额外操作，留空
 }
 GameScript::GameScript() {
 	//GameScriptManager::Instance().registerScript(this);

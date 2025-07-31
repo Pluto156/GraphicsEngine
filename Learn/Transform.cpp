@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Transform.h"
-
+[[maybe_unused]] static auto _ = Transform::StaticType();
 void Transform::RegisterFields(TypeInfo& info) {
     REGISTER_FIELD(Transform, position);
     REGISTER_FIELD(Transform, rotation);

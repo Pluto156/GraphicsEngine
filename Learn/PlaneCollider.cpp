@@ -1,8 +1,23 @@
 #include "stdafx.h"
 #include "PlaneCollider.h"
-ComponentType PlaneCollider::GetType()
-{
-	return ComponentType::PlaneCollider;
+void PlaneCollider::RegisterFields(TypeInfo& info) {
+	REGISTER_FIELD_CUSTOM(PlaneCollider, mCollider, [](PhysicsLit::CollisionPlane* oldPtr, CloneContext& ctx) {
+		if (!oldPtr) return (PhysicsLit::CollisionPlane*)nullptr;
+
+		auto* copy = new PhysicsLit::CollisionPlane(*oldPtr);
+		ctx.RegisterPointer(oldPtr, copy);
+		return copy;
+		});
+}
+void PlaneCollider::PostClone(CloneContext& ctx) {
+	if (mCollider) {
+		mCollider->colliderComponent = this;
+
+		// 如果涉及其他引用指针，比如 rigidBodyPrimitive，记得使用 MapPointer 修复
+		if (mCollider->rigidBodyPrimitive) {
+			mCollider->rigidBodyPrimitive = ctx.MapPointer(mCollider->rigidBodyPrimitive);
+		}
+	}
 }
 
 PlaneCollider::PlaneCollider()

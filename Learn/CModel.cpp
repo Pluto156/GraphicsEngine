@@ -62,8 +62,16 @@ const std::vector<Vertex>& Mesh::GetVertices() const { return vertices; }
 const std::vector<unsigned int>& Mesh::GetIndices() const { return indices; }
 
 // ----------- MeshFilter --------------
-ComponentType MeshFilter::GetType() {
-    return ComponentType::MeshFilter;
+void MeshFilter::RegisterFields(TypeInfo& info) {
+    REGISTER_FIELD_CUSTOM(MeshFilter, meshes,
+        [](const std::vector<Mesh>& oldMeshes, CloneContext&) {
+            // 调用 vector 的复制构造
+            return std::vector<Mesh>(oldMeshes);
+        });
+
+}
+
+void MeshFilter::PostClone(CloneContext& ctx) {
 }
 
 void MeshFilter::SetPrimitive(PrimitiveType type, float size, int slices, int stacks) {
@@ -183,12 +191,35 @@ void MeshFilter::generateSphere(float r, int slices, int stacks) {
 }
 
 
-ComponentType MeshRenderer::GetType() {
-    return ComponentType::MeshRenderer;
+// 注册字段
+void MeshRenderer::RegisterFields(TypeInfo& info) {
+    // textureID 是 GPU 句柄，不直接 memcpy，clone 时需要重新加载纹理或标记重新加载
+    REGISTER_FIELD_CUSTOM(MeshRenderer, textureID,
+        [](unsigned int oldID, CloneContext&) {
+            // 直接返回0，clone后需要重新load纹理
+            return 0u;
+        });
+    REGISTER_FIELD_CUSTOM(MeshRenderer, texturePath,
+        [](const std::string& oldStr, CloneContext&) {
+            return std::string(oldStr);
+        });
+
+    REGISTER_FIELD(MeshRenderer, useTexture);
+    REGISTER_FIELD(MeshRenderer, material);
+}
+
+// 克隆后调用，重新加载纹理
+void MeshRenderer::PostClone(CloneContext& ctx) {
+    if (useTexture && textureID == 0) {
+        // 重新加载纹理逻辑（假设你有成员变量存路径，或者其他机制）
+        // 这里示例调用 SetTexture，路径应存储或传递
+        SetTexture(texturePath);
+    }
 }
 
 MeshRenderer::MeshRenderer(const std::string& texturePath) {
     if (!texturePath.empty()) {
+        this->texturePath = texturePath;
         loadTexture(texturePath);
         useTexture = true;
     }

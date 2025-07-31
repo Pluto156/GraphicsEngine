@@ -1,12 +1,10 @@
 #pragma once
 class SphereCollider : public Collider
 {
-public:
-	static ComponentType GetType();
-
+	REGISTER_COMPONENT_DERIVED(SphereCollider, ComponentType::SphereCollider, Collider)
 public:
 	PhysicsLit::CollisionSphere* mCollider = nullptr;
-
+	SphereCollider(){}
 	SphereCollider(float mRadius);
 	~SphereCollider();
 

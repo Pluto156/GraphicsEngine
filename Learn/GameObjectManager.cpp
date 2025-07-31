@@ -12,6 +12,11 @@ GameObjectManager::~GameObjectManager()
     }
 }
 
+GameObject* GameObjectManager::Clone(GameObject* go)
+{
+    return go->Clone();
+}
+
 // ------------------------- Destroy ----------------------
 // Mark for deferred destruction
 void GameObjectManager::Destroy(GameObject* obj) {

@@ -12,6 +12,7 @@ public:
     void BindLeftKey(KeyCode key);
     void BindRightKey(KeyCode key);
     void BindFireKey(KeyCode key);
+    GameObject* BullutPrefab;
 
 private:
     KeyCode UpKey, DownKey, LeftKey, RightKey, FireKey;

@@ -27,6 +27,7 @@ public:
         return obj;
     }
 
+    GameObject* Clone(GameObject* go);
 
 
     /**

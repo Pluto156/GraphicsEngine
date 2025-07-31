@@ -17,16 +17,12 @@ enum class LightType {
 };
 class LightManager;
 class Light : public Component {
+    REGISTER_COMPONENT_DERIVED(Light, ComponentType::Light, Component)
 public:
-
     LightType type = LightType::Point;
     CVector3 color = CVector3(1.0f, 1.0f, 1.0f);
     float intensity = 1.0f;
     float range = 10.0f;
-
-    static ComponentType GetType() {
-        return ComponentType::Light;
-    }
 
     void Start() override;
     void Update() override;

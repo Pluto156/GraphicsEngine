@@ -32,30 +32,38 @@ void CharacterController::Update()
 
     if (input.GetKeyDown(FireKey))
     {
-        GameObject* Sphere = GameObjectManager::Instance().Instantiate("Sphere" + std::to_string(cnt++), gameObject->transform->position + gameObject->transform->Forward);
-        Sphere->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Sphere, 0.2f, 32, 16);
-        Sphere->AddComponent<MeshRenderer>();
+        //GameObject* Sphere = GameObjectManager::Instance().Instantiate("Sphere" + std::to_string(cnt++), gameObject->transform->position + gameObject->transform->Forward);
+        //Sphere->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Sphere, 0.2f, 32, 16);
+        //Sphere->AddComponent<MeshRenderer>();
 
-        auto rigidBody4 = Sphere->AddComponent<RigidBody>();
-        rigidBody4->rigidBodyPrimitive->SetMass(1);
-        auto sphereCollider = Sphere->AddComponent<SphereCollider>(0.2);
-        sphereCollider->mFriction = 10;
-        sphereCollider->mBounciness = 0.5;
-        sphereCollider->SynchronizeData();
-        sphereCollider->mCollider->rigidBodyPrimitive = rigidBody4->rigidBodyPrimitive;
-        sphereCollider->mCollider->isTrigger = true;
-        sphereCollider->mCollider->SetLayer(PhysicsLit::Layer::BULLET);
+        //auto rigidBody4 = Sphere->AddComponent<RigidBody>();
+        //rigidBody4->rigidBodyPrimitive->SetMass(1);
+        //auto sphereCollider = Sphere->AddComponent<SphereCollider>(0.2);
+        //sphereCollider->mFriction = 10;
+        //sphereCollider->mBounciness = 0.5;
+        //sphereCollider->SynchronizeData();
+        //sphereCollider->mCollider->rigidBodyPrimitive = rigidBody4->rigidBodyPrimitive;
+        //sphereCollider->mCollider->isTrigger = true;
+        //sphereCollider->mCollider->SetLayer(PhysicsLit::Layer::BULLET);
 
-        rigidBody4->rigidBodyPrimitive->mCollisionVolume = sphereCollider->mCollider;
-        rigidBody4->rigidBodyPrimitive->SetInertiaTensor(sphereCollider->mCollider->GetInertiaTensor(rigidBody4->rigidBodyPrimitive->GetMass()));
-        //rigidBody4->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(gameObject->transform->Forward));
-        rigidBody4->rigidBodyPrimitive->SetGameObjectName("Sphere" + std::to_string(cnt));
+        //rigidBody4->rigidBodyPrimitive->mCollisionVolume = sphereCollider->mCollider;
+        //rigidBody4->rigidBodyPrimitive->SetInertiaTensor(sphereCollider->mCollider->GetInertiaTensor(rigidBody4->rigidBodyPrimitive->GetMass()));
+        ////rigidBody4->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(gameObject->transform->Forward));
+        //rigidBody4->rigidBodyPrimitive->SetGameObjectName("Sphere" + std::to_string(cnt));
 
-        Sphere->transform->UpdateColliderTransform();
-        Bullet* bullet = Sphere->AddComponent<Bullet>();
+        //Sphere->transform->UpdateColliderTransform();
+        //Bullet* bullet = Sphere->AddComponent<Bullet>();
+        //bullet->StartPos = Sphere->transform->position;
+        //bullet->MoveDir = gameObject->transform->Forward;
+
+        GameObject* Sphere = GameObjectManager::Instance().Clone(BullutPrefab);
+        Sphere->name = "Sphere" + std::to_string(cnt++);
+        Sphere->transform->SetPosition(gameObject->transform->position + gameObject->transform->Forward);
+        Bullet* bullet = Sphere->GetComponent<Bullet>();
         bullet->StartPos = Sphere->transform->position;
         bullet->MoveDir = gameObject->transform->Forward;
         PhysicsLit::PhysicsManager::Instance().AddGameObject(Sphere);
+
     }
 }
 

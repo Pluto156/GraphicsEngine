@@ -1,9 +1,7 @@
 #pragma once
 class Collider : public Component
 {
-public:
-	static ComponentType GetType();
-
+	REGISTER_ABSTRACT_COMPONENT(Collider, ComponentType::Collider, Component)
 public:
 	float mFriction = 0.4f;
 	float mBounciness = 0.0f;

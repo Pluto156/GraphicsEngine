@@ -1,6 +1,8 @@
 #pragma once
 class Bullet:public GameScript
 {
+    REGISTER_COMPONENT_DERIVED(Bullet, ComponentType::Bullet, GameScript)
+
 public:
     void OnColliderEnter(PhysicsLit::RigidBodyPrimitive*);
     void OnColliderStay(PhysicsLit::RigidBodyPrimitive*);

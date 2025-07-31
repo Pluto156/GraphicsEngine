@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Component.h"
 
+
 void Component::RegisterFields(TypeInfo& info) {
     REGISTER_FIELD_CUSTOM(Component, gameObject,
         [](GameObject* oldPtr, CloneContext& ctx) {

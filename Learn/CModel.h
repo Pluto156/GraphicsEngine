@@ -15,6 +15,7 @@ struct Vertex {
 
 class Mesh {
 public:
+    Mesh() = default;  //保证 Mesh 可以默认构造（用于 std::vector、克隆、序列化等情景）
     Mesh(std::vector<Vertex> verts, std::vector<unsigned int> inds);
     void Draw(bool useTexture, unsigned int textureID) const;
 
@@ -34,8 +35,8 @@ enum class PrimitiveType {
 
 // MeshFilter：负责持有 Mesh 数据
 class MeshFilter : public Component {
+    REGISTER_COMPONENT_DERIVED(MeshFilter, ComponentType::MeshFilter, Component)
 public:
-    static ComponentType GetType();
     std::vector<Mesh> meshes;
 
     void SetPrimitive(PrimitiveType type, float size = 1.0f, int slices = 16, int stacks = 16);
@@ -54,8 +55,8 @@ struct Material {
     float shininess = 32.0f; // 高光强度
 };
 class MeshRenderer : public Component {
+    REGISTER_COMPONENT_DERIVED(MeshRenderer, ComponentType::MeshRenderer, Component)
 public:
-    static ComponentType GetType();
 
     MeshRenderer(const std::string& texturePath = "");
 
@@ -65,6 +66,7 @@ public:
     const Material& GetMaterial() const { return material; }
 
 private:
+    std::string texturePath;
     unsigned int textureID = 0;
     bool useTexture = false;
     Material material;

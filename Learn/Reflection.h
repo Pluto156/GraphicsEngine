@@ -17,10 +17,13 @@ enum class ComponentType
     PlaneCollider,
     MeshFilter,
     MeshRenderer,
-    CharacterController,
+    Light,
+
     GameScript,
-    Light
+    CharacterController,
+    Bullet
 };
+
 // ---------- FieldInfo ----------
 enum class FieldCopyType {
     RawCopy,
@@ -80,34 +83,49 @@ private:
 };
 
 // ---------- Macros ----------
-#define REGISTER_COMPONENT_BASELESS(CLASS, ENUM_TYPE)                            \
-public:                                                                          \
-    using BaseClassType = void;                                                  \
-    static Component* CreateInstance() { return new CLASS(); }                  \
-    virtual ComponentType GetType() const { return ENUM_TYPE; }        \
-    virtual void PostClone(CloneContext&);                             \
-    static void RegisterFields(TypeInfo& info);                                 \
-    static constexpr ComponentType StaticType() { return ENUM_TYPE; }           \
-private:                                                                         \
-    static struct AutoRegister_##CLASS {                                         \
-        AutoRegister_##CLASS() {                                                 \
-            TypeInfo info;                                                       \
-            info.name = #CLASS;                                                  \
-            info.creator = []() -> void* { return new CLASS(); };               \
-            CLASS::RegisterFields(info);                                         \
-            ReflectionRegistry::Instance().RegisterType(ENUM_TYPE, info);       \
-        }                                                                        \
-    } autoRegisterInstance_##CLASS;
+#define DEFINE_COMPONENT_AUTOREGISTER(CLASS) \
+    decltype(CLASS::autoRegisterInstance_##CLASS) CLASS::autoRegisterInstance_##CLASS;
+
+#define REGISTER_COMPONENT_BASELESS(CLASS, ENUM_TYPE) \
+public: \
+    using BaseClassType = void; \
+    static Component* CreateInstance() { return new CLASS(); } \
+    virtual ComponentType GetType() const { return ENUM_TYPE; } \
+    virtual void PostClone(CloneContext&); \
+    static void RegisterFields(TypeInfo& info); \
+    static constexpr ComponentType StaticType() { return ENUM_TYPE; } \
+    virtual const TypeInfo* GetTypeInfo() const { \
+        return ReflectionRegistry::Instance().GetTypeInfo(this->GetType()); \
+    } \
+public: \
+    static void _RegisterType() { \
+        TypeInfo info; \
+        info.name = #CLASS; \
+        info.creator = []() -> void* { return new CLASS(); }; \
+        CLASS::RegisterFields(info); \
+        ReflectionRegistry::Instance().RegisterType(ENUM_TYPE, info); \
+        std::cout << "Registering: " << #CLASS << std::endl; \
+    } \
+    struct AutoRegister_##CLASS { \
+        AutoRegister_##CLASS() { CLASS::_RegisterType(); } \
+    }; \
+    static AutoRegister_##CLASS autoRegisterInstance_##CLASS;
+
+
+
 
 #define REGISTER_COMPONENT_DERIVED(CLASS, ENUM_TYPE, BASE_CLASS)                \
 public:                                                                          \
     using BaseClassType = BASE_CLASS;                                            \
-    static Component* CreateInstance() { return new CLASS(); }                  \
+    static Component* CreateInstance() { return new CLASS(); }                   \
     virtual ComponentType GetType() const override { return ENUM_TYPE; }        \
-    virtual void PostClone(CloneContext&) override;                             \
-    static void RegisterFields(TypeInfo& info);                                 \
-    static constexpr ComponentType StaticType() { return ENUM_TYPE; }           \
-private:                                                                         \
+    virtual void PostClone(CloneContext&) override;                              \
+    static void RegisterFields(TypeInfo& info);                                  \
+    static constexpr ComponentType StaticType() { return ENUM_TYPE; }            \
+    virtual const TypeInfo* GetTypeInfo() const override {                       \
+        return ReflectionRegistry::Instance().GetTypeInfo(this->GetType());      \
+    }                                                                            \
+public:                                                                         \
     static struct AutoRegister_##CLASS {                                         \
         AutoRegister_##CLASS() {                                                 \
             TypeInfo info;                                                       \
@@ -118,6 +136,32 @@ private:                                                                        
             );                                                                   \
             CLASS::RegisterFields(info);                                         \
             ReflectionRegistry::Instance().RegisterType(ENUM_TYPE, info);       \
+            std::cout << "Registering: " << #CLASS << std::endl;                 \
+        }                                                                        \
+    } autoRegisterInstance_##CLASS;
+
+
+
+#define REGISTER_ABSTRACT_COMPONENT(CLASS, ENUM_TYPE, BASE_CLASS)               \
+public:                                                                          \
+    using BaseClassType = BASE_CLASS;                                            \
+    static constexpr ComponentType StaticType() { return ENUM_TYPE; }            \
+    virtual ComponentType GetType() const override { return ENUM_TYPE; }         \
+    virtual void PostClone(CloneContext&) override;                              \
+    static void RegisterFields(TypeInfo& info);                                  \
+    virtual const TypeInfo* GetTypeInfo() const override {                       \
+        return ReflectionRegistry::Instance().GetTypeInfo(this->GetType());      \
+    }                                                                            \
+public:                                                                         \
+    static struct AutoRegister_##CLASS {                                         \
+        AutoRegister_##CLASS() {                                                 \
+            TypeInfo info;                                                       \
+            info.name = #CLASS;                                                  \
+            info.creator = nullptr; /* 抽象类无实例化函数 */                    \
+            info.base = ReflectionRegistry::Instance().GetTypeInfo(BASE_CLASS::StaticType()); \
+            CLASS::RegisterFields(info);                                         \
+            ReflectionRegistry::Instance().RegisterType(ENUM_TYPE, info);       \
+            std::cout << "Registering: " << #CLASS << std::endl;                 \
         }                                                                        \
     } autoRegisterInstance_##CLASS;
 

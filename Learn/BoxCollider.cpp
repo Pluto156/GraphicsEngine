@@ -1,8 +1,28 @@
 #include "stdafx.h"
 #include "BoxCollider.h"
-ComponentType BoxCollider::GetType()
+void BoxCollider::RegisterFields(TypeInfo& info) {
+	REGISTER_FIELD(BoxCollider, halfSizes);
+	REGISTER_FIELD_CUSTOM(BoxCollider, mCollider, [](PhysicsLit::CollisionBox* oldPtr, CloneContext& ctx) {
+		if (!oldPtr) return (PhysicsLit::CollisionBox*)nullptr;
+
+		auto* copy = new PhysicsLit::CollisionBox(*oldPtr);
+		ctx.RegisterPointer(oldPtr, copy);
+		return copy;
+		});
+}
+void BoxCollider::PostClone(CloneContext& ctx) {
+	if (mCollider) {
+		mCollider->colliderComponent = this;
+
+		// 如果涉及其他引用指针，比如 rigidBodyPrimitive，记得使用 MapPointer 修复
+		if (mCollider->rigidBodyPrimitive) {
+			mCollider->rigidBodyPrimitive = ctx.MapPointer(mCollider->rigidBodyPrimitive);
+		}
+	}
+}
+
+BoxCollider::BoxCollider()
 {
-	return ComponentType::BoxCollider;
 }
 
 BoxCollider::BoxCollider(const CVector3& halfSizes)

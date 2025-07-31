@@ -7,8 +7,8 @@ namespace PhysicsLit {
 }
 
 class GameScript : public Component {
+    REGISTER_ABSTRACT_COMPONENT(GameScript, ComponentType::GameScript, Component)
 public:
-    static ComponentType GetType();
     GameScript();
     virtual ~GameScript();
 

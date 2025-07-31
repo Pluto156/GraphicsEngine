@@ -1,8 +1,21 @@
 #include "stdafx.h"
 #include "RigidBody.h"
-ComponentType RigidBody::GetType()
-{
-	return ComponentType::RigidBody;
+// ---------- 注册字段 ----------
+void RigidBody::RegisterFields(TypeInfo& info) {
+	REGISTER_FIELD(RigidBody, mUseGravity);
+	REGISTER_FIELD_CUSTOM(RigidBody, rigidBodyPrimitive, [](PhysicsLit::RigidBodyPrimitive* oldPtr, CloneContext& ctx) {
+		if (!oldPtr) return (PhysicsLit::RigidBodyPrimitive*)nullptr;
+		auto* copy = new PhysicsLit::RigidBodyPrimitive(*oldPtr);  // 假设支持复制构造
+		ctx.RegisterPointer(oldPtr, copy);
+		return copy;
+		});
+}
+
+// ---------- 克隆后修复 ----------
+void RigidBody::PostClone(CloneContext& ctx) {
+	if (rigidBodyPrimitive) {
+		rigidBodyPrimitive->SetGameObjectName(gameObject->name);
+	}
 }
 void RigidBody::Start()
 {
