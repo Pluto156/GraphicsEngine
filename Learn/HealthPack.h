@@ -4,7 +4,7 @@ class HealthPack : public GameScript
     REGISTER_COMPONENT_DERIVED(HealthPack, ComponentType::HealthPack, GameScript)
 
 public:
-    void OnColliderEnter(PhysicsLit::RigidBodyPrimitive* other);
+    void OnColliderEnter(Collider* other);
     void Awake()override;
     void Update()override;
 

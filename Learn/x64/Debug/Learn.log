@@ -1,28 +1,8 @@
-﻿  Assignment_2.cpp
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(44): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(46): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(47): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(49): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(50): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(77): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(88): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(93): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(99): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(163): warning C4305: “初始化”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(174): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(184): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(213): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\assignment_2.cpp(233): warning C4305: “参数”: 从“double”到“float”截断
-e:\sourcecode\graphicsengine\learn\gameobject.h(29): warning C4244: “参数”: 从“double”转换到“float”，可能丢失数据
-  e:\sourcecode\graphicsengine\learn\assignment_2.cpp(314): note: 参见对正在编译的函数 模板 实例化“T *GameObject::AddComponent<SphereCollider,double>(double &&)”的引用
-          with
-          [
-              T=SphereCollider
-          ]
-    正在创建库 E:\sourcecode\GraphicsEngine\run\Learn.lib 和对象 E:\sourcecode\GraphicsEngine\run\Learn.exp
+﻿  PhysicsManager.cpp
 soil.lib(SOIL.obj) : warning LNK4099: 未找到 PDB“SOIL.pdb”(使用“soil.lib(SOIL.obj)”或在“E:\sourcecode\GraphicsEngine\run\SOIL.pdb”中寻找)；正在链接对象，如同没有调试信息一样
 soil.lib(stb_image_aug.obj) : warning LNK4099: 未找到 PDB“SOIL.pdb”(使用“soil.lib(stb_image_aug.obj)”或在“E:\sourcecode\GraphicsEngine\run\SOIL.pdb”中寻找)；正在链接对象，如同没有调试信息一样
 soil.lib(image_helper.obj) : warning LNK4099: 未找到 PDB“SOIL.pdb”(使用“soil.lib(image_helper.obj)”或在“E:\sourcecode\GraphicsEngine\run\SOIL.pdb”中寻找)；正在链接对象，如同没有调试信息一样
 soil.lib(image_DXT.obj) : warning LNK4099: 未找到 PDB“SOIL.pdb”(使用“soil.lib(image_DXT.obj)”或在“E:\sourcecode\GraphicsEngine\run\SOIL.pdb”中寻找)；正在链接对象，如同没有调试信息一样
+    正在创建库 E:\sourcecode\GraphicsEngine\run\Learn.lib 和对象 E:\sourcecode\GraphicsEngine\run\Learn.exp
   Learn.vcxproj -> E:\sourcecode\GraphicsEngine\run\Learn.exe
   Learn.vcxproj -> E:\sourcecode\GraphicsEngine\run\Learn.pdb (Full PDB)

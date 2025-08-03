@@ -115,7 +115,7 @@ private:
             (((1u << a->layer) & b->layerMask) != 0);
     }
 
-    using CollisionCallback = void (GameScript::*)(PhysicsLit::RigidBodyPrimitive*);
+    using CollisionCallback = void (GameScript::*)(Collider*);
 
 
 
@@ -132,9 +132,12 @@ private:
 
     void Notify(RigidPtr a, RigidPtr b, CollisionCallback cb) {
         GameScript* ga = PhysicsLit::PhysicsManager::Instance().TryGetGameScript(a);
-        if (ga) (ga->*cb)(b);
         GameScript* gb = PhysicsLit::PhysicsManager::Instance().TryGetGameScript(b);
-        if (gb) (gb->*cb)(a);
+        if (ga&&gb)
+        {
+            (ga->*cb)(gb->gameObject->GetComponent<Collider>());
+            (gb->*cb)(ga->gameObject->GetComponent<Collider>());
+        }
     }
 
     // ---------------------------------------------

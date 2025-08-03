@@ -10,12 +10,15 @@ void HealthPack::PostClone(CloneContext& ctx) {
 
 }
 
-void HealthPack::OnColliderEnter(PhysicsLit::RigidBodyPrimitive* other)
+void HealthPack::OnColliderEnter(Collider* other)
 {
-	if (other->mCollisionVolume->layer == PhysicsLit::Layer::PLAYER)
+	Debug::Log("HealthPack OnColliderEnter "+ other->gameObject->name);
+	if (other->GetLayer() == PhysicsLit::Layer::PLAYER)
 	{
+		other->gameObject->GetComponent<Unit>()->AddHealth(addHealth);
+		GameObjectManager::Instance().Destroy(gameObject);
+
 	}
-	GameObjectManager::Instance().Destroy(gameObject);
 }
 
 void HealthPack::Awake()

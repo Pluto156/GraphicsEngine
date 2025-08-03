@@ -5,7 +5,7 @@
 namespace PhysicsLit {
     class RigidBodyPrimitive;
 }
-
+class Collider;
 class GameScript : public Component {
     REGISTER_ABSTRACT_COMPONENT(GameScript, ComponentType::GameScript, Component)
 public:
@@ -14,13 +14,13 @@ public:
     virtual ~GameScript();
 
     // 触发器和碰撞器函数：非纯虚，提供默认空实现
-    virtual void OnColliderEnter(PhysicsLit::RigidBodyPrimitive*) {}
-    virtual void OnColliderStay(PhysicsLit::RigidBodyPrimitive*) {}
-    virtual void OnColliderExit(PhysicsLit::RigidBodyPrimitive*) {}
+    virtual void OnColliderEnter(Collider* other) {}
+    virtual void OnColliderStay(Collider* other) {}
+    virtual void OnColliderExit(Collider* other) {}
 
-    virtual void OnTriggerEnter(PhysicsLit::RigidBodyPrimitive*) {}
-    virtual void OnTriggerStay(PhysicsLit::RigidBodyPrimitive*) {}
-    virtual void OnTriggerExit(PhysicsLit::RigidBodyPrimitive*) {}
+    virtual void OnTriggerEnter(Collider* other) {}
+    virtual void OnTriggerStay(Collider* other) {}
+    virtual void OnTriggerExit(Collider* other) {}
 };
 
 

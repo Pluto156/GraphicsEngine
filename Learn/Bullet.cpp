@@ -11,30 +11,12 @@ void Bullet::PostClone(CloneContext& ctx) {
 	rigidBody = gameObject->GetComponent<RigidBody>();
 }
 
-void Bullet::OnColliderEnter(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
-{
 
-}
-void Bullet::OnColliderStay(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
+void Bullet::OnTriggerEnter(Collider* other)
 {
-}
-void Bullet::OnColliderExit(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
-{
-
-}
-void Bullet::OnTriggerEnter(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
-{
-	Debug::Log(gameObject->name+" OnTriggerEnter "+ transform->position.ToString()+" "+ PhysicsLit::PhysicsManager::Instance().GetGameObjectName(rigidBodyPrimitive) + " " + rigidBodyPrimitive->GetGameObjectName());
 	GameObjectManager::Instance().Destroy(gameObject);
 }
-void Bullet::OnTriggerStay(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
-{
 
-}
-void Bullet::OnTriggerExit(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
-{
-
-}
 void Bullet::Awake()
 {
 	rigidBody = gameObject->GetComponent<RigidBody>();

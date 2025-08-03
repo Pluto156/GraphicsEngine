@@ -52,7 +52,7 @@ void InitStage()
         GameObject* CarHealthBar = GameObjectManager::Instance().Instantiate("CarCarHealthBar");
         GameObject* Car2HealthBar = GameObjectManager::Instance().Instantiate("Car2CarHealthBar");
         GameObject* Car2 = GameObjectManager::Instance().Instantiate("Car2", CVector3(3, 0.5 + 2.5 + 5, 0));
-        GameObject* HealthPackGO = GameObjectManager::Instance().Instantiate("HealthPack", CVector3(0, 3, 3));
+        GameObject* HealthPackGO = GameObjectManager::Instance().Instantiate("HealthPack", CVector3(0, 10, 3));
         GameObject* HealthPackPart1 = GameObjectManager::Instance().Instantiate("HealthPackPart1", CVector3(0, 0.5 + 2.5 + 5, 0));
         GameObject* HealthPackPart2 = GameObjectManager::Instance().Instantiate("HealthPackPart2", CVector3(0, 0.5 + 2.5 + 5, 0));
         GameObject* CombatManagerGo = GameObjectManager::Instance().Instantiate("CombatManager", CVector3(0, 0.5 + 2.5 + 5, 0));
