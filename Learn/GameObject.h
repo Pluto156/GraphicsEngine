@@ -33,7 +33,7 @@ public:
         using DecayedT = std::decay_t<T>;
         constexpr bool is_script = std::is_base_of<GameScript, DecayedT>::value;
         AssignIfGameScript(component, std::bool_constant<is_script>{});
-        component->Start();
+        component->Awake();
         return component;
     }
 
@@ -74,11 +74,12 @@ public:
     GameObject* Clone() const;
     GameObject* Clone(CloneContext& ctx) const;
 
+    void CallAllComponentStart();
+
 private:
     std::vector<Component*> components;
     bool isPendingDestroy = false;
 
-    // 用于组件克隆，跳过 Start 调用（避免多次初始化）
     void AddComponentRaw(Component* comp);
 
 

@@ -28,7 +28,7 @@ public:
     int ControlViewMode = 0;//0为欧拉角 1为子坐标
 
     // 构造函数，初始化摄像机参数
-    void Start()override;
+    void Awake()override;
 
     ~Camera();
     void Update()override;

@@ -60,6 +60,12 @@ void GameObjectManager::Update()
     // ----- 3. Deferred creation --------------------------------------------------
     if (!pendingCreate.empty()) {
         gameObjects.insert(gameObjects.end(), pendingCreate.begin(), pendingCreate.end());
+
+        for each(auto object in pendingCreate)
+        {
+            object->CallAllComponentStart();
+        }
+
         pendingCreate.clear();
     }
 

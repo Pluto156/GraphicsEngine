@@ -78,8 +78,8 @@ namespace PhysicsLit
         void CheckImmediateCollision(RigidBodyPrimitive* newRigid);
 
         bool CanCollide(CollisionPrimitive* a, CollisionPrimitive* b) {
-            return ((1 << b->layer) & a->layerMask) != 0 &&
-                ((1 << a->layer) & b->layerMask) != 0;
+            return ((b->layer) & a->layerMask) != 0 &&
+                ((a->layer) & b->layerMask) != 0;
         }
 
 

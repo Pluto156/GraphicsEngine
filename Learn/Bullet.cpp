@@ -8,7 +8,7 @@ void Bullet::RegisterFields(TypeInfo& info) {
 }
 
 void Bullet::PostClone(CloneContext& ctx) {
-	rigidBody = gameObject->GetComponent<RigidBody>()->rigidBodyPrimitive;
+	rigidBody = gameObject->GetComponent<RigidBody>();
 }
 
 void Bullet::OnColliderEnter(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
@@ -35,9 +35,9 @@ void Bullet::OnTriggerExit(PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive)
 {
 
 }
-void Bullet::Start()
+void Bullet::Awake()
 {
-	rigidBody = gameObject->GetComponent<RigidBody>()->rigidBodyPrimitive;
+	rigidBody = gameObject->GetComponent<RigidBody>();
 }
 
 void Bullet::Update()

@@ -16,8 +16,8 @@ public:
     GameObject* gameObject = nullptr;  // 反向引用所属对象
     Transform* transform;// 反向引用所属对象Transform
 
-
-    virtual void Start() {}   // 初始化时调用
+    virtual void Awake() {}   // 组件实例化时调用
+    virtual void Start() {}   // 第一次update前调用
     virtual void Update() {}  // 每帧更新
     virtual ~Component() = default;
 

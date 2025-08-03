@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Camera.h"
 
-void Camera::Start()
+void Camera::Awake()
 {
     //z
     transform->Forward = camTarget - transform->position;

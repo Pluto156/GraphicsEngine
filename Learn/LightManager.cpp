@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "LightManager.h"
-void Light::Start(){
+void Light::Awake(){
     LightManager::Instance().RegisterLight(this);
 }
 

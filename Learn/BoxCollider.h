@@ -10,7 +10,7 @@ public:
 	BoxCollider();
 	BoxCollider(const CVector3& halfSizes);
 	~BoxCollider();
-	void Start() override;
+	void Awake() override;
 	virtual ComponentType GetInsType();
 	virtual void SynchronizeData();
 	virtual void SynchronizeTransform(const CMatrix4& transform);

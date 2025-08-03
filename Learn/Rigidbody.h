@@ -8,7 +8,7 @@ public:
 	bool mUseGravity = true;
 	PhysicsLit::RigidBodyPrimitive* rigidBodyPrimitive = nullptr;
 	RigidBody();
-	void Start() override;
+	void Awake() override;
 	~RigidBody();
 
 	virtual ComponentType GetInsType();
@@ -17,6 +17,8 @@ public:
 	void AddForceAtLocalPoint(const CVector3& force, const CVector3& point);
 	CVector3 GetPosition() const;
 	void SetPosition(const CVector3& position);
+	void SetRotation(const CQuaternion& quaternion);
+	void SetRotation(const CEuler& eulerAngle);
 	CVector3 GetVelocity() const;
 	void SetVelocity(const CVector3& velocity);
 	void SetTransform(const CMatrix4& transform);

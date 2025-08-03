@@ -17,7 +17,7 @@ void RigidBody::PostClone(CloneContext& ctx) {
 		rigidBodyPrimitive->SetGameObjectName(gameObject->name);
 	}
 }
-void RigidBody::Start()
+void RigidBody::Awake()
 {
 	rigidBodyPrimitive = new PhysicsLit::RigidBodyPrimitive();
 	rigidBodyPrimitive->SetPosition(gameObject->transform->GetPosition());
@@ -61,6 +61,16 @@ void RigidBody::SetPosition(const CVector3& position)
 {
 	rigidBodyPrimitive->SetPosition(position);
 }
+
+void RigidBody::SetRotation(const CQuaternion& quaternion)
+{
+	rigidBodyPrimitive->SetRotation(quaternion);
+}
+void RigidBody::SetRotation(const CEuler& eulerAngle)
+{
+	rigidBodyPrimitive->SetRotation(eulerAngle.ToCQuaternion());
+}
+
 
 CVector3 RigidBody::GetVelocity() const
 {

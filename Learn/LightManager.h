@@ -24,7 +24,7 @@ public:
     float intensity = 1.0f;
     float range = 10.0f;
 
-    void Start() override;
+    void Awake() override;
     void Update() override;
 };
 

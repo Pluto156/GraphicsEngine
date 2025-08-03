@@ -18,9 +18,12 @@ enum class ComponentType {
     MeshFilter,
     MeshRenderer,
     Light,
+
+    // ½Å±¾
     GameScript,
     CharacterController,
-    Bullet
+    Bullet,
+    HealthPack
 };
 
 // ---------- FieldInfo ----------

@@ -4,7 +4,6 @@
 class CombatManager : public GameScript
 {
 public:
-
     static CombatManager& Instance() {
         static CombatManager instance;
         return instance;
@@ -12,6 +11,7 @@ public:
 
     GameObject* Car;
     GameObject* Car2;
+    GameObject* HealthPackPrefab;
 
     void RecycleCar(GameObject* car)
     {
@@ -33,10 +33,13 @@ public:
         PhysicsLit::RigidBodyPrimitive* rigidBody = car->GetComponent<RigidBody>()->rigidBodyPrimitive;
         rigidBody->SetPosition(CVector3(6, 0.5 + 2.5, 0));
     }
+    void Awake()override;
+    CombatManager() = default;
+
 
 private:
-    CombatManager() = default;
     ~CombatManager() = default;
     CombatManager(const CombatManager&) = delete;
     void operator=(const CombatManager&) = delete;
+
 };

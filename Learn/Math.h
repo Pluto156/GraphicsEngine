@@ -1,11 +1,10 @@
 #pragma once
 #include <cfloat>
+#include <type_traits> // for std::common_type_t
 #include "CVector3.h"
 #include "CVector4.h"
 #include "CQuaternion.h"
 #include "CMatrix3.h"
-
-
 
 class Math
 {
@@ -28,60 +27,59 @@ public:
 	static CMatrix3 Inverse(const CMatrix3& mat);
 	static CMatrix3 Transpose(const CMatrix3& mat);
 
-	template<class T>
-	static constexpr T Min(T num1, T num2);
-	template<class T>
-	static constexpr T Max(T num1, T num2);
-	template<class T>
-	static constexpr T Clamp(T num, T min, T max);
-	template<class T>
-	static constexpr T AlignUp(T num, T alignment);
-	template<class T>
-	static constexpr T AlignDown(T num, T alignment);
-	template<class T>
-	static constexpr T AlignUpPOT(T num, T alignment);
-	template<class T>
-	static constexpr T AlignDownPOT(T num, T alignment);
+	// ---------- Template Functions ----------
+
+	template<typename T1, typename T2>
+	static constexpr auto Min(T1 a, T2 b) -> std::common_type_t<T1, T2>
+	{
+		using Common = std::common_type_t<T1, T2>;
+		return static_cast<Common>(a) < static_cast<Common>(b) ? static_cast<Common>(a) : static_cast<Common>(b);
+	}
+
+	template<typename T1, typename T2>
+	static constexpr auto Max(T1 a, T2 b) -> std::common_type_t<T1, T2>
+	{
+		using Common = std::common_type_t<T1, T2>;
+		return static_cast<Common>(a) > static_cast<Common>(b) ? static_cast<Common>(a) : static_cast<Common>(b);
+	}
+
+	template<typename T1, typename T2, typename T3>
+	static constexpr auto Clamp(T1 num, T2 min, T3 max) -> std::common_type_t<T1, T2, T3>
+	{
+		using Common = std::common_type_t<T1, T2, T3>;
+		return Math::Min(
+			Math::Max(static_cast<Common>(num), static_cast<Common>(min)),
+			static_cast<Common>(max)
+		);
+	}
+
+	template<typename T1, typename T2>
+	static constexpr auto AlignUp(T1 num, T2 alignment) -> std::common_type_t<T1, T2>
+	{
+		using Common = std::common_type_t<T1, T2>;
+		return ((static_cast<Common>(num) + static_cast<Common>(alignment) - 1) /
+			static_cast<Common>(alignment)) * static_cast<Common>(alignment);
+	}
+
+	template<typename T1, typename T2>
+	static constexpr auto AlignDown(T1 num, T2 alignment) -> std::common_type_t<T1, T2>
+	{
+		using Common = std::common_type_t<T1, T2>;
+		return (static_cast<Common>(num) / static_cast<Common>(alignment)) * static_cast<Common>(alignment);
+	}
+
+	template<typename T1, typename T2>
+	static constexpr auto AlignUpPOT(T1 num, T2 alignment) -> std::common_type_t<T1, T2>
+	{
+		using Common = std::common_type_t<T1, T2>;
+		return (static_cast<Common>(num) + static_cast<Common>(alignment) - 1) &
+			~(static_cast<Common>(alignment) - 1);
+	}
+
+	template<typename T1, typename T2>
+	static constexpr auto AlignDownPOT(T1 num, T2 alignment) -> std::common_type_t<T1, T2>
+	{
+		using Common = std::common_type_t<T1, T2>;
+		return static_cast<Common>(num) & ~(static_cast<Common>(alignment) - 1);
+	}
 };
-
-template<class T>
-constexpr T Math::Min(T num1, T num2)
-{
-	return num1 < num2 ? num1 : num2;
-}
-
-template<class T>
-constexpr T Math::Max(T num1, T num2)
-{
-	return num1 > num2 ? num1 : num2;
-}
-
-template<class T>
-constexpr T Math::Clamp(T num, T min, T max)
-{
-	return Math::Min(Math::Max(num, min), max);
-}
-
-template<class T>
-constexpr T Math::AlignUp(T num, T alignment)
-{
-	return (num + alignment - 1) / alignment * alignment;
-}
-
-template<class T>
-constexpr T Math::AlignDown(T num, T alignment)
-{
-	return num / alignment * alignment;
-}
-
-template<class T>
-constexpr T Math::AlignUpPOT(T num, T alignment)
-{
-	return (num + alignment - 1) & ~(alignment - 1);
-}
-
-template<class T>
-constexpr T Math::AlignDownPOT(T num, T alignment)
-{
-	return num & ~(alignment - 1);
-}

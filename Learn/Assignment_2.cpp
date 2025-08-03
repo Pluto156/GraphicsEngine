@@ -13,6 +13,7 @@ DEFINE_COMPONENT_AUTOREGISTER(Light)
 
 DEFINE_COMPONENT_AUTOREGISTER(GameScript)
 DEFINE_COMPONENT_AUTOREGISTER(Bullet)
+DEFINE_COMPONENT_AUTOREGISTER(HealthPack)
 
 bool isInitStage = false;
 
@@ -51,9 +52,14 @@ void InitStage()
         GameObject* CarHealthBar = GameObjectManager::Instance().Instantiate("CarCarHealthBar");
         GameObject* Car2HealthBar = GameObjectManager::Instance().Instantiate("Car2CarHealthBar");
         GameObject* Car2 = GameObjectManager::Instance().Instantiate("Car2", CVector3(3, 0.5 + 2.5 + 5, 0));
-        GameObject* HealthPack = GameObjectManager::Instance().Instantiate("HealthPack", CVector3(0, 0.5 + 2.5 + 5, 0));
+        GameObject* HealthPackGO = GameObjectManager::Instance().Instantiate("HealthPack", CVector3(0, 3, 3));
         GameObject* HealthPackPart1 = GameObjectManager::Instance().Instantiate("HealthPackPart1", CVector3(0, 0.5 + 2.5 + 5, 0));
         GameObject* HealthPackPart2 = GameObjectManager::Instance().Instantiate("HealthPackPart2", CVector3(0, 0.5 + 2.5 + 5, 0));
+        GameObject* CombatManagerGo = GameObjectManager::Instance().Instantiate("CombatManager", CVector3(0, 0.5 + 2.5 + 5, 0));
+
+
+
+
 
         Stage* StageCom = stage->AddComponent<Stage>();
         Camera* CameraCom = camera->AddComponent<Camera>();
@@ -92,19 +98,19 @@ void InitStage()
         Car2HealthBar->transform->localPosition = CVector3(0, 1, 0);
         Car2HealthBar->transform->localScale = CVector3(1.5, 0.05, 0.05);
 
-        HealthPack->AddChild(HealthPackPart1);
-        HealthPack->AddChild(HealthPackPart2);
+        HealthPackGO->AddChild(HealthPackPart1);
+        HealthPackGO->AddChild(HealthPackPart2);
         HealthPackPart1->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
         renderer = HealthPackPart1->AddComponent<MeshRenderer>();
         renderer->SetMaterial(mat);
         HealthPackPart1->transform->localPosition = CVector3(0, 0, 0);
-        HealthPackPart1->transform->localScale = CVector3(0.5, 1.5, 0.5);
+        HealthPackPart1->transform->localScale = CVector3(0.25, 0.75, 0.25);
         HealthPackPart2->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
         renderer = HealthPackPart2->AddComponent<MeshRenderer>();
         renderer->SetMaterial(mat);
         HealthPackPart2->transform->localPosition = CVector3(0, 0, 0);
         HealthPackPart2->transform->SetEulerAngles(CEuler(0, 90, 0));
-        HealthPackPart2->transform->localScale = CVector3(0.5, 1.5, 0.5);
+        HealthPackPart2->transform->localScale = CVector3(0.25, 0.75, 0.25);
 
 
 
@@ -257,6 +263,7 @@ void InitStage()
         BoxCollider2->SynchronizeData();
 
         BoxCollider2->mCollider->rigidBodyPrimitive = rigidBody2->rigidBodyPrimitive;
+        BoxCollider2->mCollider->SetLayer(PhysicsLit::Layer::PLAYER, PhysicsLit::Layer::BULLET | PhysicsLit::Layer::DEFAULT | PhysicsLit::Layer::Item);
         rigidBody2->rigidBodyPrimitive->mCollisionVolume = BoxCollider2->mCollider;
         rigidBody2->rigidBodyPrimitive->SetInertiaTensor(BoxCollider2->mCollider->GetInertiaTensor(rigidBody2->rigidBodyPrimitive->GetMass()));
         PhysicsLit::PhysicsManager::Instance().AddGameObject(Car);
@@ -270,7 +277,7 @@ void InitStage()
         BoxCollider3->mFriction = 10;
         BoxCollider3->mBounciness = 0.5;
         BoxCollider3->SynchronizeData();
-        BoxCollider3->mCollider->SetLayer(PhysicsLit::Layer::ENEMY);
+        BoxCollider3->mCollider->SetLayer(PhysicsLit::Layer::PLAYER, PhysicsLit::Layer::BULLET | PhysicsLit::Layer::DEFAULT | PhysicsLit::Layer::Item);
         BoxCollider3->mCollider->rigidBodyPrimitive = rigidBody3->rigidBodyPrimitive;
         rigidBody3->rigidBodyPrimitive->mCollisionVolume = BoxCollider3->mCollider;
         rigidBody3->rigidBodyPrimitive->SetInertiaTensor(BoxCollider3->mCollider->GetInertiaTensor(rigidBody3->rigidBodyPrimitive->GetMass()));
@@ -322,6 +329,27 @@ void InitStage()
         
         CarController->BullutPrefab = Sphere;
         Car2Controller->BullutPrefab = Sphere;
+
+
+        auto rigidBody5 = HealthPackGO->AddComponent<RigidBody>();
+        rigidBody5->rigidBodyPrimitive->SetMass(1000);
+        auto BoxCollider4 = HealthPackGO->AddComponent<BoxCollider>(CVector3(0.5, 0.5, 0.5));
+        BoxCollider4->mFriction = 10;
+        BoxCollider4->mBounciness = 0.5;
+        BoxCollider4->SynchronizeData();
+        BoxCollider4->mCollider->SetLayer(PhysicsLit::Layer::Item, PhysicsLit::Layer::PLAYER);
+        BoxCollider4->mCollider->rigidBodyPrimitive = rigidBody5->rigidBodyPrimitive;
+        rigidBody5->rigidBodyPrimitive->mCollisionVolume = BoxCollider4->mCollider;
+        rigidBody5->rigidBodyPrimitive->SetInertiaTensor(BoxCollider4->mCollider->GetInertiaTensor(rigidBody5->rigidBodyPrimitive->GetMass()));
+        PhysicsLit::PhysicsManager::Instance().AddGameObject(HealthPackGO);
+        Car2->transform->UpdateColliderTransform();
+        rigidBody5->rigidBodyPrimitive->SetGameObjectName("HealthPackGO");
+        HealthPackGO->AddComponent<HealthPack>();
+
+
+
+        CombatManager* combatManager = CombatManagerGo->AddComponent<CombatManager>();
+        combatManager->HealthPackPrefab = HealthPackGO;
 
         isInitStage = true;
     }

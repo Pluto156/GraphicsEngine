@@ -34,7 +34,7 @@ BoxCollider::~BoxCollider()
 {
 	delete mCollider;
 }
-void BoxCollider::Start()
+void BoxCollider::Awake()
 {
 	mCollider = new PhysicsLit::CollisionBox();
 	mCollider->colliderComponent = this;

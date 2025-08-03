@@ -222,4 +222,13 @@ void GameObject::AddComponentRaw(Component* comp) {
     else {
         AssignIfGameScript(comp, std::false_type{});
     }
+    comp->Awake();
+}
+
+void GameObject::CallAllComponentStart()
+{
+    for each(auto com in components)
+    {
+        com->Start();
+    }
 }

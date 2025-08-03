@@ -32,7 +32,7 @@ namespace PhysicsLit
 		Collider* colliderComponent;
 		bool isTrigger = false;
 
-		uint32_t layer = 0;        // 所属的 layer，例如 Layer::BULLET = 3
+		uint32_t layer = 1;        // 所属的 layer，例如 Layer::BULLET = 3
 		uint32_t layerMask = 0xFFFFFFFF; // 默认可以与所有层交互（32个bit）
 
 		void SetLayer(Layer layer, uint32_t mask = 0xFFFFFFFF);

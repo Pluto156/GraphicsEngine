@@ -15,6 +15,7 @@ CEuler::CEuler(float fh, float fp, float fb) {
     this->h = fh;
     this->p = fp;
     this->b = fb;
+    Normal();
 }
 
 CVector3 CEuler::ToCVector() {

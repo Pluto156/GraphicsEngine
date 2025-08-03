@@ -3,10 +3,11 @@
 namespace PhysicsLit
 {
     enum Layer : uint32_t {
-        DEFAULT = 0,
-        PLAYER = 1,
-        ENEMY = 2,
-        BULLET = 3,
+        DEFAULT = 1<<0,
+        PLAYER = 1<<1,
+        ENEMY = 1<<2,
+        BULLET = 1<<3,
+        Item = 1<<4,
         // ...
     };
 }
