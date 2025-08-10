@@ -87,18 +87,23 @@ namespace PhysicsLit
 			auto& contact = mPotentialContacts[i];
 			CollisionPrimitive* a = contact.mRigidBodies[0]->mCollisionVolume;
 			CollisionPrimitive* b = contact.mRigidBodies[1]->mCollisionVolume;
-
-			if (!CanCollide(a, b))
+			if ((contact.mRigidBodies[0]->GetGameObjectName() == "WallPrefab" && contact.mRigidBodies[1]->GetGameObjectName() == "Car") ||
+				(contact.mRigidBodies[0]->GetGameObjectName() == "Car" && contact.mRigidBodies[1]->GetGameObjectName() == "WallPrefab"))
+			{
+				Debug::Log("asd1");
+			}
+			if (!CanCollide(a, b) || a->isTrigger || b->isTrigger)
 			{
 				continue;
 			}
 
+
 			// 普通碰撞检测，成功则记录碰撞信息
 			uint32_t collisionCount = CollisionDetector::Detect(a, b, mCollisionData);
-			if (collisionCount > 0)
-			{
-				GameScriptManager::Instance().ReportCollision(contact.mRigidBodies[0], contact.mRigidBodies[1]);
-			}
+			//if (collisionCount > 0)
+			//{
+			//	GameScriptManager::Instance().ReportCollision(contact.mRigidBodies[0], contact.mRigidBodies[1]);
+			//}
 			
 		}
 
@@ -121,10 +126,6 @@ namespace PhysicsLit
 
 			if (a->isTrigger || b->isTrigger)
 			{
-				if (contact.mRigidBodies[0]->GetGameObjectName() == "123" || contact.mRigidBodies[1]->GetGameObjectName() == "123")
-				{
-					Debug::Log("asd1");
-				}
 				// 碰撞检测确认是否真正重叠
 				uint32_t triggerCollisionCount = CollisionDetector::Detect(a, b, &CollisionData(1));
 				if (triggerCollisionCount > 0) {

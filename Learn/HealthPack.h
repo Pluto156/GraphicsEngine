@@ -7,12 +7,12 @@ public:
     void OnColliderEnter(Collider* other);
     void Awake()override;
     void Update()override;
+    int addHealth = 5;
 
 private:
 
     float rotateSpeed = 0.5;
     float Euler_h = 0;
-    int addHealth = 5;
     RigidBody* rigidBody;
 
 };

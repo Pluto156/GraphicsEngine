@@ -1,6 +1,7 @@
 #pragma once
 #include <cfloat>
 #include <type_traits> // for std::common_type_t
+#include <random>
 #include "CVector3.h"
 #include "CVector4.h"
 #include "CQuaternion.h"
@@ -16,6 +17,7 @@ public:
 	static float INV_SQRT2;
 	static float DEG2RAD;
 	static float RAD2DEG;
+
 	static bool Approximately(float a, float b, float eps = FLT_EPSILON);
 	static float Dot(const CVector3& left, const CVector3& right);
 	static float Dot(const CVector4& left, const CVector4& right);
@@ -27,8 +29,16 @@ public:
 	static CMatrix3 Inverse(const CMatrix3& mat);
 	static CMatrix3 Transpose(const CMatrix3& mat);
 
-	// ---------- Template Functions ----------
+	// ---------- Random Functions ----------
+	static void SetRandomSeed(unsigned int seed);
+	static float RandomFloat(float min, float max);
+	static int RandomInt(int min, int max);
+	static bool RandomBool(float probabilityTrue = 0.5f);
+	static float RandomRange01();
+	static CVector3 RandomVector3(const CVector3& min, const CVector3& max);
+	static CVector3 RandomUnitVector3();
 
+	// ---------- Template Functions ----------
 	template<typename T1, typename T2>
 	static constexpr auto Min(T1 a, T2 b) -> std::common_type_t<T1, T2>
 	{
@@ -82,4 +92,7 @@ public:
 		using Common = std::common_type_t<T1, T2>;
 		return static_cast<Common>(num) & ~(static_cast<Common>(alignment) - 1);
 	}
+
+private:
+	static std::mt19937 rng; // random engine
 };

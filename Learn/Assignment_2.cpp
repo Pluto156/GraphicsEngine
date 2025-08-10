@@ -56,6 +56,7 @@ void InitStage()
         GameObject* HealthPackPart1 = GameObjectManager::Instance().Instantiate("HealthPackPart1", CVector3(0, 0.5 + 2.5 + 5, 0));
         GameObject* HealthPackPart2 = GameObjectManager::Instance().Instantiate("HealthPackPart2", CVector3(0, 0.5 + 2.5 + 5, 0));
         GameObject* CombatManagerGo = GameObjectManager::Instance().Instantiate("CombatManager", CVector3(0, 0.5 + 2.5 + 5, 0));
+        GameObject* WallPrefab = GameObjectManager::Instance().Instantiate("WallPrefab", CVector3(0, 0.5 + 2.5 + 5, 0));
 
 
 
@@ -116,6 +117,9 @@ void InitStage()
 
         Floor->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
         Floor->AddComponent<MeshRenderer>();
+
+        WallPrefab->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 1, 1);
+        WallPrefab->AddComponent<MeshRenderer>();
 
         GameObjectManager::Instance().SetCamera(CameraCom);
         GameObjectManager::Instance().SetStage(StageCom);
@@ -263,7 +267,7 @@ void InitStage()
         BoxCollider2->SynchronizeData();
 
         BoxCollider2->mCollider->rigidBodyPrimitive = rigidBody2->rigidBodyPrimitive;
-        BoxCollider2->mCollider->SetLayer(PhysicsLit::Layer::PLAYER, PhysicsLit::Layer::BULLET | PhysicsLit::Layer::DEFAULT | PhysicsLit::Layer::Item);
+        BoxCollider2->mCollider->SetLayer(PhysicsLit::Layer::PLAYER, PhysicsLit::Layer::BULLET | PhysicsLit::Layer::DEFAULT | PhysicsLit::Layer::Item| PhysicsLit::Layer::Wall);
         rigidBody2->rigidBodyPrimitive->mCollisionVolume = BoxCollider2->mCollider;
         rigidBody2->rigidBodyPrimitive->SetInertiaTensor(BoxCollider2->mCollider->GetInertiaTensor(rigidBody2->rigidBodyPrimitive->GetMass()));
         PhysicsLit::PhysicsManager::Instance().AddGameObject(Car);
@@ -277,7 +281,7 @@ void InitStage()
         BoxCollider3->mFriction = 10;
         BoxCollider3->mBounciness = 0.5;
         BoxCollider3->SynchronizeData();
-        BoxCollider3->mCollider->SetLayer(PhysicsLit::Layer::PLAYER, PhysicsLit::Layer::BULLET | PhysicsLit::Layer::DEFAULT | PhysicsLit::Layer::Item);
+        BoxCollider3->mCollider->SetLayer(PhysicsLit::Layer::PLAYER, PhysicsLit::Layer::BULLET | PhysicsLit::Layer::DEFAULT | PhysicsLit::Layer::Item | PhysicsLit::Layer::Wall);
         BoxCollider3->mCollider->rigidBodyPrimitive = rigidBody3->rigidBodyPrimitive;
         rigidBody3->rigidBodyPrimitive->mCollisionVolume = BoxCollider3->mCollider;
         rigidBody3->rigidBodyPrimitive->SetInertiaTensor(BoxCollider3->mCollider->GetInertiaTensor(rigidBody3->rigidBodyPrimitive->GetMass()));
@@ -336,21 +340,85 @@ void InitStage()
         auto BoxCollider4 = HealthPackGO->AddComponent<BoxCollider>(CVector3(0.5, 0.5, 0.5));
         BoxCollider4->mFriction = 10;
         BoxCollider4->mBounciness = 0.5;
+        BoxCollider4->mCollider->isTrigger = true;
         BoxCollider4->SynchronizeData();
         BoxCollider4->mCollider->SetLayer(PhysicsLit::Layer::Item, PhysicsLit::Layer::PLAYER);
         BoxCollider4->mCollider->rigidBodyPrimitive = rigidBody5->rigidBodyPrimitive;
         rigidBody5->rigidBodyPrimitive->mCollisionVolume = BoxCollider4->mCollider;
         rigidBody5->rigidBodyPrimitive->SetInertiaTensor(BoxCollider4->mCollider->GetInertiaTensor(rigidBody5->rigidBodyPrimitive->GetMass()));
         PhysicsLit::PhysicsManager::Instance().AddGameObject(HealthPackGO);
-        Car2->transform->UpdateColliderTransform();
+        HealthPackGO->transform->UpdateColliderTransform();
         rigidBody5->rigidBodyPrimitive->SetGameObjectName("HealthPackGO");
         HealthPackGO->AddComponent<HealthPack>();
+
+        auto rigidBody6 = WallPrefab->AddComponent<RigidBody>();
+        rigidBody6->rigidBodyPrimitive->SetMass(1000);
+        auto BoxCollider6 = WallPrefab->AddComponent<BoxCollider>(CVector3(0.5, 0.5, 0.5));
+        BoxCollider6->mFriction = 10;
+        BoxCollider6->mBounciness = 0.5;
+        BoxCollider6->SynchronizeData();
+        BoxCollider6->mCollider->SetLayer(PhysicsLit::Layer::PLAYER, PhysicsLit::Layer::Wall| PhysicsLit::Layer::DEFAULT | PhysicsLit::Layer::PLAYER);
+        BoxCollider6->mCollider->rigidBodyPrimitive = rigidBody6->rigidBodyPrimitive;
+        rigidBody6->rigidBodyPrimitive->mCollisionVolume = BoxCollider6->mCollider;
+        rigidBody6->rigidBodyPrimitive->SetInertiaTensor(BoxCollider6->mCollider->GetInertiaTensor(rigidBody6->rigidBodyPrimitive->GetMass()));
+        //PhysicsLit::PhysicsManager::Instance().AddGameObject(WallPrefab);
+        rigidBody6->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(CVector3(0.0f, -9.8f, 0.0f)));
+        WallPrefab->transform->UpdateColliderTransform();
+        rigidBody6->rigidBodyPrimitive->SetGameObjectName("WallPrefab");
 
 
 
         CombatManager* combatManager = CombatManagerGo->AddComponent<CombatManager>();
         combatManager->HealthPackPrefab = HealthPackGO;
 
+
+
+
+        // 墙体部分 
+
+        AreaPos = B1->transform->position;
+        b1Spacing = 0.05f;
+        for (int i = 0; i < 10; ++i) {
+            for (int j = 0; j < 9; ++j) {
+                float xPos = AreaPos.x + j * (1 + b1Spacing);
+                float yPos = 3;
+                float zPos = AreaPos.z + i * (1 + b1Spacing);
+                if (i == 0 && j >= 1 && j <= 7)continue;
+
+                if (i == 0 || i == 9 || j == 0 || j == 8)
+                {
+                    GameObject* t = GameObjectManager::Instance().Clone(WallPrefab);
+                    t->transform->SetPosition(CVector3(xPos, yPos, zPos));
+                    t->transform->UpdateRigidBodyTransform();
+                    t->transform->UpdateColliderTransform();
+                    PhysicsLit::PhysicsManager::Instance().AddGameObject(t);
+                }
+
+            }
+        }
+
+
+
+        AreaPos = B2->transform->position;
+        b2spacing = 0.05f;
+        for (int i = 0; i < 4; ++i) {
+            for (int j = 0; j < 15; ++j) {
+                float xPos = AreaPos.x + j * (1 + b2spacing);
+                float yPos = 3;
+                float zPos = AreaPos.z + i * (1 + b2spacing);
+                if (i == 3 && j >= 3 && j <= 11)continue;
+
+                if (i == 0 || i == 3 || j == 0 || j == 14)
+                {
+                    GameObject* t = GameObjectManager::Instance().Clone(WallPrefab);
+                    t->transform->SetPosition(CVector3(xPos, yPos, zPos));
+                    t->transform->UpdateRigidBodyTransform();
+                    t->transform->UpdateColliderTransform();
+                    PhysicsLit::PhysicsManager::Instance().AddGameObject(t);
+                }
+
+            }
+        }
         isInitStage = true;
     }
 

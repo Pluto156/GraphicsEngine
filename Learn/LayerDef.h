@@ -7,8 +7,8 @@ namespace PhysicsLit
         PLAYER = 1<<1,
         ENEMY = 1<<2,
         BULLET = 1<<3,
-        Item = 1<<4,
-        // ...
+        Item = 1 << 4,
+        Wall = 1<<5,
     };
 }
 

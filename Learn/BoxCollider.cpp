@@ -6,6 +6,7 @@ void BoxCollider::RegisterFields(TypeInfo& info) {
 		if (!oldPtr) return (PhysicsLit::CollisionBox*)nullptr;
 
 		auto* copy = new PhysicsLit::CollisionBox(*oldPtr);
+		printf("CollisionBoxCopy = %lx\n", reinterpret_cast<uintptr_t>(copy));
 		ctx.RegisterPointer(oldPtr, copy);
 		return copy;
 		});
@@ -17,6 +18,9 @@ void BoxCollider::PostClone(CloneContext& ctx) {
 		// 如果涉及其他引用指针，比如 rigidBodyPrimitive，记得使用 MapPointer 修复
 		if (mCollider->rigidBodyPrimitive) {
 			mCollider->rigidBodyPrimitive = ctx.MapPointer(mCollider->rigidBodyPrimitive);
+
+			mCollider->rigidBodyPrimitive->mCollisionVolume = mCollider;
+			mCollider->rigidBodyPrimitive->SetInertiaTensor(mCollider->GetInertiaTensor(mCollider->rigidBodyPrimitive->GetMass()));
 		}
 	}
 }
@@ -37,6 +41,8 @@ BoxCollider::~BoxCollider()
 void BoxCollider::Awake()
 {
 	mCollider = new PhysicsLit::CollisionBox();
+	printf("Awake CollisionBoxCopy = %lx\n", reinterpret_cast<uintptr_t>(mCollider));
+
 	mCollider->colliderComponent = this;
 	mCollider->mHalfSize = halfSizes;
 	SynchronizeData();
@@ -48,6 +54,7 @@ void BoxCollider::Awake()
 		rigidBody->rigidBodyPrimitive->SetInertiaTensor(mCollider->GetInertiaTensor(rigidBody->rigidBodyPrimitive->GetMass()));
 	}
 }
+
 
 ComponentType BoxCollider::GetInsType()
 {

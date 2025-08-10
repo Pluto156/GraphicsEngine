@@ -4,13 +4,27 @@
 
 void Unit::OnTriggerEnter(Collider* other)
 {
-	Debug::Log("hit " + other->gameObject->name);
-	--this->CurHealth;
-	RefreshHealthBar();
-	if (CurHealth <= 0)
+	if (other->GetLayer() == PhysicsLit::Layer::BULLET)
 	{
-		CombatManager::Instance().RecycleCar(gameObject);
+		Debug::Log(gameObject->name+" OnTriggerEnter bullet");
+
+		--this->CurHealth;
+		RefreshHealthBar();
+		if (CurHealth <= 0)
+		{
+			CombatManager::Instance().RecycleCar(gameObject);
+		}
 	}
+	else if (other->GetLayer() == PhysicsLit::Layer::Item)
+	{
+		Debug::Log(gameObject->name + " OnTriggerEnter Item");
+		AddHealth(other->gameObject->GetComponent<HealthPack>()->addHealth);
+
+		CombatManager::Instance().RecycleHealthPack(other->gameObject);
+
+	}
+	
+
 }
 
 

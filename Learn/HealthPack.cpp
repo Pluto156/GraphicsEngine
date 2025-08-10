@@ -12,13 +12,6 @@ void HealthPack::PostClone(CloneContext& ctx) {
 
 void HealthPack::OnColliderEnter(Collider* other)
 {
-	Debug::Log("HealthPack OnColliderEnter "+ other->gameObject->name);
-	if (other->GetLayer() == PhysicsLit::Layer::PLAYER)
-	{
-		other->gameObject->GetComponent<Unit>()->AddHealth(addHealth);
-		GameObjectManager::Instance().Destroy(gameObject);
-
-	}
 }
 
 void HealthPack::Awake()
