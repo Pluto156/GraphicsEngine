@@ -149,3 +149,9 @@ KeyCode InputManager::MapMouseButton(int button) const {
     default: return KeyCode::None;
     }
 }
+
+CVector2 InputManager::GetMousePosition()
+{
+    return CVector2(mouse_x_, mouse_y_);
+}
+

@@ -1,4 +1,4 @@
-﻿  PhysicsManager.cpp
+﻿  Stage.cpp
     正在创建库 E:\sourcecode\GraphicsEngine\run\Learn.lib 和对象 E:\sourcecode\GraphicsEngine\run\Learn.exp
 soil.lib(SOIL.obj) : warning LNK4099: 未找到 PDB“SOIL.pdb”(使用“soil.lib(SOIL.obj)”或在“E:\sourcecode\GraphicsEngine\run\SOIL.pdb”中寻找)；正在链接对象，如同没有调试信息一样
 soil.lib(stb_image_aug.obj) : warning LNK4099: 未找到 PDB“SOIL.pdb”(使用“soil.lib(stb_image_aug.obj)”或在“E:\sourcecode\GraphicsEngine\run\SOIL.pdb”中寻找)；正在链接对象，如同没有调试信息一样

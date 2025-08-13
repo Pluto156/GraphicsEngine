@@ -152,6 +152,7 @@ public:
 
     void Update() override;
     void LateUpdate() override;
+    CVector2 GetMousePosition();
 
 private:
     InputManager() = default;

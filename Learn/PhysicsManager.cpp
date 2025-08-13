@@ -87,11 +87,6 @@ namespace PhysicsLit
 			auto& contact = mPotentialContacts[i];
 			CollisionPrimitive* a = contact.mRigidBodies[0]->mCollisionVolume;
 			CollisionPrimitive* b = contact.mRigidBodies[1]->mCollisionVolume;
-			if ((contact.mRigidBodies[0]->GetGameObjectName() == "WallPrefab" && contact.mRigidBodies[1]->GetGameObjectName() == "Car") ||
-				(contact.mRigidBodies[0]->GetGameObjectName() == "Car" && contact.mRigidBodies[1]->GetGameObjectName() == "WallPrefab"))
-			{
-				Debug::Log("asd1");
-			}
 			if (!CanCollide(a, b) || a->isTrigger || b->isTrigger)
 			{
 				continue;
@@ -217,6 +212,136 @@ namespace PhysicsLit
 				GameScriptManager::Instance().ReportCollision(bullet, node->mRigidBody);
 			}
 		}
+	}
+	// --- Raycast implementation (replace previous placeholder) ---
+	bool PhysicsManager::Raycast(
+		const CVector3& origin,
+		const CVector3& direction,
+		RaycastHit& outHit,
+		float maxDistance,
+		unsigned int layerMask,
+		bool includeTriggers)
+	{
+		outHit = RaycastHit(); // reset
+
+		if (mBVHRoot == nullptr)
+			return false;
+
+		// 规范化方向（保留原始 maxDistance）
+		CVector3 dir = direction;
+		float dirLen = dir.len();
+		if (dirLen <= 0.0f) return false;
+		if (fabs(dirLen - 1.0f) > 1e-6f) dir.Normalize();
+
+		// 如果 maxDistance 非有限值，使用一个足够大的半长用于包围球 (以便 BVH 粗筛)
+		const float INF_HALF = 1e6f;
+		float halfLen = (maxDistance == FLT_MAX) ? INF_HALF : (maxDistance * 0.5f);
+		CVector3 mid = origin + dir * halfLen;
+		BoundingSphere rayCoverSphere(mid, halfLen + 1e-3f);
+
+		// 查询 BVH 中可能的节点
+		std::vector<BVHNode*> candidates;
+		mBVHRoot->QueryPotentialContacts(rayCoverSphere, candidates);
+
+		if (candidates.empty())
+			return false;
+
+		// 最短命中距离
+		float closestDist = std::numeric_limits<float>::infinity();
+		bool found = false;
+
+		// 为相交检测构造 Ray
+		Ray ray(origin, dir); // 假设 Ray 有 (origin, direction) 构造函数
+
+		for (auto* node : candidates)
+		{
+			if (!node || !node->mRigidBody) continue;
+			RigidBodyPrimitive* rb = node->mRigidBody;
+
+			CollisionPrimitive* prim = rb->mCollisionVolume;
+			if (!prim) continue;
+
+			// 层过滤：primitive->layer 与 layerMask 做按位与
+			if (((prim->layer) & layerMask) == 0) continue;
+
+			// trigger 过滤
+			if (!includeTriggers && prim->isTrigger) continue;
+
+			// 根据碰撞体类型调用相应的相交检测函数（能返回 hit info）
+			RayHitInfo hitInfo; // 你工程里应该有这个类型
+			bool hit = false;
+
+			ColliderType type = prim->GetType();
+			switch (type)
+			{
+			case ColliderType::Box:
+			{
+				// 将基类转换为 CollisionBox
+				CollisionBox* box = static_cast<CollisionBox*>(prim);
+				if (box)
+				{
+					// 使用 IntersectionDetector 的重载：
+					// bool Detect(const Ray& ray, const CollisionBox& box, RayHitInfo& hit);
+					hit = IntersectionDetector::Detect(ray, *box, hitInfo);
+				}
+				break;
+			}
+			case ColliderType::Sphere:
+			{
+				CollisionSphere* sphere = static_cast<CollisionSphere*>(prim);
+				if (sphere)
+				{
+					hit = IntersectionDetector::Detect(ray, *sphere);
+				}
+				break;
+			}
+			case ColliderType::Plane:
+			{
+				CollisionPlane* plane = static_cast<CollisionPlane*>(prim);
+				if (plane)
+				{
+					hit = IntersectionDetector::Detect(ray, *plane);
+				}
+				break;
+			}
+			case ColliderType::Circle2D:
+			{
+				CollisionCircle2D* circle = static_cast<CollisionCircle2D*>(prim);
+				if (circle)
+				{
+					// 有时 Circle2D 仅有不带 hit info 的版本和带 hit info 的重载两种
+					hit = IntersectionDetector::Detect(ray, *circle, hitInfo);
+				}
+				break;
+			}
+			default:
+				// 若有其他类型，可能需要扩展
+				break;
+			}
+
+			if (!hit) continue;
+
+			// 一般 RayHitInfo.distance 表示从 origin 沿 dir 的距离
+			// 过滤距离为负（在射线起点后方）或者超过 maxDistance
+			if (hitInfo.distance < 0.0f) continue;
+			if (hitInfo.distance > maxDistance) continue;
+
+			if (hitInfo.distance < closestDist)
+			{
+				closestDist = hitInfo.distance;
+				found = true;
+
+				outHit.hit = true;
+				outHit.rigidbody = rb;
+				auto it = RigidBodyToGO.find(rb);
+				outHit.gameObject = (it != RigidBodyToGO.end()) ? it->second : nullptr;
+				outHit.distance = hitInfo.distance;
+				outHit.point = origin + dir * hitInfo.distance;
+				//outHit.normal = hitInfo.normal;
+			}
+		} // end for candidates
+
+		return found;
 	}
 
 

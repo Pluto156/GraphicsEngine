@@ -32,13 +32,12 @@ public:
 
     ~Camera();
     void Update()override;
-    void OnColliderEnter(PhysicsLit::RigidBodyPrimitive*);
-    void OnColliderStay(PhysicsLit::RigidBodyPrimitive*);
-    void OnColliderExit(PhysicsLit::RigidBodyPrimitive*);
-    void OnTriggerEnter(PhysicsLit::RigidBodyPrimitive*);
-    void OnTriggerStay(PhysicsLit::RigidBodyPrimitive*);
-    void OnTriggerExit(PhysicsLit::RigidBodyPrimitive*);
-
     void LookAt();
+    // ScreenToWorldPoint: 将屏幕坐标转换为世界坐标
+    // screenPoint.z: 深度（0 = near plane, 1 = far plane）
+    CVector3 ScreenToWorldPoint(const CVector3& screenPoint) const;
+
+    // 仅提供屏幕 XY（像素）。若 useDepthBuffer==true，会读深度缓冲得到 z；否则使用 z=0.5。
+    CVector3 ScreenToWorldPoint(const CVector2& screenXY, bool useDepthBuffer = false) const;
 
 };

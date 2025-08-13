@@ -276,7 +276,7 @@ void InitStage()
         rigidBody2->rigidBodyPrimitive->SetGameObjectName("Car");
 
         auto rigidBody3 = Car2->AddComponent<RigidBody>();
-        rigidBody3->rigidBodyPrimitive->SetMass(1000);
+        rigidBody3->rigidBodyPrimitive->SetMass(100);
         auto BoxCollider3 = Car2->AddComponent<BoxCollider>(CVector3(0.5, 0.5, 0.5));
         BoxCollider3->mFriction = 10;
         BoxCollider3->mBounciness = 0.5;
@@ -352,12 +352,12 @@ void InitStage()
         HealthPackGO->AddComponent<HealthPack>();
 
         auto rigidBody6 = WallPrefab->AddComponent<RigidBody>();
-        rigidBody6->rigidBodyPrimitive->SetMass(1000);
+        rigidBody6->rigidBodyPrimitive->SetMass(100000);
         auto BoxCollider6 = WallPrefab->AddComponent<BoxCollider>(CVector3(0.5, 0.5, 0.5));
         BoxCollider6->mFriction = 10;
         BoxCollider6->mBounciness = 0.5;
         BoxCollider6->SynchronizeData();
-        BoxCollider6->mCollider->SetLayer(PhysicsLit::Layer::PLAYER, PhysicsLit::Layer::Wall| PhysicsLit::Layer::DEFAULT | PhysicsLit::Layer::PLAYER);
+        BoxCollider6->mCollider->SetLayer(PhysicsLit::Layer::Wall, PhysicsLit::Layer::Wall| PhysicsLit::Layer::DEFAULT | PhysicsLit::Layer::PLAYER);
         BoxCollider6->mCollider->rigidBodyPrimitive = rigidBody6->rigidBodyPrimitive;
         rigidBody6->rigidBodyPrimitive->mCollisionVolume = BoxCollider6->mCollider;
         rigidBody6->rigidBodyPrimitive->SetInertiaTensor(BoxCollider6->mCollider->GetInertiaTensor(rigidBody6->rigidBodyPrimitive->GetMass()));

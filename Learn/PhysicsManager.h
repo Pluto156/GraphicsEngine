@@ -12,7 +12,15 @@ namespace PhysicsLit
 {
     class CollisionData;
     class ContactResolver;
-
+    struct RaycastHit
+    {
+        RigidBodyPrimitive* rigidbody = nullptr; // 命中的刚体 primitive（可能为 nullptr）
+        GameObject* gameObject = nullptr;        // 对应的 GameObject（若存在）
+        float distance = 0.0f;                   // 从射线起点到碰撞点的距离
+        CVector3 point;                          // 碰撞点世界坐标
+        CVector3 normal;                         // 碰撞法线（单位向量）
+        bool hit = false;                        // 是否命中
+    };
     class PhysicsManager : public IManager {
     public:
         static PhysicsManager& Instance() {
@@ -82,7 +90,21 @@ namespace PhysicsLit
                 ((a->layer) & b->layerMask) != 0;
         }
 
-
+        // --- Raycast API (Unity-like) ---
+        // origin: 射线起点（世界坐标）
+        // direction: 单位方向向量（最好归一化）
+        // outHit: 输出命中信息（最近一次命中）
+        // maxDistance: 射线的最大检测距离（default: FLT_MAX）
+        // layerMask: 可选，按位掩码过滤图层，默认 ~0（所有层）
+        // includeTriggers: 是否也检测 trigger（默认 true）
+        bool Raycast(
+            const CVector3& origin,
+            const CVector3& direction,
+            RaycastHit& outHit,
+            float maxDistance = FLT_MAX,
+            unsigned int layerMask = ~0u,
+            bool includeTriggers = true
+        );
     private:
         PhysicsManager();
 

@@ -231,7 +231,6 @@ void CQuaternion::Rotate(const CVector3& axis, float angle)
 
 CQuaternion CQuaternion::Slerp(const CQuaternion& Vend, float t)
 {
-
     CQuaternion q1 = *this;
     CQuaternion q2 = Vend;
     q1.Normalize();
@@ -240,7 +239,7 @@ CQuaternion CQuaternion::Slerp(const CQuaternion& Vend, float t)
     float dot = q1.dotMul(q2);
     CQuaternion v1 = q2;
 
-    // 如果dot < 0，则取反目标四元数，保证短路径插值
+    // 走短弧
     if (dot < 0.0f)
     {
         v1 = -q2;
@@ -249,22 +248,27 @@ CQuaternion CQuaternion::Slerp(const CQuaternion& Vend, float t)
 
     const float THRESHOLD = 0.9995f;
 
+    // 几乎相同：退化为线性插值
     if (dot > THRESHOLD)
     {
-        // 如果两四元数非常接近，退化为线性插值
         CQuaternion result = q1 + (v1 - q1) * t;
         result.Normalize();
         return result;
     }
 
-    // 标准SLERP公式
-    dot = fmin(fmax(dot, -1.0f), 1.0f);  // clamp到[-1,1]
-    float theta_0 = acos(dot);          // 起始角度
+    // 标准 SLERP
+    dot = std::fmax(-1.0f, std::fmin(1.0f, dot));   // clamp [-1,1]
+    float theta_0 = std::acos(dot);
+    float sin_theta_0 = std::sin(theta_0);
 
-    CQuaternion result = (q1) * (theta_0 *sin(1-t)/sin(theta_0)) + v1 * (sin(t* theta_0)/ sin(theta_0));
-    result.Normalize(); // 最后归一化
+    float s0 = std::sin((1.0f - t) * theta_0) / sin_theta_0;
+    float s1 = std::sin(t * theta_0) / sin_theta_0;
+
+    CQuaternion result = q1 * s0 + v1 * s1;
+    result.Normalize();
     return result;
 }
+
 
 
 // 四元数插值，生成n个数据
