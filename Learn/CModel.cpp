@@ -230,6 +230,12 @@ void MeshRenderer::SetTexture(const std::string& path) {
     useTexture = textureID != 0;
 }
 
+void MeshRenderer::SetDiffuseColor(CVector3 diffuseColor)
+{
+    material.diffuseColor = diffuseColor;
+}
+
+
 void MeshRenderer::Draw() {
     auto* filter = gameObject->GetComponent<MeshFilter>();
     if (!filter || !transform) return;

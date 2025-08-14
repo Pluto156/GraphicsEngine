@@ -64,6 +64,7 @@ public:
     void SetMaterial(const Material& mat) { material = mat; }
     void SetTexture(const std::string& path);
     const Material& GetMaterial() const { return material; }
+    void SetDiffuseColor(CVector3 diffuseColor);
 
 private:
     std::string texturePath;

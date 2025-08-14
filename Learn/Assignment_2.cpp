@@ -14,6 +14,7 @@ DEFINE_COMPONENT_AUTOREGISTER(Light)
 DEFINE_COMPONENT_AUTOREGISTER(GameScript)
 DEFINE_COMPONENT_AUTOREGISTER(Bullet)
 DEFINE_COMPONENT_AUTOREGISTER(HealthPack)
+DEFINE_COMPONENT_AUTOREGISTER(BreakableWall)
 
 bool isInitStage = false;
 
@@ -57,6 +58,7 @@ void InitStage()
         GameObject* HealthPackPart2 = GameObjectManager::Instance().Instantiate("HealthPackPart2", CVector3(0, 0.5 + 2.5 + 5, 0));
         GameObject* CombatManagerGo = GameObjectManager::Instance().Instantiate("CombatManager", CVector3(0, 0.5 + 2.5 + 5, 0));
         GameObject* WallPrefab = GameObjectManager::Instance().Instantiate("WallPrefab", CVector3(0, 0.5 + 2.5 + 5, 0));
+        GameObject* BreakableWallPrefab = GameObjectManager::Instance().Instantiate("BreakableWallPrefab", CVector3(0, 11, 0));
 
 
 
@@ -120,6 +122,13 @@ void InitStage()
 
         WallPrefab->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 1, 1);
         WallPrefab->AddComponent<MeshRenderer>();
+
+        BreakableWallPrefab->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 1, 1);
+        renderer = BreakableWallPrefab->AddComponent<MeshRenderer>();
+        BreakableWallPrefab->AddComponent<BreakableWall>();
+        mat.diffuseColor = CVector3(0.5, 0.5, 0.5);
+        renderer->SetMaterial(mat);
+
 
         GameObjectManager::Instance().SetCamera(CameraCom);
         GameObjectManager::Instance().SetStage(StageCom);
@@ -366,7 +375,20 @@ void InitStage()
         WallPrefab->transform->UpdateColliderTransform();
         rigidBody6->rigidBodyPrimitive->SetGameObjectName("WallPrefab");
 
-
+        auto rigidBody7 = BreakableWallPrefab->AddComponent<RigidBody>();
+        rigidBody7->rigidBodyPrimitive->SetMass(100000);
+        auto BoxCollider7 = BreakableWallPrefab->AddComponent<BoxCollider>(CVector3(0.5, 0.5, 0.5));
+        BoxCollider7->mFriction = 10;
+        BoxCollider7->mBounciness = 0.5;
+        BoxCollider7->SynchronizeData();
+        BoxCollider7->mCollider->SetLayer(PhysicsLit::Layer::Wall, PhysicsLit::Layer::Wall | PhysicsLit::Layer::DEFAULT | PhysicsLit::Layer::PLAYER | PhysicsLit::Layer::BULLET);
+        BoxCollider7->mCollider->rigidBodyPrimitive = rigidBody7->rigidBodyPrimitive;
+        rigidBody7->rigidBodyPrimitive->mCollisionVolume = BoxCollider7->mCollider;
+        rigidBody7->rigidBodyPrimitive->SetInertiaTensor(BoxCollider7->mCollider->GetInertiaTensor(rigidBody7->rigidBodyPrimitive->GetMass()));
+        //PhysicsLit::PhysicsManager::Instance().AddGameObject(WallPrefab);
+        rigidBody7->rigidBodyPrimitive->AddForceGenerator(new PhysicsLit::ForceGravity(CVector3(0.0f, -9.8f, 0.0f)));
+        BreakableWallPrefab->transform->UpdateColliderTransform();
+        rigidBody7->rigidBodyPrimitive->SetGameObjectName("BreakableWallPrefab");
 
         CombatManager* combatManager = CombatManagerGo->AddComponent<CombatManager>();
         combatManager->HealthPackPrefab = HealthPackGO;
@@ -374,8 +396,7 @@ void InitStage()
 
 
 
-        // 墙体部分 
-
+        // ----------------------- 原外墙（B1）生成（保持） -----------------------
         AreaPos = B1->transform->position;
         b1Spacing = 0.05f;
         for (int i = 0; i < 10; ++i) {
@@ -383,7 +404,7 @@ void InitStage()
                 float xPos = AreaPos.x + j * (1 + b1Spacing);
                 float yPos = 3;
                 float zPos = AreaPos.z + i * (1 + b1Spacing);
-                if (i == 0 && j >= 1 && j <= 7)continue;
+                if (i == 0 && j >= 1 && j <= 7) continue;
 
                 if (i == 0 || i == 9 || j == 0 || j == 8)
                 {
@@ -393,12 +414,21 @@ void InitStage()
                     t->transform->UpdateColliderTransform();
                     PhysicsLit::PhysicsManager::Instance().AddGameObject(t);
                 }
-
             }
         }
+        // 在 B1 内部生成迷宫（原格子为单位）
+        // 调用 CombatManager 的方法（注意最后一个参数为 targetPassageFraction，可按需调整）
+        CombatManager::Instance().GenerateAndPlaceMazeInsideArea_CellGrid(
+            AreaPos,       // 外围起点（与你外墙对齐）
+            10,            // outerRows (包含外围墙，与你外墙循环一致)
+            9,             // outerCols
+            b1Spacing,     // spacing
+            3.0f,          // yPos
+            BreakableWallPrefab,
+            0.75f          // targetPassageFraction（通路比例），可调整为 0.25-0.45 等
+        );
 
-
-
+        // ----------------------- 原外墙（B2）生成（保持） -----------------------
         AreaPos = B2->transform->position;
         b2spacing = 0.05f;
         for (int i = 0; i < 4; ++i) {
@@ -406,7 +436,7 @@ void InitStage()
                 float xPos = AreaPos.x + j * (1 + b2spacing);
                 float yPos = 3;
                 float zPos = AreaPos.z + i * (1 + b2spacing);
-                if (i == 3 && j >= 3 && j <= 11)continue;
+                if (i == 3 && j >= 3 && j <= 11) continue;
 
                 if (i == 0 || i == 3 || j == 0 || j == 14)
                 {
@@ -416,9 +446,19 @@ void InitStage()
                     t->transform->UpdateColliderTransform();
                     PhysicsLit::PhysicsManager::Instance().AddGameObject(t);
                 }
-
             }
         }
+        // 在 B2 内部生成迷宫（原格子为单位）
+        CombatManager::Instance().GenerateAndPlaceMazeInsideArea_CellGrid(
+            AreaPos,
+            4,
+            15,
+            b2spacing,
+            3.0f,
+            BreakableWallPrefab,
+            0.75f
+        );
+
         isInitStage = true;
     }
 

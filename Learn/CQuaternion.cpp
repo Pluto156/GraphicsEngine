@@ -280,7 +280,7 @@ void CQuaternion::Slerp(const CQuaternion& Vend, int n, float* t, CQuaternion* R
     }
 }
 
-CMatrix4 CQuaternion::ToCMatrix4()
+CMatrix4 CQuaternion::ToCMatrix4()const
 {
     CMatrix4 t;
     t.m00 = 1 - 2 * y * y - 2 * z * z;
@@ -297,7 +297,7 @@ CMatrix4 CQuaternion::ToCMatrix4()
     return t;
 }
 
-CEuler CQuaternion::ToCEuler()
+CEuler CQuaternion::ToCEuler()const
 {
     CEuler euler;
 

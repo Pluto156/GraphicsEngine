@@ -23,7 +23,8 @@ enum class ComponentType {
     GameScript,
     CharacterController,
     Bullet,
-    HealthPack
+    HealthPack,
+    BreakableWall
 };
 
 // ---------- FieldInfo ----------

@@ -345,6 +345,142 @@ namespace PhysicsLit
 	}
 
 
+	// --- OverlapBox implementation using CollisionDetector (precise) ---
+	std::vector<GameObject*> PhysicsManager::OverlapBox(
+		const CVector3& center,
+		const CVector3& halfExtents,
+		const CQuaternion& rotation,
+		unsigned int layerMask,
+		bool includeTriggers)
+	{
+		std::vector<GameObject*> results;
+		if (mBVHRoot == nullptr) return results;
+
+		// 粗筛：用覆盖 OBB 的包围球做 BVH 查询
+		float radius = std::sqrt(halfExtents.x * halfExtents.x +
+			halfExtents.y * halfExtents.y +
+			halfExtents.z * halfExtents.z);
+		BoundingSphere querySphere(center, radius + 1e-3f);
+
+		std::vector<BVHNode*> candidates;
+		mBVHRoot->QueryPotentialContacts(querySphere, candidates);
+		if (candidates.empty()) return results;
+
+		// 构造查询用的 CollisionBox（query OBB）
+		CollisionBox queryBox;
+		queryBox.mHalfSize = halfExtents;
+		// 构造变换矩阵：旋转 + 平移
+		// 请根据你的 CMatrix4 API 调整下面两行（CreateFromQuaternion / SetTranslation）
+		queryBox.transformMatrix = Math::Translate(rotation.ToCMatrix4(), center);
+		queryBox.rigidBodyPrimitive = nullptr;
+		queryBox.isTrigger = false;
+		// queryBox.mOffset 保持默认（如果需要可设置）
+
+		// 复用一个小的 CollisionData（容量 1）用于检测
+		CollisionData tmpData(1);
+
+		for (auto* node : candidates)
+		{
+			if (!node || !node->mRigidBody) continue;
+			RigidBodyPrimitive* rb = node->mRigidBody;
+			CollisionPrimitive* prim = rb->mCollisionVolume;
+			if (!prim) continue;
+
+			// 层过滤
+			if (((prim->layer) & layerMask) == 0) continue;
+			// trigger 过滤
+			if (!includeTriggers && prim->isTrigger) continue;
+
+			bool overlap = false;
+			tmpData.Reset(); // 确保清空以前的 contact count / 指针
+
+			ColliderType type = prim->GetType();
+			switch (type)
+			{
+			case ColliderType::Box:
+			{
+				CollisionBox* otherBox = static_cast<CollisionBox*>(prim);
+				if (otherBox)
+				{
+					// 精确 Box-Box 碰撞检测
+					uint32_t cnt = CollisionDetector::Detect(queryBox, *otherBox, &tmpData);
+					if (cnt > 0) overlap = true;
+				}
+				break;
+			}
+			case ColliderType::Sphere:
+			{
+				CollisionSphere* otherSphere = static_cast<CollisionSphere*>(prim);
+				if (otherSphere)
+				{
+					// 精确 Box-Sphere 检测（CollisionDetector 提供）
+					uint32_t cnt = CollisionDetector::Detect(queryBox, *otherSphere, &tmpData);
+					if (cnt > 0) overlap = true;
+				}
+				break;
+			}
+			case ColliderType::Plane:
+			{
+				CollisionPlane* plane = static_cast<CollisionPlane*>(prim);
+				if (plane)
+				{
+					// Box-Plane 精确检测（第四个参数为 isHalfSpace，可视场景需要传 true/false）
+					uint32_t cnt = CollisionDetector::Detect(queryBox, *plane, &tmpData, true);
+					if (cnt > 0) overlap = true;
+				}
+				break;
+			}
+			case ColliderType::Circle2D:
+			{
+				CollisionCircle2D* circle = static_cast<CollisionCircle2D*>(prim);
+				if (circle)
+				{
+					// 没有直接的 Box-Circle2D 精确接口，使用包围球近似：
+					CVector3 otherCenter = rb->GetPosition();
+					float otherRadius = circle->mRadius;
+					float d2 = (center - otherCenter).lenSquared();
+					float rsum = radius + otherRadius;
+					if (d2 <= rsum * rsum) overlap = true;
+				}
+				break;
+			}
+			default:
+			{
+				// 其他未知类型，尝试使用刚体BV半径做近似检测（若可用）
+				CVector3 otherCenter = rb->GetPosition();
+				float otherRadius = (rb->mBVHNode) ? rb->mBVHNode->mBoundingVolume.mRadius : 0.0f;
+				if (otherRadius > 0.0f)
+				{
+					float d2 = (center - otherCenter).lenSquared();
+					float rsum = radius + otherRadius;
+					if (d2 <= rsum * rsum) overlap = true;
+				}
+				else
+				{
+					// 保守近似：若没有 BV 半径，使用一个小阈值判断
+					float d2 = (center - otherCenter).lenSquared();
+					if (d2 <= (radius + 1e-3f) * (radius + 1e-3f)) overlap = true;
+				}
+				break;
+			}
+			} // end switch type
+
+			if (overlap)
+			{
+				auto it = RigidBodyToGO.find(rb);
+				if (it != RigidBodyToGO.end() && it->second)
+					results.push_back(it->second);
+				else
+					results.push_back(nullptr);
+			}
+		} // end for candidates
+
+		return results;
+	}
+
+
+
+
 	std::string PhysicsManager::GetGameObjectName(RigidBodyPrimitive* rigidbody) {
 		auto it = RigidBodyToGO.find(rigidbody);
 		if (it != RigidBodyToGO.end() && it->second) {

@@ -105,6 +105,22 @@ namespace PhysicsLit
             unsigned int layerMask = ~0u,
             bool includeTriggers = true
         );
+
+        // --- OverlapBox API (Unity-like) ---
+        // center: 盒子中心（世界坐标）
+        // halfExtents: 半尺寸（沿盒子局部 X/Y/Z 的半长）
+        // rotation: 盒子的世界旋转（四元数）
+        // layerMask: 按位图，用于层过滤（默认所有层）
+        // includeTriggers: 是否也包含触发器（默认 true）
+        // 返回：与该盒子重叠的 GameObject* 列表（可能包含 nullptr）
+        std::vector<GameObject*> OverlapBox(
+            const CVector3& center,
+            const CVector3& halfExtents,
+            const CQuaternion& rotation,
+            unsigned int layerMask = ~0u,
+            bool includeTriggers = true
+        );
+
     private:
         PhysicsManager();
 

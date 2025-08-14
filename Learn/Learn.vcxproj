@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="BoundingSphere.h" />
     <ClInclude Include="BoxCollider.h" />
+    <ClInclude Include="BreakableWall.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BVHNode.h" />
     <ClInclude Include="Camera.h" />
@@ -214,6 +215,7 @@
   <ItemGroup>
     <ClCompile Include="BoundingSphere.cpp" />
     <ClCompile Include="BoxCollider.cpp" />
+    <ClCompile Include="BreakableWall.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BVHNode.cpp" />
     <ClCompile Include="Camera.cpp" />
