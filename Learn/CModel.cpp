@@ -191,12 +191,14 @@ void MeshFilter::generateSphere(float r, int slices, int stacks) {
 }
 
 
-// 注册字段
+// 静态成员定义
+std::unordered_map<std::string, unsigned int> MeshRenderer::s_textureCache;
+
 void MeshRenderer::RegisterFields(TypeInfo& info) {
     // textureID 是 GPU 句柄，不直接 memcpy，clone 时需要重新加载纹理或标记重新加载
     REGISTER_FIELD_CUSTOM(MeshRenderer, textureID,
         [](unsigned int oldID, CloneContext&) {
-            // 直接返回0，clone后需要重新load纹理
+            // 克隆时不要复制GPU句柄，PostClone 会重新设置 textureID（但会使用缓存）
             return 0u;
         });
     REGISTER_FIELD_CUSTOM(MeshRenderer, texturePath,
@@ -208,11 +210,9 @@ void MeshRenderer::RegisterFields(TypeInfo& info) {
     REGISTER_FIELD(MeshRenderer, material);
 }
 
-// 克隆后调用，重新加载纹理
 void MeshRenderer::PostClone(CloneContext& ctx) {
-    if (useTexture && textureID == 0) {
-        // 重新加载纹理逻辑（假设你有成员变量存路径，或者其他机制）
-        // 这里示例调用 SetTexture，路径应存储或传递
+    // 如果克隆对象使用纹理，尝试根据 texturePath 恢复纹理（loadTexture 会复用缓存）
+    if (useTexture && !texturePath.empty()) {
         SetTexture(texturePath);
     }
 }
@@ -221,20 +221,35 @@ MeshRenderer::MeshRenderer(const std::string& texturePath) {
     if (!texturePath.empty()) {
         this->texturePath = texturePath;
         loadTexture(texturePath);
-        useTexture = true;
+        useTexture = (textureID != 0);
     }
 }
 
 void MeshRenderer::SetTexture(const std::string& path) {
+    if (path.empty()) {
+        // 卸载当前纹理（但不从缓存中删除），并标记不使用纹理
+        texturePath.clear();
+        textureID = 0;
+        useTexture = false;
+        return;
+    }
+
+    // 如果路径未改变，且已有 textureID（可能来自缓存或先前加载），直接使用
+    if (path == texturePath && textureID != 0) {
+        useTexture = true;
+        return;
+    }
+
+    // 记录路径并加载（loadTexture 会查缓存）
+    texturePath = path;
     loadTexture(path);
-    useTexture = textureID != 0;
+    useTexture = (textureID != 0);
 }
 
 void MeshRenderer::SetDiffuseColor(CVector3 diffuseColor)
 {
     material.diffuseColor = diffuseColor;
 }
-
 
 void MeshRenderer::Draw() {
     auto* filter = gameObject->GetComponent<MeshFilter>();
@@ -358,24 +373,69 @@ void MeshRenderer::Draw() {
     glPopMatrix();
 }
 
-
-
 void MeshRenderer::loadTexture(const std::string& path) {
-    textureID = SOIL_load_OGL_texture(
+    if (path.empty()) {
+        textureID = 0;
+        useTexture = false;
+        return;
+    }
+
+    // 先查缓存
+    auto it = s_textureCache.find(path);
+    if (it != s_textureCache.end()) {
+        textureID = it->second;
+        useTexture = (textureID != 0);
+        return;
+    }
+
+    // 若缓存中没有，尝试加载
+    unsigned int id = SOIL_load_OGL_texture(
         path.c_str(),
         SOIL_LOAD_AUTO,
         SOIL_CREATE_NEW_ID,
         SOIL_FLAG_INVERT_Y
     );
 
-    if (!textureID) {
-        std::cerr << "Failed to load texture: " << path << std::endl;
+    if (!id) {
+        std::cerr << "MeshRenderer::loadTexture Failed to load texture: " << path << std::endl;
+        textureID = 0;
         useTexture = false;
         return;
     }
 
-    glBindTexture(GL_TEXTURE_2D, textureID);
+    // 设置常用参数
+    glBindTexture(GL_TEXTURE_2D, id);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glBindTexture(GL_TEXTURE_2D, 0);
+
+    // 写入缓存并设置当前句柄
+    s_textureCache[path] = id;
+    textureID = id;
+    useTexture = true;
+}
+
+// 可选：主动释放特定路径的纹理（若你在运行时需要释放GPU内存）
+// 注意：如果有多个 MeshRenderer 正在复用同一 path，这里会直接删除 GL 纹理句柄。
+// 在调用前请确保没有再使用该纹理或改成引用计数管理。
+void MeshRenderer::UnloadTexture(const std::string& path) {
+    auto it = s_textureCache.find(path);
+    if (it == s_textureCache.end()) return;
+    unsigned int id = it->second;
+    if (id) {
+        glDeleteTextures(1, &id);
+    }
+    s_textureCache.erase(it);
+
+    // 同时把任何持有该 textureID 的 MeshRenderer 的 textureID 置为 0 是比较复杂的（需注册回调或引用计数）
+    // 此处不处理（简单实现）。
+}
+
+void MeshRenderer::ClearTextureCache() {
+    for (auto& kv : s_textureCache) {
+        if (kv.second) {
+            glDeleteTextures(1, &kv.second);
+        }
+    }
+    s_textureCache.clear();
 }

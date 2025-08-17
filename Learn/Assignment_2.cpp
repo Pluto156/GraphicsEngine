@@ -121,10 +121,10 @@ void InitStage()
         Floor->AddComponent<MeshRenderer>();
 
         WallPrefab->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 1, 1);
-        WallPrefab->AddComponent<MeshRenderer>();
+        WallPrefab->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Metal.png");
 
         BreakableWallPrefab->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 1, 1);
-        renderer = BreakableWallPrefab->AddComponent<MeshRenderer>();
+        renderer = BreakableWallPrefab->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/RedWall.png");
         BreakableWallPrefab->AddComponent<BreakableWall>();
         mat.diffuseColor = CVector3(0.5, 0.5, 0.5);
         renderer->SetMaterial(mat);
@@ -160,7 +160,7 @@ void InitStage()
 
                 GameObject* t = GameObjectManager::Instance().Instantiate("B1_" + std::to_string((i + 1)) + '_' + std::to_string((j + 1)), CVector3(xPos, yPos, zPos));
                 t->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
-                auto renderer = t->AddComponent<MeshRenderer>();
+                auto renderer = t->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Marble.png");
                 t->transform->localScale = CVector3(1,5,1);
                 Material mat;
                 mat.diffuseColor = CVector3(0.117f, 0.506f, 0.69f);
@@ -186,7 +186,7 @@ void InitStage()
 
             GameObject* t1 = GameObjectManager::Instance().Instantiate("A_" + std::to_string(i + 1), CVector3(xPos, yPos, zPos),CMatrix4::CreateRotationMatrix(angle * 180 / M_PI, CVector3::Up()), CEuler(angle * 180 / M_PI, 0, 0));
             t1->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
-            auto renderer1 = t1->AddComponent<MeshRenderer>();
+            auto renderer1 = t1->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Wood.png");
             t1->transform->localScale = CVector3(1, 12, 1);
             Material mat1;
             mat1.diffuseColor = CVector3(0.117f, 0.506f, 0.69f);
@@ -196,7 +196,7 @@ void InitStage()
 
             GameObject* t2 = GameObjectManager::Instance().Instantiate("A_" + std::to_string(i + 1), CVector3(-xPos, yPos, zPos), CMatrix4::CreateRotationMatrix(-angle * 180 / M_PI, CVector3::Up()), CEuler(-angle * 180 / M_PI, 0, 0));
             t2->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
-            auto renderer2 = t2->AddComponent<MeshRenderer>();
+            auto renderer2 = t2->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Wood.png");
             t2->transform->localScale = CVector3(1, 12, 1);
             Material mat2;
             mat2.diffuseColor = CVector3(0.117f, 0.506f, 0.69f);
@@ -220,7 +220,7 @@ void InitStage()
 
                 GameObject* t = GameObjectManager::Instance().Instantiate("B2_" + std::to_string((i + 1)) + '_' + std::to_string((j + 1)), CVector3(xPos, yPos, zPos));
                 t->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
-                auto renderer = t->AddComponent<MeshRenderer>();
+                auto renderer = t->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Marble.png");
                 t->transform->localScale = CVector3(1, 3, 1);
                 Material mat;
                 mat.diffuseColor = CVector3(0.08, 0.3, 0.6);
@@ -240,7 +240,7 @@ void InitStage()
                 float zPos = AreaPos.z + j * (2 + cspacing); 
                 GameObject* t = GameObjectManager::Instance().Instantiate("C_" + std::to_string((i + 1)) + '_' + std::to_string((j + 1)), CVector3(xPos, yPos, zPos));
                 t->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
-                auto renderer = t->AddComponent<MeshRenderer>();
+                auto renderer = t->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Concrete.png");
                 t->transform->localScale = CVector3(3, 11, 0.5f);
                 Material mat;
                 mat.diffuseColor = CVector3(1, 0.89, 0);

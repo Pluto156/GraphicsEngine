@@ -54,10 +54,10 @@ struct Material {
     CVector3 specularColor = { 1.0f, 1.0f, 1.0f }; //高光颜色
     float shininess = 32.0f; // 高光强度
 };
+
 class MeshRenderer : public Component {
     REGISTER_COMPONENT_DERIVED(MeshRenderer, ComponentType::MeshRenderer, Component)
 public:
-
     MeshRenderer(const std::string& texturePath = "");
 
     void Draw();
@@ -66,14 +66,21 @@ public:
     const Material& GetMaterial() const { return material; }
     void SetDiffuseColor(CVector3 diffuseColor);
 
+    // 手动清除缓存（若需要在退出时释放GPU资源）
+    static void ClearTextureCache();
+    static void UnloadTexture(const std::string& path);
+
 private:
     std::string texturePath;
     unsigned int textureID = 0;
     bool useTexture = false;
     Material material;
 
-    void loadTexture(const std::string& texturePath);
-};
+    // 纹理缓存：路径 -> gl texture id
+    static std::unordered_map<std::string, unsigned int> s_textureCache;
 
+    // 加载纹理（会先查缓存）
+    void loadTexture(const std::string& path);
+};
 
 
