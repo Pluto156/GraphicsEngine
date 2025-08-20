@@ -20,7 +20,14 @@ void CombatManager::RecycleCar(GameObject* car)
 
     PhysicsLit::RigidBodyPrimitive* rigidBody = car->GetComponent<RigidBody>()->rigidBodyPrimitive;
     if (rigidBody) rigidBody->SetPosition(CVector3(0, -1000, 0));
-
+    if (car->name == "Car")
+    {
+        ++Car2Score;
+    }
+    else if (car->name == "Car2")
+    {
+        ++CarScore;
+    }
     CountDownTimerManager::Instance().AddTimer(3.0f, [this, car]() {
         this->ReSpawnCar(car);
         Debug::Log("3秒后重生车辆");
@@ -30,7 +37,14 @@ void CombatManager::RecycleCar(GameObject* car)
 void CombatManager::ReSpawnCar(GameObject* car)
 {
     PhysicsLit::RigidBodyPrimitive* rigidBody = car->GetComponent<RigidBody>()->rigidBodyPrimitive;
-    if (rigidBody) rigidBody->SetPosition(CVector3(6, 0.5f + 2.5f, 0));
+    if (car->name == "Car")
+    {
+        if (rigidBody) rigidBody->SetPosition(CVector3(-1.5, 0.5 + 2.5, 7.5));
+    }
+    else if (car->name == "Car2")
+    {
+        if (rigidBody) rigidBody->SetPosition(CVector3(3, 0.5f + 2.5f, 0));
+    }
 }
 
 // ------------- 修改点：回收 BreakableWall（复用同一对象，延迟搬回合适格子） -------------

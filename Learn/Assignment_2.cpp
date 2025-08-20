@@ -49,16 +49,16 @@ void InitStage()
         GameObject* C = GameObjectManager::Instance().Instantiate("C", CVector3(0, 2.5 + 5.5, 5));
         GameObject* E29 = GameObjectManager::Instance().Instantiate("E29", CVector3(-(29 + 28 * 0.05) / 2 + 0.5, 20, 0));
         GameObject* E25 = GameObjectManager::Instance().Instantiate("E25", CVector3(-(25 + 24 * 0.05) / 2 + 0.5, 20, 0));
-        GameObject* Car = GameObjectManager::Instance().Instantiate("Car", CVector3(0, 0.5 + 2.5+5, 0));
+        GameObject* Car = GameObjectManager::Instance().Instantiate("Car", CVector3(-1.5, 0.5 + 2.5, 7.5));
         GameObject* CarHealthBar = GameObjectManager::Instance().Instantiate("CarCarHealthBar");
         GameObject* Car2HealthBar = GameObjectManager::Instance().Instantiate("Car2CarHealthBar");
-        GameObject* Car2 = GameObjectManager::Instance().Instantiate("Car2", CVector3(3, 0.5 + 2.5 + 5, 0));
-        GameObject* HealthPackGO = GameObjectManager::Instance().Instantiate("HealthPack", CVector3(0, 10, 3));
+        GameObject* Car2 = GameObjectManager::Instance().Instantiate("Car2", CVector3(3, 0.5 + 2.5, 0));
+        GameObject* HealthPackGO = GameObjectManager::Instance().Instantiate("HealthPack", CVector3(0, 100, 3));
         GameObject* HealthPackPart1 = GameObjectManager::Instance().Instantiate("HealthPackPart1", CVector3(0, 0.5 + 2.5 + 5, 0));
         GameObject* HealthPackPart2 = GameObjectManager::Instance().Instantiate("HealthPackPart2", CVector3(0, 0.5 + 2.5 + 5, 0));
         GameObject* CombatManagerGo = GameObjectManager::Instance().Instantiate("CombatManager", CVector3(0, 0.5 + 2.5 + 5, 0));
-        GameObject* WallPrefab = GameObjectManager::Instance().Instantiate("WallPrefab", CVector3(0, 0.5 + 2.5 + 5, 0));
-        GameObject* BreakableWallPrefab = GameObjectManager::Instance().Instantiate("BreakableWallPrefab", CVector3(0, 11, 0));
+        GameObject* WallPrefab = GameObjectManager::Instance().Instantiate("WallPrefab", CVector3(0, 100, 0));
+        GameObject* BreakableWallPrefab = GameObjectManager::Instance().Instantiate("BreakableWallPrefab", CVector3(0, 100, 0));
 
 
 
@@ -499,7 +499,7 @@ int main(int argc, char* argv[])
     glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
     glutInitWindowPosition(100, 100);
     glutInitWindowSize(1024, 768);
-    glutCreateWindow("Lighting Toggle Example");
+    glutCreateWindow("图形学大作业");
 
     glutDisplayFunc(&myDisplay);
     glutTimerFunc(1, myTimerFunc, 0);

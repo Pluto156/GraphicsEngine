@@ -128,13 +128,17 @@ void Stage::StageDebug()
         oss << "Car Position: ("
             << Car->transform->position.x << ", "
             << Car->transform->position.y << ", "
-            << Car->transform->position.z << ")\n";
+            << Car->transform->position.z << ")\n"
+            << "Car Score: "
+            << CombatManager::Instance().CarScore << "\n";
     }
     if (Car2 && Car2->transform) {
         oss << "Car2 Position: ("
             << Car2->transform->position.x << ", "
             << Car2->transform->position.y << ", "
-            << Car2->transform->position.z << ")\n";
+            << Car2->transform->position.z << ")\n"
+            << "Car2 Score: "
+            << CombatManager::Instance().Car2Score << "\n";
     }
 
     if (curSelectShape)

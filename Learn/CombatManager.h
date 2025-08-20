@@ -26,7 +26,8 @@ public:
     float maxSpawnInterval = 5.0f; // 最长生成间隔
     CVector3 spawnPositionMin = CVector3(-5, 1, -5);
     CVector3 spawnPositionMax = CVector3(5, 1, 5);
-
+    int CarScore = 0;
+    int Car2Score = 0;
     // Breakable wall respawn 配置
     float breakWallRespawnMin = 2.0f;
     float breakWallRespawnMax = 6.0f;
