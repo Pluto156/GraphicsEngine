@@ -376,7 +376,7 @@ void InitStage()
         rigidBody6->rigidBodyPrimitive->SetGameObjectName("WallPrefab");
 
         auto rigidBody7 = BreakableWallPrefab->AddComponent<RigidBody>();
-        rigidBody7->rigidBodyPrimitive->SetMass(100000);
+        rigidBody7->rigidBodyPrimitive->SetMass(1000);
         auto BoxCollider7 = BreakableWallPrefab->AddComponent<BoxCollider>(CVector3(0.5, 0.5, 0.5));
         BoxCollider7->mFriction = 10;
         BoxCollider7->mBounciness = 0.5;
