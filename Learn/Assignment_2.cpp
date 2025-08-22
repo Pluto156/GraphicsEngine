@@ -74,8 +74,8 @@ void InitStage()
         light->range = 15.0f;
         Light0->AddComponent<LightController>()->Light = light;
 
-        Car->AddComponent<MeshFilter>()->LoadModel("E:/sourcecode/GraphicsEngine/Resource/Model/T 90.obj");
-        Car->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Model/T 90A.png");
+        Car->AddComponent<MeshFilter>()->LoadModel("Resource/Model/T 90.obj");
+        Car->AddComponent<MeshRenderer>("Resource/Model/T 90A.png");
         Car->transform->isShowLocalAxis = true;
         Car->transform->SetLocalScale(CVector3(0.2, 0.2, 0.2));
         CarHealthBar->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
@@ -90,8 +90,8 @@ void InitStage()
         CarHealthBar->transform->localPosition = CVector3(0, 1, 0);
         CarHealthBar->transform->localScale = CVector3(1.5, 0.05, 0.05);
 
-        Car2->AddComponent<MeshFilter>()->LoadModel("E:/sourcecode/GraphicsEngine/Resource/Model/T 90.obj");
-        Car2->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Model/T 90A.png");
+        Car2->AddComponent<MeshFilter>()->LoadModel("Resource/Model/T 90.obj");
+        Car2->AddComponent<MeshRenderer>("Resource/Model/T 90A.png");
         Car2->transform->isShowLocalAxis = true;
         Car2->transform->SetLocalScale(CVector3(0.2, 0.2, 0.2));
         Car2->AddChild(Car2HealthBar);
@@ -121,10 +121,10 @@ void InitStage()
         Floor->AddComponent<MeshRenderer>();
 
         WallPrefab->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 1, 1);
-        WallPrefab->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Metal.png");
+        WallPrefab->AddComponent<MeshRenderer>("Resource/Metal.png");
 
         BreakableWallPrefab->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 1, 1);
-        renderer = BreakableWallPrefab->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/RedWall.png");
+        renderer = BreakableWallPrefab->AddComponent<MeshRenderer>("Resource/RedWall.png");
         BreakableWallPrefab->AddComponent<BreakableWall>();
         mat.diffuseColor = CVector3(0.5, 0.5, 0.5);
         renderer->SetMaterial(mat);
@@ -160,7 +160,7 @@ void InitStage()
 
                 GameObject* t = GameObjectManager::Instance().Instantiate("B1_" + std::to_string((i + 1)) + '_' + std::to_string((j + 1)), CVector3(xPos, yPos, zPos));
                 t->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
-                auto renderer = t->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Marble.png");
+                auto renderer = t->AddComponent<MeshRenderer>("Resource/Marble.png");
                 t->transform->localScale = CVector3(1,5,1);
                 Material mat;
                 mat.diffuseColor = CVector3(0.117f, 0.506f, 0.69f);
@@ -186,7 +186,7 @@ void InitStage()
 
             GameObject* t1 = GameObjectManager::Instance().Instantiate("A_" + std::to_string(i + 1), CVector3(xPos, yPos, zPos),CMatrix4::CreateRotationMatrix(angle * 180 / M_PI, CVector3::Up()), CEuler(angle * 180 / M_PI, 0, 0));
             t1->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
-            auto renderer1 = t1->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Wood.png");
+            auto renderer1 = t1->AddComponent<MeshRenderer>("Resource/Wood.png");
             t1->transform->localScale = CVector3(1, 12, 1);
             Material mat1;
             mat1.diffuseColor = CVector3(0.117f, 0.506f, 0.69f);
@@ -196,7 +196,7 @@ void InitStage()
 
             GameObject* t2 = GameObjectManager::Instance().Instantiate("A_" + std::to_string(i + 1), CVector3(-xPos, yPos, zPos), CMatrix4::CreateRotationMatrix(-angle * 180 / M_PI, CVector3::Up()), CEuler(-angle * 180 / M_PI, 0, 0));
             t2->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
-            auto renderer2 = t2->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Wood.png");
+            auto renderer2 = t2->AddComponent<MeshRenderer>("Resource/Wood.png");
             t2->transform->localScale = CVector3(1, 12, 1);
             Material mat2;
             mat2.diffuseColor = CVector3(0.117f, 0.506f, 0.69f);
@@ -220,7 +220,7 @@ void InitStage()
 
                 GameObject* t = GameObjectManager::Instance().Instantiate("B2_" + std::to_string((i + 1)) + '_' + std::to_string((j + 1)), CVector3(xPos, yPos, zPos));
                 t->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
-                auto renderer = t->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Marble.png");
+                auto renderer = t->AddComponent<MeshRenderer>("Resource/Marble.png");
                 t->transform->localScale = CVector3(1, 3, 1);
                 Material mat;
                 mat.diffuseColor = CVector3(0.08, 0.3, 0.6);
@@ -240,7 +240,7 @@ void InitStage()
                 float zPos = AreaPos.z + j * (2 + cspacing); 
                 GameObject* t = GameObjectManager::Instance().Instantiate("C_" + std::to_string((i + 1)) + '_' + std::to_string((j + 1)), CVector3(xPos, yPos, zPos));
                 t->AddComponent<MeshFilter>()->SetPrimitive(PrimitiveType::Cube, 1.0f, 32, 16);
-                auto renderer = t->AddComponent<MeshRenderer>("E:/sourcecode/GraphicsEngine/Resource/Concrete.png");
+                auto renderer = t->AddComponent<MeshRenderer>("Resource/Concrete.png");
                 t->transform->localScale = CVector3(3, 11, 0.5f);
                 Material mat;
                 mat.diffuseColor = CVector3(1, 0.89, 0);
